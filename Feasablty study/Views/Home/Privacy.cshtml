@@ -1,0 +1,1451 @@
+﻿@{
+    Layout = "_LayoutWithoutHead";
+}
+
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light"> ادخل بيانات المشروع </span> </h4>
+<!-- Default Icons Wizard -->
+<div class="col-12">
+  <div class="bs-stepper wizard-icons wizard-icons-example mt-2">
+    <div class="bs-stepper-header">
+      <div class="step" data-target="#account-details">
+        <button type="button" class="step-trigger">
+          <span class="bs-stepper-icon">
+            <svg viewBox="0 0 54 54">
+              <use xlink:href="/assets/svg/icons/form-wizard-account.svg#wizardAccount"></use>
+            </svg>
+          </span>
+          <span class="bs-stepper-label">بيانات المشروع</span>
+        </button>
+      </div>
+      <div class="line">
+        <i class="bx bx-chevron-right"></i>
+      </div>
+
+      <div class="step" data-target="#personal-info">
+        <button type="button" class="step-trigger">
+          <span class="bs-stepper-icon">
+            <svg viewBox="0 0 58 54">
+              <use xlink:href="/assets/svg/icons/form-wizard-personal.svg#wizardPersonal"></use>
+            </svg>
+          </span>
+          <span class="bs-stepper-label">الدراسة التمهيدية</span>
+        </button>
+      </div>
+      <div class="line">
+        <i class="bx bx-chevron-right"></i>
+      </div>
+      <div class="step" data-target="#address">
+        <button type="button" class="step-trigger">
+          <span class="bs-stepper-icon">
+            <svg viewBox="0 0 54 54">
+              <use xlink:href="/assets/svg/icons/form-wizard-address.svg#wizardAddress"></use>
+            </svg>
+          </span>
+          <span class="bs-stepper-label">الدراسةالسوقية</span>
+        </button>
+      </div>
+      <div class="line">
+        <i class="bx bx-chevron-right"></i>
+      </div>
+      <div class="step" data-target="#social-links">
+        <button type="button" class="step-trigger">
+          <span class="bs-stepper-icon">
+            <svg viewBox="0 0 54 54">
+              <use
+                xlink:href="/assets/svg/icons/form-wizard-social-link.svg#wizardSocialLink"
+              ></use>
+            </svg>
+          </span>
+          <span class="bs-stepper-label">الدراسةالفنية</span>
+        </button>
+      </div>
+      <div class="line">
+        <i class="bx bx-chevron-right"></i>
+      </div>
+      <div class="step" data-target="#review-submit">
+        <button type="button" class="step-trigger">
+          <span class="bs-stepper-icon">
+            <svg viewBox="0 0 54 54">
+              <use xlink:href="/assets/svg/icons/form-wizard-submit.svg#wizardSubmit"></use>
+            </svg>
+          </span>
+          <span class="bs-stepper-label">مراجعة & حفظ</span>
+        </button>
+      </div>
+    </div>
+    <div class="bs-stepper-content">
+      <div class="container-xxl flex-grow-1 container-p-y">
+      <form id="form-wizard-account" onSubmit="return false">
+          <!-- Account Details -->
+          <div id="account-details" class="content">
+            <div class="content-header mb-3">
+              <h4 class="mb-0">- يرجى إدخال البيانات  ادناه :</h4>
+            </div>
+            <div class="row g-3">
+              <div class="mb-3">
+                <label class="form-label" for="basic-icon-default-company"> الاسم التجاري للمشروع !</label>
+                <div class="input-group input-group-merge">
+                  <span id="basic-icon-default-company2" class="input-group-text"
+                    ><i class="bx bx-buildings"></i
+                  ></span>
+                  <input
+                    type="text"
+                    id="basic-icon-default-company"
+                    class="form-control"
+                    placeholder=" الاسم التجاري للمشروع"
+                    aria-label="الاسم التجاري للمشروع"
+                    aria-describedby="basic-icon-default-company2"
+                  />
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label" for="basic-icon-default-fullname">مقر المشروع !</label>
+                <div class="input-group input-group-merge">
+                  <span id="basic-icon-default-fullname2" class="input-group-text"
+                    ><i class="bx bx-user"></i
+                  ></span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="basic-icon-default-fullname"
+                    placeholder="مقر المشروع"
+                    aria-label="مقر المشروع"
+                    aria-describedby="basic-icon-default-fullname2"
+                  />
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label" for="basic-icon-default-fullname">اسم المؤسس</label>
+                <div class="input-group input-group-merge">
+                  <span id="basic-icon-default-fullname2" class="input-group-text"
+                    ><i class="bx bx-user"></i
+                  ></span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="basic-icon-default-fullname"
+                    placeholder="اسم المؤسس"
+                    aria-label="John Doe"
+                    aria-describedby="basic-icon-default-fullname2"
+                  />
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-label" for="basic-icon-default-phone">رقم الجوال !</label>
+                <div class="input-group input-group-merge">
+                  <span id="basic-icon-default-phone2" class="input-group-text"
+                    ><i class="bx bx-phone"></i
+                  ></span>
+                  <input
+                    type="text"
+                    id="basic-icon-default-phone"
+                    class="form-control phone-mask"
+                    placeholder="774141612 967+"
+                    aria-label="774141612 967+"
+                    aria-describedby="basic-icon-default-phone2"
+                  />
+                </div>
+              </div>   
+              
+          <div class="col-sm-6">
+            <label class="form-label" for="basic-icon-default-email">  البريد الالكتروني !</label>
+            <div class="input-group input-group-merge">
+              <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+              <input
+                type="text"
+                id="basic-icon-default-email"
+                class="form-control"
+                placeholder="Example Farming@gmail.com"
+                aria-label="Example Farming@gmail.com"
+                aria-describedby="basic-icon-default-email2"
+              />
+              <span id="basic-icon-default-email2" class="input-group-text"></span>
+            </div>
+            <div class="form-text">يمكنك استعمال الحروف والارقام</div>
+          </div>
+
+
+          <div class="col-sm-6">
+            <label class="form-label" for="basic-icon-default-datatime">   التاريخ المقترح لبدايةالمشروع !</label>
+            <div class="input-group input-group-merge">
+              <input
+                class="form-control"
+                type="datetime-local"
+                value="2022-01-18T12:00:00"
+                id="html5-datetime-local-input"
+              />
+            </div>
+          </div> 
+
+          <div class="col-sm-6">
+            <label for="selectpickerDivider" class="form-label">منهج واسلوب المشروع !</label>
+            <select id="selectpickerDivider" class="selectpicker w-100" data-style="btn-default">
+              <option>منهج و اسلوب المشروع</option>
+              <option data-divider="true">منهج واسلوب المشروع</option>
+              <option>إنتاجي</option>
+              <option>ثابت</option>
+            </select>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="selectpickerDivider" class="form-label">صفة المشروع القانونية !</label>
+            <select id="selectpickerDivider" class="selectpicker w-100" data-style="btn-default">
+             
+              <option>صفة المشروع القانونية</option>
+              <option data-divider="true">صفة المشروع القانونية</option>
+              <option>مؤسسة</option>
+              <option>شركة</option>
+              <option>مصنع</option>
+
+            </select>
+          </div>
+      
+          </div>
+       <!--row end-->
+
+          <div class="mb-3">
+            <label class="form-label" for="message">فكرة المشروع !</label>
+            <textarea
+              class="form-control"
+              id="message"
+              rows="3"
+              placeholder="اكتب فكره مشروعك هنا ..."
+              spellcheck="false"
+            ></textarea>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="formFile" class="form-label">شعار المشروع !</label>
+            <input class="form-control" type="file" id="formFile" />
+          </div>
+        </br>
+         </form>
+         <hr>
+              <div class="d-flex col-12 justify-content-between">
+                <button class="btn btn-label-secondary btn-prev" disabled>
+                  <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+                  <span class="d-none d-sm-inline-block">السابق</span>
+                </button>
+                <button class="btn btn-primary btn-next">
+                  <span class="d-none d-sm-inline-block me-sm-1">التالي</span>
+                  <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
+                </button>
+              </div>
+          </div>
+     <!-- /Account-detailes  -->
+  
+          <!-- Personal Info -->
+          <div id="personal-info" class="content">
+            <form id="form-wizard-personal" onsubmit="return false">
+            <div class="content-header mb-3">
+            <h4>ادخل بيانات المشروع</h>
+            </div>
+            <!-- Bootstrap Maxlength1 -->
+            <div class="row">
+            <div class="col-12">
+            <label class="form-label" for="bootstrap-maxlength-example2">الرؤية هي !</label>
+            <textarea
+            id="bootstrap-maxlength-example2"
+            class="form-control bootstrap-maxlength-example"
+            rows="3"
+            maxlength="255"
+            ></textarea>
+            </div>
+            </div>
+            <!-- /Bootstrap Maxlength 1-->
+            <!-- <br> -->
+            <!-- Bootstrap Maxlength2 -->
+            <div class="row">
+            <div class="col-12">
+            <label class="form-label" for="bootstrap-maxlength-example2">الرسالة هي !</label>
+            <textarea
+            id="bootstrap-maxlength-example2"
+            class="form-control bootstrap-maxlength-example"
+            rows="3"
+            maxlength="255"
+            ></textarea>
+            </div>
+            </div>
+            <!-- /Bootstrap Maxlength2 -->
+            <hr/>
+            <h5>اهداف المشروع هي !</h5>
+            <div class="row g-3">
+            <div class="col-sm-6">
+            <div class="form-check">
+            <input id="closeButton" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="closeButton">توفير منتجات او خدمات بجوده عالية</label>
+            </div>
+            <div class="form-check">
+            <input
+            id="addBehaviorOnToastClick"
+            class="form-check-input"
+            type="checkbox"
+            value="checked"
+            />
+            <label class="form-check-label" for="addBehaviorOnToastClick"
+            >توفير خدمات او منتجات بسعر مناسب</label
+            >
+            </div>
+            <div class="form-check">
+            <input id="debugInfo" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="debugInfo">دعم التوظيف والمساهمة في  الحد من البطالة</label>
+            </div>
+            <div class="form-check">
+            <input id="progressBar" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="progressBar">توفير مصدر دخل لمؤسس المشروع</label>
+            </div>
+            <div class="form-check">
+            <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
+            </div>
+            <div class="form-check">
+            <input id="addClear" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="addClear"
+            >اخرى</label
+            >
+            </div>
+
+            </div>
+            </div>
+
+
+            <br>
+            <h5>خصائص المشروع هي  !</h5>
+
+            <div class="row g-3">
+            <div class="col-sm-6">
+            <div class="form-check">
+            <input id="closeButton" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="closeButton">توفير منتجات او خدمات بجوده عالية</label>
+            </div>
+            <div class="form-check">
+            <input
+            id="addBehaviorOnToastClick"
+            class="form-check-input"
+            type="checkbox"
+            value="checked"
+            />
+            <label class="form-check-label" for="addBehaviorOnToastClick"
+            >توفير خدمات او منتجات بسعر مناسب</label
+            >
+            </div>
+            <div class="form-check">
+            <input id="debugInfo" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="debugInfo">دعم التوظيف والمساهمة في  الحد من البطالة</label>
+            </div>
+            <div class="form-check">
+            <input id="progressBar" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="progressBar">توفير مصدر دخل لمؤسس المشروع</label>
+            </div>
+            <div class="form-check">
+            <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
+            </div>
+            <div class="form-check">
+            <input id="addClear" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="addClear"
+            >اخرى</label
+            >
+            </div>
+
+            </div>
+            </div>
+
+            <br>
+            <h5>العوامل المؤثره على زياده الطلب  على خدمات المشروع  !</h5>
+
+            <div class="row g-3">
+            <div class="col-sm-6">
+            <div class="form-check">
+            <input id="closeButton" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="closeButton">توفير منتجات او خدمات بجوده عالية</label>
+            </div>
+            <div class="form-check">
+            <input
+            id="addBehaviorOnToastClick"
+            class="form-check-input"
+            type="checkbox"
+            value="checked"
+            />
+            <label class="form-check-label" for="addBehaviorOnToastClick"
+            >توفير خدمات او منتجات بسعر مناسب</label
+            >
+            </div>
+            <div class="form-check">
+            <input id="debugInfo" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="debugInfo">دعم التوظيف والمساهمة في  الحد من البطالة</label>
+            </div>
+            <div class="form-check">
+            <input id="progressBar" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="progressBar">توفير مصدر دخل لمؤسس المشروع</label>
+            </div>
+            <div class="form-check">
+            <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
+            </div>
+            <div class="form-check">
+            <input id="addClear" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="addClear"
+            >اخرى</label
+            >
+            </div>
+            </div>
+            </div>
+            <br>
+            <h5>العوامل المؤثره على انخفاض  الطلب على خدمات /منتجات المشروع !</h5>
+               <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="form-check">
+                     <input id="closeButton" class="form-check-input" type="checkbox" value="checked" />
+                      <label class="form-check-label" for="closeButton">توفير منتجات او خدمات بجوده عالية</label>
+                 </div>
+            <div class="form-check">
+            <input
+            id="addBehaviorOnToastClick"
+            class="form-check-input"
+            type="checkbox"
+            value="checked"
+            />
+            <label class="form-check-label" for="addBehaviorOnToastClick"
+            >توفير خدمات او منتجات بسعر مناسب</label
+            >
+            </div>
+            <div class="form-check">
+            <input id="debugInfo" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="debugInfo">دعم التوظيف والمساهمة في  الحد من البطالة</label>
+            </div>
+            <div class="form-check">
+            <input id="progressBar" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="progressBar">توفير مصدر دخل لمؤسس المشروع</label>
+            </div>
+            <div class="form-check">
+            <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
+            </div>
+            <div class="form-check">
+            <input id="addClear" class="form-check-input" type="checkbox" value="checked" />
+            <label class="form-check-label" for="addClear"
+            >اخرى</label
+            >
+            </div>
+
+            </div>
+            </div>
+            <hr/>
+            <!-- مكان الجدول الاول في الدراسة -->
+            <h4> <strong> التراخيص اللازمة للمشروع ❗</strong></h4>
+            <table class="table table-bordered" id="LicenseType">
+                <thead class="table-info">
+              <tr>
+                <th scope="col">#</th> 
+                <th scope="col"> نوع الترخيص</th> 
+                <th scope="col">الجهه المصدرة للترخيص </th>
+                <th scope="col">حذف </th> 
+              </tr>
+            </thead>
+              <tbody> 
+                <tr> 
+                <th scope="row">1</th> 
+                <td class="col-sm-4"> 
+                  <input type="text" name="license" class="form-control" placeholder="ادخل نوع الترخيص"/> 
+                </td> 
+                <td> 
+                  <input type="text" name="hand" class="form-control" placeholder="ادخل جهة الترخيص"/>
+                </td> 
+                <td>
+                <input type="button" class="btn btn-block btn-default" id="add-row" onclick="deleteRow(\''+id+'\')" ><i class="bx bx-trash me-1"></i> </input> 
+                </td>
+                
+                </tr> 
+              </tbody> 
+            </table>
+                <td>
+                  <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="addlicense()" value="إضافة " /> 
+                  </form>
+                </td><br><hr>
+            <div class="d-flex col-12 justify-content-between">
+            <button class="btn btn-primary btn-prev">
+            <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+            <span class="d-none d-sm-inline-block">السابق</span>
+            </button>
+            <button class="btn btn-primary btn-next">
+            <span class="d-none d-sm-inline-block me-sm-1">التالي</span>
+            <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
+            </button>
+            </div>
+            </div>
+            <!--/ نهاية الدراسة التمهيدية-->
+
+
+           <!-- بدايها الدراسة السوقيه-- -->
+                <div id="address" class="content">          
+               <div class="container-xxl flex-grow-1 container-p-y">
+                <div class="content-header mb-3">
+                  <h4>الاسواق المستهدفة هي ❗</h>
+                  </div>
+                  <br>
+						  <!-- start object--> 
+						<div class="row g-3">
+								<div class="col-sm-6" style="display:contents">
+								<div class="form-check">
+									  <input id="closeButton" class="form-check-input" type="checkbox" value="checked">
+									  <label class="form-check-label" for="closeButton">مصانع</label>
+								</div>
+								<div class="form-check">
+									  <input id="addBehaviorOnToastClick" class="form-check-input" type="checkbox" value="checked">
+									  <label class="form-check-label" for="addBehaviorOnToastClick">تجاره التجزئة</label>
+									</div>
+                            <div class="form-check">
+                              <input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+                              <label class="form-check-label" for="debugInfo">تجارة الجملة</label>
+                            </div>
+                            <div class="form-check">
+                              <input id="progressBar" class="form-check-input" type="checkbox" value="checked">
+                              <label class="form-check-label" for="progressBar">تصدير</label>
+                            </div>
+                            <div class="form-check">
+                              <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked">
+                              <label class="form-check-label" for="preventDuplicates">حكومي</label>
+                            </div>
+                            <div class="form-check">
+                              <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked">
+                              <label class="form-check-label" for="preventDuplicates">اخرى</label>
+                            </div>  
+                          </div>
+                          <hr>
+                        </div><br><br>
+							<!-- بدايها الخريطة الخاصة بدراسة السوقيه---->
+								
+                    <h5>خريطة الانشطة المنافسه حول المقترح  </h5>
+                    
+                    <div class="card-body">
+                      <div class="col-12 mb-0 mb-3">
+                        <div class="alert alert-warning">
+                          <p class="mb-0">للحصول على نتائج اكثر دقة يرجى ادخال اسم الحي والمدينة في مقر المشروع في الخطوه رقم 1 </p>
+                        </div>
+                      </div>
+                      <div class="leaflet-map leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+                       id="layerControl" 
+                       tabindex="0" 
+                       style="position: relative; outline: none;">
+                       <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-178px, 0px, 0px);">
+                        <div class="leaflet-pane leaflet-tile-pane">
+                          <div class="leaflet-layer " style="z-index: 1; opacity: 1;">
+                            <div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 16; transform: translate3d(727px, 116px, 0px) scale(0.25);"> 
+                            </div>
+                            <div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 17; transform: translate3d(727px, 116px, 0px) scale(0.5);"></div>
+                            <div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(485px, 77px, 0px) scale(1);"><img alt="" role="presentation" src="https://b.tile.osm.org/8/52/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/52/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/8/51/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/53/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.osm.org/8/51/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/8/53/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/51/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/8/52/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/8/50/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/50/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.osm.org/8/50/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.osm.org/8/53/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, 302px, 0px); opacity: 1;"></div></div><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 16; transform: translate3d(727px, 116px, 0px) scale(0.25);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 17; transform: translate3d(727px, 116px, 0px) scale(0.5);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(485px, 77px, 0px) scale(1);"><img alt="" role="presentation" src="https://c.tile.osm.org/8/52/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/52/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/51/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/53/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/51/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/53/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/51/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/52/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/50/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/50/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/50/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/53/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, 302px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(873px, 194px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(878px, 163px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(913px, 166px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(834px, 156px, 0px);"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(873px, 194px, 0px); z-index: 194;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(878px, 163px, 0px); z-index: 163;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(913px, 166px, 0px); z-index: 166;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(834px, 156px, 0px); z-index: 156;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(13383px, 24909px, 0px) scale(128);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"><div class="leaflet-control-layers leaflet-control" aria-haspopup="true"><a class="leaflet-control-layers-toggle" href="#" title="Layers"></a><section class="leaflet-control-layers-list"><div class="leaflet-control-layers-base"><label><div><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_514" checked="checked"><span> Street</span></div></label><label><div><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_514"><span> Watercolor</span></div></label></div><div class="leaflet-control-layers-separator"></div><div class="leaflet-control-layers-overlays"><label><div><input type="checkbox" class="leaflet-control-layers-selector" checked=""><span> Cities</span></div></label></div></section></div></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | بيانات الخريطة © <a href="https://www.openstreetmap.org/">OpenStreetMap</a></div></div></div><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(338px, 200px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="https://a.tile.osm.org/11/429/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-195px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.osm.org/11/430/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(61px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.osm.org/11/429/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-195px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/430/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(61px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/428/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-451px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/431/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(317px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/11/428/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-451px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/11/431/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(317px, 18px, 0px); opacity: 1;"></div></div><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="https://c.tile.osm.org/11/429/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-195px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/430/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(61px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/429/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-195px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/430/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(61px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/428/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-451px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/431/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(317px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/428/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-451px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/431/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(317px, 18px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(-821px, 74px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(-778px, -172px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(-501px, -153px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(-1127px, -229px, 0px);"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(-821px, 74px, 0px); z-index: 74;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(-778px, -172px, 0px); z-index: -172;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(-501px, -153px, 0px); z-index: -153;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(-1127px, -229px, 0px); z-index: -229;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(110019px, 199150px, 0px) scale(1024);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"><div class="leaflet-control-layers leaflet-control" aria-haspopup="true"><a class="leaflet-control-layers-toggle" href="#" title="Layers"></a><section class="leaflet-control-layers-list"><div class="leaflet-control-layers-base"><label><div><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_39" checked="checked"><span> Street</span></div></label><label><div><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_39"><span> Watercolor</span></div></label></div><div class="leaflet-control-layers-separator"></div><div class="leaflet-control-layers-overlays"><label><div><input type="checkbox" class="leaflet-control-layers-selector" checked=""><span> Cities</span></div></label></div></section></div></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a></div></div></div></div>
+                    </div>
+                  <br><br> <hr/>
+				  <!-- نهاية الخريطة السوقيه---->
+				  
+				  <!-- بدايها جدولتحليل المنافسين-->
+				  
+          <h4>  جدول تحليل المنافسين ❗ </h4>
+          <div class="table-responsive text-nowrap">
+						 <table class="table table-bordered" id="childTable">
+						<thead class="table-info">
+					<tr>
+						<th scope="col">#</th> 
+						<th scope="col">اسم المنافس</th> 
+						<th scope="col">الخدمة او المنتج </th>
+						<th scope="col">سعر المنتج</th> 
+						<th scope="col">القيمة المضافة</th> 
+						<th scope="col"> إضافة  </th>
+					</tr>
+				</thead>
+					<tbody> 
+						<tr> 
+						<th scope="row">1</th> 
+						<td class="col-sm-3"> 
+							<input type="text" name="name" class="form-control" placeholder="اسم المنافس"/> 
+						</td> 
+						<td class="col-sm-3"> 
+							<input type="text" name="product" class="form-control" placeholder="الخدمة والمنتج"/>
+						</td> 
+						<td class="col-sm-3"> 
+              <input type="number" name="mony" class="form-control"  min="0" max="1000" placeholder="#10288#"/>
+						</td>
+						<td class="col-sm-3"> 
+              <input type="number" name="mony" class="form-control"  min="0" max="1000" placeholder="#10288#"/>
+						</td> 
+						<td>
+							<input type="button" class="btn btn-success" id="addrow"  onclick="childTable()" value="إضافة"  /> 
+						</td> 
+						
+						</tr> 
+          </tbody> 
+          <thead class="table-info">
+            <tr>
+              <th scope="col"></th> 
+              <th scope="col">الاجمــــــــــــــالي </th> 
+              <th scope="col"> </th>
+              <th scope="col"> </th> 
+              <th scope="col"> </th> 
+              <th scope="col">   </th>
+            </tr>
+          </thead>
+        </table>
+        </div>
+
+							<hr class="container-m-nx my-5" />
+							<div class="row g-3">
+             <h5>نقط القوة للمشروع !</h5>
+							<div class="row g-3">
+							<div class="col-sm-6" style="display:contents">
+								<div class="form-check">
+									  <input id="closeButton" class="form-check-input" type="checkbox" value="checked">
+									  <label class="form-check-label" for="closeButton "  >  العلاقات العامة </label>
+								</div>
+								<div class="form-check">
+									  <input id="addBehaviorOnToastClick" class="form-check-input" type="checkbox" value="checked">
+									  <label class="form-check-label" for="addBehaviorOnToastClick">وجود عملا مسبقين</label>
+								</div>
+                 <div class="form-check">
+                 <input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+                <label class="form-check-label" for="debugInfo">الخبرة في المشروع</label>
+                 </div>
+                  <div class="form-check">
+                      <input id="progressBar" class="form-check-input" type="checkbox" value="checked">
+                      <label class="form-check-label" for="progressBar">توفير راس المال 	</label>
+                    </div>
+                        
+                            
+                          </div>
+                        </div>	
+						</div>
+                            <br><br>
+							
+							
+							<div class="row g-3">
+							<h5>نقط الضعف للمشروع !</h5>
+								<div class="col-sm-6">
+									<div class="form-check">
+									<input id="closeButton" class="form-check-input" type="checkbox" value="checked">
+									<label class="form-check-label" for="closeButton">عدم وجود تمويل  للمشروع</label>
+									</div>
+									<div class="form-check">
+									<input id="addBehaviorOnToastClick" class="form-check-input" type="checkbox" value="checked">
+									<label class="form-check-label" for="addBehaviorOnToastClick">عدم توفير عملا مسبقين</label>
+									</div>
+									<div class="form-check">
+									<input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+									<label class="form-check-label" for="debugInfo">عدم وجود الخبرة</label>
+									</div>
+                  <div class="form-check">
+                    <input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+                    <label class="form-check-label" for="debugInfo">اخرى  </label>
+                    </div>
+								
+
+								</div>
+							</div><br>
+													
+							<!-- نهاية نقط الضعف-->
+							
+							
+						<div class="row g-3">
+						<h5>الفرص المتاحة للمشروع !</h5>
+							<div class="col-sm-6">
+									<div class="form-check">
+									<input id="closeButton" class="form-check-input" type="checkbox" value="checked">
+									<label class="form-check-label" for="closeButton">توجد الحكومة لدعم المشاريع</label>
+									</div>
+									<div class="form-check">
+									<input id="addBehaviorOnToastClick" class="form-check-input" type="checkbox" value="checked">
+									<label class="form-check-label" for="addBehaviorOnToastClick">زياده الطلب المنتج المطلوب</label>
+									</div>
+									<div class="form-check">
+									<input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+									<label class="form-check-label" for="debugInfo">خصوصية الارض</label>
+									</div>
+									
+								<div class="list-group">
+								  <label class="list-style">
+									<input class="form-check-input me-1" type="checkbox" value="">
+									توفير منتجات او خدمات بجودة عالية
+								  </label>
+								  </div>
+								  <div class="list-group">
+								  <label class="list-style">
+									<input class="form-check-input me-1" type="checkbox" value="">
+									 خدمات بجودة عالية بسعر مناسب
+								  </label>
+								  </div>
+								  <div class="list-group">
+								  <label class="list-style">
+									<input class="form-check-input me-1" type="checkbox" value="">
+									دعم التوظيف والمساهمة في الحد من البطاله
+								  </label>
+								  </div>
+								  <div class="list-group">
+								  <label class="list-style">
+									<input class="form-check-input me-1" type="checkbox" value="">
+									توفير مصدر دخل لمؤسس المشروع
+								  </label>
+								  </div>
+								  <div class="list-group">
+								  <label class="list-style">
+									<input class="form-check-input me-1" type="checkbox" value="">
+										دعم القطاع الخاص والاقتصاد الوطني
+								  </label>
+								  </div>
+								  <div class="list-group">
+                    <label class="list-style">
+                    <input class="form-check-input me-1" type="checkbox" value="">
+                      اخرى
+                    </label>
+                    </div>
+                          
+								
+
+							</div>
+						</div>
+											<br><br>		
+							<!-- نهاية الفرص المتاحة-->
+							
+							<div class="row g-3">
+							<h5>التهديدات التي توجة المشروع !</h5>
+								<div class="col-sm-6">
+									<div class="form-check">
+									<input id="closeButton" class="form-check-input" type="checkbox" value="checked">
+									<label class="form-check-label" for="closeButton">انخفاض القوة العاملة</label>
+									</div>
+									<div class="form-check">
+									<input id="addBehaviorOnToastClick" class="form-check-input" type="checkbox" value="checked">
+									<label class="form-check-label" for="addBehaviorOnToastClick">ارتفاع اسعر الديزل</label>
+									</div>
+									<div class="form-check">
+									<input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+									<label class="form-check-label" for="debugInfo">دخول المنافسين السوق</label>
+									</div>
+									<div class="form-check">
+                    <input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+                    <label class="form-check-label" for="debugInfo">اخرى  </label>
+                    </div>
+
+								</div>
+							</div><br>
+							<hr>
+					<div class="mb-3">
+                        <label for="defaultInput" class="form-label">الفجوة السوقيه--</label>
+                        <input id="defaultInput" class="form-control" type="text" placeholder="بها انواع الخدمات او المنتج الذي يطلبة العملا ولم يوفره المنافسين او تم توفيرة ولكن ليس بشكل المطلوب">
+                    </div>
+							<hr class="container-m-nx my-5" />				
+							<!-- جدول الايرادات المتوقعة-->
+							
+              <h4>  الايرادات المتوقعة❗ </h4>
+              <div class="table-responsive text-nowrap">
+              <table class="table table-bordered" id="Revenuerow">
+                <div class="col-12 mb-0 mb-3">
+                  <div class="alert alert-warning">
+                    <h5 class="alert-heading mb-1">وحدة _ القياس:(عدد - وزن)</h5>
+                    <p class="mb-0">العملة :(الريال اليمني - الدولار الامريكي - الر يال السعودي)</p>
+                  </div>
+                </div>
+                <thead class="table-info">
+              <tr>
+                <th scope="col">#</th> 
+                <th scope="col">الصنف </th> 
+                <th scope="col"> الكمية شهرياً </th>
+                <th scope="col">سعر الوحدة </th> 
+                <th scope="col"> إجمالي شهري </th>
+                <th scope="col"> إجمالي سنوي </th>  
+                <th scope="col"> الاجراءات  </th>
+              </tr>
+            </thead>
+              <tbody> 
+                <tr> 
+                <th scope="row">1</th> 
+                <td class="col-sm-2"> 
+                  <input type="text" name="name" class="form-control" placeholder="اسم الصنف"/> 
+                </td> 
+                <td class="col-sm-2"> 
+                  <input id="quality" type="number" name="quality" onkeydown="return validateDigitsOnly(event)" class="form-control"    placeholder="00" onkeyup="calculateTotalB()"/>
+                </td> 
+                <td class="col-sm-2"> 
+                  <input ID="priceUnit" type="number" name="priceUnit" onkeydown="return validateDigitsOnly(event)" class="form-control" placeholder="000" onkeyup="calculateTotalB()"/>
+                </td>
+                <td class="col-sm-2"> 
+                  <input disabled type="number" name="totalMoth" class="form-control"   placeholder="0000000"/>
+                </td> 
+                <td class="col-sm-4"> 
+                  <input disabled type="number" name="totalyear" class="form-control" placeholder="0000000"/>
+                </td> 
+                <td class="col-sm-1">
+                  <input  type="button" class="btn rounded-pill btn-success" id="add-row" onclick="Revenuerow()" value="إضافة" /> 
+                </td> 
+                
+                </tr> 
+              </tbody> 
+              <thead class="table-info">
+                <tr>
+                  <th scope="col"></th> 
+                  <th scope="col">الاجمــــــــــــــالي </th> 
+                  <th scope="col"> <input id="qualite" disabled type="number" name="totalmonthly" class="form-control"/></th>
+                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control"/> </th> 
+                  <th scope="col"> <input id="totalmonthly" disabled type="number" name="totalmonthly" class="form-control"/> </th> 
+                  <th scope="col"> <input id="totalall" disabled type="number" name="totalall" class="form-control"/> </th>
+                  <th scope="col">   
+                  </th>
+                </tr>
+              </thead>
+            </table>
+            </div>
+           <hr class="container-m-nx my-5" />
+                <br>
+							<!-- بدايها جدولتحليل المنافسين-->
+              
+				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light"> الخطة التسويقية ! </span></h4>
+          <div class="table-responsive text-nowrap">
+          <table class="table table-bordered" id="ch">
+						<thead class="table-info">
+					<tr>
+						<th scope="col">#</th> 
+						<th scope="col">النشـــــــــــــــاط</th> 
+						<th scope="col"> المبلـــــــــــــــــغ </th>
+						<th scope="col">الاجراءات</th> 
+						
+					</tr>
+				</thead>
+					<tbody> 
+						<tr> 
+						<th scope="row">1</th> 
+						<td class="col-sm-6"> 
+							<input type="text" name="Foundation" class="form-control" placeholder="النشاط  "/> 
+						</td> 
+						<td class="col-sm-3"> 
+							<input type="number" name="Activ"  class="form-control" placeholder="0000" onkeyup="calcualteTotalA()"/>
+						</td> 
+            <td class="col-sm-1">
+              <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="ch()" value="إضافة" /> 
+            </td> 
+						
+						</tr> 
+          </tbody> 
+          <thead class="table-info">
+            <tr>
+              <th scope="col"></th> 
+              <th scope="col">الاجمــــــــــــــــــــــالي</th> 
+              <th scope="col"> <input id="Activ" disabled type="number" name="price" class="form-control"/></th>
+              <th scope="col"> </th> 
+              
+            </tr>
+          </thead>
+        </table>
+        </div>
+						<br>
+						<br>							
+					    
+                  <hr>
+					
+						<!-- نهاية الجدول-->
+						
+						 <!--بدايها جدول ادرة المخاطر-->
+				  
+             <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light"> إدارة المخاطر !</span></h4>
+             <div class="table-responsive text-nowrap">
+             <table class="table table-bordered" id="riskmanage">
+               <thead class="table-info">
+             <tr>
+               <th scope="col">#</th> 
+               <th scope="col">نوع المخاطر	</th> 
+               <th scope="col"> شرح المخاطر كتابياً	 </th>
+               <th scope="col">الاجراءات</th> 
+               
+             </tr>
+           </thead>
+             <tbody> 
+               <tr> 
+               <th scope="row">1</th> 
+               <td class="col-sm-6"> 
+                 <input type="text" name="typedanger" class="form-control" placeholder="نوع الخطر  "/> 
+               </td> 
+               <td class="col-sm-3"> 
+                 <input type="text" name="danger" class="form-control" placeholder="شرح الخطر" />
+               </td> 
+               <td class="col-sm-1">
+                 <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="riskmanage()" value="إضافة" /> 
+               </td> 
+               
+               </tr> 
+             </tbody> 
+             <thead class="table-info">
+               <tr>
+                 <th scope="col"></th> 
+                 <th scope="col"></th> 
+                 <th scope="col"></th>
+                 <th scope="col"> </th> 
+                 
+               </tr>
+             </thead>
+           </table>
+           </div>
+               <br>
+               <br>
+							<!--نهايه جدول ادرة المخاطر-->
+							
+				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">أساليب الحد من المخاطر  ! </span></h4>
+          <table class="table table-bordered" id="DangerStyle">
+              <thead class="table-info">
+            <tr>
+              <th scope="col">#</th> 
+              <th scope="col">أسلوب الحد من المخاطر </th> 
+              <th scope="col">شرح الاسلوب كتابياً</th>
+              <th scope="col">الاجراءات</th> 
+              </tr>
+          </thead>
+            <tbody> 
+              <tr> 
+              <th scope="row">1</th> 
+              <td class="col-sm-6"> 
+                <input type="text" name="dangertype" class="form-control" placeholder="اسلوب الخطر"/> 
+              </td> 
+              <td class="col-sm-3"> 
+                <input type="text" name="dangerExplain" class="form-control" placeholder="شرح الاسلوب"/>
+              </td> 
+              <td class="col-sm-1">
+                <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="DangerStyle()" value="إضافة" /> 
+              </td> 
+              
+              </tr> 
+            </tbody> 
+            <thead class="table-info">
+              <tr>
+                <th scope="col"></th> 
+                <th scope="col"></th> 
+                <th scope="col"></th>
+                <th scope="col"> </th> 
+                
+              </tr>
+            </thead>
+          </table>
+              <br><br>
+                <!--نهايه جدول اساليب الحد من المخاطر-->
+                </div> 
+						  <!-- end الدراسة السوقيه-->
+                        <hr>
+                            <div class="d-flex col-12 justify-content-between">
+                              <button class="btn btn-primary btn-prev">
+                                <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+                                <span class="d-none d-sm-inline-block">السابق</span>
+                              </button>
+                              <button class="btn btn-primary btn-next">
+                                <span class="d-none d-sm-inline-block me-sm-1">التالي</span>
+                                <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
+                              </button>
+                            </div>
+                        </div>                    
+         <!-- الدراسة الفنية  -->
+         <div id="social-links" class="content">
+
+		  <!-- بدايها جدول الالات والمعدات والاثاث -->
+				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light"> التجهيزات (الالات والمعدات والاثاث ووسائل النقل الخ... !)   </span></h4>
+          <div class="table-responsive text-nowrap">
+          <table class="table table-bordered" id="Furniture">
+						<thead class="table-info">
+					<tr>
+						<th scope="col">#</th> 
+            <th scope="col">البنـــــــــــــــــــــد</th> 
+            <th scope="col">اسم المورد</th> 
+						<th scope="col"> العــــــــــــدد </th>
+						<th scope="col"> السعــــــــــــــر</th> 
+						<th scope="col">الاجمالي الكلي</th> 
+						<th scope="col">الاجراءات </th>
+					</tr>
+				</thead>
+					<tbody> 
+						<tr> 
+						<th scope="row">1</th> 
+						<td class="col-sm-4"> 
+							<input type="text" name="item" class="form-control" placeholder=" البنـــــــد"/> 
+            </td> 
+            <td class="col-sm-2"> 
+							<input type="text" name="supplier" class="form-control" placeholder="اسم المورد"/> 
+						</td> 
+						<td class="col-sm-2"> 
+							<input  type="number" name="amount" class="form-control" placeholder="00" onkeyup="calculateTotal()"/>
+						</td> 
+						<td class="col-sm-2"> 
+							<input type="number" name="prices" class="form-control" placeholder="0000" onkeyup="calculateTotal()"/>
+						</td>
+						<td class="col-sm-2"> 
+							<input disabled type="text" name="totals" class="form-control" placeholder="0000000"/> 
+						</td> 
+              <td class="col-sm-1">
+                <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="Furniture()" value="إضافة" /> 
+              </td> 					
+             
+						
+						</tr> 
+          </tbody> 
+          <thead class="table-info">
+            <tr>
+              <th scope="col" > </th> 
+              <th scope="col" colspan="2" class="text-center"> الاجمــــــــــــــالي</th>
+              <th scope="col"> <input id="amount" disabled type="number" name="amount" class="form-control"/></th>
+              <th scope="col"> <input id="prices" disabled type="number" name="prices" class="form-control"/></th>
+              <th scope="col"> <input id="totalas" disabled type="number" name="totalas" class="form-control"/></th>
+              <th scope="col"> </th>
+            </tr>
+          </thead>
+        </table>
+        </div>
+						
+						<!-- نهاية الجدول-->
+						
+						<br><br>
+						<!-- بدايها جدول القوة العامة للمشروع						-->
+				  
+				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">   القوى العاملة اللازمة لتشغيل المشروع</span></h4>
+          <div class="table-responsive text-nowrap">
+          <table class="table table-bordered" id="staffs">
+						<thead class="table-info">
+					<tr>
+						<th scope="col">#</th> 
+						<th scope="col">المسمى الوظيفي</th> 
+						<th scope="col">الراتب الشهري</th> 
+						<th scope="col"> عدد الموظفين  </th>
+            <th scope="col">   اجمالي الرواتب الشهرية </th>
+            <th scope="col"> اجمالي الرواتب السنوية </th>						
+						<th scope="col"> الاجراءات </th>
+					</tr>
+				</thead>
+					<tbody> 
+						<tr> 
+						<th scope="row">1</th> 
+						<td class="col-sm-4"> 
+							<input type="text" name="occupation" class="form-control" placeholder="اسم الوظيفة "/> 
+						</td>  
+						<td class="col-sm-2"> 
+							<input type="number" name="monys"  class="form-control"  placeholder="0000"  onkeyup="calculateTotala()"/>
+						</td>
+						<td class="col-sm-2"> 
+							<input type="number" name="Nemployee" class="form-control" placeholder="0" onkeyup="calculateTotala()"/> 
+						</td> 
+						<td class="col-sm-2"> 
+							<input disabled type="number" name="totalMony"  class="form-control" placeholder="0000000"/> 
+            </td> 
+            <td class="col-sm-2"> 
+							<input  disabled type="number" name="totalsyears" class="form-control" placeholder="0000000000"/> 
+						</td>
+            <td class="col-sm-1"> 
+              <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="staffs()" value="إضافة" /> 
+						</td> 
+						
+						</tr> 
+          </tbody> 
+          <thead class="table-info">
+            <tr>
+              <th scope="col"></th> 
+              <th scope="col">الاجمــــــــــــــالي </th> 
+              <th scope="col"> <input id="monys" disabled type="number" name="monys" class="form-control"/></th>
+              <th scope="col"> <input id="Nemployee" disabled type="number" name="Nemployee" class="form-control"/></th>
+              <th scope="col"> <input id="totalMony" disabled type="number" name="totalMony" class="form-control"/></th>
+              <th scope="col"> <input id="totalsyears" disabled type="number" name="totalsyears" class="form-control"/></th>
+              <th scope="col">   </th>						
+            </tr>
+          </thead>
+        </table>
+        </div>
+						
+						<!-- نهاية الجدول القوة العامة -->
+						
+						<br>
+						<br>
+						<!-- بدايها الانشات والباني-->
+				  
+				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">الانشات والمباني </span></h4>
+          <div class="table-responsive text-nowrap">  
+          <table class="table table-bordered" id="Buildings">
+						<thead class="table-info">
+					<tr>
+						<th scope="col">#</th> 
+						<th scope="col">نوع البناء</th> 
+						<th scope="col"> سعر المتر </th>
+						<th scope="col">المساحة الاجمالية </th> 
+						<th scope="col"> الاجمالي</th> 
+						<th scope="col">  الاجراءات</th>
+					</tr>
+				</thead>
+					<tbody> 
+						<tr> 
+						<th scope="row">1</th> 
+						<td class="col-sm-4"> 
+							<input type="text" name="Builid" class="form-control" placeholder="نوع البناء  "/> 
+						</td> 
+						<td> 
+							<input type="number" name="Mater" class="form-control" placeholder="000" onkeyup="calculateTablll();"/>
+						</td> 
+						<td class="col-sm-2"> 
+							<input type="number" name="Area"  class="form-control" placeholder="000" onkeyup="calculateTablll();"/>
+						</td>
+						<td class="col-sm-2"> 
+							<input disabled type="number" name="Totalsa" class="form-control" placeholder="000"/>
+						</td> 
+            <td class="col-sm-1">
+              <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="Buildings()" value="إضافة" /> 
+            </td> 	 
+						
+						</tr> 
+          </tbody> 
+          <thead class="table-info">
+            <tr>
+              <th scope="col"></th> 
+              <th scope="col">إجمالي تكلفة الانشاءات والمباني </th> 
+              <th scope="col"> </th>
+              <th scope="col"> </th> 
+              <th scope="col"> <input id="Totalsa" disabled type="number" name="Totalsa" class="form-control"/></th>
+              <th scope="col"> </th>
+            </tr>
+          </thead>
+        </table>
+        </div>
+				<br><br>
+						
+						<!-- نهاية الجدول الانشات والمباني-->
+						
+						
+						
+						<!--بدايها جدول  الايجارات -->
+				  
+				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">الايجارات ! </span></h4>
+          <div class="table-responsive text-nowrap">
+          <table class="table table-bordered" id="rentals">
+						<thead class="table-info">
+					<tr>
+						<th scope="col">#</th> 
+						<th scope="col">الصنف</th> 
+						<th scope="col">الايجار السنوي </th>
+						<th scope="col">الاجراءات</th> 
+						
+					</tr>
+				</thead>
+					<tbody> 
+						<tr> 
+						<th scope="row">1</th> 
+						<td class="col-sm-6"> 
+							<input type="text" name="varieties" class="form-control" placeholder=" الاصناف والمعدات"/> 
+						</td> 
+						<td class="col-sm-3"> 
+							<input type="number" name="rentAnnually" class="form-control" placeholder="000"  onkeyup="calculateTotall()"/>
+						</td> 
+            <td class="col-sm-1">
+              <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="rentals()" value="إضافة" /> 
+            </td>
+						
+						</tr> 
+          </tbody>
+          <thead class="table-info">
+            <tr>
+              <th scope="col"></th> 
+              <th scope="col">الاجمالي السنوي للإيجارات</th> 
+              <th scope="col"> <input id="rentAnnually" disabled type="number" name="rentAnnually" class="form-control"/></th>
+              <th scope="col"> </th> 
+              
+            </tr>
+          </thead> 
+        </table>
+        </div>
+						<br><br>
+							<!--[جدول الرسوم الحكومية]   -->
+				  
+				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">الرسوم الحكومية والضرائب ! </span></h4>
+          <div class="table-responsive text-nowrap">
+          <table class="table table-bordered" id="Taxes">
+						<thead class="table-info">
+					<tr>
+						<th scope="col">#</th> 
+						<th scope="col">البند</th> 
+						<th scope="col">الرسوم السنوية </th>
+						<th scope="col">الاجراءات</th> 
+						
+					</tr>
+				</thead>
+					<tbody> 
+						<tr> 
+						<th scope="row">1</th> 
+						<td class="col-sm-6"> 
+							<input type="text" name="fees" class="form-control" placeholder="الرسوم الحكومية "/> 
+						</td> 
+						<td class="col-sm-3"> 
+							<input type="number" name="AnnualFee" class="form-control" placeholder="0000" onkeyup="calculateTotalX();"/>
+						</td> 
+            <td class="col-sm-1">
+              <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="Taxes()" value="إضافة" /> 
+            </td> 
+						
+						</tr> 
+          </tbody> 
+          <thead class="table-info">
+            <tr>
+              <th scope="col"></th> 
+              <th scope="col">الاجمــــــــــــــــــــــالي</th> 
+              <th scope="col"> <input id="AnnualFee" disabled type="number" name="AnnualFee" class="form-control"/></th>
+              <th scope="col"> </th> 
+              
+            </tr>
+          </thead>
+        </table>
+        </div>
+						<br><br>
+							<!--بدايها جدول  مصاريف التاسيس -->
+				  
+              <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">مصاريف التأسيس ! </span></h4>
+              <div class="table-responsive text-nowrap">
+              <table class="table table-bordered" id="TTT">
+                <thead class="table-info">
+              <tr>
+                <th scope="col">#</th> 
+                <th scope="col">البند</th> 
+                <th scope="col"> السعر  </th>
+                <th scope="col">الاجراءات</th> 
+                
+              </tr>
+            </thead>
+              <tbody> 
+                <tr> 
+                <th scope="row">1</th> 
+                <td class="col-sm-6"> 
+                  <input type="text" name="fees" class="form-control" placeholder="مصاريف التأسيس  "/> 
+                </td> 
+                <td class="col-sm-3"> 
+                  <input type="number" name="AnnualFeeE" class="form-control" placeholder="0000" onkeyup="calculateTotalXX();"/>
+                </td> 
+                <td class="col-sm-1">
+                  <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="TTT()" value="إضافة" /> 
+                </td> 
+                
+                </tr> 
+              </tbody> 
+              <thead class="table-info">
+                <tr>
+                  <th scope="col"></th> 
+                  <th scope="col">الاجمــــــــــــــــــــــالي</th> 
+                  <th scope="col"> <input id="AnnualFeeE" disabled type="number" name="AnnualFeeE" class="form-control"/></th>
+                  <th scope="col"> </th> 
+                  
+                </tr>
+              </thead>
+            </table>
+            </div>
+						<br>
+						<br>							
+						
+					<!--  جدول المواد الخام						-->
+				  
+          <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">   المواد الخام !</span></h4>
+          <div class="table-responsive text-nowrap">  
+          <table class="table table-bordered" id="Materials">
+						<thead class="table-info">
+					<tr>
+						<th scope="col">#</th> 
+            <th scope="col">نوع المـــــادة</th> 
+						<th scope="col">وحدة القياس  </th>
+						<th scope="col">سعر الوحدة</th> 
+						<th scope="col"> الكمية الشهرية</th>
+						<th scope="col"> الاجمالي الشهري</th>						
+						<th scope="col"> الاجمالي السنوي</th>
+						<th scope="">الاجراءات</th> 
+					</tr>
+				</thead>
+					<tbody> 
+						<tr> 
+						<th scope="row">1</th> 
+						<td class="col-sm-4"> 
+							<input type="text" name="Article" class="form-control" placeholder="نوع الماده"/> 
+            </td>  
+						<td class="col-sm-2"> 
+							<input type="text" name="liter" class="form-control" placeholder="لتر"/>
+						</td> 
+						<td class="col-sm-2"> 
+							<input type="number" name="Uint"  class="form-control" placeholder="000" onkeyup="calculateTota()"/>
+						</td>
+						<td class="col-sm-2"> 
+							<input type="number" name="qualitReqiredMonthly" class="form-control" placeholder="0000" onkeyup="calculateTota()"/> 
+						</td> 
+						<td class="col-sm-2"> 
+							<input disabled type="number" name="totalss" class="form-control" placeholder="00000"/> 
+						</td> 
+						<td class="col-sm-3"> 
+							<input disabled type="number" name="totalsss" class="form-control" placeholder="000000"/> 
+						</td> 
+						<td class="col-sm-1">
+              <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="Materials()" value="إضافة" /> 
+            </td> 
+						
+						</tr> 
+          </tbody> 
+          <thead class="table-info">
+            <tr>
+              <th scope="col"></th> 
+              <th scope="col" colspan="2" class="text-center"> الاجمــــــــــــــالي</th>
+              <th scope="col" > <input id="uints" disabled type="number" name="uints" class="form-control"/></th>
+              <th scope="col" > <input id="qualitReqiredMonthly" disabled type="number" name="qualitReqiredMonthly" class="form-control"/></th>
+              <th scope="col" > <input id="totalss" disabled type="number" name="totalss" class="form-control"/></th>
+              <th scope="col"> <input id="totalsss" disabled type="number" name="totalsss" class="form-control"/></th>
+              <th scope=""></th> 
+            </tr>
+          </thead>
+        </table> 
+        </div>
+						<!-- نهاية الجدول القوة العامة -->
+						<br>
+						<br>
+     <!--جدول المنافع العامه-->
+     <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">المنافع العامة  </span></h4>
+     <div class="table-responsive text-nowrap">
+     <table class="table table-bordered" id="benefits">
+    <thead class="table-info">
+  <tr>
+    <th scope="col">#</th> 
+    <th scope="col"> البند</th> 
+    <th scope="col">  التكلفة الشهرية </th>
+    <th scope="col"> التكلفة السنوية </th> 
+    <th scope="col">  الاجراءات</th>
+  </tr>
+</thead>
+  <tbody> 
+    <tr> 
+    <th scope="row">1</th> 
+    <td class="col-sm-4"> 
+      <input type="text" name="item" class="form-control" placeholder="البند    "/> 
+    </td> 
+    <td class="col-sm-2"> 
+      <input type="number" name="Monthlycost" class="form-control" placeholder="00000" onkeyup="calculateTot()"/>
+    </td> 
+    <td > 
+      <input disabled type="number" name="yearcost" class="form-control" placeholder="0000000"/>
+    </td> 
+    <td class="col-sm-1">
+      <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="benefits()" value="إضافة" /> 
+    </td> 	 
+    
+    </tr> 
+  </tbody> 
+  <thead class="table-info">
+    <tr>
+      <th scope="col"></th> 
+      <th scope="col">   الاجمــــــــــــــالي</th> 
+      <th scope="col"> <input id="Monthlycost" disabled type="number" name="yearcost" class="form-control"/></th>
+      <th scope="col"> <input id="yearcost" disabled type="number" name="yearcost" class="form-control"/></th>
+      <th scope="col"> </th> 
+    </tr>
+  </thead>
+</table>
+</div>
+<br><br>
+    
+
+            <div class="d-flex col-12 justify-content-between">
+              <button class="btn btn-primary btn-prev">
+                <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+                <span class="d-none d-sm-inline-block">السابق</span>
+              </button>
+              <button class="btn btn-primary btn-next">
+                <span class="d-none d-sm-inline-block me-sm-1">التالي</span>
+                <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
+              </button>
+            </div>
+
+
+          </div>
+ <!--/ social-links-->
+
+      
+       
+
+        <!-- Review -->
+        <div id="review-submit" class="content">
+          <p class="fw-semibold mb-2">بيانا المشروع</p>
+          <ul class="list-unstyled">
+            <li>اسم المستخدم </li>
+            <li>رقم الهاتف   </li>
+            <li> اسم المشروع </li>
+            <li>بيانات اخرى</li>
+          </ul>
+          <hr />
+          <p class="fw-semibold mb-2"> الدراسة التمهيدية</p>
+          <ul class="list-unstyled">
+            <li>اهداف المشروع </li>
+            <li> تراخيص المشروع </li>
+            <li>بيانات اخرى</li>
+          </ul>
+          <hr />
+          <p class="fw-semibold mb-2">الدراسة التسويقة</p>
+          <ul class="list-unstyled">
+            <li>الاسواق المستهدفه</li>
+            <li>الخرائط</li>
+            <li>  نقاط القوة والضعف</li>
+            <li>بيانات اخرى</li>
+          </ul>
+          <hr />
+          <p class="fw-semibold mb-2"> الدراسة الفنية</p>
+          <ul class="list-unstyled">
+            <li>الالات والمعدات للمشروع</li>
+            <li>القوى العاملة للمشروعا</li>
+            <li>الرسوم الحكومية للمشروع</li>
+            <li>مصاريف التأسيس</li>
+            <li> بيانات اخرى</li>
+          </ul>
+          <hr>
+          <div class="d-flex col-12 justify-content-between">
+            <button class="btn btn-primary btn-prev">
+              <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+              
+              <span class="d-none d-sm-inline-block">السابق</span>
+            </button>
+            <div class="form-check mb-3 ">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="accountActivation"
+                id="accountActivation"
+              />
+              <label class="form-check-label" for="accountActivation"
+                >انا متأكد أريد الحفظ</label
+              >
+            </div>
+            <button class="btn btn-success btn-submit">حفظ</button>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Default Icons Wizard -->
+<!-- /Default Icons Wizard -->
+
+
+         
+
+        </div>
+            <!-- / Content -->
+
+            
+
+            <div class="content-backdrop fade"></div>
+			
+          <!-- Content wrapper -->
+		
+        <!-- / Layout page -->
+      
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+
+      <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+      <div class="drag-target"></div>
+    <!-- / Layout wrapper -->
+
+  <!-- Core JS -->
+

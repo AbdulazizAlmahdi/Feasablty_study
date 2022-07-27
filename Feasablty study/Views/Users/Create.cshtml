@@ -1,0 +1,81 @@
+﻿@model Feasablty_study.Models.User
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>انشاء مستخدم</h1>
+
+<hr/>
+<div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner py-4">
+          <div class="card col-md-5">
+            <div class="card-body">
+
+
+    <div class="col-md">
+      <h4 class="mb-2">قم بأدخال البيانات ادناة للتسجيل 👇</h4>
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label for="username" class="form-label" placeholder="ادخل اسم المستخدم" autofocus>الاسم</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
+                </label>
+            </div>
+            <div class="form-group">
+               <label class="form-label" for="phoneNumber">رقم التلفون</label>
+                   <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                  <label for="email" class="form-label">البريد الالكتروني</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                  <label for="email" class="form-label">اسم المستخدم</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>                    
+            <div class="form-group form-password-toggle"> 
+                <label class="form-label" for="password">كلمة المرور</label>
+                <div class="input-group input-group-merge">
+                <input id="password" asp-for="Password" class="form-control"  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"/>
+                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                 </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group form-password-toggle">  
+                <label class="form-label" for="password"> تاكيد كلمة المرور </label>
+                <div class="input-group input-group-merge">
+                 <input asp-for="PasswordConfirm" class="form-control"  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                 </div>
+                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+            </div>
+
+           
+
+            <div class="form-group">
+                <input type="submit" value="انشاء مستخدم" class="btn btn-primary d-grid w-100" />
+            </div>
+        </form>
+        
+    </div>
+    </div>
+    </div>
+</div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

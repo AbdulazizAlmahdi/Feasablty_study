@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Feasablty_study.Models.Support_Messages>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="card">
+                <h5 class="card-header"> الرسائل</h5>
+                <div class="card-body">
+                  <div class="table-responsive text-nowrap">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>عنوان الرسالة</th>
+                          <th>تاريخ الرسالة</th>
+                          <th>المرسل</th>
+                          <th>محتوى الر سالة</th>
+                          <th>الاجراءات</th>
+                        </tr>
+                      </thead>
+                      <tbody class="table-border-bottom-0">
+
+                      
+
+@foreach (var item in Model) {
+                <tr>
+                          <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong> @Html.DisplayFor(modelItem => item.Title) </strong></td>
+                          <td>@Html.DisplayFor(modelItem => item.Date)	 </td>
+                          <td>
+                            <strong> @Html.DisplayFor(modelItem => item.user.Name)</strong>
+                          </td>
+                          <td> @Html.DisplayFor(modelItem => item.Email)</td>
+                          <td>
+                            <div class="dropdown">
+                              <button type="button" class="btn dropdown-toggle hide-arrow p-0" data-bs-toggle="dropdown">
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item"  asp-controller="Support_Messages" asp-action="Details" asp-Route-id=@item.Id ><i class="bx bx-info-circle bx-xs"></i> عر ض</a>
+                                <a class="dropdown-item" asp-controller="Support_Messages" asp-action="Delete" asp-Route-id=@item.Id ><i class="bx bx-trash me-1"></i> حذف</a>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+           
+}
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿@model Feasablty_study.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner py-4">
+          <div class="card col-md-5">
+            <div class="card-body">
+
+
+    <div class="col-md">
+      <h4 class="mb-2">تعديل بيانات المستخدم</h4>
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id"/>
+            <div class="form-group mb-3">
+                <label for="username" class="form-label">الاسم</label>
+                <input asp-for="Name" class="form-control"  placeholder="ادخل اسم المستخدم" autofocus />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Status" /> <label for="username" class="form-label" >الحالة (تفعيل /تعطيل)</label>
+
+                </label>
+            </div>
+            <div class="form-group">
+               <label class="form-label" for="phoneNumber">رقم التلفون</label>
+                   <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                  <label for="email" class="form-label">البريد الالكتروني</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                  <label for="email" class="form-label">اسم المستخدم</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>                    
+            <div class="form-group form-password-toggle"> 
+                <label class="form-label" for="password">كلمة المرور</label>
+                <div class="input-group input-group-merge">
+                <input id="password" asp-for="Password" class="form-control"  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"/>
+                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                 </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group form-password-toggle">  
+                <label class="form-label" for="password"> تاكيد كلمة المرور </label>
+                <div class="input-group input-group-merge">
+                 <input asp-for="PasswordConfirm" class="form-control"  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                 </div>
+                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+            </div>
+
+           
+
+            <div class="form-group">
+                <input type="submit" value="تعديل المستخدم" class="btn btn-primary d-grid w-100" />
+            </div>
+        </form>
+             <p class="text-center">
+                <span>لديك بالفعل حساب ؟</span>
+                <a href="auth-login-basic.html">
+                  <span>تسجيل الدخول بدلا من ذلك</span>
+                </a>
+              </p>
+    </div>
+    </div>
+    </div>
+</div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

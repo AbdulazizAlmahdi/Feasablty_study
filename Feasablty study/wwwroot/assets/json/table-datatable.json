@@ -1,0 +1,27 @@
+{
+  "data": [
+
+    {
+      "Id": 4,
+      "Name": "محمد طارق عبدالله عبدات",
+      "Status": true,
+      "PhoneNumber": "770223252",
+      "Email": "almahdi19964@gmail.com",
+      "UserName": "almahdi",
+      "Password": "almahdi",
+      "PasswordConfirm": "almahdi",
+      "CreationDate": "2022-07-25T02:09:17.4339366"
+    },
+    {
+      "Id": 6,
+      "Name": "العجلي عبدالله العجلي",
+      "Status": true,
+      "PhoneNumber": "773019241",
+      "Email": "1582491198@u.com",
+      "UserName": "aliaaa",
+      "Password": "123113",
+      "PasswordConfirm": "123113",
+      "CreationDate": "2022-07-24T16:57:38.7444079"
+    }
+  ]
+}
