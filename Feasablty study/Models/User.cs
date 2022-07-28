@@ -32,7 +32,9 @@ namespace Feasablty_study.Models
         [DataType(DataType.Date)]
         [Display(Name = "CreationDate")]
         public DateTime CreationDate { get; set; } = DateTime.Now;
-        public ICollection <Support_Messages> messages { get; set; }
+        public virtual ICollection <Support_Messages> messages { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+
 
     }
 }

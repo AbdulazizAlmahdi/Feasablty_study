@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using Feasablty_study.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Feasablty_study.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Feasablty_study.Controllers
 {
@@ -58,6 +58,8 @@ namespace Feasablty_study.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                support_Messages.user = _context.Users.SingleOrDefault(x => x.Id == support_Messages.UserId);
                 _context.Add(support_Messages);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -66,27 +68,10 @@ namespace Feasablty_study.Controllers
             return View(support_Messages);
         }
 
-        // GET: Support_Messages/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var support_Messages = await _context.SupportMessages.FindAsync(id);
-            if (support_Messages == null)
-            {
-                return NotFound();
-            }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Email", support_Messages.UserId);
-            return View(support_Messages);
-        }
 
-        // POST: Support_Messages/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        
+
+
 
         // GET: Support_Messages/Delete/5
         public async Task<IActionResult> Delete(int? id)

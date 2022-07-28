@@ -7,5 +7,7 @@
         public string Unit { get; set; }
         public decimal PriceOfUnity { get; set; }
         public int QuantityRequiredMonthly { get; set; }
+        public int TechnicalStudyId { get; set; }
+        public Technical_Study technical_Study { get; set; }
     }
 }

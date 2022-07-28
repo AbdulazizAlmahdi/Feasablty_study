@@ -1,61 +1,76 @@
 ﻿@model Feasablty_study.Models.Support_Messages
 
-@{
-    Layout = null;
-}
+<div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner py-4">
+          <!-- Register -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="app-brand justify-content-center">
+                <a href="dashboards-analytics - Copy.html" class="app-brand-link gap-2">
+                  <span class="app-brand-logo demo">
+                    <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <title>icon</title>
+                    
+                    </svg>
+                  </span>
+                  <span class="app-brand-text demo h3 fw-bold mb-0">تواصل بالدعم الفني  </span>
+                </a>
+              </div>
+              <!-- /Logo -->
+              <h4 class="mb-2"> اكتب رسالتك في الاسفل " 👇"</h4>
+             
 
-<!DOCTYPE html>
+              <form id="formAuthentication" class="mb-3 fv-plugins-bootstrap5 fv-plugins-framework" asp-action="Create" method="POST">
+                   <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                   <div class="form-group">
+                      <label for="Email" class="form-label"></label>
+                      <input type="text" class="form-control" id="Email" name="Email" placeholder="  البريد الخاص بالمرسل " autofocus="" asp-for="Email">
+                      <span asp-validation-for="Email" class="text-danger"></span>
+                  </div>
+                <div class="form-title-toggle mb-3">
+                  <div class="form-group">
+                      <label for="Title" class="form-label"></label>
+                      <input class="form-control" type="text" name="title" placeholder="عنوان الرسالة" asp-for="Title"> 
+                        <span asp-validation-for="Title" class="text-danger"></span>    
+                  </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
+                </div>
+                <div class="mb-3">
+                 <div class="form-group">
+                     <label for="Content" class="form-label" >محتوى الرسالة </label>
 
-<h4>Support_Messages</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Content" class="control-label"></label>
-                <input asp-for="Content" class="form-control" />
-                <span asp-validation-for="Content" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+                     @Html.TextAreaFor(a=>a.Content,new {@class = "form-control" })
+                    <span asp-validation-for="Content" class="text-danger"></span>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+                 </div>
+                </div>
+                <div class="mb-3">
+                  <input class="btn btn-primary d-grid w-100" type="submit" value="إرسال" />
+
+                </div>
+              
+            </form>
+            </div>
+            
+          </div>
+          
+        </div>
+        
+      </div>
+      <div class="d-flex col-12 justify-content-between">
+          
+              <button class="btn btn-primary btn-prev" onclick="location.href='@Url.Action("Index", "Support_Messages")'"  >
+                <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
+                <span class="d-none d-sm-inline-block">رجوع</span>
+              </button> 
+
+       </div>
+
+
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>

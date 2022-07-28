@@ -24,6 +24,12 @@ namespace Feasablty_study.Models
 
         public string ContactNumber { get; set; }
 
+        public int UserId { get; set; }
+        public User user { get; set; }
+        public Preliminary_study Preliminary_study { get; set; }
+        public Market_study market_Study { get; set; }
+        public Technical_Study technical_Study { get; set; }
+
 
 
     }

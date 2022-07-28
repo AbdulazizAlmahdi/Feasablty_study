@@ -11,9 +11,9 @@
                     <h5 class="card-header">عنوان الرسالة </h5>
                     <div class="card-body">
                       <div class="mb-2">
-                        <div class="input-group input-group-merge">
+                        <div class="input-group input-group-merge ">
                           <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                          <input type="text" disabled="" id="basic-icon-default-company" class="form-control" placeholder=@Html.DisplayFor(model => model.Title)>
+                          <input type="text" disabled="" id="basic-icon-default-company" class="form-control "  placeholder='@Html.DisplayFor(model => model.Title)'>
                         </div>
                       </div>
                       <p class="demo-inline-spacing">
@@ -28,7 +28,7 @@
                             <div class="d-grid d-sm-flex border p-3">
                               
                               <span>
-                                @Html.DisplayNameFor(model => model.Content)
+                                @Html.DisplayFor(model => model.Content)
                               </span>
                             </div>
                           </div>
@@ -38,16 +38,15 @@
                             <div class="d-grid d-sm-flex border p-3">
                               <img src="../../assets/img/elements/3.jpg" alt="collapse-image" height="40" class="me-4 mb-2 mb-sm-0">
                               <span>
-                             <strong>الحسين محمد صالح الماوري </strong>  
+                             <strong>@Html.DisplayFor(model=>model.user.Name) </strong>  
                               </span>
                             </div>
                           </div>
                         </div>
                         <hr>
                         <div class="d-flex col-12 justify-content-between">
-                        <button class="btn btn-primary me-1">رجوع
-                      <a asp-action="Index">
-                      <i class="bx bx-chevron-left bx-sm me-sm-n2"></i></a>
+                        <button class="btn btn-primary me-1" onclick="location.href='@Url.Action("Index", "Support_Messages")'">رجوع
+                      <i class="bx bx-chevron-left bx-sm me-sm-n2"></i>
                       </button>
                         </div>
                       </div>

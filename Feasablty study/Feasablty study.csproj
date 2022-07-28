@@ -25,7 +25,6 @@
     <None Include="Views\Support_Messages\Create.cshtml" />
     <None Include="Views\Support_Messages\Delete.cshtml" />
     <None Include="Views\Support_Messages\Details.cshtml" />
-    <None Include="Views\Support_Messages\Edit.cshtml" />
     <None Include="Views\Support_Messages\Index.cshtml" />
   </ItemGroup>
 

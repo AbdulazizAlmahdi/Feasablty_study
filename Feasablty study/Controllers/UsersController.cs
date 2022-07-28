@@ -1,12 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Feasablty_study.Models;
 using Microsoft.AspNetCore.Http;
-using Feasablty_study.Services;
 
 namespace Feasablty_study.Controllers
 {
@@ -29,7 +26,7 @@ namespace Feasablty_study.Controllers
         {
             if (!ModelState.IsValid)
             {
-                HttpContext.Session.SetString("UserName", _context.Users.Where(User => User.UserName == user.UserName && User.Password == user.Password).Count().ToString());
+                //HttpContext.Session.SetString("UserName", _context.Users.Where(User => User.UserName == user.UserName && User.Password == user.Password).Count().ToString());
             return RedirectToAction("Index");
             }
 
@@ -49,7 +46,7 @@ namespace Feasablty_study.Controllers
             else
             {
                 ViewBag.Message = "خطا في اسم المستخدم او كلمة المرور";
-                return RedirectToAction("login");
+                return View(await _context.Users.ToListAsync());
 
             }
         }

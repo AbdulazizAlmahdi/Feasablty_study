@@ -9,6 +9,7 @@
         public int Number { get; set; }
         public float Price { get; set; }
         public float TotleAll { get; set; }
-
+        public int TechnicalStudyId { get; set; }
+        public Technical_Study technical_Study { get; set; }
     }
 }

@@ -40,7 +40,7 @@ let config = {
     borderColor: '#36445d'
   },
   enableMenuLocalStorage: true // Enable menu state with local storage support
-};x
+};
 
 let assetsPath = document.documentElement.getAttribute('data-assets-path'),
   templateName = document.documentElement.getAttribute('data-template'),

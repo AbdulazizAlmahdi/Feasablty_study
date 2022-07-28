@@ -13,5 +13,7 @@ namespace Feasablty_study.Models
         public string SendPrivateSender { get; set; }
 
         public DateTime DateTime { get; set; }
+        public int TechnicalStudyId { get; set; }
+        public Technical_Study technical_Study { get; set; }
     }
 }

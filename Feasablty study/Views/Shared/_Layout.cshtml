@@ -57,6 +57,7 @@ data-template="vertical-menu-template-no-customizer"
   <link rel="stylesheet" href="~/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css" />
   <!-- Form Validation -->
   <link rel="stylesheet" href="~/assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
+  <link rel="stylesheet" href="~/assets/vendor/css/pages/page-auth.css" />
     <!-- Page CSS -->
 
     
@@ -190,10 +191,26 @@ data-template="vertical-menu-template-no-customizer"
               </li>
             </ul>
               </li>
-          </li>
+
           <li class="menu-header small text-uppercase"><span class="menu-header-text">متفرقعات</span></li>
+          <li class="menu-item open active">
+       
           <li class="menu-item">
-            <a asp-controller="Support_MessagesController" asp-action="index" class="menu-link">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons fas fa-user-friends"></i>
+              
+              <div data-i18n="المستخدمين">  المستخدمين</div>
+            </a>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a asp-controller="Support_messages" asp-action="Index" class="menu-link">
+                  <div data-i18n="رسائل الدعم الفني">رسائل الدعم الفني</div>
+                </a>
+              </li>
+            </ul>
+              </li>
+          <li class="menu-item">
+            <a asp-controller="Support_Messages" asp-action="Create" class="menu-link">
               <i class="menu-icon tf-icons bx bx-support"></i>
             <div data-i18n="رسائل الدعم الفني">رسائل الدعم الفني</div>
           </a>

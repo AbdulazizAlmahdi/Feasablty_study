@@ -7,5 +7,8 @@
         public string Products { get; set; }
         public decimal CompetitorsPrice { get; set; }
         public int AmounrAdded { get; set; }
+        public int MarketStudyId { get; set; }
+        public Market_study market_Study { get; set; }
+
     }
 }
