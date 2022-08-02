@@ -1,3 +1,4 @@
+using Feasablty_study.Infrastructure.Data;
 using Feasablty_study.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -54,7 +55,7 @@ namespace Feasablty_study
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Users}/{action=index}/{id?}");
+                    pattern: "{controller=Support_Messages}/{action=index}/{id?}");
                 //endpoints.MapRazorPages();
             });
         }

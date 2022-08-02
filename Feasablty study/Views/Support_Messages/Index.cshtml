@@ -2,14 +2,6 @@
 
 
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -17,20 +9,21 @@
                 <h5 class="card-header"> الرسائل</h5>
                 <div class="card-body">
                   <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>عنوان الرسالة</th>
-                          <th>تاريخ الرسالة</th>
-                          <th>المرسل</th>
-                          <th>محتوى الر سالة</th>
-                          <th>الاجراءات</th>
-                        </tr>
-                      </thead>
-                      <tbody class="table-border-bottom-0">
+                    <table id="MessageTable" class="table table-sm table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th></th>
+            <th>عنوان الرسالة</th>
+            <th>الايميل</th>
+            <th>التارسخ للرسالة</th>
+            <th>المرسل</th>
+            <th>التحكم</th>
+        </tr>
+    </thead>
+</table>
 
                       
-
+@*
 @foreach (var item in Model) {
                 <tr>
                           <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong> @Html.DisplayFor(modelItem => item.Title) </strong></td>
@@ -54,9 +47,8 @@
            
 }
                         </tbody>
-                    </table>
+                    </table>*@
                   </div>
                 </div>
               </div>
-</body>
-</html>
+

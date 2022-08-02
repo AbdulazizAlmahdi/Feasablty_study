@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Feasablty_study.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Feasablty_study.Models
+namespace Feasablty_study.Infrastructure.Data
 {
     public class AppDbContext : DbContext
     {

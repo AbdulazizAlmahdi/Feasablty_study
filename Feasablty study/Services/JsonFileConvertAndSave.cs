@@ -11,8 +11,12 @@ namespace Feasablty_study.Services
             public static void SimpleWrite(object obj, string fileName)
             {
                 var jsonString = JsonConvert.SerializeObject(obj, _options);
-                File.WriteAllText(fileName, jsonString);
+                File.WriteAllText(fileName, "{\"data\":"+jsonString+"}");
             }
+        public static string GetDataFromObjet(object obj)
+        {
+            return JsonConvert.SerializeObject(obj, _options);
+        }
        
     }
 }

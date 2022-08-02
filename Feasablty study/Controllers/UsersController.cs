@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Feasablty_study.Models;
 using Microsoft.AspNetCore.Http;
+using Feasablty_study.Services;
+using Feasablty_study.Infrastructure.Data;
 
 namespace Feasablty_study.Controllers
 {
@@ -26,7 +28,7 @@ namespace Feasablty_study.Controllers
         {
             if (!ModelState.IsValid)
             {
-                //HttpContext.Session.SetString("UserName", _context.Users.Where(User => User.UserName == user.UserName && User.Password == user.Password).Count().ToString());
+             HttpContext.Session.SetString("UserName", _context.Users.Where(User => User.UserName == user.UserName && User.Password == user.Password).Count().ToString());
             return RedirectToAction("Index");
             }
 
@@ -39,7 +41,8 @@ namespace Feasablty_study.Controllers
             var jsonstring = _context.Users;
             if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("UserName")) && HttpContext.Session.GetString("UserName")!="0")
             {
-               // JsonFileConvertAndSave.SimpleWrite(jsonstring, @"D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\wwwroot\assets\json\table-datatable.json");
+
+                //JsonFileConvertAndSave.SimpleWrite(jsonstring, @"D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\wwwroot\assets\json\table-datatable.json");
                 return View(await _context.Users.ToListAsync());
 
             }

@@ -2,8 +2,6 @@
 
 @{
     ViewData["Title"] = "Index";
-    var i = 0;
-
 }
 
 
@@ -19,7 +17,6 @@
                   <table  class="datatables-basic table table-bordered ml-auto">
                     <thead>
                       <tr>
-                        <th>تسلسل</th>
                         <th>الاسم </th>
                         <th>البريد الالكتروني</th>
                           <th>اسم المستخدم</th>
@@ -35,16 +32,8 @@
           <tr>
 
            
-            @{
-
-                i++;
-               
-
-            }
-            <td>
-             @i   
-                
-            </td>
+        
+          
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
