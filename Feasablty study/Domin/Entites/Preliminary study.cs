@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Feasablty_study.Domin.Interfaces;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Feasablty_study.Models
 {
-    public class Preliminary_study
+    public class Preliminary_study : IEntityBase
     {
         public int Id { get; set; }
 

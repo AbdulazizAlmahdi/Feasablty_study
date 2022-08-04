@@ -1,6 +1,8 @@
-﻿namespace Feasablty_study.Models
+﻿using Feasablty_study.Domin.Interfaces;
+
+namespace Feasablty_study.Models
 {
-    public class Risk
+    public class Risk : IEntityBase
     {
         public int Id { get; set; }
         public string TypeRisk { get; set; }

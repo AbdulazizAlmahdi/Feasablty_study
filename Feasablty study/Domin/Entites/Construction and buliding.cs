@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Feasablty_study.Domin.Interfaces;
+using System;
 
 namespace Feasablty_study.Models
 {
-    public class Construction_and_buliding
+    public class Construction_and_buliding : IEntityBase
     {
         public int Id { get; set; }
 

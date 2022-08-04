@@ -1,7 +1,11 @@
 using Feasablty_study.Infrastructure.Data;
+using Feasablty_study.Infrastructure.Repository;
 using Feasablty_study.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,9 +26,19 @@ namespace Feasablty_study
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IUserRepo, UserRepo>();
+            services.AddHttpContextAccessor();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<AppDbContext>(option=>option.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
+
             services.AddControllersWithViews();
-            services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(1); });
            // services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultUI().AddDefaultTokenProviders();
         }
 
@@ -56,8 +70,9 @@ namespace Feasablty_study
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Support_Messages}/{action=index}/{id?}");
-                //endpoints.MapRazorPages();
             });
+            AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
+            AppDbInitializer.Seed(app);
         }
     }
 }

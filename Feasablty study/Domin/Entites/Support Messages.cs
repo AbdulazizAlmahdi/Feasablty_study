@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Feasablty_study.Domin.Interfaces;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Feasablty_study.Models
 {
-    public class Support_Messages   
+    public class Support_Messages   :IEntityBase
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,7 +17,7 @@ namespace Feasablty_study.Models
         [Required(ErrorMessage ="ادخل البريد الالكتروني الخاص بك"), RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Your Email is not valid.")]
         public string Email { get; set; }
         public DateTime Date { get; set; }= DateTime.Now;
-        public int? UserId { get; set; } = 1;
+        public string UserId { get; set; }
         public User user { get; set; }
 
 

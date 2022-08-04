@@ -1,6 +1,8 @@
-﻿namespace Feasablty_study.Models
+﻿using Feasablty_study.Domin.Interfaces;
+
+namespace Feasablty_study.Models
 {
-    public class Establishment_expenses
+    public class Establishment_expenses : IEntityBase
     {
         public int Id { get; set; }
 

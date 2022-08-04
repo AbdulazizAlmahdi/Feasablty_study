@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Feasablty_study.Domin.Interfaces;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Feasablty_study.Models
 {
-    public class Market_study
+    public class Market_study : IEntityBase
     {
         public int Id { get; set; }
         public string AvailbleOpportunity { get; set; }

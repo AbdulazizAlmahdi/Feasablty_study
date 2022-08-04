@@ -1,6 +1,8 @@
-﻿namespace Feasablty_study.Models
+﻿using Feasablty_study.Domin.Interfaces;
+
+namespace Feasablty_study.Models
 {
-    public class Raw_materials
+    public class Raw_materials : IEntityBase
     {
         public int Id { get; set; }
         public string Subject { get; set; }

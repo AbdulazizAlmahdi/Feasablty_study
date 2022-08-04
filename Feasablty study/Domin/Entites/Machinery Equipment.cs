@@ -1,6 +1,8 @@
-﻿namespace Feasablty_study.Models
+﻿using Feasablty_study.Domin.Interfaces;
+
+namespace Feasablty_study.Models
 {
-    public class Machinery_Equipment
+    public class Machinery_Equipment : IEntityBase
     {
         public int Id { get; set; }
 

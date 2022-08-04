@@ -6,64 +6,51 @@ using Feasablty_study.Models;
 using Microsoft.AspNetCore.Http;
 using Feasablty_study.Services;
 using Feasablty_study.Infrastructure.Data;
+using Feasablty_study.Infrastructure.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Feasablty_study.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IUserRepo userRepo;
 
-        public UsersController(AppDbContext context)
+        public UsersController(IUserRepo userRepo)
         {
-            _context = context;
+            this.userRepo = userRepo;
+
         }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(User user)
-        {
-            if (!ModelState.IsValid)
-            {
-             HttpContext.Session.SetString("UserName", _context.Users.Where(User => User.UserName == user.UserName && User.Password == user.Password).Count().ToString());
-            return RedirectToAction("Index");
-            }
-
-            return View(user);
-        }
+        [AllowAnonymous]
 
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            var jsonstring = _context.Users;
+
+           await userRepo.GetByUserNameAsync("a");
+            var jsonstring = await userRepo.GetAllAsync();
             if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("UserName")) && HttpContext.Session.GetString("UserName")!="0")
             {
 
                 //JsonFileConvertAndSave.SimpleWrite(jsonstring, @"D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\wwwroot\assets\json\table-datatable.json");
-                return View(await _context.Users.ToListAsync());
+                return View(await userRepo.GetAllAsync());
 
             }
             else
             {
                 ViewBag.Message = "خطا في اسم المستخدم او كلمة المرور";
-                return View(await _context.Users.ToListAsync());
+                return View(await userRepo.GetAllAsync());
 
             }
         }
 
         // GET: Users/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+       
 
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await userRepo.GetByIdAsync((string)id);
             if (user == null)
             {
                 return NotFound();
@@ -80,7 +67,7 @@ namespace Feasablty_study.Controllers
         [AcceptVerbs("Get","Post")]
         public  bool IsUserNameExist(string userName)
         {
-            var User=_context.Users.First(User => User.UserName == userName);
+            var User=userRepo.GetByUserNameAsync(userName);
             if (User == null)
                 return  false;
             return true;
@@ -95,22 +82,18 @@ namespace Feasablty_study.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
+                await userRepo.AddAsync(user);
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
         }
 
         // GET: Users/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var user = await _context.Users.FindAsync(id);
+
+            var user = await userRepo.GetByIdAsync((string)id);
             if (user == null)
             {
                 return NotFound();
@@ -123,7 +106,7 @@ namespace Feasablty_study.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Status,PhoneNumber,Email,UserName,Password,PasswordConfirm,CreationDate")] User user)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Status,PhoneNumber,Email,UserName,Password,PasswordConfirm,CreationDate")] User user)
         {
             if (id != user.Id)
             {
@@ -134,8 +117,7 @@ namespace Feasablty_study.Controllers
             {
                 try
                 {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
+                    await userRepo.UpdateAsync(id,user);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -154,15 +136,14 @@ namespace Feasablty_study.Controllers
         }
 
         // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var user = await userRepo.GetByIdAsync((string)id);
             if (user == null)
             {
                 return NotFound();
@@ -174,17 +155,15 @@ namespace Feasablty_study.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var user = await _context.Users.FindAsync(id);
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+            await userRepo.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(string id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return string.IsNullOrEmpty(userRepo.GetByIdAsync(id).ToString());
         }
     }
 }

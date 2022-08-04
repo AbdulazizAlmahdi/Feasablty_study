@@ -1,6 +1,8 @@
-﻿namespace Feasablty_study.Models
+﻿using Feasablty_study.Domin.Interfaces;
+
+namespace Feasablty_study.Models
 {
-    public class Competitors
+    public class Competitors :IEntityBase
     {
         public int Id { get; set; }
         public string CompetitorsName { get; set; }

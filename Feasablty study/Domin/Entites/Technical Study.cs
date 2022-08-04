@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Feasablty_study.Domin.Interfaces;
+using System.Collections.Generic;
 
 namespace Feasablty_study.Models
 {
-    public class Technical_Study
+    public class Technical_Study : IEntityBase
     {
         public int Id { get; set; }
         public int FeasibilityStudyId { get; set; }

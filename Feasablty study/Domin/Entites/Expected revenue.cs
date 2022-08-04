@@ -1,6 +1,8 @@
-﻿namespace Feasablty_study.Models
+﻿using Feasablty_study.Domin.Interfaces;
+
+namespace Feasablty_study.Models
 {
-    public class Expected_revenue
+    public class Expected_revenue : IEntityBase
     {
         public int Id { get; set; }
         public string ProductName { get; set; }

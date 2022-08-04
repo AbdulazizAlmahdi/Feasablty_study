@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Feasablty_study.Domin.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace Feasablty_study.Models
 {
-    public class Public_benefit
+    public class Public_benefit : IEntityBase
     {
         [Key]
         public int Id { get; set; }

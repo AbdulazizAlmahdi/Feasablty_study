@@ -1,4 +1,5 @@
-﻿@model Feasablty_study.Models.User
+﻿@using Feasablty_study.Domin.ViewModels
+@model EditUserViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -17,7 +18,6 @@
 
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id"/>
             <div class="form-group mb-3">
                 <label for="username" class="form-label">الاسم</label>
                 <input asp-for="Name" class="form-control"  placeholder="ادخل اسم المستخدم" autofocus />
