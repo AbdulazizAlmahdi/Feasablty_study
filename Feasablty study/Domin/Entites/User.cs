@@ -14,7 +14,7 @@ namespace Feasablty_study.Models
 
         [Required(ErrorMessage ="ادخل الاسم ")]
         public string Name { get; set; }
-        public bool Status { get; set; } = false;        
+        public bool Status { get; set; }        
         [DataType(DataType.Date)]
         [Display(Name = "CreationDate")]
         public DateTime CreationDate { get; set; } = DateTime.Now;

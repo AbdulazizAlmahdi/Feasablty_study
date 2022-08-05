@@ -26,20 +26,31 @@ namespace Feasablty_study
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddScoped<IUserRepo, UserRepo>();
-            services.AddHttpContextAccessor();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddDbContext<AppDbContext>(option=>option.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            
+           services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+          /*  services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<AppDbContext>();*/
+
+
             services.AddMemoryCache();
             services.AddSession();
-            services.AddAuthentication(options =>
+  /*          services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            });
+
+            });*/
+            /*            services.ConfigureApplicationCookie(options =>
+                        {
+                            options.LoginPath = "/Account/Login";
+                        });*/
+            // services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddControllersWithViews();
-           // services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultUI().AddDefaultTokenProviders();
+            services.AddRazorPages();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,17 +70,19 @@ namespace Feasablty_study
             app.UseStaticFiles();
 
             app.UseRouting();
-
-
-            app.UseAuthorization();
-            app.UseAuthentication();
             app.UseSession();
+
+            //Authentication & Authorization
+            app.UseAuthentication();
+            app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Support_Messages}/{action=index}/{id?}");
+                    pattern: "{controller=Users}/{action=index}/{id?}");
+                endpoints.MapRazorPages();
             });
             AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
             AppDbInitializer.Seed(app);

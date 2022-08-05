@@ -1,17 +1,15 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Feasablty_study.Models;
 using Microsoft.AspNetCore.Http;
-using Feasablty_study.Services;
-using Feasablty_study.Infrastructure.Data;
 using Feasablty_study.Infrastructure.Repository;
 using Microsoft.AspNetCore.Authorization;
-
+using Feasablty_study.Domin.ViewModels;
+using Feasablty_study.Domin.Entites;
 namespace Feasablty_study.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = UserRoles.Admin)]
     public class UsersController : Controller
     {
         private readonly IUserRepo userRepo;
@@ -22,14 +20,13 @@ namespace Feasablty_study.Controllers
 
         }
 
-        [AllowAnonymous]
 
         // GET: Users
         public async Task<IActionResult> Index()
         {
 
-           await userRepo.GetByUserNameAsync("a");
-            var jsonstring = await userRepo.GetAllAsync();
+         return View(await userRepo.GetAllAsync());
+            /*var jsonstring = await userRepo.GetAllAsync();
             if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("UserName")) && HttpContext.Session.GetString("UserName")!="0")
             {
 
@@ -42,7 +39,7 @@ namespace Feasablty_study.Controllers
                 ViewBag.Message = "خطا في اسم المستخدم او كلمة المرور";
                 return View(await userRepo.GetAllAsync());
 
-            }
+            }*/
         }
 
         // GET: Users/Details/5
@@ -64,24 +61,35 @@ namespace Feasablty_study.Controllers
         {
             return View();
         }
-        [AcceptVerbs("Get","Post")]
+/*        [AcceptVerbs("Get","Post")]
         public  bool IsUserNameExist(string userName)
         {
             var User=userRepo.GetByUserNameAsync(userName);
             if (User == null)
                 return  false;
             return true;
-        }
+        }*/
 
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Status,PhoneNumber,Email,UserName,Password,PasswordConfirm,CreationDate")] User user)
+        public async Task<IActionResult> Create(CreateUserViewModel user)
         {
             if (ModelState.IsValid)
             {
+                if(userRepo.returntype == 1)
+                {
+                    TempData["Error"] = userRepo.Error;
+                    return View(user);
+                }
+                else if(userRepo.returntype == 2)
+                {
+                    TempData["Error"]=userRepo.Error;
+                    return View(user);
+                }
+                    
                 await userRepo.AddAsync(user);
                 return RedirectToAction(nameof(Index));
             }

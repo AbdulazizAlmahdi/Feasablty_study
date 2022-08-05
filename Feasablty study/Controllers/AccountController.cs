@@ -1,7 +1,6 @@
 ﻿using Feasablty_study.Domin.Entites;
 using Feasablty_study.Domin.ViewModels;
 using Feasablty_study.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -30,17 +29,20 @@ namespace Feasablty_study.Controllers
         {
             TempData["Error"]=null;
             if (!ModelState.IsValid) return View(loginVM);
-
+            var userName=loginVM.Email;
             var user = await _userManager.FindByEmailAsync(loginVM.Email);
             if (user != null)
             {
+                userName = user.UserName;
+
                 var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
                 if (passwordCheck)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+                    var result = await _signInManager.PasswordSignInAsync(userName, loginVM.Password, true, true);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Create", "Users");
+
+                        return RedirectToAction("index","Users");
                     }
                 }
                 TempData["Error"] = "خطا في كلمة السر او الايميل ";
@@ -78,6 +80,8 @@ namespace Feasablty_study.Controllers
                 Email = registerVM.Email,
                 UserName = registerVM.UserName,
                 PhoneNumber = registerVM.PhoneNumber,
+                EmailConfirmed=false,
+                Status=false,
                        
 
             };
@@ -87,6 +91,12 @@ namespace Feasablty_study.Controllers
                 await _userManager.AddToRoleAsync(newUser, UserRoles.Admin);
 
             return View("Login");
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Users");
         }
 
 

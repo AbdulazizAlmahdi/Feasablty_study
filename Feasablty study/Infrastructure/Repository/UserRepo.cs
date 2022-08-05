@@ -1,6 +1,9 @@
-﻿using Feasablty_study.Domin.Interfaces;
+﻿using Feasablty_study.Domin.Entites;
+using Feasablty_study.Domin.Interfaces;
+using Feasablty_study.Domin.ViewModels;
 using Feasablty_study.Infrastructure.Data;
 using Feasablty_study.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -13,17 +16,79 @@ namespace Feasablty_study.Infrastructure.Repository
 {
     public class UserRepo :  IUserRepo
     {
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly AppDbContext _context;
-        public UserRepo(AppDbContext context)
+        public string Error { get; set; }
+        public int returntype { get; set; }
+        public UserRepo(AppDbContext context, UserManager<User> userManager,SignInManager<User> signInManager)
         {
             _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         
 
-        public async Task AddAsync(User entity)
+        public async Task AddAsync(CreateUserViewModel entity)
         {
-            await _context.Set<User>().AddAsync(entity);
-            await _context.SaveChangesAsync();
+            var newUser=new User();
+            if (entity.Status)
+            {
+                 newUser = new User()
+                {
+                    Name = entity.Name,
+                    Email = entity.Email,
+                    PhoneNumber = entity.PhoneNumber,
+                    Status = entity.Status,
+                    UserName = entity.UserName,
+                    EmailConfirmed = true,
+                
+                };
+            }
+            else
+            {
+                 newUser = new User()
+                {
+                    Name = entity.Name,
+                    Email = entity.Email,
+                    PhoneNumber = entity.PhoneNumber,
+                    Status = entity.Status,
+                    UserName = entity.UserName,
+                    EmailConfirmed = false,
+
+                };
+            }
+            
+            var user = await _userManager.FindByEmailAsync(entity.Email);
+            if (user != null)
+            {
+                returntype = 1;
+                Error = "المستخدم موجود مسبقا بهذا الايميل";
+                return;
+            }
+
+            var newUserResponse = await _userManager.CreateAsync(newUser, entity.Password);
+
+            if (newUserResponse.Succeeded)
+            {
+                if (entity.userRoles == 1)
+                {
+                await _userManager.AddToRoleAsync(newUser, UserRoles.Admin);
+
+                }
+                else if (entity.userRoles == 2)
+                {
+                    await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+                }
+            }
+            else
+            {
+                returntype = 2;
+                Error = "كلمة السر يجب ان تكون ارقام و حروف و رموز";
+                return;
+            }
+
+
         }
 
         public async Task DeleteAsync(string id)

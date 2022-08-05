@@ -12,9 +12,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
+using Feasablty_study.Domin.Entites;
 
 namespace Feasablty_study.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class Support_MessagesController : Controller
     {
         private readonly AppDbContext _context;
