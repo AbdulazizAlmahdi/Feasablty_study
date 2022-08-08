@@ -16,7 +16,7 @@
 
 
     <div class="col-md">
-      <h4 class="mb-2">قم بأدخال البيانات ادناة للتسجيل 👇</h4>
+      <h4 class="mb-2">قم بأدخال البيانات لاضافة مستخدم جديد </h4>
 
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -40,11 +40,6 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                  <label for="email" class="form-label">اسم المستخدم</label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>                    
             <div class="form-group form-password-toggle"> 
                 <label class="form-label" for="password">كلمة المرور</label>
                 <div class="input-group input-group-merge">

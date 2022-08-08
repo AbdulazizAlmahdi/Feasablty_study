@@ -21,7 +21,7 @@ namespace Feasablty_study.Infrastructure.Repository
         Task<User> GetByIdAsync(string id);
         Task<User> GetByIdAsync(string id, params Expression<Func<User, object>>[] includeProperties);
         Task AddAsync(CreateUserViewModel entity);
-        Task UpdateAsync(string id, User entity);
+        Task UpdateAsync(string id, EditUserViewModel entity);
         Task DeleteAsync(string id);
 
 

@@ -17,7 +17,7 @@ using Feasablty_study.Domin.Entites;
 
 namespace Feasablty_study.Controllers
 {
-    [Authorize(Roles = UserRoles.Admin)]
+    [Authorize]
     public class Support_MessagesController : Controller
     {
         private readonly AppDbContext _context;

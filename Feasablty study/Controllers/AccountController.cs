@@ -89,7 +89,7 @@ namespace Feasablty_study.Controllers
 
             if (newUserResponse.Succeeded)
                 await _userManager.AddToRoleAsync(newUser, UserRoles.Admin);
-
+                        TempData["Error"] =null;
             return View("Login");
         }
 

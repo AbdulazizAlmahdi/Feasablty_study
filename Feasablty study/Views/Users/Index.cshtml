@@ -20,7 +20,6 @@
                         <th>الاسم </th>
                         <th>البريد الالكتروني</th>
                           <th>اسم المستخدم</th>
-                           <th>كلمة المرور</th>
                         <th>رقم الهاتف</th>
                         <th>تاريخ التسجيل</th>
                         <th>الحالة</th>
@@ -44,9 +43,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PasswordHash)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>

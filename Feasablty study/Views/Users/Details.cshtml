@@ -1,10 +1,12 @@
-﻿@model Feasablty_study.Models.User
-
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> UserManager; 
+@inject SignInManager<User> signInManager; 
+@model Feasablty_study.Models.User
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "عرض التفاصيل للمستخدم";
 }
 
-<h1>Details</h1>
+<h1>عرض التفاصيل للمستخدم</h1>
 
     <div class="row">
         <div class="col-md-5 col-lg-5 col-xl-4 order-1 order-md-0">
@@ -27,20 +29,24 @@
                             <span>@Html.DisplayFor(model => model.UserName)</span>
                           </li>
                           <li class="mb-3">
-                            <span class="fw-bold me-2">الأيمل :</span>
+                            <span class="fw-bold me-2">الأيميل :</span>
                             <span>@Html.DisplayFor(model => model.Email)</span>
                           </li>
                           <li class="mb-3">
                             <span class="fw-bold me-2">الحالة:</span>
-                            <span class="badge bg-label-success">نشط</span>
+                            @if(Model.Status)
+                            {
+                                <span class="badge bg-label-success">نشط</span>
+                            }
+                           else
+                            {
+                                <span class="badge bg-label-danger">متوقف</span>
+                            }
+
                           </li>
                           <li class="mb-3">
                             <span class="fw-bold me-2">الايميل:</span>
                             <span>@Html.DisplayFor(model => model.Email)</span>
-                          </li>
-                          <li class="mb-3">
-                            <span class="fw-bold me-2">كلمة المرور</span>
-                            <span>@Html.DisplayFor(model => model.PasswordHash)</span>
                           </li>
                           <li class="mb-3">
                             <span class="fw-bold me-2">رقم الهاتف:</span>
@@ -51,8 +57,18 @@
                             <span>@Html.DisplayFor(model => model.CreationDate)</span>
                           </li>
                           <li class="mb-3">
-                            <span class="fw-bold me-2">الدولة:</span>
-                            <span>اليمن</span>
+                            <span class="fw-bold me-2">نوع المستخدم:</span>
+                            
+                            @if(await UserManager.IsInRoleAsync(Model,"Admin"))
+                            {
+                                <span> ادمن</span>
+                                
+                                }
+                                else 
+                                {
+                                      <span> مستخدم عادي</span>
+                                }
+                           
                           </li>
                         </ul>
                         <div class="d-flex justify-content-center pt-3">

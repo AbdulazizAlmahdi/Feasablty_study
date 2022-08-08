@@ -14,9 +14,6 @@ namespace Feasablty_study.Domin.ViewModels
         [Required(ErrorMessage = "يرجى ادخال الايميل"), RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "صيغة الايميل غير صالحة")]
         [Display(Name = "الايميل")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "ادخل اسم المسنخدم")]
-        [Display(Name = "User Name")]
-        public string UserName { get; set; }
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "يرجى ادخال كلمة المرور")]
         public string Password { get; set; }
@@ -27,6 +24,7 @@ namespace Feasablty_study.Domin.ViewModels
         public bool Status { get; set; }
         [Display(Name="نوع المستخدم")]
         public int userRoles { get; set; }
+
 
 
 

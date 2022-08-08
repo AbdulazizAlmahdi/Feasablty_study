@@ -9,7 +9,7 @@ using Feasablty_study.Domin.ViewModels;
 using Feasablty_study.Domin.Entites;
 namespace Feasablty_study.Controllers
 {
-    [Authorize(Roles = UserRoles.Admin)]
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly IUserRepo userRepo;
@@ -101,12 +101,21 @@ namespace Feasablty_study.Controllers
         {
 
 
-            var user = await userRepo.GetByIdAsync((string)id);
+            var user = await userRepo.GetByIdAsync(id);
+            
             if (user == null)
             {
                 return NotFound();
             }
-            return View(user);
+            var newUser = new EditUserViewModel
+            {
+                Name = user.UserName,
+                PhoneNumber = user.PhoneNumber,
+                Status = user.Status,
+                
+
+            };
+            return View(newUser);
         }
 
         // POST: Users/Edit/5
@@ -114,12 +123,8 @@ namespace Feasablty_study.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Status,PhoneNumber,Email,UserName,Password,PasswordConfirm,CreationDate")] User user)
+        public async Task<IActionResult> Edit(string id, EditUserViewModel user)
         {
-            if (id != user.Id)
-            {
-                return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
@@ -129,7 +134,7 @@ namespace Feasablty_study.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.Id))
+                    if (!UserExists(id))
                     {
                         return NotFound();
                     }
@@ -140,7 +145,7 @@ namespace Feasablty_study.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View();
         }
 
         // GET: Users/Delete/5
