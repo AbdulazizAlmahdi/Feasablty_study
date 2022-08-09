@@ -1,58 +1,73 @@
-﻿@model IEnumerable<Feasablty_study.Models.User>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> UserManager; 
+@inject SignInManager<User> signInManager; 
+@model IEnumerable<Feasablty_study.Models.User>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "عرض المستخدمين";
 }
 
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
-
-              <!--/ DataTable with Buttons -->
-              <div class="card">
-                
-                <div  class="card-datatable table-responsive pt-0">
-                  <table  class="datatables-basic table table-bordered ml-auto">
-                    <thead>
+  <!--/ DataTable with Buttons -->
+ <div class="card-body">
+               <div class="d-flex col-12 justify-content-between">
+                <button style="float:left; border:1px solid green;" class="btn btn-success me-1" onclick="location.href='@Url.Action("Create", "Users")'">اضــــافة مستخدم جديد +
+                </button>
+              </div>
+               <hr/>
+        <div class="table-responsive text-nowrap">
+                <meta name="viewport" content="width=device-width" />
+            <table id="dataTable"  class="table table-bordered">
+                      <thead>
                       <tr>
                         <th>الاسم </th>
                         <th>البريد الالكتروني</th>
-                          <th>اسم المستخدم</th>
+                        <th>اسم المستخدم</th>
                         <th>رقم الهاتف</th>
                         <th>تاريخ التسجيل</th>
+                        <th>نوع المستخدم</th>
                         <th>الحالة</th>
                         <th>الاجراءات </th>
                       </tr>
-                    </thead>   
-<tbody>
-@foreach (var item in Model) {
-          <tr>
-
-           
-        
-          
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
+                    </thead> 
+                <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="3" style="color:red">
+                                لا يوجد نتائج
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model)
+                        {
+                       <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)   </td>      
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>       
+            <td>@Html.DisplayFor(modelItem => item.UserName)</td>        
+            <td>@Html.DisplayFor(modelItem => item.PhoneNumber) </td>
+            <td> @Html.DisplayFor(modelItem => item.CreationDate) </td>
+                             <td>
+                          @if(await UserManager.IsInRoleAsync(item,"Admin"))
+                            {
+                                <span class="badge bg-label-success">ادمن</span>
+                            }
+                           else
+                            {
+                                <span class="badge bg-label-warning">مستخدم عادي</span>
+                            }
+                            </td>
+                              <td>
+                          @if(item.Status)
+                            {
+                                <span class="badge bg-label-success">نشط</span>
+                            }
+                           else
+                            {
+                                <span class="badge bg-label-danger">متوقف</span>
+                            }
+                            </td>
             <td style="">
                 <div class="d-inline-block">
                     <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -66,118 +81,32 @@
                                 <a  class="btn btn-sm btn-icon item-edit" asp-action="Edit" asp-route-id="@item.Id" ><i class="bx bxs-edit"></i></a>
                             </td>
             
-        </tr>
-}
-    </tbody>
-</table>
+                        </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+    </div>
+    
 </div>
 
-</div>
- <!-- Modal to add new record -->
-              <div class="offcanvas offcanvas-end" id="add-new-record">
-                <div class="offcanvas-header border-bottom">
-                  <h5 class="offcanvas-title" id="exampleModalLabel">إضافة مستخدم</h5>
-                  <button
-                    type="button"
-                    class="btn-close text-reset"
-                    data-bs-dismiss="offcanvas"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="offcanvas-body flex-grow-1">
-                  <form class="add-new-record row g-2 pt-0" id="form-add-new-record" onsubmit="return false">
-                    <div class="col-sm-12">
-                      <label class="form-label" for="basicUsername">اسم المستخدم </label>
-                      <div class="input-group input-group-merge">
-                        <span id="basicUsername2" class="input-group-text"><i class="bx bx-user"></i></span>
-                        <input
-                          type="text"
-                          id="basicUsername"
-                          class="form-control dt-full-name"
-                          name="basicUsername"
-                          placeholder="ادخل الاسم"
-                          aria-label="ادخل الاسم"
-                          aria-describedby="basicUsername2"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <label class="form-label" for="basicPost">نوع المستخدم</label>
-                      <div class="input-group input-group-merge">
-                        <span id="basicPost2" class="input-group-text"><i class="bx bxs-briefcase"></i></span>
-                        <input
-                          type="text"
-                          id="basicPost"
-                          name="basicPost"
-                          class="form-control dt-post"
-                          placeholder=" نوع المستخدم"
-                          aria-label="نوع المستخدم  "
-                          aria-describedby="basicPost2"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <label class="form-label" for="basicEmail">البريد الالكتروني</label>
-                      <div class="input-group input-group-merge">
-                        <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                        <input
-                          type="text"
-                          id="basicEmail"
-                          name="basicEmail"
-                          class="form-control dt-email"
-                          placeholder="Farming@gmali.com"
-                          aria-label="Farming@gmali.com"
-                        />
-                      </div>
-                      <div class="form-text">يمكنك استخدام الحروف والارقام</div>
-                    </div>
-                    <div class="col-sm-12">
-                      <label class="form-label" for="basicDate">تاريخ التسجيل</label>
-                      <div class="input-group input-group-merge">
-                        <span id="basicDate2" class="input-group-text"><i class="bx bx-calendar"></i></span>
-                        <input
-                          type="text"
-                          class="form-control dt-date"
-                          id="basicDate"
-                          name="basicDate"
-                          aria-describedby="basicDate2"
-                          placeholder="1/22/2022"
-                          aria-label="1/22/2022"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <label class="form-label" for="phone-number-mask">رقم الهاتف</label>
-                      <div class="input-group input-group-merge">
-                        <span id="basicPhone2" class="input-group-text"> +967<i class="bx bx-phone"></i></span>
-                        <input
-                          type="tel"
-                          id="phone-number-mask"
-                          name="basicPhone"
-                          pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                          class="form-control dt-phone"
-                          placeholder="774141412"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <label class="form-label" for="user-role">نوع المستخدم </label>
-                      <select id="user-role" class="form-select">
-                        <option value="User">مستخدم</option>
-                        <option value="Investor">مستثمر</option>
-                        <option value="Officer">موظف</option>
-                        <option value="Administratives">إداري</option>
-                        <option value="Admin">مشرف</option>
-                      </select>
-                    </div>
+ <script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable({
+            "language": {
+                "lengthMenu": " عرض _MENU_ سجلات  ",
 
-                    <div class="col-sm-12">
-                      <button type="submit" class="btn btn-primary btn-add-event me-1 me-sm-3">ارسال</button>
-                      <button type="submit" class="btn btn-primary btn-Update-event me-1 me-sm-3">تحديث</button>
-                      <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">إلغاء</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+                "info": "عرض صفحة _PAGE_ من _PAGES_",
+                "infoEmpty": "  لاتوجد بيانات مطابقة للبحث",
+                "infoFiltered": "(الصافي من  _MAX_ اجمالي الصفوف)",
+                "search": "بحث"
+            }
+
+
+        });
+    });
+
+</script>
 
     

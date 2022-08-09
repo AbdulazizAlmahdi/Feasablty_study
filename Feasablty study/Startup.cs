@@ -28,6 +28,7 @@ namespace Feasablty_study
         {
             services.AddDbContext<AppDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddScoped<IUserRepo, UserRepo>();
+            services.AddScoped<ISupportMessageRepo, SupportMessageRepo>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             
            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();

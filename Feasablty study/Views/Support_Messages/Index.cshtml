@@ -1,54 +1,88 @@
 ﻿@model IEnumerable<Feasablty_study.Models.Support_Messages>
 
+    @{
+    ViewData["Title"] = "عرض الرسائل";
+}
 
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <div class="card">
-                <h5 class="card-header"> الرسائل</h5>
-                <div class="card-body">
-                  <div class="table-responsive text-nowrap">
-                    <table id="MessageTable" class="table table-sm table-bordered table-striped" style="width:100%">
-    <thead>
-        <tr>
-            <th></th>
-            <th>عنوان الرسالة</th>
-            <th>الايميل</th>
-            <th>التارسخ للرسالة</th>
-            <th>المرسل</th>
-            <th>التحكم</th>
-        </tr>
-    </thead>
-</table>
+    <h4 class="card-header"> الرسائل</h4>
+    <div class="card-body">
+        <div class="table-responsive text-nowrap">
+                <meta name="viewport" content="width=device-width" />
+            <table id="dataTable"  class="table table-bordered">
+                     <thead>
+                         <tr>
+                        <th> تسلسل </th>
+                        <th> عنوان الرسالة</th>
+                        <th>البريد الالكتروني</th>
+                        <th> تاريخ الاسال</th>
+                        <th>اسم المرسل</th>
+                        <th>  الاجراءات</th> 
+                       </tr>
+                  </thead>
 
-                      
-@*
-@foreach (var item in Model) {
-                <tr>
-                          <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong> @Html.DisplayFor(modelItem => item.Title) </strong></td>
-                          <td>@Html.DisplayFor(modelItem => item.Date)	 </td>
-                          <td>
-                            <strong> @Html.DisplayFor(modelItem => item.user.Name)</strong>
-                          </td>
-                          <td> @Html.DisplayFor(modelItem => item.Email)</td>
-                          <td>
+                <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="3" style="color:red">
+                                لا يوجد نتائج
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                 
+                                  <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                <td>  @Html.DisplayFor(modelItem => item.Title)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Email) </td>
+                                <td> @Html.DisplayFor(modelItem => item.Date)</td>
+                                <td> @Html.DisplayFor(modelItem => item.user.Name)</td>
+                                
+                            <td>
                             <div class="dropdown">
                               <button type="button" class="btn dropdown-toggle hide-arrow p-0" data-bs-toggle="dropdown">
                                 <i class="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div class="dropdown-menu">
-                                <a class="dropdown-item"  asp-controller="Support_Messages" asp-action="Details" asp-Route-id=@item.Id ><i class="bx bx-info-circle bx-xs"></i> عر ض</a>
-                                <a class="dropdown-item" asp-controller="Support_Messages" asp-action="Delete" asp-Route-id=@item.Id ><i class="bx bx-trash me-1"></i> حذف</a>
+                                <a class="dropdown-item text-success Details-record"  asp-controller="Support_Messages" asp-action="Details" asp-Route-id=@item.Id ><i class="bx bx-info-circle bx-xs"></i> عر ض</a>
+                                <a class="dropdown-item text-danger delete-record" asp-controller="Support_Messages" asp-action="Delete" asp-Route-id=@item.Id ><i class="bx bx-trash me-1"></i> حذف</a>
                               </div>
                             </div>
                           </td>
-                        </tr>
-           
-}
-                        </tbody>
-                    </table>*@
-                  </div>
-                </div>
-              </div>
+                            </tr>
+                        }
+                    }
 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    
+
+    $(document).ready(function () {
+        $('#dataTable').DataTable({
+            "language": {
+                "lengthMenu": "عرض _MENU_ سجلات  ",
+
+                "info": "عرض صفحة _PAGE_ من _PAGES_",
+                "infoEmpty": "  لاتوجد بيانات مطابقة للبحث",
+                "infoFiltered": "(الصافي من  _MAX_ اجمالي الصفوف)",
+                "search": "بحث"
+            }
+
+
+        });
+    });
+
+</script>
+                      

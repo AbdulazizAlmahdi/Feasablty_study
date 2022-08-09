@@ -37,15 +37,6 @@ C:\Users\almahdi\source\repos\Feasablty study\Feasablty study\obj\Debug\net5.0\r
 C:\Users\almahdi\source\repos\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.pdb
 C:\Users\almahdi\source\repos\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.genruntimeconfig.cache
 C:\Users\almahdi\source\repos\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.CopyComplete
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.AssemblyReference.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.GeneratedMSBuildEditorConfig.editorconfig
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.AssemblyInfoInputs.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.AssemblyInfo.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.CoreCompileInputs.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.MvcApplicationPartsAssemblyInfo.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.MvcApplicationPartsAssemblyInfo.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorAssemblyInfo.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorAssemblyInfo.cs
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\appsettings.Development.json
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\appsettings.json
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\Feasablty study.StaticWebAssets.xml
@@ -98,6 +89,15 @@ D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.AssemblyReference.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.GeneratedMSBuildEditorConfig.editorconfig
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.AssemblyInfoInputs.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.AssemblyInfo.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.CoreCompileInputs.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.MvcApplicationPartsAssemblyInfo.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.MvcApplicationPartsAssemblyInfo.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorAssemblyInfo.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorAssemblyInfo.cs
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\scopedcss\bundle\Feasablty study.styles.css
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\staticwebassets\Feasablty study.StaticWebAssets.Manifest.cache
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\staticwebassets\Feasablty study.StaticWebAssets.xml

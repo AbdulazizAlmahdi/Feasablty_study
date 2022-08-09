@@ -14,6 +14,9 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authorization;
 using Feasablty_study.Domin.Entites;
+using Feasablty_study.Infrastructure.Repository;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace Feasablty_study.Controllers
 {
@@ -21,17 +24,25 @@ namespace Feasablty_study.Controllers
     public class Support_MessagesController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly UserManager<User> userManager;
+        private readonly SignInManager<User> signInManager;
+        private readonly ISupportMessageRepo _messageRepo;
 
-        public Support_MessagesController(AppDbContext context)
+        public Support_MessagesController(AppDbContext context,ISupportMessageRepo messageRepo,UserManager<User> userManager)
         {
+
             _context = context;
+            _messageRepo = messageRepo;
+            this.userManager = userManager;
+
         }
 
         // GET: Support_Messages
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.SupportMessages.Include(s => s.user);
-            return View(await appDbContext.ToListAsync());
+            var AllMessages = _context.SupportMessages.Include(s=>s.user);  //_messageRepo.GetAllAsync();
+
+            return View(AllMessages);
         }
 
         // GET: Support_Messages/Details/5
@@ -42,9 +53,8 @@ namespace Feasablty_study.Controllers
                 return NotFound();
             }
 
-            var support_Messages = await _context.SupportMessages
-                .Include(s => s.user)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var support_Messages = await _messageRepo.GetByIdAsync((int)id);
+                
             if (support_Messages == null)
             {
                 return NotFound();
@@ -56,7 +66,6 @@ namespace Feasablty_study.Controllers
         // GET: Support_Messages/Create
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "UserName");
             return View();
         }
 
@@ -68,13 +77,11 @@ namespace Feasablty_study.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                support_Messages.user = _context.Users.SingleOrDefault(x => x.Id == support_Messages.UserId);
-                _context.Add(support_Messages);
-                await _context.SaveChangesAsync();
+                support_Messages.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                support_Messages.user = await userManager.Users.FirstOrDefaultAsync(u=>u.Id==support_Messages.UserId);
+                await _messageRepo.AddAsync(support_Messages);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "UserName", support_Messages.UserId);
             return View(support_Messages);
         }
 
@@ -112,95 +119,6 @@ namespace Feasablty_study.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-[HttpGet]
-        public string GetMessages()
-        {
-            var messages = _context.SupportMessages.ToList();
-            var json= JsonSerializer.Serialize(messages);
-            string Messages=json;
-            return Messages;
-
-           /* return new DataTableResponse
-            {
-                RecordsTotal = messages.Count(),
-                RecordsFiltered = 10,
-                Data = messages.ToArray()
-            };*/
-        }
-        [HttpPost]
-        public string GetMessage()
-        {
-            var Result = JsonSerializer.Serialize(_context.SupportMessages);
-
-            return Result;
-
-
-            
-        }
-        [ProducesDefaultResponseType]
-        [HttpPost]
-        public JsonResult LoadData()
-        {
-            try
-            {
-                var draw = HttpContext.Request.Form["draw"].FirstOrDefault();
-                // Skiping number of Rows count  
-                var start = Request.Form["start"].FirstOrDefault();
-                // Paging Length 10,20  
-                var length = Request.Form["length"].FirstOrDefault();
-                // Sort Column Name  
-                var sortColumn = Request.Form["columns[" + Request.Form["order[0][column]"].FirstOrDefault() + "][name]"].FirstOrDefault();
-                // Sort Column Direction ( asc ,desc)  
-                var sortColumnDirection = Request.Form["order[0][dir]"].FirstOrDefault();
-                // Search Value from (Search box)  
-                var searchValue = Request.Form["search[value]"].FirstOrDefault();
-
-                //Paging Size (10,20,50,100)  
-                int pageSize = length != null ? Convert.ToInt32(length) : 0;
-                int skip = start != null ? Convert.ToInt32(start) : 0;
-                int recordsTotal = 0;
-
-                // Getting all Customer data  
-                var support_Messages = (from tempsupport_Messages in _context.SupportMessages
-                                        select tempsupport_Messages);
-
-                //Sorting  
-                if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDirection)))
-                {
-                   support_Messages = support_Messages.OrderBy( s=>s.Email);
-
-                }
-                //Search  
-                if (!string.IsNullOrEmpty(searchValue))
-                {
-                    support_Messages = support_Messages.Where(m => m.Email == searchValue);
-                }
-
-
-                //total number of rows count
-                recordsTotal = support_Messages.Count();          
-
-
-                //Paging   
-                var data = support_Messages.Skip(skip).Take(pageSize);
-
-
-
-                //Returning Json Data  
-
-
-                return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data });
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-        }
-
-
 
 
         private bool Support_MessagesExists(int id)

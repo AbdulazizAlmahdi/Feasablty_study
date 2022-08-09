@@ -39,6 +39,7 @@ namespace Feasablty_study.Infrastructure.Repository
                     PhoneNumber = entity.PhoneNumber,
                     Status = entity.Status,
                     UserName = entity.Name,
+                    Name = entity.Name,
                     EmailConfirmed = true,
 
                 };
@@ -51,6 +52,7 @@ namespace Feasablty_study.Infrastructure.Repository
                     PhoneNumber = entity.PhoneNumber,
                     Status = entity.Status,
                     UserName = entity.Name,
+                    Name= entity.Name,
                     EmailConfirmed = false,
 
                 };
@@ -77,6 +79,10 @@ namespace Feasablty_study.Infrastructure.Repository
                 {
                     await _userManager.AddToRoleAsync(newUser, UserRoles.User);
                 }
+                await _userManager.AddPasswordAsync(newUser, entity.Password);
+
+
+
             }
             else
             {
