@@ -4,7 +4,6 @@ using Feasablty_study.Infrastructure.Data;
 using Feasablty_study.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,33 +29,18 @@ namespace Feasablty_study.Infrastructure.Repository
 
         public async Task AddAsync(CreateUserViewModel entity)
         {
-            var newUser = new User();
-            if (entity.Status)
-            {
-                newUser = new User()
+            var newUser = new User()
                 {
                     Email = entity.Email,
                     PhoneNumber = entity.PhoneNumber,
                     Status = entity.Status,
                     UserName = entity.Name,
                     Name = entity.Name,
-                    EmailConfirmed = true,
+                    EmailConfirmed = entity.Status,
 
                 };
-            }
-            else
-            {
-                newUser = new User()
-                {
-                    Email = entity.Email,
-                    PhoneNumber = entity.PhoneNumber,
-                    Status = entity.Status,
-                    UserName = entity.Name,
-                    Name= entity.Name,
-                    EmailConfirmed = false,
-
-                };
-            }
+            
+            
 
             var user = await _userManager.FindByEmailAsync(entity.Email);
             if (user != null)
@@ -140,6 +124,7 @@ namespace Feasablty_study.Infrastructure.Repository
                     updatedUser.UserName = entity.Name;
                     updatedUser.PhoneNumber = entity.PhoneNumber;
                     updatedUser.Status = entity.Status;
+                    updatedUser.EmailConfirmed = entity.Status;
                     updatedUser.CreationDate = DateTime.Now;
                     await _userManager.UpdateAsync(updatedUser);
 

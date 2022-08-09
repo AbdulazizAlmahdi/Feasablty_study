@@ -34,16 +34,25 @@ namespace Feasablty_study.Controllers
             if (user != null)
             {
                 userName = user.UserName;
-
                 var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
                 if (passwordCheck)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(userName, loginVM.Password, true, true);
-                    if (result.Succeeded)
+                    if( await _userManager.IsEmailConfirmedAsync(user))
                     {
-
-                        return RedirectToAction("index","Users");
+                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+                    if (result.Succeeded)
+                        {
+                            return RedirectToAction("index","Users");
+                        }
+                   
                     }
+                    else
+                    {
+                        TempData["Error"] = "الرجاء تنشيط الحساب من قبل الادمن ";
+                        return View(loginVM);
+
+                    }
+
                 }
                 TempData["Error"] = "خطا في كلمة السر او الايميل ";
 
@@ -88,7 +97,7 @@ namespace Feasablty_study.Controllers
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
             if (newUserResponse.Succeeded)
-                await _userManager.AddToRoleAsync(newUser, UserRoles.Admin);
+                await _userManager.AddToRoleAsync(newUser, UserRoles.User);
                         TempData["Error"] =null;
             return View("Login");
         }

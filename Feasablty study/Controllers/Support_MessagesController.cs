@@ -1,19 +1,10 @@
 ﻿using Feasablty_study.Infrastructure.Data;
 using Feasablty_study.Models;
-using System.Text.Unicode;
-using Feasablty_study.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-//using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Text.Encodings.Web;
-using System.Text.Json;
 using Microsoft.AspNetCore.Authorization;
-using Feasablty_study.Domin.Entites;
 using Feasablty_study.Infrastructure.Repository;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
@@ -25,7 +16,6 @@ namespace Feasablty_study.Controllers
     {
         private readonly AppDbContext _context;
         private readonly UserManager<User> userManager;
-        private readonly SignInManager<User> signInManager;
         private readonly ISupportMessageRepo _messageRepo;
 
         public Support_MessagesController(AppDbContext context,ISupportMessageRepo messageRepo,UserManager<User> userManager)
