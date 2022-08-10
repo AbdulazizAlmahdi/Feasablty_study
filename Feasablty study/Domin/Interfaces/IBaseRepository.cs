@@ -17,6 +17,9 @@ namespace Feasablty_study.Domin.Interfaces
             Task AddAsync(T entity);
             Task UpdateAsync(int id, T entity);
             Task DeleteAsync(int id);
-        
+            Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);
+
+
+
     }
 }

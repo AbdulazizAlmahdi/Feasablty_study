@@ -4,11 +4,11 @@ using Feasablty_study.Models;
 
 namespace Feasablty_study.Infrastructure.Repository
 {
-    public class SupportMessageRepo: BaseRepository<Support_Messages>,ISupportMessageRepo
+    public class FeasibilityStudyRepo : BaseRepository<Feasibility_study>, IFeasibilityStudyRepo
     {
-        public SupportMessageRepo(AppDbContext context):base(context)
+        public FeasibilityStudyRepo(AppDbContext context) : base(context)
         {
-    
+
         }
     }
 }

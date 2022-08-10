@@ -111,6 +111,29 @@ namespace Feasablty_study.Infrastructure.Repository
             IQueryable<User> query = _context.Set<User>();
             query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
             return await query.FirstOrDefaultAsync(n => n.Id == id);
+        }  
+        public async Task<User> EnableAndDisbleUser(string id)
+        {
+            var UserEdited = await _userManager.FindByIdAsync(id);
+            if (UserEdited != null)
+            {
+                if(await _userManager.IsEmailConfirmedAsync(UserEdited))
+                {
+                    UserEdited.EmailConfirmed = false;
+                    UserEdited.Status = false;
+                }
+                else
+                {
+                    UserEdited.Status=true;
+                    UserEdited.EmailConfirmed= true;
+
+                }
+               await _userManager.UpdateAsync(UserEdited);
+                _context.SaveChanges();
+                return UserEdited;
+            }
+            else
+                return null;
         }
         public async Task UpdateAsync(string id, EditUserViewModel entity)
         {

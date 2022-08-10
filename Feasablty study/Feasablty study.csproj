@@ -21,6 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Feasibility_study\Create.cshtml" />
+    <None Include="Views\Feasibility_study\Delete.cshtml" />
+    <None Include="Views\Feasibility_study\Details.cshtml" />
+    <None Include="Views\Feasibility_study\Edit.cshtml" />
+    <None Include="Views\Feasibility_study\Index.cshtml" />
     <None Include="Views\Support_Messages\Create.cshtml" />
     <None Include="Views\Support_Messages\Delete.cshtml" />
     <None Include="Views\Support_Messages\Details.cshtml" />
@@ -34,7 +39,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

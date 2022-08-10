@@ -19,13 +19,15 @@ namespace Feasablty_study.Models
 
         public string ProjectLogo { get; set; }
 
-        public DateTime DateTime { get; set; }
+        public DateTime ProjectDate { get; set; }
+        public string OwnerName { get; set; }
+        public string ProjectEmail { get; set; }
 
 
         public string ContactNumber { get; set; }
         [ForeignKey("User")]
         public string UserId { get; set; }
-        public User user { get; set; }
+        public virtual User user { get; set; }
         public Preliminary_study Preliminary_study { get; set; }
         public Market_study market_Study { get; set; }
         public Technical_Study technical_Study { get; set; }

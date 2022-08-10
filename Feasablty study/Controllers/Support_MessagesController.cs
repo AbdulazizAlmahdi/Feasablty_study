@@ -14,25 +14,22 @@ namespace Feasablty_study.Controllers
     [Authorize]
     public class Support_MessagesController : Controller
     {
-        private readonly AppDbContext _context;
-        private readonly UserManager<User> userManager;
+        private readonly UserManager<User> _userManager;
         private readonly ISupportMessageRepo _messageRepo;
 
-        public Support_MessagesController(AppDbContext context,ISupportMessageRepo messageRepo,UserManager<User> userManager)
+        public Support_MessagesController(ISupportMessageRepo messageRepo,UserManager<User> userManager)
         {
-
-            _context = context;
+            _userManager = userManager;
             _messageRepo = messageRepo;
-            this.userManager = userManager;
 
         }
 
         // GET: Support_Messages
         public async Task<IActionResult> Index()
         {
-            var AllMessages = _context.SupportMessages.Include(s=>s.user);  //_messageRepo.GetAllAsync();
+            var AllMessages = await _messageRepo.GetAllAsync(s=>s.user);  //_messageRepo.GetAllAsync();
 
-            return View(AllMessages);
+            return View(AllMessages.ToList());
         }
 
         // GET: Support_Messages/Details/5
@@ -43,7 +40,7 @@ namespace Feasablty_study.Controllers
                 return NotFound();
             }
 
-            var support_Messages = await _messageRepo.GetByIdAsync((int)id);
+            var support_Messages = await _messageRepo.GetByIdAsync((int)id,s=>s.user);
                 
             if (support_Messages == null)
             {
@@ -59,16 +56,14 @@ namespace Feasablty_study.Controllers
             return View();
         }
 
-        // POST: Support_Messages/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+  
         [HttpPost]
         public async Task<IActionResult> Create([Bind("Id,Title,Content,Email,Date,UserId")] Support_Messages support_Messages)
         {
             if (ModelState.IsValid)
             {
                 support_Messages.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                support_Messages.user = await userManager.Users.FirstOrDefaultAsync(u=>u.Id==support_Messages.UserId);
+                support_Messages.user = await _userManager.Users.FirstOrDefaultAsync(u=>u.Id==support_Messages.UserId);
                 await _messageRepo.AddAsync(support_Messages);
                 return RedirectToAction(nameof(Index));
             }
@@ -88,9 +83,8 @@ namespace Feasablty_study.Controllers
                 return NotFound();
             }
 
-            var support_Messages = await _context.SupportMessages
-                .Include(s => s.user)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var support_Messages = await _messageRepo.GetByIdAsync((int)id, s => s.user);
+             
             if (support_Messages == null)
             {
                 return NotFound();
@@ -104,16 +98,14 @@ namespace Feasablty_study.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var support_Messages = await _context.SupportMessages.FindAsync(id);
-            _context.SupportMessages.Remove(support_Messages);
-            await _context.SaveChangesAsync();
+             await _messageRepo.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
 
-        private bool Support_MessagesExists(int id)
+        private async Task<bool> Support_MessagesExists(int id)
         {
-            return _context.SupportMessages.Any(e => e.Id == id);
+            return (await _messageRepo.GetByIdAsync(id)!=null);
         }
     }
 }

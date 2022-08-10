@@ -29,11 +29,11 @@ namespace Feasablty_study
             services.AddDbContext<AppDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddScoped<IUserRepo, UserRepo>();
             services.AddScoped<ISupportMessageRepo, SupportMessageRepo>();
+            services.AddScoped<IFeasibilityStudyRepo, FeasibilityStudyRepo>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             
            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
-          /*  services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<AppDbContext>();*/
+
 
 
             services.AddMemoryCache();
@@ -82,7 +82,7 @@ namespace Feasablty_study
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Users}/{action=index}/{id?}");
+                    pattern: "{controller=Feasibility_study}/{action=index}/{id?}");
                 endpoints.MapRazorPages();
             });
             AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();

@@ -23,6 +23,8 @@ namespace Feasablty_study.Infrastructure.Repository
         Task AddAsync(CreateUserViewModel entity);
         Task UpdateAsync(string id, EditUserViewModel entity);
         Task DeleteAsync(string id);
+        Task<User> EnableAndDisbleUser(string id);
+
 
 
 

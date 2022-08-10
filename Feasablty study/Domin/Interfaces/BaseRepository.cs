@@ -58,5 +58,10 @@ namespace Feasablty_study.Domin.Interfaces
 
             await _context.SaveChangesAsync();
         }
+        public async Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities)
+        {
+            await _context.Set<T>().AddRangeAsync(entities);
+            return entities;
+        }
     }
 }

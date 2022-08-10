@@ -132,8 +132,6 @@
 <h1>انشاء مستخدم</h1>
 
 <hr/>
-<div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner py-4">
           <div class="card">
             <div class="card-body">
 
@@ -141,7 +139,7 @@
     <div class="col-md">
       <h4 class="mb-2">قم بأدخال البيانات ادناة للتسجيل 👇</h4>
 
-        <form asp-action="Register" method="post">
+        <form  method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mb-3">
                 <label for="username" class="form-label" placeholder="ادخل اسم المستخدم" autofocus>الاسم</label>
@@ -186,6 +184,12 @@
                 <input type="submit" value="انشاء مستخدم" class="btn btn-primary d-grid w-100" />
             </div>
         </form>
+        <p class="text-center">
+                <span>لدي حساب بالفعل</span>
+                <a asp-controller="Account" asp-action="login">
+                  <span>تسجيل الدخول</span>
+                </a>
+              </p>
         
     </div>
     </div>
@@ -196,9 +200,6 @@
  </div>
       </div>
     </div>
-    </div>
-    </div>
-
     <!-- / Content -->
 
     <!-- Core JS -->

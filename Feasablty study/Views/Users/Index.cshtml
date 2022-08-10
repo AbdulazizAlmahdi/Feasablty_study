@@ -75,7 +75,20 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a  class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">عرض</a></li>
-                            <li><a  class="dropdown-item">توقيف</a></li>
+                            <li>
+                                @if(item.Status)
+                                                {
+                                                                                                       <a  class="dropdown-item" asp-action="disbleOrEnableUser" asp-route-id="@item.Id">توقيف</a>
+                                                }
+                                                else
+                                                {
+                                                    <a  class="dropdown-item" asp-action="disbleOrEnableUser" asp-route-id="@item.Id">تنشيط</a>
+                                                }
+                                                
+
+                                
+                            
+                            </li>
                             <li>
                                 <a  class="dropdown-item text-danger delete-record" asp-action="Delete" asp-route-id="@item.Id">حذف</a></li></ul></div>
                                 <a  class="btn btn-sm btn-icon item-edit" asp-action="Edit" asp-route-id="@item.Id" ><i class="bx bxs-edit"></i></a>

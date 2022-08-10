@@ -1,9 +1,12 @@
-﻿@{
+﻿@model Feasablty_study.Models.Feasibility_study
+
+@{
+    ViewData["Title"] = "انشاء دراسة جدوى جديدة";
     Layout = "_LayoutWithoutHead";
 }
 
 
-        <!-- Content wrapper -->
+<!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y">
@@ -93,7 +96,7 @@
                   <span id="basic-icon-default-company2" class="input-group-text"
                     ><i class="bx bx-buildings"></i
                   ></span>
-                  <input
+                  <input asp-for="ProjectName"
                     type="text"
                     id="basic-icon-default-company"
                     class="form-control"
@@ -110,7 +113,7 @@
                   <span id="basic-icon-default-fullname2" class="input-group-text"
                     ><i class="bx bx-user"></i
                   ></span>
-                  <input
+                  <input asp-for="ProjectLocation"
                     type="text"
                     class="form-control"
                     id="basic-icon-default-fullname"
@@ -127,7 +130,7 @@
                   <span id="basic-icon-default-fullname2" class="input-group-text"
                     ><i class="bx bx-user"></i
                   ></span>
-                  <input
+                  <input asp-for="OwnerName"
                     type="text"
                     class="form-control"
                     id="basic-icon-default-fullname"
@@ -144,7 +147,7 @@
                   <span id="basic-icon-default-phone2" class="input-group-text"
                     ><i class="bx bx-phone"></i
                   ></span>
-                  <input
+                  <input asp-for="ContactNumber"
                     type="text"
                     id="basic-icon-default-phone"
                     class="form-control phone-mask"
@@ -159,7 +162,7 @@
             <label class="form-label" for="basic-icon-default-email">  البريد الالكتروني !</label>
             <div class="input-group input-group-merge">
               <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-              <input
+              <input asp-for="ProjectEmail"
                 type="text"
                 id="basic-icon-default-email"
                 class="form-control"
@@ -176,7 +179,7 @@
           <div class="col-sm-6">
             <label class="form-label" for="basic-icon-default-datatime">   التاريخ المقترح لبدايةالمشروع !</label>
             <div class="input-group input-group-merge">
-              <input
+              <input asp-for="ProjectDate"
                 class="form-control"
                 type="datetime-local"
                 value="2022-01-18T12:00:00"
@@ -201,7 +204,7 @@
              
               <option>صفة المشروع القانونية</option>
               <option data-divider="true">صفة المشروع القانونية</option>
-              <option>مؤسسة</option>
+              <option value="">مؤسسة</option>
               <option>شركة</option>
               <option>مصنع</option>
 
@@ -214,6 +217,7 @@
           <div class="mb-3">
             <label class="form-label" for="message">فكرة المشروع !</label>
             <textarea
+            asp-for="Description"
               class="form-control"
               id="message"
               rows="3"
@@ -224,10 +228,9 @@
 
           <div class="col-sm-6">
             <label for="formFile" class="form-label">شعار المشروع !</label>
-            <input class="form-control" type="file" id="formFile" />
+            <input asp-for="ProjectLogo" class="form-control" type="file" id="formFile" />
           </div>
         <br>
-         </form>
          <hr>
               <div class="d-flex col-12 justify-content-between">
                 <button class="btn btn-label-secondary btn-prev" disabled>
@@ -244,7 +247,6 @@
   
           <!-- Personal Info -->
           <div id="personal-info" class="content">
-            <form id="form-wizard-personal" onsubmit="return false">
             <div class="content-header mb-3">
             <h4>ادخل بيانات المشروع</h4>
             </div>
@@ -469,8 +471,10 @@
             </table>
                 <td>
                   <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="addlicense()" value="إضافة " /> 
-                  </form>
-                </td><br><hr>
+                </td>
+                <br>
+                <hr>    
+
             <div class="d-flex col-12 justify-content-between">
             <button class="btn btn-primary btn-prev">
             <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
@@ -489,7 +493,7 @@
                 <div id="address" class="content">          
                <div class="container-xxl flex-grow-1 container-p-y">
                 <div class="content-header mb-3">
-                  <h4>الاسواق المستهدفة هي ❗</h>
+                  <h4>الاسواق المستهدفة هي ❗</h4>
                   </div>
                   <br>
 						  <!-- start object--> 
@@ -1254,7 +1258,7 @@
 						<th scope="col"> الكمية الشهرية</th>
 						<th scope="col"> الاجمالي الشهري</th>						
 						<th scope="col"> الاجمالي السنوي</th>
-						<th scope="">الاجراءات</th> 
+						<th scope="col">الاجراءات</th> 
 					</tr>
 				</thead>
 					<tbody> 
@@ -1292,7 +1296,7 @@
               <th scope="col" > <input id="qualitReqiredMonthly" disabled type="number" name="qualitReqiredMonthly" class="form-control"/></th>
               <th scope="col" > <input id="totalss" disabled type="number" name="totalss" class="form-control"/></th>
               <th scope="col"> <input id="totalsss" disabled type="number" name="totalsss" class="form-control"/></th>
-              <th scope=""></th> 
+              <th scope="col"></th> 
             </tr>
           </thead>
         </table> 
@@ -1410,11 +1414,11 @@
                 name="accountActivation"
                 id="accountActivation"
               />
-              <label class="form-check-label" for="accountActivation"
-                >انا متأكد أريد الحفظ</label
-              >
+
             </div>
-            <button class="btn btn-success btn-submit">حفظ</button>
+            <button type="submit" class="btn btn-success btn-submit">حفظ</button>
+            </form>
+
           </div>
         </div>
       
@@ -1428,8 +1432,7 @@
 
          
 
-        </div>
-            <!-- / Content -->
+ <!-- / Content -->
 
             
 
@@ -1449,3 +1452,8 @@
 
   <!-- Core JS -->
 
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

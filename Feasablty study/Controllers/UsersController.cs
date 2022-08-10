@@ -173,6 +173,13 @@ namespace Feasablty_study.Controllers
             await userRepo.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
+          public async Task<IActionResult> disbleOrEnableUser(string id)
+        {
+            await userRepo.EnableAndDisbleUser(id);
+            return RedirectToAction(nameof(Index));
+
+
+        }
 
         private bool UserExists(string id)
         {

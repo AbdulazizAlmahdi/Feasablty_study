@@ -15,9 +15,9 @@ namespace Feasablty_study.Domin.ViewModels
         public string Email { get; set; }
         [Required(ErrorMessage = "ادخل اسم المسنخدم")]
         [Display(Name = "User Name")]
-        // [Remote(action: "IsUserNameExist", controller:"Users",ErrorMessage ="اسم المستخدم موجود مسبقا")]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "يرجى ادخال كلمة المرور")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "يرجى ادخال كلمة المرور"), RegularExpression(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", ErrorMessage = "صيغة يجب ان تكون كلمة السر ارقام و حروف و رموز")]
         public string Password { get; set; }
         [Required(ErrorMessage = "يرجى اعادة ادخال كلمة المرور"), Compare("Password", ErrorMessage = "كلمة المرور غير متطابقة")]
         public string PasswordConfirm { get; set; }

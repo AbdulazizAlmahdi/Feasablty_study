@@ -39,7 +39,7 @@ namespace Feasablty_study.Controllers
                 {
                     if( await _userManager.IsEmailConfirmedAsync(user))
                     {
-                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, loginVM.RememberMe, false);
                     if (result.Succeeded)
                         {
                             return RedirectToAction("index","Users");

@@ -11,6 +11,10 @@ namespace Feasablty_study.Models
 {
     public class User: IdentityUser
     {
+        public User()
+        {
+            Feasibility_Studies = new HashSet<Feasibility_study>();
+        }
 
         [Required(ErrorMessage ="ادخل الاسم ")]
         public string Name { get; set; }
