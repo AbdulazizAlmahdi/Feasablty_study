@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> UserManager; 
+@inject SignInManager<User> signInManager;
+@model Feasablty_study.Models.User;
+
+<h1>عرض تفاصيل الحساب</h1>
+
+    <div class="row">
+        <div class="col-md-5 col-lg-5 col-xl-4 order-1 order-md-0">
+                  <!-- User Card -->
+                  <div class="card">
+                    <div class="card-body">
+                        @if(TempData["SuccessChanges"]!=null)
+                {
+                         <div class="alert alert-success">
+                          @TempData["SuccessChanges"]
+                        </div>
+                }
+                
+                      <div class="user-avatar-section">
+                        <div class="d-flex flex-column align-items-center">
+                          <img class="img-fluid rounded my-4" src="../../assets/img/avatars/9.png" height="110" width="110" alt="User avatar">
+                          <div class="user-info text-center">
+                            <h5 class="mb-2">@Html.DisplayFor(model => model.Name)</h5>
+                          </div>
+                        </div>
+                      </div>
+                      <h5 class="border-bottom pb-2 mb-4">التفاصيل</h5>
+                      <div class="info-container">
+                        <ul class="list-unstyled">
+                          <li class="mb-3">
+                            <span class="fw-bold me-2">اسم المستخدم:</span>
+                            <span>@Html.DisplayFor(model => model.UserName)</span>
+                          </li>
+                          <li class="mb-3">
+                            <span class="fw-bold me-2">الأيميل :</span>
+                            <span>@Html.DisplayFor(model => model.Email)</span>
+                          </li>
+
+                          <li class="mb-3">
+                            <span class="fw-bold me-2">رقم الهاتف:</span>
+                            <span>@Html.DisplayFor(model => model.PhoneNumber)</span>
+                          </li>
+                        </ul>
+                        <div class="d-flex justify-content-center pt-3">
+                          <a class="btn btn-primary me-3" asp-action="Edit">تعديل</a>
+                          <a class="btn btn-warning me-3" asp-action="ChangePassword" >تغيير كلمة المرور</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+           
+                </div>
+                </div>

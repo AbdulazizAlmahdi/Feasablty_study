@@ -1,18 +1,18 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Feasablty_study.Models;
-using Microsoft.AspNetCore.Http;
 using Feasablty_study.Infrastructure.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Feasablty_study.Domin.ViewModels;
-using Feasablty_study.Domin.Entites;
+using System.Linq;
+
 namespace Feasablty_study.Controllers
 {
     [Authorize]
     public class UsersController : Controller
     {
         private readonly IUserRepo userRepo;
+
 
         public UsersController(IUserRepo userRepo)
         {
@@ -24,28 +24,15 @@ namespace Feasablty_study.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-
+           
          return View(await userRepo.GetAllAsync());
-            /*var jsonstring = await userRepo.GetAllAsync();
-            if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("UserName")) && HttpContext.Session.GetString("UserName")!="0")
-            {
-
-                //JsonFileConvertAndSave.SimpleWrite(jsonstring, @"D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\wwwroot\assets\json\table-datatable.json");
-                return View(await userRepo.GetAllAsync());
-
-            }
-            else
-            {
-                ViewBag.Message = "خطا في اسم المستخدم او كلمة المرور";
-                return View(await userRepo.GetAllAsync());
-
-            }*/
         }
 
         // GET: Users/Details/5
         public async Task<IActionResult> Details(string id)
         {
-       
+            var users = await userRepo.GetAllAsync();
+            ViewBag.UserCount = users.Count();
 
             var user = await userRepo.GetByIdAsync((string)id);
             if (user == null)
@@ -77,6 +64,8 @@ namespace Feasablty_study.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateUserViewModel user)
         {
+            var users = await userRepo.GetAllAsync();
+            ViewBag.UserCount = users.Count();
             if (ModelState.IsValid)
             {
                 if(userRepo.returntype == 1)
@@ -100,7 +89,8 @@ namespace Feasablty_study.Controllers
         public async Task<IActionResult> Edit(string id)
         {
 
-
+            var users = await userRepo.GetAllAsync();
+            ViewBag.UserCount = users.Count();
             var user = await userRepo.GetByIdAsync(id);
             
             if (user == null)
@@ -125,7 +115,8 @@ namespace Feasablty_study.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, EditUserViewModel user)
         {
-
+            var users = await userRepo.GetAllAsync();
+            ViewBag.UserCount = users.Count();
             if (ModelState.IsValid)
             {
                 try
@@ -151,6 +142,8 @@ namespace Feasablty_study.Controllers
         // GET: Users/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
+            var users = await userRepo.GetAllAsync();
+            ViewBag.UserCount = users.Count();
             if (id == null)
             {
                 return NotFound();
@@ -175,6 +168,8 @@ namespace Feasablty_study.Controllers
         }
           public async Task<IActionResult> disbleOrEnableUser(string id)
         {
+            var users = await userRepo.GetAllAsync();
+            ViewBag.UserCount = users.Count();
             await userRepo.EnableAndDisbleUser(id);
             return RedirectToAction(nameof(Index));
 

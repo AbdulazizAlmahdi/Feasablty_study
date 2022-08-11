@@ -4,6 +4,7 @@ using Feasablty_study.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Feasablty_study.Controllers
 {
@@ -27,41 +28,45 @@ namespace Feasablty_study.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginVM)
         {
-            TempData["Error"]=null;
-            if (!ModelState.IsValid) return View(loginVM);
-            var userName=loginVM.Email;
-            var user = await _userManager.FindByEmailAsync(loginVM.Email);
-            if (user != null)
+            TempData["Error"] = null;
+            if (ModelState.IsValid)
             {
-                userName = user.UserName;
-                var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
-                if (passwordCheck)
+                var userName = loginVM.Email;
+                var user = await _userManager.FindByEmailAsync(loginVM.Email);
+                if (user != null)
                 {
-                    if( await _userManager.IsEmailConfirmedAsync(user))
+                    userName = user.UserName;
+                    var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
+                    if (passwordCheck)
                     {
-                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, loginVM.RememberMe, false);
-                    if (result.Succeeded)
+                        if (await _userManager.IsEmailConfirmedAsync(user))
                         {
-                            return RedirectToAction("index","Users");
+                            var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, loginVM.RememberMe, false);
+                            if (result.Succeeded)
+                            {
+                                return RedirectToAction("index", "Home");
+                            }
+
                         }
-                   
-                    }
-                    else
-                    {
-                        TempData["Error"] = "الرجاء تنشيط الحساب من قبل الادمن ";
-                        return View(loginVM);
+                        else
+                        {
+                            TempData["Error"] = "الرجاء تنشيط الحساب من قبل المسؤول ";
+                            return View(loginVM);
+
+                        }
 
                     }
+                    TempData["Error"] = "خطا في كلمة السر او الايميل ";
 
+                    return View(loginVM);
                 }
                 TempData["Error"] = "خطا في كلمة السر او الايميل ";
 
+
                 return View(loginVM);
             }
-            TempData["Error"] = "خطا في كلمة السر او الايميل ";
+            return View();
 
-
-            return View(loginVM);
         }
         [HttpGet]
 
@@ -69,6 +74,8 @@ namespace Feasablty_study.Controllers
         {
             return View();
         }
+
+
 
 
         [HttpPost]
@@ -89,17 +96,67 @@ namespace Feasablty_study.Controllers
                 Email = registerVM.Email,
                 UserName = registerVM.UserName,
                 PhoneNumber = registerVM.PhoneNumber,
-                EmailConfirmed=false,
-                Status=false,
-                       
+                EmailConfirmed = false,
+                Status = false,
+
 
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
             if (newUserResponse.Succeeded)
+            {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
-                        TempData["Error"] =null;
-            return View("Login");
+                TempData["Error"] = null;
+            }
+            return RedirectToAction("Login", "Account");
+        }
+
+        public async Task<IActionResult> AccountManage()
+        {
+
+            var account = await _signInManager.UserManager.GetUserAsync(User);
+            if (account == null)
+                return NotFound();
+            else
+                return View(account);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel changePassword)
+        {
+
+
+            var user = await _signInManager.UserManager.GetUserAsync(User);
+            if(ModelState.IsValid)
+            {
+            if (user == null)
+                return NotFound();
+            else
+            {
+                    if (changePassword == null)
+                        return BadRequest();
+               
+                var result=await _userManager.ChangePasswordAsync(user,changePassword.CurrentPassword,changePassword.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        TempData["SuccessChanges"] = "تم تغيير كلمة السر بنجاح";
+                      return  RedirectToAction("AccountManage");
+                        
+                    }
+
+                    else
+                        TempData["Error"] = "كلمة السر القديمة خاطئة";
+
+            }
+
+            }
+            return View(changePassword);
+           
+                
+        }
+        public async Task<IActionResult> ChangePassword()
+        {
+            return View();
+               
         }
 
         public async Task<IActionResult> Logout()

@@ -82,7 +82,7 @@ namespace Feasablty_study
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Feasibility_study}/{action=index}/{id?}");
+                    pattern: "{controller=Home}/{action=index}/{id?}");
                 endpoints.MapRazorPages();
             });
             AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();

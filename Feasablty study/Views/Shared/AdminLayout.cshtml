@@ -1,4 +1,16 @@
-﻿<div class="row g-4 mb-4">
+﻿@using System.Linq;
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> UserManager; 
+@inject SignInManager<User> signInManager; 
+
+@{
+    var users = UserManager.Users;
+    ViewBag.UserCount =users.Count();
+    ViewBag.UserActiveCount =UserManager.Users.Where(a=>a.EmailConfirmed==true).Count();
+    ViewBag.UserdeactiveCount=UserManager.Users.Where(a=>a.EmailConfirmed==false).Count();
+
+}
+<div class="row g-4 mb-4">
                 <div class="col-sm-6 col-xl-3">
                   <div class="card">
                     <div class="card-body">
@@ -25,7 +37,7 @@
                         <div class="content-left">
                           <span>مستخدمين </span>
                           <div class="d-flex align-items-end mt-2">
-                            <h4 class="me-2 mb-0">4,567</h4>
+                            <h4 class="me-2 mb-0">@ViewBag.UserCount</h4>
                             <small class="text-success">(+18%)</small>
                           </div>
                           <small> عدد المستخدمين   </small>
@@ -44,7 +56,7 @@
                         <div class="content-left">
                           <span>مستخدم نشط </span>
                           <div class="d-flex align-items-end mt-2">
-                            <h4 class="me-2 mb-0">19,860</h4>
+                            <h4 class="me-2 mb-0">@ViewBag.UserActiveCount</h4>
                             <small class="text-danger">(-14%)</small>
                           </div>
                           <small>تحليل الاسبوع الماضي</small>
@@ -63,7 +75,7 @@
                         <div class="content-left">
                           <span>مستخدم غير نشط </span>
                           <div class="d-flex align-items-end mt-2">
-                            <h4 class="me-2 mb-0">237</h4>
+                            <h4 class="me-2 mb-0"> @ViewBag.UserdeactiveCount</h4>
                             <small class="text-success">(+42%)</small>
                           </div>
                           <small>تحليل الاسبوع الماضي</small>

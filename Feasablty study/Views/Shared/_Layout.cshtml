@@ -160,25 +160,30 @@ data-template="vertical-menu-template-no-customizer"
                 <div data-i18n="الصفحة الرئيسية"> الصفحة الرئيسية</div>
               </a>
             </li>
+        <li class="menu-header small text-uppercase"></li>
 
             <!-- المستخدم -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">الادمن</span></li>
-            <li class="menu-item">
-              <a asp-controller="Users"  asp-action="index" class="menu-link">
-              <i class="menu-icon tf-icons fas fa-users-cog"></i>
-              <div data-i18n="إدراة المستخدمين">ادارة المستخدمين</div>
-            </a>
-          </li>
+             @if(User.IsInRole("Admin"))
+                   {
+                        <li class="menu-item">
+                          <a asp-controller="Users"  asp-action="index" class="menu-link">
+                          <i class="menu-icon tf-icons fas fa-users-cog"></i>
+                          <div data-i18n="إدراة المستخدمين">ادارة المستخدمين</div>
+                        </a>
+                      </li>
+                   }
+                          
+           
           <li class="menu-item">
-            <a href="studies reports.html" class="menu-link">
+            <a asp-controller="Feasibility_study" asp-action="index" class="menu-link">
             <i class="menu-icon tf-icons far fa-file-alt"></i>
-            <div data-i18n="تقارير الدراسات">تقارير الدراسات</div>
+            <div>تقارير الدراسات</div>
           </a>
         </li>
         <li class="menu-item">
-          <a asp-controller="Home" asp-action="Privacy" class="menu-link">
+          <a asp-controller="Feasibility_study" asp-action="Create" class="menu-link">
           <i class="menu-icon tf-icons fas fa-folder-plus"></i>
-              <div data-i18n="إضافة دراسة">إضافة دراسة</div>
+              <div>إضافة دراسة</div>
         </a>
       </li>
        
@@ -188,41 +193,50 @@ data-template="vertical-menu-template-no-customizer"
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons fas fa-user-friends"></i>
               
-              <div data-i18n="المستخدمين">  المستخدمين</div>
+              <div>اعدادات</div>
             </a>
             <ul class="menu-sub">
               <li class="menu-item">
-                <a href="pages-profile-user.html" class="menu-link">
-                  <div data-i18n="حساب المستخدم">حساب المستخدم</div>
+                <a asp-controller="Account" asp-action="AccountManage" class="menu-link">
+                  <div>حساب المستخدم</div>
                 </a>
               </li>
             </ul>
               </li>
 
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">متفرقعات</span></li>
+               <li class="menu-header small text-uppercase"><span class="menu-header-text"></span></li>
           <li class="menu-item open active">
        
-          <li class="menu-item">
+ @if(User.IsInRole("Admin"))
+                            {
+                            <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons fas fa-user-friends"></i>
+              <i class="menu-icon tf-icons bx bx-support"></i>
               
-              <div data-i18n="المستخدمين">  المستخدمين</div>
+              <div>  الدعم الفني و الرسائل</div>
             </a>
             <ul class="menu-sub">
               <li class="menu-item">
                 <a asp-controller="Support_messages" asp-action="Index" class="menu-link">
-                  <div data-i18n="رسائل الدعم الفني">رسائل الدعم الفني</div>
+                  <div>رسائل الدعم الفني</div>
                 </a>
               </li>
             </ul>
               </li>
-          <li class="menu-item">
-            <a asp-controller="Support_Messages" asp-action="Create" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-support"></i>
-            <div data-i18n="رسائل الدعم الفني">رسائل الدعم الفني</div>
-          </a>
-        </li>
-        </ul>
+                            }
+                            else
+                            {
+                                <li class="menu-item">
+                                    <a asp-controller="Support_Messages" asp-action="Create" class="menu-link">
+                                      <i class="menu-icon tf-icons bx bx-support"></i>
+                                     <div>ارسال رسالة الى الدعم الفني</div>
+                                  </a>
+                                </li>
+                            }
+         
+          
+          
+                </ul>
         
         </aside>
         <!-- / Menu -->
@@ -245,7 +259,7 @@ data-template="vertical-menu-template-no-customizer"
               <div class="navbar-nav align-items-center">
                 <div class="nav-item navbar-search-wrapper mb-0">
 
-                  <span class="span-1">إدراة المستخدمين</span>
+                  <span class="span-1">@ViewData["Title"]</span>
 
                 </div>
               </div>
@@ -302,11 +316,6 @@ data-template="vertical-menu-template-no-customizer"
           <div class="content-wrapper">
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y">
-                @if(User.IsInRole("Admin"))
-                {
-              <partial name="AdminLayout.cshtml" />
-
-                }
               
               @RenderBody()
  

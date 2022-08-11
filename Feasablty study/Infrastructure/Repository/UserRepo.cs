@@ -94,7 +94,12 @@ namespace Feasablty_study.Infrastructure.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<User>> GetAllAsync() => await _context.Set<User>().ToListAsync();
+        public async Task<IEnumerable<User>> GetAllAsync()
+        {
+
+            return await _context.Set<User>().ToListAsync();
+        }
+        
 
         public async Task<IEnumerable<User>> GetAllAsync(params Expression<Func<User, object>>[] includeProperties)
         {

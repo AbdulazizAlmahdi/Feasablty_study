@@ -1,6 +1,9 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> UserManager; 
+@inject SignInManager<User> signInManager; 
+
+@{
     ViewData["Title"] = "الصفحة الرئيسية";
-    Layout = "_LayoutWithoutHead";
 }
 
 
@@ -15,65 +18,18 @@
                   </h4>
                 
               </nav>
-              <div class="card overflow-hidden">
-              <!-- Popular Articles -->
-              <div class="help-center-popular-articles py-5">
-                <div class="container-xl">
-                  <h3 class="text-center pb-3 mt-2">مرحباً بك في نظام دراسة الجدوى 👋</h3>
-                  <hr/>
-                  <div class="row">
-                    <div class="col-lg-10 mx-auto">
-                      <div class="row mb-3">
-                        <div class="col-md-4 mb-4 mb-md-0">
-                          <div class="card shadow-none border">
-                            <div class="card-body text-center">
-                              <img
-                                class="mb-4"
-                                src="../../assets/img/icons/unicons/add reports.jpg"
-                                height="100"
-                                alt="Help center articles"
-                              />
-                              <h5> عمل دراسة جديدة</h5>
-                              <a class="btn btn-label-primary" asp-controller="Home" asp-action="Privacy">إضافة دراسة</a>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-4 mb-4 mb-md-0">
-                          <div class="card shadow-none border">
-                            <div class="card-body text-center">
-                              <img
-                                class="mb-4"
-                                src="../../assets/img/icons/unicons/report page.jpg"
-                                height="100"
-                                alt="Help center articles"
-                              />
-                              <h5> دراسة الجدوى التي تم عملها</h5>
-                              <a class="btn btn-label-primary" href="studies reports.html">تقارير الدراسات </a>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-4">
-                          <div class="card shadow-none border">
-                            <div class="card-body text-center">
-                              <img
-                                class="mb-4"
-                                src="../../assets/img/icons/unicons/support .jpg"
-                                height="100"
-                                alt="Help center articles"
-                              />
-                              <h5>تواصل بالدعم الفني</h5>
-                              <a class="btn btn-label-primary" asp-controller="Support_messages" asp-action="Create">  تواصل</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+     
               <!-- /Popular Articles -->
+                @if(User.IsInRole("Admin"))
+                {
+            <partial name="../Shared/AdminHomeLayout.cshtml" />
+
+        }
+        else
+        {
+                <partial name="../Shared/UserHomeLayout.cshtml" />
+
+        }
 
             </div>
             <!-- / Content -->
