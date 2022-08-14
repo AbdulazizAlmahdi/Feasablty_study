@@ -34,7 +34,7 @@ namespace Feasablty_study.Infrastructure.Repository
                     Email = entity.Email,
                     PhoneNumber = entity.PhoneNumber,
                     Status = entity.Status,
-                    UserName = entity.Name,
+                    UserName = entity.UserName,
                     Name = entity.Name,
                     EmailConfirmed = entity.Status,
 
@@ -91,7 +91,7 @@ namespace Feasablty_study.Infrastructure.Repository
             }
             await _userManager.RemoveFromRolesAsync(DeletedUser, roleId);
             await _userManager.DeleteAsync(DeletedUser);
-            await _context.SaveChangesAsync();
+           // await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<User>> GetAllAsync()
@@ -134,7 +134,8 @@ namespace Feasablty_study.Infrastructure.Repository
 
                 }
                await _userManager.UpdateAsync(UserEdited);
-                _context.SaveChanges();
+               // _context.SaveChanges();
+                //await _signInManager.RefreshSignInAsync(UserEdited).ConfigureAwait(false);
                 return UserEdited;
             }
             else

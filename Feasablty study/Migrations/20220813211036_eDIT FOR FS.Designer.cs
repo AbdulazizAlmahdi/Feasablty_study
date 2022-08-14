@@ -4,14 +4,16 @@ using Feasablty_study.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Feasablty_study.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220813211036_eDIT FOR FS")]
+    partial class eDITFORFS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,9 +69,6 @@ namespace Feasablty_study.Migrations
                     b.Property<float>("TotalArea")
                         .HasColumnType("real");
 
-                    b.Property<float>("TotalPriceArea")
-                        .HasColumnType("real");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Feasibility_StudyId");
@@ -117,12 +116,6 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("ProductPrice")
-                        .HasColumnType("real");
-
-                    b.Property<float>("TotalMonthlyPrice")
-                        .HasColumnType("real");
-
-                    b.Property<float>("TotalYearlyPrice")
                         .HasColumnType("real");
 
                     b.HasKey("Id");
@@ -246,9 +239,6 @@ namespace Feasablty_study.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.Property<float>("TotalPrice")
-                        .HasColumnType("real");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Feasibility_StudyId");
@@ -275,12 +265,6 @@ namespace Feasablty_study.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<float>("TotalMonthlySalary")
-                        .HasColumnType("real");
-
-                    b.Property<float>("TotalYearlySalary")
-                        .HasColumnType("real");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Feasibility_StudyId");
@@ -296,7 +280,10 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("AvailbleOpportunity")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MarketGap")
+                    b.Property<string>("CompetitiveAdavantages")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Logography")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PointsOfEwakness")
@@ -305,13 +292,10 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("ProjectLocationOnTheMap")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StrengthPoints")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TargetMarket")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Threats")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WatermarkMarketd")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FeasibilityStudyId");
@@ -356,9 +340,6 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("FactorsRepresentedOnLowDemand")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MessageOfTheProject")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ProjectObjectives")
                         .HasColumnType("nvarchar(max)");
 
@@ -386,9 +367,6 @@ namespace Feasablty_study.Migrations
                     b.Property<float>("MonthlyCost")
                         .HasColumnType("real");
 
-                    b.Property<float>("YearlyCost")
-                        .HasColumnType("real");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Feasibility_StudyId");
@@ -414,12 +392,6 @@ namespace Feasablty_study.Migrations
 
                     b.Property<int>("QuantityRequiredMonthly")
                         .HasColumnType("int");
-
-                    b.Property<float>("TotalPriceQuantityMonthly")
-                        .HasColumnType("real");
-
-                    b.Property<float>("TotalPriceQuantityYearly")
-                        .HasColumnType("real");
 
                     b.Property<string>("Unit")
                         .HasColumnType("nvarchar(max)");

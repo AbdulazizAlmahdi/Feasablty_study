@@ -9,6 +9,8 @@ namespace Feasablty_study.Domin.ViewModels
        
         [Required(ErrorMessage = "ادخل الاسم ")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "ادخل اسم المستخدم ")]
+        public string UserName { get; set; }
         [Required(ErrorMessage = "ادخل رقم الهاتف"), MaxLength(9, ErrorMessage = "يجب ان لا يكون رقم الهاتف اكثر من تسعة ارقام "), MinLength(9, ErrorMessage = "يجب ان لا يكون رقم الهاتف اقل من تسعة ارقام")]
         public string PhoneNumber { get; set; }
         [Required(ErrorMessage = "يرجى ادخال الايميل"), RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "صيغة الايميل غير صالحة")]

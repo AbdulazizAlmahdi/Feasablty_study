@@ -1,8 +1,7 @@
-﻿@model Feasablty_study.Models.Feasibility_study
+﻿@model Feasablty_study.Domin.ViewModels.CreateFeasibilityStudyViewModel
 
 @{
     ViewData["Title"] = "انشاء دراسة جدوى جديدة";
-    Layout = "_LayoutWithoutHead";
 }
 
 
@@ -83,8 +82,7 @@
     </div>
     <div class="bs-stepper-content">
       <div class="container-xxl flex-grow-1 container-p-y">
-      <form id="form-wizard-account" onSubmit="return false">
-          <!-- Account Details -->
+        <form method="post"  id="form-wizard-account" onSubmit="return false">          <!-- Account Details -->
           <div id="account-details" class="content">
             <div class="content-header mb-3">
               <h4 class="mb-0">- يرجى إدخال البيانات  ادناه :</h4>
@@ -96,7 +94,7 @@
                   <span id="basic-icon-default-company2" class="input-group-text"
                     ><i class="bx bx-buildings"></i
                   ></span>
-                  <input asp-for="ProjectName"
+                  <input asp-for="@Model.feasibility_Study.ProjectName"
                     type="text"
                     id="basic-icon-default-company"
                     class="form-control"
@@ -113,7 +111,7 @@
                   <span id="basic-icon-default-fullname2" class="input-group-text"
                     ><i class="bx bx-user"></i
                   ></span>
-                  <input asp-for="ProjectLocation"
+                  <input asp-for="@Model.feasibility_Study.ProjectLocation"
                     type="text"
                     class="form-control"
                     id="basic-icon-default-fullname"
@@ -130,7 +128,7 @@
                   <span id="basic-icon-default-fullname2" class="input-group-text"
                     ><i class="bx bx-user"></i
                   ></span>
-                  <input asp-for="OwnerName"
+                  <input asp-for="@Model.feasibility_Study.OwnerName"
                     type="text"
                     class="form-control"
                     id="basic-icon-default-fullname"
@@ -147,7 +145,7 @@
                   <span id="basic-icon-default-phone2" class="input-group-text"
                     ><i class="bx bx-phone"></i
                   ></span>
-                  <input asp-for="ContactNumber"
+                  <input asp-for="@Model.feasibility_Study.ContactNumber"
                     type="text"
                     id="basic-icon-default-phone"
                     class="form-control phone-mask"
@@ -162,7 +160,7 @@
             <label class="form-label" for="basic-icon-default-email">  البريد الالكتروني !</label>
             <div class="input-group input-group-merge">
               <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-              <input asp-for="ProjectEmail"
+              <input asp-for="@Model.feasibility_Study.ProjectEmail"
                 type="text"
                 id="basic-icon-default-email"
                 class="form-control"
@@ -179,7 +177,7 @@
           <div class="col-sm-6">
             <label class="form-label" for="basic-icon-default-datatime">   التاريخ المقترح لبدايةالمشروع !</label>
             <div class="input-group input-group-merge">
-              <input asp-for="ProjectDate"
+              <input asp-for="@Model.feasibility_Study.ProjectDate"
                 class="form-control"
                 type="datetime-local"
                 value="2022-01-18T12:00:00"
@@ -188,25 +186,17 @@
             </div>
           </div> 
 
-          <div class="col-sm-6">
-            <label for="selectpickerDivider" class="form-label">منهج واسلوب المشروع !</label>
-            <select id="selectpickerDivider" class="selectpicker w-100" data-style="btn-default">
-              <option>منهج و اسلوب المشروع</option>
-              <option data-divider="true">منهج واسلوب المشروع</option>
-              <option>إنتاجي</option>
-              <option>ثابت</option>
-            </select>
-          </div>
+          
 
           <div class="col-sm-6">
             <label for="selectpickerDivider" class="form-label">صفة المشروع القانونية !</label>
-            <select id="selectpickerDivider" class="selectpicker w-100" data-style="btn-default">
+            <select id="selectpickerDivider" asp-for="@Model.feasibility_Study.ProjectType" class="selectpicker w-100" data-style="btn-default">
              
               <option>صفة المشروع القانونية</option>
               <option data-divider="true">صفة المشروع القانونية</option>
-              <option value="">مؤسسة</option>
-              <option>شركة</option>
-              <option>مصنع</option>
+              <option value="مؤسسة">مؤسسة</option>
+              <option value="شركة">شركة</option>
+              <option value="مصنع">مصنع</option>
 
             </select>
           </div>
@@ -217,7 +207,7 @@
           <div class="mb-3">
             <label class="form-label" for="message">فكرة المشروع !</label>
             <textarea
-            asp-for="Description"
+            asp-for="@Model.feasibility_Study.Description"
               class="form-control"
               id="message"
               rows="3"
@@ -228,7 +218,7 @@
 
           <div class="col-sm-6">
             <label for="formFile" class="form-label">شعار المشروع !</label>
-            <input asp-for="ProjectLogo" class="form-control" type="file" id="formFile" />
+            <input  class="form-control" type="file" id="formFile" />
           </div>
         <br>
          <hr>
@@ -256,6 +246,7 @@
             <label class="form-label" for="bootstrap-maxlength-example2">الرؤية هي !</label>
             <textarea
             id="bootstrap-maxlength-example2"
+            asp-for="@Model.preliminary_Study.VisionOfTheProject"
             class="form-control bootstrap-maxlength-example"
             rows="3"
             maxlength="255"
@@ -270,6 +261,7 @@
             <label class="form-label" for="bootstrap-maxlength-example2">الرسالة هي !</label>
             <textarea
             id="bootstrap-maxlength-example2"
+            asp-for="@Model.preliminary_Study.MessageOfTheProject"
             class="form-control bootstrap-maxlength-example"
             rows="3"
             maxlength="255"
@@ -282,34 +274,35 @@
             <div class="row g-3">
             <div class="col-sm-6">
             <div class="form-check">
-            <input id="closeButton" class="form-check-input" type="checkbox" value="checked" />
+            <input id="closeButton"  asp-for="@Model.ProjectGoals[0]"  class="form-check-input" type="checkbox" value="توفير منتجات او خدمات بجوده عالية" />
             <label class="form-check-label" for="closeButton">توفير منتجات او خدمات بجوده عالية</label>
             </div>
             <div class="form-check">
             <input
             id="addBehaviorOnToastClick"
+             asp-for="@Model.ProjectGoals[1]" 
             class="form-check-input"
             type="checkbox"
-            value="checked"
+            value="توفير خدمات او منتجات بسعر مناسب"
             />
             <label class="form-check-label" for="addBehaviorOnToastClick"
             >توفير خدمات او منتجات بسعر مناسب</label
             >
             </div>
             <div class="form-check">
-            <input id="debugInfo" class="form-check-input" type="checkbox" value="checked" />
+            <input id="debugInfo" asp-for="@Model.ProjectGoals[2]" class="form-check-input" type="checkbox" value="دعم التوظيف والمساهمة في  الحد من البطالة" />
             <label class="form-check-label" for="debugInfo">دعم التوظيف والمساهمة في  الحد من البطالة</label>
             </div>
             <div class="form-check">
-            <input id="progressBar" class="form-check-input" type="checkbox" value="checked" />
+            <input id="progressBar" asp-for="@Model.ProjectGoals[3]"  class="form-check-input" type="checkbox" value="توفير مصدر دخل لمؤسس المشروع" />
             <label class="form-check-label" for="progressBar">توفير مصدر دخل لمؤسس المشروع</label>
             </div>
             <div class="form-check">
-            <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked" />
+            <input id="preventDuplicates"  asp-for="@Model.ProjectGoals[4]"  class="form-check-input" type="checkbox" value="دعم القطاع الخاص والاقتصاد الوطني" />
             <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
             </div>
             <div class="form-check">
-            <input id="addClear" class="form-check-input" type="checkbox" value="checked" />
+            <input id="addClear"  asp-for="@Model.ProjectGoals[5]"  class="form-check-input" type="checkbox" value="اخرى" />
             <label class="form-check-label" for="addClear"
             >اخرى</label
             >
@@ -325,34 +318,33 @@
             <div class="row g-3">
             <div class="col-sm-6">
             <div class="form-check">
-            <input id="closeButton" class="form-check-input" type="checkbox" value="checked" />
+            <input id="closeButton" asp-for="@Model.CteristicsOfTheProjectArea[0]" class="form-check-input" type="checkbox" value="توفير منتجات او خدمات بجوده عالية" />
             <label class="form-check-label" for="closeButton">توفير منتجات او خدمات بجوده عالية</label>
             </div>
             <div class="form-check">
             <input
             id="addBehaviorOnToastClick"
+            asp-for="@Model.CteristicsOfTheProjectArea[1]"
             class="form-check-input"
             type="checkbox"
-            value="checked"
+            value="توفير خدمات او منتجات بسعر مناسب"
             />
-            <label class="form-check-label" for="addBehaviorOnToastClick"
-            >توفير خدمات او منتجات بسعر مناسب</label
-            >
+            <label class="form-check-label" for="addBehaviorOnToastClick">توفير خدمات او منتجات بسعر مناسب</label>
             </div>
             <div class="form-check">
-            <input id="debugInfo" class="form-check-input" type="checkbox" value="checked" />
+            <input id="debugInfo" asp-for="@Model.CteristicsOfTheProjectArea[2]" class="form-check-input" type="checkbox" value="دعم التوظيف والمساهمة في  الحد من البطالة" />
             <label class="form-check-label" for="debugInfo">دعم التوظيف والمساهمة في  الحد من البطالة</label>
             </div>
             <div class="form-check">
-            <input id="progressBar" class="form-check-input" type="checkbox" value="checked" />
+            <input id="progressBar" asp-for="@Model.CteristicsOfTheProjectArea[3]" class="form-check-input" type="checkbox" value="توفير مصدر دخل لمؤسس المشروع" />
             <label class="form-check-label" for="progressBar">توفير مصدر دخل لمؤسس المشروع</label>
             </div>
             <div class="form-check">
-            <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked" />
+            <input id="preventDuplicates" asp-for="@Model.CteristicsOfTheProjectArea[4]" class="form-check-input" type="checkbox" value="دعم القطاع الخاص والاقتصاد الوطني" />
             <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
             </div>
             <div class="form-check">
-            <input id="addClear" class="form-check-input" type="checkbox" value="checked" />
+            <input id="addClear" asp-for="@Model.CteristicsOfTheProjectArea[5]" class="form-check-input" type="checkbox" value="اخرى" />
             <label class="form-check-label" for="addClear"
             >اخرى</label
             >
@@ -367,34 +359,35 @@
             <div class="row g-3">
             <div class="col-sm-6">
             <div class="form-check">
-            <input id="closeButton" class="form-check-input" type="checkbox" value="checked" />
+            <input id="closeButton" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[0]" class="form-check-input" type="checkbox" value="توفير منتجات او خدمات بجوده عالية" />
             <label class="form-check-label" for="closeButton">توفير منتجات او خدمات بجوده عالية</label>
             </div>
             <div class="form-check">
             <input
             id="addBehaviorOnToastClick"
+            asp-for="@Model.FactorsRepresentedOnIncreasedDemand[1]" 
             class="form-check-input"
             type="checkbox"
-            value="checked"
+            value="توفير خدمات او منتجات بسعر مناسب"
             />
             <label class="form-check-label" for="addBehaviorOnToastClick"
             >توفير خدمات او منتجات بسعر مناسب</label
             >
             </div>
             <div class="form-check">
-            <input id="debugInfo" class="form-check-input" type="checkbox" value="checked" />
+            <input id="debugInfo" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[2]"  class="form-check-input" type="checkbox" value="دعم التوظيف والمساهمة في  الحد من البطالة" />
             <label class="form-check-label" for="debugInfo">دعم التوظيف والمساهمة في  الحد من البطالة</label>
             </div>
             <div class="form-check">
-            <input id="progressBar" class="form-check-input" type="checkbox" value="checked" />
+            <input id="progressBar" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[3]"  class="form-check-input" type="checkbox" value="توفير مصدر دخل لمؤسس المشروع" />
             <label class="form-check-label" for="progressBar">توفير مصدر دخل لمؤسس المشروع</label>
             </div>
             <div class="form-check">
-            <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked" />
+            <input id="preventDuplicates" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[4]"  class="form-check-input" type="checkbox" value="دعم القطاع الخاص والاقتصاد الوطني" />
             <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
             </div>
             <div class="form-check">
-            <input id="addClear" class="form-check-input" type="checkbox" value="checked" />
+            <input id="addClear" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[5]"  class="form-check-input" type="checkbox" value="اخرى" />
             <label class="form-check-label" for="addClear"
             >اخرى</label
             >
@@ -406,34 +399,35 @@
                <div class="row g-3">
                 <div class="col-sm-6">
                   <div class="form-check">
-                     <input id="closeButton" class="form-check-input" type="checkbox" value="checked" />
+                     <input id="closeButton" asp-for="@Model.FactorsRepresentedOnLowDemand[0]" class="form-check-input" type="checkbox" value="توفير منتجات او خدمات بجوده عالية" />
                       <label class="form-check-label" for="closeButton">توفير منتجات او خدمات بجوده عالية</label>
                  </div>
             <div class="form-check">
             <input
             id="addBehaviorOnToastClick"
+            asp-for="@Model.FactorsRepresentedOnLowDemand[1]"
             class="form-check-input"
             type="checkbox"
-            value="checked"
+            value="توفير خدمات او منتجات بسعر مناسب"
             />
             <label class="form-check-label" for="addBehaviorOnToastClick"
             >توفير خدمات او منتجات بسعر مناسب</label
             >
             </div>
             <div class="form-check">
-            <input id="debugInfo" class="form-check-input" type="checkbox" value="checked" />
+            <input id="debugInfo" asp-for="@Model.FactorsRepresentedOnLowDemand[2]" class="form-check-input" type="checkbox" value="دعم التوظيف والمساهمة في  الحد من البطالة" />
             <label class="form-check-label" for="debugInfo">دعم التوظيف والمساهمة في  الحد من البطالة</label>
             </div>
             <div class="form-check">
-            <input id="progressBar" class="form-check-input" type="checkbox" value="checked" />
+            <input id="progressBar" asp-for="@Model.FactorsRepresentedOnLowDemand[3]" class="form-check-input" type="checkbox" value="توفير مصدر دخل لمؤسس المشروع" />
             <label class="form-check-label" for="progressBar">توفير مصدر دخل لمؤسس المشروع</label>
             </div>
             <div class="form-check">
-            <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked" />
+            <input id="preventDuplicates" asp-for="@Model.FactorsRepresentedOnLowDemand[4]" class="form-check-input" type="checkbox" value="دعم القطاع الخاص والاقتصاد الوطني" />
             <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
             </div>
             <div class="form-check">
-            <input id="addClear" class="form-check-input" type="checkbox" value="checked" />
+            <input id="addClear" asp-for="@Model.FactorsRepresentedOnLowDemand[5]" class="form-check-input" type="checkbox" value="اخرى" />
             <label class="form-check-label" for="addClear"
             >اخرى</label
             >
@@ -457,10 +451,10 @@
                 <tr> 
                 <th scope="row">1</th> 
                 <td class="col-sm-4"> 
-                  <input type="text" name="license" class="form-control" placeholder="ادخل نوع الترخيص"/> 
+                  <input type="text" name="licenses[0].LicenseType" class="form-control" placeholder="ادخل نوع الترخيص"/> 
                 </td> 
                 <td> 
-                  <input type="text" name="hand" class="form-control" placeholder="ادخل جهة الترخيص"/>
+                  <input type="text" name="licenses[0].Licenses" class="form-control" placeholder="ادخل جهة الترخيص"/>
                 </td> 
                 <td>
                 <input type="button" class="btn btn-block btn-default" id="add-row" onclick="deleteRow(\''+id+'\')" ><i class="bx bx-trash me-1"></i> </input> 
@@ -500,27 +494,27 @@
 						<div class="row g-3">
 								<div class="col-sm-6" style="display:contents">
 								<div class="form-check">
-									  <input id="closeButton" class="form-check-input" type="checkbox" value="checked">
+									  <input id="closeButton" asp-for="@Model.TargetMarket[0]" class="form-check-input" type="checkbox" value="مصانع">
 									  <label class="form-check-label" for="closeButton">مصانع</label>
 								</div>
 								<div class="form-check">
-									  <input id="addBehaviorOnToastClick" class="form-check-input" type="checkbox" value="checked">
+									  <input id="addBehaviorOnToastClick" asp-for="@Model.TargetMarket[1]" class="form-check-input" type="checkbox" value="تجاره التجزئة">
 									  <label class="form-check-label" for="addBehaviorOnToastClick">تجاره التجزئة</label>
 									</div>
                             <div class="form-check">
-                              <input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+                              <input id="debugInfo" asp-for="@Model.TargetMarket[2]" class="form-check-input" type="checkbox" value="تجارة الجملة">
                               <label class="form-check-label" for="debugInfo">تجارة الجملة</label>
                             </div>
                             <div class="form-check">
-                              <input id="progressBar" class="form-check-input" type="checkbox" value="checked">
+                              <input id="progressBar" asp-for="@Model.TargetMarket[3]" class="form-check-input" type="checkbox" value="تصدير">
                               <label class="form-check-label" for="progressBar">تصدير</label>
                             </div>
                             <div class="form-check">
-                              <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked">
+                              <input id="preventDuplicates" class="form-check-input" type="checkbox" value="حكومي">
                               <label class="form-check-label" for="preventDuplicates">حكومي</label>
                             </div>
                             <div class="form-check">
-                              <input id="preventDuplicates" class="form-check-input" type="checkbox" value="checked">
+                              <input id="preventDuplicates" asp-for="@Model.TargetMarket[4]" class="form-check-input" type="checkbox" value="اخرى">
                               <label class="form-check-label" for="preventDuplicates">اخرى</label>
                             </div>  
                           </div>
@@ -534,19 +528,9 @@
                       <div class="col-12 mb-0 mb-3">
                         <div class="alert alert-warning">
                           <p class="mb-0">للحصول على نتائج اكثر دقة يرجى ادخال اسم الحي والمدينة في مقر المشروع في الخطوه رقم 1 </p>
-                        </div>
+                        <div id="map"></div> 
                       </div>
-                      <div class="leaflet-map leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
-                       id="layerControl" 
-                       tabindex="0" 
-                       style="position: relative; outline: none;">
-                       <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-178px, 0px, 0px);">
-                        <div class="leaflet-pane leaflet-tile-pane">
-                          <div class="leaflet-layer " style="z-index: 1; opacity: 1;">
-                            <div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 16; transform: translate3d(727px, 116px, 0px) scale(0.25);"> 
-                            </div>
-                            <div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 17; transform: translate3d(727px, 116px, 0px) scale(0.5);"></div>
-                            <div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(485px, 77px, 0px) scale(1);"><img alt="" role="presentation" src="https://b.tile.osm.org/8/52/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/52/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/8/51/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/53/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.osm.org/8/51/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/8/53/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/51/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/8/52/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/8/50/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/50/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.osm.org/8/50/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.osm.org/8/53/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, 302px, 0px); opacity: 1;"></div></div><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 16; transform: translate3d(727px, 116px, 0px) scale(0.25);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 17; transform: translate3d(727px, 116px, 0px) scale(0.5);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(485px, 77px, 0px) scale(1);"><img alt="" role="presentation" src="https://c.tile.osm.org/8/52/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/52/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/51/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/53/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/51/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/53/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/51/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-206px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/52/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(50px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/50/97.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, 46px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/50/96.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, -210px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/50/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-462px, 302px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/8/53/98.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(306px, 302px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(873px, 194px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(878px, 163px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(913px, 166px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(834px, 156px, 0px);"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(873px, 194px, 0px); z-index: 194;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(878px, 163px, 0px); z-index: 163;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(913px, 166px, 0px); z-index: 166;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(834px, 156px, 0px); z-index: 156;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(13383px, 24909px, 0px) scale(128);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"><div class="leaflet-control-layers leaflet-control" aria-haspopup="true"><a class="leaflet-control-layers-toggle" href="#" title="Layers"></a><section class="leaflet-control-layers-list"><div class="leaflet-control-layers-base"><label><div><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_514" checked="checked"><span> Street</span></div></label><label><div><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_514"><span> Watercolor</span></div></label></div><div class="leaflet-control-layers-separator"></div><div class="leaflet-control-layers-overlays"><label><div><input type="checkbox" class="leaflet-control-layers-selector" checked=""><span> Cities</span></div></label></div></section></div></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | بيانات الخريطة © <a href="https://www.openstreetmap.org/">OpenStreetMap</a></div></div></div><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(338px, 200px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="https://a.tile.osm.org/11/429/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-195px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.osm.org/11/430/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(61px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://b.tile.osm.org/11/429/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-195px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/430/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(61px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/428/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-451px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/431/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(317px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/11/428/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-451px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://a.tile.osm.org/11/431/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(317px, 18px, 0px); opacity: 1;"></div></div><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" role="presentation" src="https://c.tile.osm.org/11/429/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-195px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/430/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(61px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/429/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-195px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/430/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(61px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/428/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-451px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/431/777.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(317px, -238px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/428/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-451px, 18px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://c.tile.osm.org/11/431/778.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(317px, 18px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(-821px, 74px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(-778px, -172px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(-501px, -153px, 0px);"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(-1127px, -229px, 0px);"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(-821px, 74px, 0px); z-index: 74;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(-778px, -172px, 0px); z-index: -172;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(-501px, -153px, 0px); z-index: -153;"><img src="file:///C:/Users/Hassan/Desktop/bootstrap/assets/vendor/libs/leaflet/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="" tabindex="0" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(-1127px, -229px, 0px); z-index: -229;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(110019px, 199150px, 0px) scale(1024);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"><div class="leaflet-control-layers leaflet-control" aria-haspopup="true"><a class="leaflet-control-layers-toggle" href="#" title="Layers"></a><section class="leaflet-control-layers-list"><div class="leaflet-control-layers-base"><label><div><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_39" checked="checked"><span> Street</span></div></label><label><div><input type="radio" class="leaflet-control-layers-selector" name="leaflet-base-layers_39"><span> Watercolor</span></div></label></div><div class="leaflet-control-layers-separator"></div><div class="leaflet-control-layers-overlays"><label><div><input type="checkbox" class="leaflet-control-layers-selector" checked=""><span> Cities</span></div></label></div></section></div></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a></div></div></div></div>
+                      </div>
                     </div>
                   <br><br> <hr/>
 				  <!-- نهاية الخريطة السوقيه---->
@@ -566,20 +550,20 @@
 						<th scope="col"> إضافة  </th>
 					</tr>
 				</thead>
-					<tbody> 
+            <tbody> 
 						<tr> 
 						<th scope="row">1</th> 
 						<td class="col-sm-3"> 
-							<input type="text" name="name" class="form-control" placeholder="اسم المنافس"/> 
+							<input type="text" name="Competitors[0].CompetitorsName" class="form-control" placeholder="اسم المنافس"/> 
 						</td> 
 						<td class="col-sm-3"> 
-							<input type="text" name="product" class="form-control" placeholder="الخدمة والمنتج"/>
+							<input type="text" name="Competitors[0].Products" class="form-control" placeholder="الخدمة والمنتج"/>
 						</td> 
 						<td class="col-sm-3"> 
-              <input type="number" name="mony" class="form-control"  min="0" max="1000" placeholder="#10288#"/>
+              <input type="number" name="Competitors[0].CompetitorsPrice" class="form-control"  min="0" max="1000" placeholder="#10288#"/>
 						</td>
 						<td class="col-sm-3"> 
-              <input type="number" name="mony" class="form-control"  min="0" max="1000" placeholder="#10288#"/>
+              <input type="number" name="Competitors[0].AmounrAdded" class="form-control"  min="0" max="1000" placeholder="#10288#"/>
 						</td> 
 						<td>
 							<input type="button" class="btn btn-success" id="addrow"  onclick="childTable()" value="إضافة"  /> 
@@ -590,7 +574,7 @@
           <thead class="table-info">
             <tr>
               <th scope="col"></th> 
-              <th scope="col">الاجمــــــــــــــالي </th> 
+              <th scope="col"> </th> 
               <th scope="col"> </th>
               <th scope="col"> </th> 
               <th scope="col"> </th> 
@@ -606,19 +590,19 @@
 							<div class="row g-3">
 							<div class="col-sm-6" style="display:contents">
 								<div class="form-check">
-									  <input id="closeButton" class="form-check-input" type="checkbox" value="checked">
+									  <input id="closeButton" asp-for="@Model.StrengthPoints[0]" class="form-check-input" type="checkbox" value="العلاقات العامة">
 									  <label class="form-check-label" for="closeButton "  >  العلاقات العامة </label>
 								</div>
 								<div class="form-check">
-									  <input id="addBehaviorOnToastClick" class="form-check-input" type="checkbox" value="checked">
-									  <label class="form-check-label" for="addBehaviorOnToastClick">وجود عملا مسبقين</label>
+									  <input id="addBehaviorOnToastClick" asp-for="@Model.StrengthPoints[1]" class="form-check-input" type="checkbox" value="وجود عملاء سابقين">
+									  <label class="form-check-label" for="addBehaviorOnToastClick">وجود عملاء سابقين</label>
 								</div>
                  <div class="form-check">
-                 <input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+                 <input id="debugInfo" asp-for="@Model.StrengthPoints[2]" class="form-check-input" type="checkbox" value="لخبرة في المشروع">
                 <label class="form-check-label" for="debugInfo">الخبرة في المشروع</label>
                  </div>
                   <div class="form-check">
-                      <input id="progressBar" class="form-check-input" type="checkbox" value="checked">
+                      <input id="progressBar" asp-for="@Model.StrengthPoints[4]" class="form-check-input" type="checkbox" value="توفير راس المال ">
                       <label class="form-check-label" for="progressBar">توفير راس المال 	</label>
                     </div>
                         
@@ -633,20 +617,20 @@
 							<h5>نقط الضعف للمشروع !</h5>
 								<div class="col-sm-6">
 									<div class="form-check">
-									<input id="closeButton" class="form-check-input" type="checkbox" value="checked">
+									<input id="closeButton" asp-for="@Model.PointsOfEwakness[0]" class="form-check-input" type="checkbox" value="عدم وجود تمويل  للمشروع">
 									<label class="form-check-label" for="closeButton">عدم وجود تمويل  للمشروع</label>
 									</div>
 									<div class="form-check">
-									<input id="addBehaviorOnToastClick" class="form-check-input" type="checkbox" value="checked">
-									<label class="form-check-label" for="addBehaviorOnToastClick">عدم توفير عملا مسبقين</label>
+									<input id="addBehaviorOnToastClick"  asp-for="@Model.PointsOfEwakness[1]" class="form-check-input" type="checkbox" value="عدم توفير عملا مسبقين">
+									<label class="form-check-label" for="addBehaviorOnToastClick">عدم توفير عملاء مسبقين</label>
 									</div>
 									<div class="form-check">
-									<input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+									<input id="debugInfo"  asp-for="@Model.PointsOfEwakness[2]" class="form-check-input" type="checkbox" value="عدم وجود الخبرة">
 									<label class="form-check-label" for="debugInfo">عدم وجود الخبرة</label>
 									</div>
                   <div class="form-check">
-                    <input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
-                    <label class="form-check-label" for="debugInfo">اخرى  </label>
+                    <input id="debugInfo" asp-for="@Model.PointsOfEwakness[3]"  class="form-check-input" type="checkbox" value="اخرى">
+                    <label class="form-check-label" for="debugInfo">اخرى</label>
                     </div>
 								
 
@@ -660,51 +644,51 @@
 						<h5>الفرص المتاحة للمشروع !</h5>
 							<div class="col-sm-6">
 									<div class="form-check">
-									<input id="closeButton" class="form-check-input" type="checkbox" value="checked">
-									<label class="form-check-label" for="closeButton">توجد الحكومة لدعم المشاريع</label>
+									<input id="closeButton" class="form-check-input" type="checkbox" value="توجد الحكومة لدعم المشاريع">
+									<label class="form-check-label"  asp-for="@Model.AvailbleOpportunity[0]" for="closeButton">توجد الحكومة لدعم المشاريع</label>
 									</div>
 									<div class="form-check">
-									<input id="addBehaviorOnToastClick" class="form-check-input" type="checkbox" value="checked">
+									<input id="addBehaviorOnToastClick" asp-for="@Model.AvailbleOpportunity[1]" class="form-check-input" type="checkbox" value="زياده الطلب المنتج المطلوب">
 									<label class="form-check-label" for="addBehaviorOnToastClick">زياده الطلب المنتج المطلوب</label>
 									</div>
 									<div class="form-check">
-									<input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+									<input id="debugInfo" asp-for="@Model.AvailbleOpportunity[2]" class="form-check-input" type="checkbox" value="خصوصية الارض">
 									<label class="form-check-label" for="debugInfo">خصوصية الارض</label>
 									</div>
 									
 								<div class="list-group">
 								  <label class="list-style">
-									<input class="form-check-input me-1" type="checkbox" value="">
+									<input asp-for="@Model.AvailbleOpportunity[3]" class="form-check-input me-1" type="checkbox" value="توفير منتجات او خدمات بجودة عالية">
 									توفير منتجات او خدمات بجودة عالية
 								  </label>
 								  </div>
 								  <div class="list-group">
 								  <label class="list-style">
-									<input class="form-check-input me-1" type="checkbox" value="">
+									<input asp-for="@Model.AvailbleOpportunity[4]" class="form-check-input me-1" type="checkbox" value="خدمات بجودة عالية بسعر مناسب">
 									 خدمات بجودة عالية بسعر مناسب
 								  </label>
 								  </div>
 								  <div class="list-group">
 								  <label class="list-style">
-									<input class="form-check-input me-1" type="checkbox" value="">
+									<input asp-for="@Model.AvailbleOpportunity[5]" class="form-check-input me-1" type="checkbox" value="دعم التوظيف والمساهمة في الحد من البطاله">
 									دعم التوظيف والمساهمة في الحد من البطاله
 								  </label>
 								  </div>
 								  <div class="list-group">
 								  <label class="list-style">
-									<input class="form-check-input me-1" type="checkbox" value="">
+									<input asp-for="@Model.AvailbleOpportunity[6]" class="form-check-input me-1" type="checkbox" value="توفير مصدر دخل لمؤسس المشروع">
 									توفير مصدر دخل لمؤسس المشروع
 								  </label>
 								  </div>
 								  <div class="list-group">
 								  <label class="list-style">
-									<input class="form-check-input me-1" type="checkbox" value="">
+									<input asp-for="@Model.AvailbleOpportunity[7]" class="form-check-input me-1" type="checkbox" value="">
 										دعم القطاع الخاص والاقتصاد الوطني
 								  </label>
 								  </div>
 								  <div class="list-group">
                     <label class="list-style">
-                    <input class="form-check-input me-1" type="checkbox" value="">
+                    <input asp-for="@Model.AvailbleOpportunity[8]" class="form-check-input me-1" type="checkbox" value="اخرى">
                       اخرى
                     </label>
                     </div>
@@ -720,19 +704,19 @@
 							<h5>التهديدات التي توجة المشروع !</h5>
 								<div class="col-sm-6">
 									<div class="form-check">
-									<input id="closeButton" class="form-check-input" type="checkbox" value="checked">
+									<input id="closeButton" asp-for="@Model.Threats[0]" class="form-check-input" type="checkbox" value="انخفاض القوة العاملة">
 									<label class="form-check-label" for="closeButton">انخفاض القوة العاملة</label>
 									</div>
 									<div class="form-check">
-									<input id="addBehaviorOnToastClick" class="form-check-input" type="checkbox" value="checked">
-									<label class="form-check-label" for="addBehaviorOnToastClick">ارتفاع اسعر الديزل</label>
+									<input id="addBehaviorOnToastClick" asp-for="@Model.Threats[1]" class="form-check-input" type="checkbox" value="ارتفاع اسعر الديزل">
+									<label class="form-check-label" for="addBehaviorOnToastClick">ارتفاع اسعار الديزل</label>
 									</div>
 									<div class="form-check">
-									<input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+									<input id="debugInfo"  asp-for="@Model.Threats[2]" class="form-check-input" type="checkbox" value="دخول المنافسين السوق">
 									<label class="form-check-label" for="debugInfo">دخول المنافسين السوق</label>
 									</div>
 									<div class="form-check">
-                    <input id="debugInfo" class="form-check-input" type="checkbox" value="checked">
+                    <input id="debugInfo"  asp-for="@Model.Threats[3]" class="form-check-input" type="checkbox" value="اخرى">
                     <label class="form-check-label" for="debugInfo">اخرى  </label>
                     </div>
 
@@ -741,7 +725,7 @@
 							<hr>
 					<div class="mb-3">
                         <label for="defaultInput" class="form-label">الفجوة السوقيه--</label>
-                        <input id="defaultInput" class="form-control" type="text" placeholder="بها انواع الخدمات او المنتج الذي يطلبة العملا ولم يوفره المنافسين او تم توفيرة ولكن ليس بشكل المطلوب">
+                        <input id="defaultInput" asp-for="@Model.Market_Study.MarketGap" class="form-control" type="text" placeholder="بها انواع الخدمات او المنتج الذي يطلبة العملا ولم يوفره المنافسين او تم توفيرة ولكن ليس بشكل المطلوب">
                     </div>
 							<hr class="container-m-nx my-5" />				
 							<!-- جدول الايرادات المتوقعة-->
@@ -770,13 +754,13 @@
                 <tr> 
                 <th scope="row">1</th> 
                 <td class="col-sm-2"> 
-                  <input type="text" name="name" class="form-control" placeholder="اسم الصنف"/> 
+                  <input type="text" name="expected_Revenues[0].ProductName" class="form-control" placeholder="اسم الصنف"/> 
                 </td> 
                 <td class="col-sm-2"> 
-                  <input id="quality" type="number" name="quality" onkeydown="return validateDigitsOnly(event)" class="form-control"    placeholder="00" onkeyup="calculateTotalB()"/>
+                  <input id="quality" type="number" name="expected_Revenues[0].MonthlyQusntity" onkeydown="return validateDigitsOnly(event)" class="form-control"    placeholder="00" onkeyup="calculateTotalB()"/>
                 </td> 
                 <td class="col-sm-2"> 
-                  <input ID="priceUnit" type="number" name="priceUnit" onkeydown="return validateDigitsOnly(event)" class="form-control" placeholder="000" onkeyup="calculateTotalB()"/>
+                  <input ID="priceUnit" type="number" name="expected_Revenues[0].ProductPrice" onkeydown="return validateDigitsOnly(event)" class="form-control" placeholder="000" onkeyup="calculateTotalB()"/>
                 </td>
                 <td class="col-sm-2"> 
                   <input disabled type="number" name="totalMoth" class="form-control"   placeholder="0000000"/>
@@ -806,7 +790,7 @@
             </div>
            <hr class="container-m-nx my-5" />
                 <br>
-							<!-- بدايها جدولتحليل المنافسين-->
+							<!-- بدايها جدول تحليل المنافسين-->
               
 				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light"> الخطة التسويقية ! </span></h4>
           <div class="table-responsive text-nowrap">
@@ -824,10 +808,10 @@
 						<tr> 
 						<th scope="row">1</th> 
 						<td class="col-sm-6"> 
-							<input type="text" name="Foundation" class="form-control" placeholder="النشاط  "/> 
+							<input type="text" name="marketing_Activities[0].Name" class="form-control" placeholder="النشاط  "/> 
 						</td> 
 						<td class="col-sm-3"> 
-							<input type="number" name="Activ"  class="form-control" placeholder="0000" onkeyup="calcualteTotalA()"/>
+							<input type="number" name="marketing_Activities[0].Amount"  class="form-control" placeholder="0000" onkeyup="calcualteTotalA()"/>
 						</td> 
             <td class="col-sm-1">
               <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="ch()" value="إضافة" /> 
@@ -862,7 +846,9 @@
              <tr>
                <th scope="col">#</th> 
                <th scope="col">نوع المخاطر	</th> 
-               <th scope="col"> شرح المخاطر كتابياً	 </th>
+               <th scope="col"> شرح المخاطر كتابياً</th>
+               <th scope="col">أسلوب الحد من المخاطر </th> 
+              <th scope="col">شرح الاسلوب كتابياً</th>
                <th scope="col">الاجراءات</th> 
                
              </tr>
@@ -871,11 +857,17 @@
                <tr> 
                <th scope="row">1</th> 
                <td class="col-sm-6"> 
-                 <input type="text" name="typedanger" class="form-control" placeholder="نوع الخطر  "/> 
+                 <input type="text" name="risks[0].TypeRisk" class="form-control" placeholder="نوع الخطر  "/> 
                </td> 
                <td class="col-sm-3"> 
-                 <input type="text" name="danger" class="form-control" placeholder="شرح الخطر" />
+                 <input type="text" name="risks[0].DescriptionRisk" class="form-control" placeholder="شرح الخطر" />
                </td> 
+               <td class="col-sm-6"> 
+                <input type="text" name="risks[0].DangerReductionStyle" class="form-control" placeholder="اسلوب الخطر"/> 
+              </td> 
+              <td class="col-sm-3"> 
+                <input type="text" name="risks[0].DescriptionDangerReduece" class="form-control" placeholder="شرح الاسلوب"/>
+              </td> 
                <td class="col-sm-1">
                  <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="riskmanage()" value="إضافة" /> 
                </td> 
@@ -886,6 +878,8 @@
                <tr>
                  <th scope="col"></th> 
                  <th scope="col"></th> 
+                 <th scope="col"></th> 
+                 <th scope="col"></th> 
                  <th scope="col"></th>
                  <th scope="col"> </th> 
                  
@@ -893,46 +887,7 @@
              </thead>
            </table>
            </div>
-               <br>
-               <br>
-							<!--نهايه جدول ادرة المخاطر-->
-							
-				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">أساليب الحد من المخاطر  ! </span></h4>
-          <table class="table table-bordered" id="DangerStyle">
-              <thead class="table-info">
-            <tr>
-              <th scope="col">#</th> 
-              <th scope="col">أسلوب الحد من المخاطر </th> 
-              <th scope="col">شرح الاسلوب كتابياً</th>
-              <th scope="col">الاجراءات</th> 
-              </tr>
-          </thead>
-            <tbody> 
-              <tr> 
-              <th scope="row">1</th> 
-              <td class="col-sm-6"> 
-                <input type="text" name="dangertype" class="form-control" placeholder="اسلوب الخطر"/> 
-              </td> 
-              <td class="col-sm-3"> 
-                <input type="text" name="dangerExplain" class="form-control" placeholder="شرح الاسلوب"/>
-              </td> 
-              <td class="col-sm-1">
-                <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="DangerStyle()" value="إضافة" /> 
-              </td> 
-              
-              </tr> 
-            </tbody> 
-            <thead class="table-info">
-              <tr>
-                <th scope="col"></th> 
-                <th scope="col"></th> 
-                <th scope="col"></th>
-                <th scope="col"> </th> 
-                
-              </tr>
-            </thead>
-          </table>
-              <br><br>
+                          <br><br>
                 <!--نهايه جدول اساليب الحد من المخاطر-->
                 </div> 
 						  <!-- end الدراسة السوقيه-->
@@ -958,8 +913,8 @@
 						<thead class="table-info">
 					<tr>
 						<th scope="col">#</th> 
-            <th scope="col">البنـــــــــــــــــــــد</th> 
-            <th scope="col">اسم المورد</th> 
+                        <th scope="col">البنـــــــــــــــــــــد</th> 
+                        <th scope="col">اسم المورد</th> 
 						<th scope="col"> العــــــــــــدد </th>
 						<th scope="col"> السعــــــــــــــر</th> 
 						<th scope="col">الاجمالي الكلي</th> 
@@ -970,16 +925,16 @@
 						<tr> 
 						<th scope="row">1</th> 
 						<td class="col-sm-4"> 
-							<input type="text" name="item" class="form-control" placeholder=" البنـــــــد"/> 
+							<input type="text" name="machinery_Equipment[0].Name" class="form-control" placeholder=" البنـــــــد"/> 
             </td> 
             <td class="col-sm-2"> 
-							<input type="text" name="supplier" class="form-control" placeholder="اسم المورد"/> 
+							<input type="text" name="machinery_Equipment[0].NameSupplier" class="form-control" placeholder="اسم المورد"/> 
 						</td> 
 						<td class="col-sm-2"> 
-							<input  type="number" name="amount" class="form-control" placeholder="00" onkeyup="calculateTotal()"/>
+							<input  type="number" name="machinery_Equipment[0].Number" class="form-control" placeholder="00" onkeyup="calculateTotal()"/>
 						</td> 
 						<td class="col-sm-2"> 
-							<input type="number" name="prices" class="form-control" placeholder="0000" onkeyup="calculateTotal()"/>
+							<input type="number" name="machinery_Equipment[0].Price" class="form-control" placeholder="0000" onkeyup="calculateTotal()"/>
 						</td>
 						<td class="col-sm-2"> 
 							<input disabled type="text" name="totals" class="form-control" placeholder="0000000"/> 
@@ -1018,8 +973,8 @@
 						<th scope="col">المسمى الوظيفي</th> 
 						<th scope="col">الراتب الشهري</th> 
 						<th scope="col"> عدد الموظفين  </th>
-            <th scope="col">   اجمالي الرواتب الشهرية </th>
-            <th scope="col"> اجمالي الرواتب السنوية </th>						
+                        <th scope="col">   اجمالي الرواتب الشهرية </th>
+                        <th scope="col"> اجمالي الرواتب السنوية </th>						
 						<th scope="col"> الاجراءات </th>
 					</tr>
 				</thead>
@@ -1027,13 +982,13 @@
 						<tr> 
 						<th scope="row">1</th> 
 						<td class="col-sm-4"> 
-							<input type="text" name="occupation" class="form-control" placeholder="اسم الوظيفة "/> 
+							<input type="text" name="Manpower_Workforces[0].JobTitle" class="form-control" placeholder="اسم الوظيفة "/> 
 						</td>  
 						<td class="col-sm-2"> 
-							<input type="number" name="monys"  class="form-control"  placeholder="0000"  onkeyup="calculateTotala()"/>
+							<input type="number" name="Manpower_Workforces[0].MonthlySalary"  class="form-control"  placeholder="0000"  onkeyup="calculateTotala()"/>
 						</td>
 						<td class="col-sm-2"> 
-							<input type="number" name="Nemployee" class="form-control" placeholder="0" onkeyup="calculateTotala()"/> 
+							<input type="number" name="Manpower_Workforces[0].Number" class="form-control" placeholder="0" onkeyup="calculateTotala()"/> 
 						</td> 
 						<td class="col-sm-2"> 
 							<input disabled type="number" name="totalMony"  class="form-control" placeholder="0000000"/> 
@@ -1084,13 +1039,13 @@
 						<tr> 
 						<th scope="row">1</th> 
 						<td class="col-sm-4"> 
-							<input type="text" name="Builid" class="form-control" placeholder="نوع البناء  "/> 
+							<input type="text" name="construction_And_Bulidings[0].BuildingType" class="form-control" placeholder="نوع البناء  "/> 
 						</td> 
 						<td> 
-							<input type="number" name="Mater" class="form-control" placeholder="000" onkeyup="calculateTablll();"/>
+							<input type="number" name="construction_And_Bulidings[0].PricePerMeter" class="form-control" placeholder="000" onkeyup="calculateTablll();"/>
 						</td> 
 						<td class="col-sm-2"> 
-							<input type="number" name="Area"  class="form-control" placeholder="000" onkeyup="calculateTablll();"/>
+							<input type="number" name="construction_And_Bulidings[0].TotalArea"  class="form-control" placeholder="000" onkeyup="calculateTablll();"/>
 						</td>
 						<td class="col-sm-2"> 
 							<input disabled type="number" name="Totalsa" class="form-control" placeholder="000"/>
@@ -1137,10 +1092,10 @@
 						<tr> 
 						<th scope="row">1</th> 
 						<td class="col-sm-6"> 
-							<input type="text" name="varieties" class="form-control" placeholder=" الاصناف والمعدات"/> 
+							<input type="text" name="rentals[0].RentalType" class="form-control" placeholder=" الاصناف والمعدات"/> 
 						</td> 
 						<td class="col-sm-3"> 
-							<input type="number" name="rentAnnually" class="form-control" placeholder="000"  onkeyup="calculateTotall()"/>
+							<input type="number" name="rentals[0].RentalYearly" class="form-control" placeholder="000"  onkeyup="calculateTotall()"/>
 						</td> 
             <td class="col-sm-1">
               <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="rentals()" value="إضافة" /> 
@@ -1178,10 +1133,10 @@
 						<tr> 
 						<th scope="row">1</th> 
 						<td class="col-sm-6"> 
-							<input type="text" name="fees" class="form-control" placeholder="الرسوم الحكومية "/> 
+							<input type="text" name="Government_Fees[0].Name" class="form-control" placeholder="الرسوم الحكومية "/> 
 						</td> 
 						<td class="col-sm-3"> 
-							<input type="number" name="AnnualFee" class="form-control" placeholder="0000" onkeyup="calculateTotalX();"/>
+							<input type="number" name="Government_Fees[0].Price" class="form-control" placeholder="0000" onkeyup="calculateTotalX();"/>
 						</td> 
             <td class="col-sm-1">
               <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="Taxes()" value="إضافة" /> 
@@ -1219,10 +1174,10 @@
                 <tr> 
                 <th scope="row">1</th> 
                 <td class="col-sm-6"> 
-                  <input type="text" name="fees" class="form-control" placeholder="مصاريف التأسيس  "/> 
+                  <input type="text" name="establishment_Expenses[0].Type" class="form-control" placeholder="مصاريف التأسيس  "/> 
                 </td> 
                 <td class="col-sm-3"> 
-                  <input type="number" name="AnnualFeeE" class="form-control" placeholder="0000" onkeyup="calculateTotalXX();"/>
+                  <input type="number" name="establishment_Expenses[0].Price" class="form-control" placeholder="0000" onkeyup="calculateTotalXX();"/>
                 </td> 
                 <td class="col-sm-1">
                   <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="TTT()" value="إضافة" /> 
@@ -1259,22 +1214,22 @@
 						<th scope="col"> الاجمالي الشهري</th>						
 						<th scope="col"> الاجمالي السنوي</th>
 						<th scope="col">الاجراءات</th> 
-					</tr>
+			</tr>
 				</thead>
 					<tbody> 
 						<tr> 
 						<th scope="row">1</th> 
 						<td class="col-sm-4"> 
-							<input type="text" name="Article" class="form-control" placeholder="نوع الماده"/> 
+							<input type="text" name="raw_Materials[0].Material" class="form-control" placeholder="نوع الماده"/> 
             </td>  
 						<td class="col-sm-2"> 
-							<input type="text" name="liter" class="form-control" placeholder="لتر"/>
+							<input type="text" name="raw_Materials[0].Unit" class="form-control" placeholder="لتر"/>
 						</td> 
 						<td class="col-sm-2"> 
-							<input type="number" name="Uint"  class="form-control" placeholder="000" onkeyup="calculateTota()"/>
+							<input type="number" name="raw_Materials[0].PriceOfUnity"  class="form-control" placeholder="000" onkeyup="calculateTota()"/>
 						</td>
 						<td class="col-sm-2"> 
-							<input type="number" name="qualitReqiredMonthly" class="form-control" placeholder="0000" onkeyup="calculateTota()"/> 
+							<input type="number" name="raw_Materials[0].QuantityRequiredMonthly" class="form-control" placeholder="0000" onkeyup="calculateTota()"/> 
 						</td> 
 						<td class="col-sm-2"> 
 							<input disabled type="number" name="totalss" class="form-control" placeholder="00000"/> 
@@ -1321,10 +1276,10 @@
     <tr> 
     <th scope="row">1</th> 
     <td class="col-sm-4"> 
-      <input type="text" name="item" class="form-control" placeholder="البند    "/> 
+      <input type="text" name="public_Benefits[0].Benefit" class="form-control" placeholder="المنفعة    "/> 
     </td> 
     <td class="col-sm-2"> 
-      <input type="number" name="Monthlycost" class="form-control" placeholder="00000" onkeyup="calculateTot()"/>
+      <input type="number" name="public_Benefits[0].MonthlyCost" class="form-control" placeholder="00000" onkeyup="calculateTot()"/>
     </td> 
     <td > 
       <input disabled type="number" name="yearcost" class="form-control" placeholder="0000000"/>
@@ -1416,7 +1371,7 @@
               />
 
             </div>
-            <button type="submit" class="btn btn-success btn-submit">حفظ</button>
+            <input type="submit" id="createButton" class="btn btn-success"/>
             </form>
 
           </div>
@@ -1455,5 +1410,43 @@
 
 
 @section Scripts {
+    <script>
+
+ $(document).ready(function () {
+        $("#createButton").click(function ()
+        {
+            var inputData = $('form').serializeArray();  
+            $.ajax(
+            {
+                type: "POST", //HTTP POST Method
+                url: "Create", // Controller/View
+                data: inputData,
+                success : function(response) {
+                    console.log(response)
+                }
+            });
+
+        });
+    });
+
+  </script>
+  <script>
+      function initMap() {
+        var test= {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: test
+        });
+        var marker = new google.maps.Marker({
+          position: test,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src=
+"https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

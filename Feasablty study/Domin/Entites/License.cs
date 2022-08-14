@@ -1,4 +1,5 @@
 ﻿using Feasablty_study.Domin.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Feasablty_study.Models
 {
@@ -7,7 +8,8 @@ namespace Feasablty_study.Models
         public int Id { get; set; }
         public string LicenseType { get; set; }
         public string Licenses { get; set; }
-        public int PreliminaryStudyId { get; set; }
-        public Preliminary_study preliminary_Study { get; set; }
+        [ForeignKey("Feasibility_study")]
+        public virtual int Feasibility_StudyId { get; set; }
+        public virtual Feasibility_study Feasibility_Study { get; set; }
     }
 }

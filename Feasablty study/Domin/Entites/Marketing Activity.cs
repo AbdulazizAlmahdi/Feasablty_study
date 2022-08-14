@@ -1,5 +1,6 @@
 ﻿using Feasablty_study.Domin.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Feasablty_study.Models
 {
@@ -8,10 +9,12 @@ namespace Feasablty_study.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public decimal Amount { get; set; }
-        public int MarketStudyId { get; set; }
-        public Market_study market_Study { get; set; }
-        
+        public float Amount { get; set; }
+        [ForeignKey("Feasibility_study")]
+        public virtual int Feasibility_StudyId { get; set; }
+        public virtual Feasibility_study Feasibility_Study { get; set; }
+
+
 
     }
 }

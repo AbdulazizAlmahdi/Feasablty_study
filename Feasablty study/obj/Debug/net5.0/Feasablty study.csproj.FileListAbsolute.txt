@@ -37,51 +37,6 @@ C:\Users\almahdi\source\repos\Feasablty study\Feasablty study\obj\Debug\net5.0\r
 C:\Users\almahdi\source\repos\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.pdb
 C:\Users\almahdi\source\repos\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.genruntimeconfig.cache
 C:\Users\almahdi\source\repos\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.CopyComplete
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.AssemblyReference.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.GeneratedMSBuildEditorConfig.editorconfig
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.AssemblyInfoInputs.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.AssemblyInfo.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.CoreCompileInputs.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.MvcApplicationPartsAssemblyInfo.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.MvcApplicationPartsAssemblyInfo.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorAssemblyInfo.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorAssemblyInfo.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\scopedcss\bundle\Feasablty study.styles.css
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\staticwebassets\Feasablty study.StaticWebAssets.Manifest.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\staticwebassets\Feasablty study.StaticWebAssets.xml
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.TagHelpers.input.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.TagHelpers.output.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorCoreGenerate.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Account\login.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\Create.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\Delete.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\Details.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\Edit.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\Index.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\_Identity.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\_LayoutWithoutHead.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Support_Messages\Create.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Support_Messages\Delete.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Support_Messages\Details.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Support_Messages\Index.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Users\Create.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Users\Delete.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Users\Details.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Users\Edit.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Users\Index.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorTargetAssemblyInfo.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorTargetAssemblyInfo.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.dll
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\ref\Feasablty study.dll
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.pdb
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\appsettings.Development.json
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\appsettings.json
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\Feasablty study.StaticWebAssets.xml
@@ -208,11 +163,56 @@ D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.Views.pdb
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.CopyComplete
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.genruntimeconfig.cache
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\AdminLayout.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.AssemblyReference.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.GeneratedMSBuildEditorConfig.editorconfig
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.AssemblyInfoInputs.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.AssemblyInfo.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.CoreCompileInputs.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.MvcApplicationPartsAssemblyInfo.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.MvcApplicationPartsAssemblyInfo.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorAssemblyInfo.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorAssemblyInfo.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\scopedcss\bundle\Feasablty study.styles.css
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\staticwebassets\Feasablty study.StaticWebAssets.Manifest.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\staticwebassets\Feasablty study.StaticWebAssets.xml
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.TagHelpers.input.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.TagHelpers.output.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorCoreGenerate.cache
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Account\AccountManage.cshtml.g.cs
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Account\ChangePassword.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Account\login.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\Create.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\Delete.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\Details.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\Edit.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\Index.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\AdminHomeLayout.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\AdminLayout.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\UserHomeLayout.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\_Identity.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\_LayoutWithoutHead.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Support_Messages\Create.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Support_Messages\Delete.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Support_Messages\Details.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Support_Messages\Index.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Users\Create.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Users\Delete.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Users\Details.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Users\Edit.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Users\Index.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorTargetAssemblyInfo.cache
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.RazorTargetAssemblyInfo.cs
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.Views.pdb
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.csproj.CopyComplete
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.dll
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\ref\Feasablty study.dll
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.pdb
+D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Feasablty study.genruntimeconfig.cache

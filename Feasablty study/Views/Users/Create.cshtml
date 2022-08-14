@@ -3,7 +3,7 @@
 
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "ادارة المستخدمين/انشاء مستخدم";
 }
 
 <h1>انشاء مستخدم</h1>
@@ -21,9 +21,14 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mb-3">
-                <label for="username" class="form-label" placeholder="ادخل اسم المستخدم" autofocus>الاسم</label>
+                <label for="Name" class="form-label" placeholder="الاسم " autofocus>الاسم</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
+            </div> 
+            <div class="form-group mb-3">
+                <label for="UserName" class="form-label" placeholder="ادخل اسم المستخدم" autofocus>ادخل اسم المستخدم</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">

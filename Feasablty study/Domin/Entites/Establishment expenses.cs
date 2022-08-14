@@ -1,4 +1,5 @@
 ﻿using Feasablty_study.Domin.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Feasablty_study.Models
 {
@@ -6,9 +7,10 @@ namespace Feasablty_study.Models
     {
         public int Id { get; set; }
 
-        public string TypeOfExpense { get; set; }
-        public string PriceOfExpens { get; set; }
-        public int TechnicalStudyId { get; set; }
-        public Technical_Study technical_Study { get; set; }
+        public string Type { get; set; }
+        public float Price { get; set; }
+        [ForeignKey("Feasibility_study")]
+        public virtual int Feasibility_StudyId { get; set; }
+        public virtual Feasibility_study Feasibility_Study { get; set; }
     }
 }

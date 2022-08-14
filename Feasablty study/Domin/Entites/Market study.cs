@@ -1,26 +1,25 @@
 ﻿using Feasablty_study.Domin.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Feasablty_study.Models
 {
-    public class Market_study : IEntityBase
+    public class Market_study 
     {
-        public int Id { get; set; }
+        [ForeignKey("Feasibility_study")]
+        [Key]
+        public int FeasibilityStudyId { get; set; }
         public string AvailbleOpportunity { get; set; }
-        public string CompetitiveAdavantages { get; set; }
-        public string Logography { get; set; }
-        public string WatermarkMarketd { get; set; }
-
+        public string StrengthPoints { get; set; }
+        public string MarketGap { get; set; }
+        public string TargetMarket { get; set; }
         public string ProjectLocationOnTheMap { get; set; }
         public string PointsOfEwakness { get; set; }
-        public string Threats  { get; set; }
-        public int FeasibilityStudyId { get; set; }
-        public Feasibility_study feasibility_study { get; set; }
-        public ICollection <Competitors> competitors { get; set; }
-        public ICollection<Expected_revenue> expected_Revenues { get; set; }
-        public ICollection<Marketing_Activity> marketing_Activities { get; set; }
-        public ICollection<Risk> risks { get; set; }
-       
+        public string Threats { get; set; }
+        public virtual Feasibility_study feasibility_study { get; set; }
+
+
     }
 }

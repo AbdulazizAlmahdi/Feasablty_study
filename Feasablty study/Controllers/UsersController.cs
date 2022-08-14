@@ -168,8 +168,6 @@ namespace Feasablty_study.Controllers
         }
           public async Task<IActionResult> disbleOrEnableUser(string id)
         {
-            var users = await userRepo.GetAllAsync();
-            ViewBag.UserCount = users.Count();
             await userRepo.EnableAndDisbleUser(id);
             return RedirectToAction(nameof(Index));
 

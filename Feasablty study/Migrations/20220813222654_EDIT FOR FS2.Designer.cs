@@ -4,14 +4,16 @@ using Feasablty_study.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Feasablty_study.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220813222654_EDIT FOR FS2")]
+    partial class EDITFORFS2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -296,7 +298,10 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("AvailbleOpportunity")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MarketGap")
+                    b.Property<string>("CompetitiveAdavantages")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Logography")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PointsOfEwakness")
@@ -305,13 +310,10 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("ProjectLocationOnTheMap")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StrengthPoints")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TargetMarket")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Threats")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WatermarkMarketd")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FeasibilityStudyId");
@@ -354,9 +356,6 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FactorsRepresentedOnLowDemand")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MessageOfTheProject")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProjectObjectives")

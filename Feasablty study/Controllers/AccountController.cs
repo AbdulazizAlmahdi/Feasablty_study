@@ -144,7 +144,7 @@ namespace Feasablty_study.Controllers
                     }
 
                     else
-                        TempData["Error"] = "كلمة السر القديمة خاطئة";
+                        TempData["Error"] = "كلمة المرور السابقة خاطئة";
 
             }
 
@@ -155,7 +155,7 @@ namespace Feasablty_study.Controllers
         }
         public async Task<IActionResult> ChangePassword()
         {
-            return View();
+            return  View();
                
         }
 

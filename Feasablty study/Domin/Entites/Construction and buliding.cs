@@ -1,5 +1,6 @@
 ﻿using Feasablty_study.Domin.Interfaces;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Feasablty_study.Models
 {
@@ -9,12 +10,18 @@ namespace Feasablty_study.Models
 
         public string BuildingType { get; set; }
 
-        public string Title { get; set; }
+        public float PricePerMeter { get; set; }
 
-        public string SendPrivateSender { get; set; }
+        public float TotalArea { get; set; }
+        public float TotalPriceArea {  
+            get { return PricePerMeter * TotalArea;}
+            set=>value= PricePerMeter * TotalArea;
+                
 
-        public DateTime DateTime { get; set; }
-        public int TechnicalStudyId { get; set; }
-        public Technical_Study technical_Study { get; set; }
+        }
+
+        [ForeignKey("Feasibility_study")]
+        public virtual int Feasibility_StudyId { get; set; }
+        public virtual Feasibility_study Feasibility_Study { get; set; }
     }
 }
