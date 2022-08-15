@@ -97,9 +97,8 @@ namespace Feasablty_study.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateFeasibilityStudyViewModel model)
         {
-
-
-            await _feasibilityStudyRepo.AddAsync(model, _userManager.GetUserId(User));
+            string UserId = _userManager.GetUserId(User);
+            await _feasibilityStudyRepo.AddAsync(model,UserId);
             return View(model);
 
            // return View(feasibility_study);

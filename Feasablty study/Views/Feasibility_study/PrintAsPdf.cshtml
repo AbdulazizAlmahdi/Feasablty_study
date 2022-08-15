@@ -466,8 +466,6 @@
                 <tr>
                   <th colspan=5 scope="col">الاجمــــــــــــــالي </th> 
                   <th scope="col"> <input id="totalall" disabled type="number" name="totalall" class="form-control" value="@Model.market_Study.TotalExpected_revenue"/> </th>
-                  <th scope="col">   
-                  </th>
                 </tr>
               </thead>
   </table>
@@ -994,10 +992,175 @@
 
   <br />
   <hr />
-
-    <hr> 
+  <h1>المصروفات النقدية التشغيلية للسنة الاولى</h1>
   <br />
+  <table class="table table-bordered">
+                <thead class="table-info">
+             <tr>
+                 <th scope="col">المصروف(البند)</th> 
+						<th scope="col">التكلفة/السعر  </th>
+						
+					</tr>
+            </thead>
+              <tbody>
+                  <tr>
+                      <td>التسويق</td>
+                      <td>@Model.market_Study.TotalMarketing_Activity</td>
+                  </tr>   
+                  
+                  <tr>
+                      <td>الايجارات</td>
+                      <td>@Model.technical_Study.TotalRentals</td>
+                  </tr>
+                  <tr>
+                      <td>الاجور</td>
+                      <td>@Model.technical_Study.TotalManpower_workforce</td>
+                  </tr>
+                  <tr>
+                      <td>الرسوم الحكومية</td>
+                      <td>@Model.technical_Study.TotalGovernment_fees</td>
+                  </tr>
+                  <tr>
+                      <td>المنافع العامة</td>
+                      <td>@Model.technical_Study.TotalPublic_benefit</td>
+                  </tr>
+                  <tr>
+                      <td>المواد الخام</td>
+                      <td>@Model.technical_Study.TotalRaw_materials</td>
+                  </tr>
+                  <tr>
+                      <td>الاهلاك السنوي</td>
+                      <td>@Model.technical_Study.AnnualDepreciation</td>
+                  </tr>
+                  <tr>
+                      <td>الصيانة</td>
+                      <td>@Model.technical_Study.AnnualAaintenance</td>
+                  </tr>
+                  <tr>
+                      <td>الاجمالي</td>
+                      <td>@Model.TotalOperatingExpenseseOneYear</td>
+                  </tr>
+                  
+              </tbody>
+              </table>
+    @{
 
+    }
+              <br />
+              <hr />
+              <h4>الدورة التشغيلية للمشروع = @Model.technical_Study.OperationalCycle</h4>
+              <br />
+              <br />
+              <hr />
+
+              <h4>راس المال العامل =@Model.WorkingCapital</h4>
+              <br />
+              <br />
+              <hr />
+    @{
+        double total = @Model.technical_Study.TotalMachinery_Equipment + @Model.technical_Study.TotalGovernment_fees + @Model.technical_Study.TotalEstablishment_expenses + @Model.WorkingCapital;
+    }
+
+              <h1>التكاليف الاستثمارية</h1>
+  <br />
+  <table class="table table-bordered">
+                <thead class="table-info">
+             <tr>
+                 <th scope="col">التكلفة(البند)</th> 
+						<th scope="col">السعر</th>
+						
+					</tr>
+            </thead>
+              <tbody>
+                  <tr>
+                      <td>راس المال الثابت</td>
+                      <td>@Model.technical_Study.TotalMachinery_Equipment</td>
+                  </tr>   
+                  
+                  <tr>
+                      <td>الرسوم الحكومية</td>
+                      <td>@Model.technical_Study.TotalGovernment_fees</td>
+                  </tr>
+                  <tr>
+                      <td>مصاريف التاسيس</td>
+                      <td>@Model.technical_Study.TotalEstablishment_expenses</td>
+                  </tr>
+                  <tr>
+                      <td>راس المال العامل</td>
+                      <td>@Model.WorkingCapital</td>
+                  </tr>
+                  <tr>
+                      <td>راس المال المطلوب</td>
+                      <td>@total</td>
+                  </tr>
+                 
+                  
+              </tbody>
+              </table>
+
+
+<br />
+<hr />
+    @{
+
+        double totalAssetes = @Model.technical_Study.TotalMachinery_Equipment + @Model.technical_Study.TotalEstablishment_expenses + @Model.technical_Study.TotalGovernment_fees;
+        double totalinver = totalAssetes + @Model.WorkingCapital;
+    }
+
+<h1>تقدير التكلفة الاستثمارية</h1>
+  <br />
+  <table class="table table-bordered">
+                <thead class="table-info">
+             <tr>
+                 <th scope="col">التسلسل</th> 
+                 <th scope="col">(البند)</th> 
+						<th scope="col">القيمة</th>
+						
+					</tr>
+            </thead>
+              <tbody>
+                  <tr>
+                      <td rowspan=4>أ</td>
+                      <td colspan=2>الاصول الثابتة</td>
+                  </tr>   
+                  
+                  <tr>
+
+                      <td>الانشاءات و الالات و المعدات</td>
+                      <td>@Model.technical_Study.TotalMachinery_Equipment</td>
+                  </tr><tr>
+
+                      <td>الرسوم الحكومية</td>
+                      <td>@Model.technical_Study.TotalGovernment_fees</td>
+                  </tr>
+                  <tr>
+                      <td>مصاريف التاسيس</td>
+                      <td>@Model.technical_Study.TotalEstablishment_expenses</td>
+                  </tr>
+                  <tr>
+                      <td colspan=2>اجمالي الاصول الثابتة</td>
+                      <td>@totalAssetes</td>
+                  </tr>
+                  <tr>
+                      <td>ب</td>
+                      <td>راس المال العامل</td>
+                      <td>@Model.WorkingCapital</td>
+                  </tr>
+                  <tr>
+                      <td colspan=2>اجمالي التكاليف الاستثمارية (أ + ب)</td>
+                      <td>@totalinver</td>
+                  </tr>
+                 
+                  
+              </tbody>
+              </table>
+
+
+<br />
+<hr />
+
+
+    
 
 </body>
 <script src="~/assets/vendor/libs/jquery/jquery.js"></script>

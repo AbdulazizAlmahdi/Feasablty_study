@@ -133,6 +133,7 @@ namespace Feasablty_study.Infrastructure.Repository
             fs.technical_Study.TotalRaw_materials = 0;
             fs.technical_Study.TotalGovernment_fees = 0;
             fs.technical_Study.TotalRentals = 0;
+            fs.technical_Study.OperationalCycle = model.Technical_Study.OperationalCycle;
 
             fs.machinery_Equipment = new List<Machinery_Equipment>();
 
@@ -249,10 +250,10 @@ namespace Feasablty_study.Infrastructure.Repository
                 fs.public_Benefits.Add(It);
                 fs.technical_Study.TotalPublic_benefit += It.YearlyCost;
             }
-
+            fs.TotalOperatingExpenseseOneYear = fs.market_Study.TotalMarketing_Activity + fs.technical_Study.TotalOperatingExpensese;
+            fs.WorkingCapital = fs.TotalOperatingExpenseseOneYear / fs.technical_Study.OperationalCycle;
 
             await context1.Feasibility_studies.AddAsync(fs);
-            // fs.market_Study.competitors.ToList();
             context1.SaveChanges();
         }
     }

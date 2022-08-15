@@ -1300,6 +1300,17 @@
 </table>
 </div>
 <br><br>
+<div class="col-sm-6">
+            <label class="form-label" for="basic-icon-default-email"> الدورة التشسغيلية للمشروع</label>
+            <div class="input-group input-group-merge">
+              <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+              <input min=1 max=12 asp-for="@Model.Technical_Study.OperationalCycle"
+                type="number"
+                class="form-control"
+              />
+            </div>
+            <div class="form-text">من خلال الدورة التشغيلة يتم ادخال عدد الشهور التي يحتاج المشروع لانتاج المنتجات و شراء المواد الخام  </div>
+          </div>
     
 
             <div class="d-flex col-12 justify-content-between">
@@ -1371,7 +1382,7 @@
             </div>
             <input type="submit" id="createButton" class="btn btn-success"/>
             </form>
-
+            
           </div>
         </div>
       

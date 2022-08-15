@@ -22,6 +22,8 @@ namespace Feasablty_study.Models
         public string OwnerName { get; set; }
         public string ProjectEmail { get; set; }
         public string ContactNumber { get; set; }
+        public double TotalOperatingExpenseseOneYear { get; set; }
+        public double WorkingCapital { get; set; }
         public User user { get; set; }
         [ForeignKey("User")]
         public string UserId { get; set; }
