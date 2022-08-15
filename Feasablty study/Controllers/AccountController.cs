@@ -31,11 +31,11 @@ namespace Feasablty_study.Controllers
             TempData["Error"] = null;
             if (ModelState.IsValid)
             {
-                var userName = loginVM.Email;
+                var UserName = loginVM.Email;
                 var user = await _userManager.FindByEmailAsync(loginVM.Email);
                 if (user != null)
                 {
-                    userName = user.UserName;
+                    UserName = user.UserName;
                     var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
                     if (passwordCheck)
                     {
@@ -153,7 +153,7 @@ namespace Feasablty_study.Controllers
            
                 
         }
-        public async Task<IActionResult> ChangePassword()
+        public  IActionResult ChangePassword()
         {
             return  View();
                

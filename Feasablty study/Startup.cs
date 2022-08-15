@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Rotativa.AspNetCore;
 using System;
 
 namespace Feasablty_study
@@ -87,6 +88,8 @@ namespace Feasablty_study
             });
             AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
             AppDbInitializer.Seed(app);
+            RotativaConfiguration.Setup("wwwroot");
+
         }
     }
 }

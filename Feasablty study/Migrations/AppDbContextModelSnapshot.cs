@@ -314,6 +314,12 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("Threats")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<float>("TotalExpected_revenue")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalMarketing_Activity")
+                        .HasColumnType("real");
+
                     b.HasKey("FeasibilityStudyId");
 
                     b.ToTable("Market_study");
@@ -519,6 +525,36 @@ namespace Feasablty_study.Migrations
                 {
                     b.Property<int>("FeasibilityStudyId")
                         .HasColumnType("int");
+
+                    b.Property<double>("AnnualAaintenance")
+                        .HasColumnType("float");
+
+                    b.Property<double>("AnnualDepreciation")
+                        .HasColumnType("float");
+
+                    b.Property<float>("TotalConstruction_and_buliding")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalEstablishment_expenses")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalGovernment_fees")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalMachinery_Equipment")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalManpower_workforce")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalPublic_benefit")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalRaw_materials")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalRentals")
+                        .HasColumnType("real");
 
                     b.HasKey("FeasibilityStudyId");
 

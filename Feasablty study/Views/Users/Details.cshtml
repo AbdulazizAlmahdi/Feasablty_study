@@ -6,16 +6,16 @@
     ViewData["Title"] = "عرض التفاصيل للمستخدم";
 }
 
-<h1>عرض التفاصيل للمستخدم</h1>
-
-    <div class="row">
-        <div class="col-md-5 col-lg-5 col-xl-4 order-1 order-md-0">
+            <h1>عرض التفاصيل للمستخدم</h1> 
+            <div class="row">
+              <div class="authentication-wrapper authentication-basic container-p-y">
                   <!-- User Card -->
+               <div class="authentication-inner py-4">
                   <div class="card">
                     <div class="card-body">
                       <div class="user-avatar-section">
                         <div class="d-flex flex-column align-items-center">
-                          <img class="img-fluid rounded my-4" src="../../assets/img/avatars/9.png" height="110" width="110" alt="User avatar">
+                          <img class="img-fluid rounded my-4" src="../../assets/img/avatars/adminuser.png" height="110" width="110" alt="User avatar">
                           <div class="user-info text-center">
                             <h5 class="mb-2">@Html.DisplayFor(model => model.Name)</h5>
                           </div>
@@ -29,20 +29,12 @@
                             <span>@Html.DisplayFor(model => model.UserName)</span>
                           </li>
                           <li class="mb-3">
-                            <span class="fw-bold me-2">الأيميل :</span>
+                            <span class="fw-bold me-2">الأيمل :</span>
                             <span>@Html.DisplayFor(model => model.Email)</span>
                           </li>
                           <li class="mb-3">
                             <span class="fw-bold me-2">الحالة:</span>
-                            @if(Model.Status)
-                            {
-                                <span class="badge bg-label-success">نشط</span>
-                            }
-                           else
-                            {
-                                <span class="badge bg-label-danger">متوقف</span>
-                            }
-
+                            <span class="badge bg-label-success">نشط</span>
                           </li>
                           <li class="mb-3">
                             <span class="fw-bold me-2">الايميل:</span>
@@ -56,7 +48,7 @@
                             <span class="fw-bold me-2">تاريخ الانشاء</span>
                             <span>@Html.DisplayFor(model => model.CreationDate)</span>
                           </li>
-                          <li class="mb-3">
+                            <li class="mb-3">
                             <span class="fw-bold me-2">نوع المستخدم:</span>
                             
                             @if(await UserManager.IsInRoleAsync(Model,"Admin"))
@@ -71,14 +63,15 @@
                            
                           </li>
                         </ul>
-                        <div class="d-flex justify-content-center pt-3">
-                          <a class="btn btn-primary me-3" asp-action="Edit" asp-route-id="@Model.Id">تعديل</a>
-                          <a class="btn btn-label-danger suspend-user" asp-action="Index">عودة للقائمة </a>
-                        </div>
-                      </div>
+
+                       <hr/>
+                <div class="d-flex justify-content-center pt-3">
+                          <a class="btn btn-warning me-3" asp-action="Edit" asp-route-id="@Model.Id">تعديل</a>
+                          <a class="btn btn-label-success suspend-user" asp-action="Index">عودة للقائمة </a>
+                        </div>         
+                 </div>
+                   </div>
                     </div>
                   </div>
-           
                 </div>
-                </div>
-        
+               </div>

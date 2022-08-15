@@ -18,6 +18,9 @@ namespace Feasablty_study.Models
         public string ProjectLocationOnTheMap { get; set; }
         public string PointsOfEwakness { get; set; }
         public string Threats { get; set; }
+
+        public float TotalExpected_revenue { get; set; }
+        public float TotalMarketing_Activity { get; set; }
         public virtual Feasibility_study feasibility_study { get; set; }
 
 
