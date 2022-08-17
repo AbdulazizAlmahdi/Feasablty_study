@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Feasablty_study.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220815211306_aaaa")]
-    partial class aaaa
+    [Migration("20220816150200_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -146,6 +146,9 @@ namespace Feasablty_study.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("NetProfit")
+                        .HasColumnType("float");
 
                     b.Property<string>("OwnerName")
                         .HasColumnType("nvarchar(max)");

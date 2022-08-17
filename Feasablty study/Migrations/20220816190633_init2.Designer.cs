@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Feasablty_study.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220808140754_init33")]
-    partial class init33
+    [Migration("20220816190633_init2")]
+    partial class init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.6")
+                .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Feasablty_study.Models.Competitors", b =>
@@ -37,18 +37,15 @@ namespace Feasablty_study.Migrations
                     b.Property<double>("CompetitorsPrice")
                         .HasColumnType("float");
 
-                    b.Property<int>("MarketStudyId")
+                    b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
                     b.Property<string>("Products")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("market_StudyId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("market_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Competitors");
                 });
@@ -63,24 +60,21 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("BuildingType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("SendPrivateSender")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TechnicalStudyId")
+                    b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("PricePerMeter")
+                        .HasColumnType("real");
 
-                    b.Property<int?>("technical_StudyId")
-                        .HasColumnType("int");
+                    b.Property<float>("TotalArea")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalPriceArea")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("technical_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Construction_and_buliding");
                 });
@@ -92,21 +86,18 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("PriceOfExpens")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TechnicalStudyId")
+                    b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
-                    b.Property<string>("TypeOfExpense")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
-                    b.Property<int?>("technical_StudyId")
-                        .HasColumnType("int");
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("technical_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Establishment_expenses");
                 });
@@ -118,7 +109,7 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("MarketStudyId")
+                    b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
                     b.Property<int>("MonthlyQusntity")
@@ -130,12 +121,15 @@ namespace Feasablty_study.Migrations
                     b.Property<float>("ProductPrice")
                         .HasColumnType("real");
 
-                    b.Property<int?>("market_StudyId")
-                        .HasColumnType("int");
+                    b.Property<float>("TotalMonthlyPrice")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalYearlyPrice")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("market_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Expected_revenue");
                 });
@@ -150,10 +144,22 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("ContactNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateTime")
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("NetProfit")
+                        .HasColumnType("float");
+
+                    b.Property<string>("OwnerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("ProfitRate")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("ProjectDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("ProjectEmail")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProjectLocation")
@@ -170,8 +176,17 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("ProjectType")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("TotalOperatingExpenseseOneYear")
+                        .HasColumnType("float");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("WorkingCapital")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Zakat")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -187,21 +202,18 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("DrawingDomestic")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameFees")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TechnicalStudyId")
+                    b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("technical_StudyId")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("technical_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Government_fees");
                 });
@@ -213,21 +225,18 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Feasibility_StudyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("LicenseType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Licenses")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PreliminaryStudyId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("preliminary_StudyId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("preliminary_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("License");
                 });
@@ -239,7 +248,13 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("NameEquipment")
+                    b.Property<int>("Feasibility_StudyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameSupplier")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Number")
@@ -248,18 +263,12 @@ namespace Feasablty_study.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.Property<int>("TechnicalStudyId")
-                        .HasColumnType("int");
-
-                    b.Property<float>("TotleAll")
+                    b.Property<float>("TotalPrice")
                         .HasColumnType("real");
-
-                    b.Property<int?>("technical_StudyId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("technical_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Machinery_Equipment");
                 });
@@ -271,45 +280,40 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Feasibility_StudyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("JobTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("MonthlySalary")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("MonthlySalary")
+                        .HasColumnType("real");
 
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<int>("TechnicalStudyId")
-                        .HasColumnType("int");
+                    b.Property<float>("TotalMonthlySalary")
+                        .HasColumnType("real");
 
-                    b.Property<int?>("technical_StudyId")
-                        .HasColumnType("int");
+                    b.Property<float>("TotalYearlySalary")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("technical_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Manpower_workforce");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Market_study", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("FeasibilityStudyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("AvailbleOpportunity")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CompetitiveAdavantages")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FeasibilityStudyId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Logography")
+                    b.Property<string>("MarketGap")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PointsOfEwakness")
@@ -318,16 +322,22 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("ProjectLocationOnTheMap")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("StrengthPoints")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TargetMarket")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Threats")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WatermarkMarketd")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("TotalExpected_revenue")
+                        .HasColumnType("real");
 
-                    b.HasKey("Id");
+                    b.Property<float>("TotalMarketing_Activity")
+                        .HasColumnType("real");
 
-                    b.HasIndex("FeasibilityStudyId")
-                        .IsUnique();
+                    b.HasKey("FeasibilityStudyId");
 
                     b.ToTable("Market_study");
                 });
@@ -339,31 +349,26 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<float>("Amount")
+                        .HasColumnType("real");
 
-                    b.Property<int>("MarketStudyId")
+                    b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("market_StudyId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("market_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Marketing_Activity");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Preliminary_study", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("FeasibilityStudyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CteristicsOfTheProjectArea")
                         .HasColumnType("nvarchar(max)");
@@ -374,8 +379,8 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("FactorsRepresentedOnLowDemand")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FeasibilityStudyId")
-                        .HasColumnType("int");
+                    b.Property<string>("MessageOfTheProject")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProjectObjectives")
                         .HasColumnType("nvarchar(max)");
@@ -383,10 +388,7 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("VisionOfTheProject")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("FeasibilityStudyId")
-                        .IsUnique();
+                    b.HasKey("FeasibilityStudyId");
 
                     b.ToTable("Preliminary_study");
                 });
@@ -401,18 +403,18 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("Benefit")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("MonthlyCost")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("TechnicalStudyId")
+                    b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("technical_StudyId")
-                        .HasColumnType("int");
+                    b.Property<float>("MonthlyCost")
+                        .HasColumnType("real");
+
+                    b.Property<float>("YearlyCost")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("technical_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Public_benefit");
                 });
@@ -424,27 +426,30 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("PriceOfUnity")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Feasibility_StudyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Material")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("PriceOfUnity")
+                        .HasColumnType("real");
 
                     b.Property<int>("QuantityRequiredMonthly")
                         .HasColumnType("int");
 
-                    b.Property<string>("Subject")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("TotalPriceQuantityMonthly")
+                        .HasColumnType("real");
 
-                    b.Property<int>("TechnicalStudyId")
-                        .HasColumnType("int");
+                    b.Property<float>("TotalPriceQuantityYearly")
+                        .HasColumnType("real");
 
                     b.Property<string>("Unit")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("technical_StudyId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("technical_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Raw_materials");
                 });
@@ -456,21 +461,18 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("LeaseType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RentQuantity")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TechnicalStudyId")
+                    b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("technical_StudyId")
-                        .HasColumnType("int");
+                    b.Property<string>("RentalType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("RentalYearly")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("technical_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Rentals");
                 });
@@ -491,18 +493,15 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("DescriptionRisk")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MarketStudyId")
+                    b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
                     b.Property<string>("TypeRisk")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("market_StudyId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("market_StudyId");
+                    b.HasIndex("Feasibility_StudyId");
 
                     b.ToTable("Risk");
                 });
@@ -541,18 +540,46 @@ namespace Feasablty_study.Migrations
 
             modelBuilder.Entity("Feasablty_study.Models.Technical_Study", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int>("FeasibilityStudyId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<double>("AnnualAaintenance")
+                        .HasColumnType("float");
 
-                    b.HasIndex("FeasibilityStudyId")
-                        .IsUnique();
+                    b.Property<double>("AnnualDepreciation")
+                        .HasColumnType("float");
+
+                    b.Property<int>("OperationalCycle")
+                        .HasColumnType("int");
+
+                    b.Property<float>("TotalConstruction_and_buliding")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalEstablishment_expenses")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalGovernment_fees")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalMachinery_Equipment")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalManpower_workforce")
+                        .HasColumnType("real");
+
+                    b.Property<double>("TotalOperatingExpensese")
+                        .HasColumnType("float");
+
+                    b.Property<float>("TotalPublic_benefit")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalRaw_materials")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalRentals")
+                        .HasColumnType("real");
+
+                    b.HasKey("FeasibilityStudyId");
 
                     b.ToTable("Technical_Study");
                 });
@@ -765,38 +792,46 @@ namespace Feasablty_study.Migrations
 
             modelBuilder.Entity("Feasablty_study.Models.Competitors", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Market_study", "market_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("competitors")
-                        .HasForeignKey("market_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("market_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Construction_and_buliding", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Technical_Study", "technical_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("construction_And_Bulidings")
-                        .HasForeignKey("technical_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("technical_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Establishment_expenses", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Technical_Study", "technical_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("establishment_Expenses")
-                        .HasForeignKey("technical_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("technical_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Expected_revenue", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Market_study", "market_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("expected_Revenues")
-                        .HasForeignKey("market_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("market_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Feasibility_study", b =>
@@ -810,38 +845,46 @@ namespace Feasablty_study.Migrations
 
             modelBuilder.Entity("Feasablty_study.Models.Government_fees", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Technical_Study", "technical_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("Government_Fees")
-                        .HasForeignKey("technical_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("technical_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.License", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Preliminary_study", "preliminary_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("licenses")
-                        .HasForeignKey("preliminary_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("preliminary_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Machinery_Equipment", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Technical_Study", "technical_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("machinery_Equipment")
-                        .HasForeignKey("technical_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("technical_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Manpower_workforce", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Technical_Study", "technical_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("Manpower_Workforces")
-                        .HasForeignKey("technical_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("technical_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Market_study", b =>
@@ -857,11 +900,13 @@ namespace Feasablty_study.Migrations
 
             modelBuilder.Entity("Feasablty_study.Models.Marketing_Activity", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Market_study", "market_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("marketing_Activities")
-                        .HasForeignKey("market_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("market_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Preliminary_study", b =>
@@ -877,38 +922,46 @@ namespace Feasablty_study.Migrations
 
             modelBuilder.Entity("Feasablty_study.Models.Public_benefit", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Technical_Study", "technical_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("public_Benefits")
-                        .HasForeignKey("technical_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("technical_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Raw_materials", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Technical_Study", "technical_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("raw_Materials")
-                        .HasForeignKey("technical_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("technical_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Rentals", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Technical_Study", "technical_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("rentals")
-                        .HasForeignKey("technical_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("technical_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Risk", b =>
                 {
-                    b.HasOne("Feasablty_study.Models.Market_study", "market_Study")
+                    b.HasOne("Feasablty_study.Models.Feasibility_study", "Feasibility_Study")
                         .WithMany("risks")
-                        .HasForeignKey("market_StudyId");
+                        .HasForeignKey("Feasibility_StudyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("market_Study");
+                    b.Navigation("Feasibility_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.Support_Messages", b =>
@@ -984,46 +1037,37 @@ namespace Feasablty_study.Migrations
 
             modelBuilder.Entity("Feasablty_study.Models.Feasibility_study", b =>
                 {
-                    b.Navigation("market_Study");
-
-                    b.Navigation("Preliminary_study");
-
-                    b.Navigation("technical_Study");
-                });
-
-            modelBuilder.Entity("Feasablty_study.Models.Market_study", b =>
-                {
                     b.Navigation("competitors");
 
-                    b.Navigation("expected_Revenues");
-
-                    b.Navigation("marketing_Activities");
-
-                    b.Navigation("risks");
-                });
-
-            modelBuilder.Entity("Feasablty_study.Models.Preliminary_study", b =>
-                {
-                    b.Navigation("licenses");
-                });
-
-            modelBuilder.Entity("Feasablty_study.Models.Technical_Study", b =>
-                {
                     b.Navigation("construction_And_Bulidings");
 
                     b.Navigation("establishment_Expenses");
 
+                    b.Navigation("expected_Revenues");
+
                     b.Navigation("Government_Fees");
+
+                    b.Navigation("licenses");
 
                     b.Navigation("machinery_Equipment");
 
                     b.Navigation("Manpower_Workforces");
+
+                    b.Navigation("market_Study");
+
+                    b.Navigation("marketing_Activities");
+
+                    b.Navigation("Preliminary_study");
 
                     b.Navigation("public_Benefits");
 
                     b.Navigation("raw_Materials");
 
                     b.Navigation("rentals");
+
+                    b.Navigation("risks");
+
+                    b.Navigation("technical_Study");
                 });
 
             modelBuilder.Entity("Feasablty_study.Models.User", b =>

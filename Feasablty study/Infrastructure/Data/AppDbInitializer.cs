@@ -339,7 +339,8 @@ namespace Feasablty_study.Infrastructure.Data
                         Name = "Admin User",
                         UserName = "admin-user",
                         Email = adminUserEmail,
-                        EmailConfirmed = false,
+                        EmailConfirmed = true,
+                        Status=true,
                         PhoneNumber = "773019241",
                         
                     };
@@ -358,7 +359,8 @@ namespace Feasablty_study.Infrastructure.Data
                         Name = "Application User",
                         UserName = "app-user",
                         Email = appUserEmail,
-                        EmailConfirmed = false,
+                        EmailConfirmed = true,
+                        Status = true,
                         PhoneNumber = "773019241",
                     };
                     await userManager.CreateAsync(newAppUser, "Coding@1234?");

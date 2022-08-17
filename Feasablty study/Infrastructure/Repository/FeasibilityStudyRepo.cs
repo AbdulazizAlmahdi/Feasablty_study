@@ -4,6 +4,7 @@ using Feasablty_study.Infrastructure.Data;
 using Feasablty_study.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Feasablty_study.Infrastructure.Repository
 {
@@ -41,10 +42,12 @@ namespace Feasablty_study.Infrastructure.Repository
                 ProjectEmail=model.feasibility_Study.ProjectEmail,
             };
             fs.Preliminary_study = new Preliminary_study();
-            fs.Preliminary_study.CteristicsOfTheProjectArea = string.Join(",", model.CteristicsOfTheProjectArea);
-            fs.Preliminary_study.FactorsRepresentedOnIncreasedDemand = string.Join(",", model.FactorsRepresentedOnIncreasedDemand);
-            fs.Preliminary_study.FactorsRepresentedOnLowDemand = string.Join(",", model.FactorsRepresentedOnLowDemand);
-            fs.Preliminary_study.ProjectObjectives = string.Join(",", model.ProjectGoals);
+           // string[] CteristicsOfTheProjectArea = new string[];
+            //foreach
+            fs.Preliminary_study.CteristicsOfTheProjectArea = string.Join("<br/>", model.CteristicsOfTheProjectArea.Where(s=>s!="false"));
+            fs.Preliminary_study.FactorsRepresentedOnIncreasedDemand = string.Join("<br/>", model.FactorsRepresentedOnIncreasedDemand.Where(s => s != "false"));
+            fs.Preliminary_study.FactorsRepresentedOnLowDemand = string.Join("<br/>", model.FactorsRepresentedOnLowDemand.Where(s => s != "false"));
+            fs.Preliminary_study.ProjectObjectives = string.Join("<br/>", model.ProjectGoals.Where(s => s != "false"));
 
             fs.Preliminary_study.VisionOfTheProject = model.preliminary_Study.VisionOfTheProject;
 
@@ -61,12 +64,12 @@ namespace Feasablty_study.Infrastructure.Repository
                 fs.licenses.Add(It);
             }
             fs.market_Study = new Market_study();
-            fs.market_Study.AvailbleOpportunity = string.Join(",", model.AvailbleOpportunity);
-            fs.market_Study.StrengthPoints = string.Join(",", model.StrengthPoints);
-            fs.market_Study.TargetMarket = string.Join(",", model.TargetMarket);
-            fs.market_Study.PointsOfEwakness = string.Join(",", model.PointsOfEwakness);
+            fs.market_Study.AvailbleOpportunity = string.Join("<br/>", model.AvailbleOpportunity.Where(s => s != "false"));
+            fs.market_Study.StrengthPoints = string.Join("<br/>", model.StrengthPoints.Where(s => s != "false"));
+            fs.market_Study.TargetMarket = string.Join("<br/>", model.TargetMarket.Where(s => s != "false"));
+            fs.market_Study.PointsOfEwakness = string.Join("<br/>", model.PointsOfEwakness.Where(s => s != "false"));
             //fs.market_Study.ProjectLocationOnTheMap = model.Market_Study.ProjectLocationOnTheMap;
-            fs.market_Study.Threats = string.Join(",", model.Threats);
+            fs.market_Study.Threats = string.Join("<br/>", model.Threats.Where(s => s != "false"));
             fs.market_Study.MarketGap = model.Market_Study.MarketGap;
             fs.market_Study.TotalExpected_revenue = 0;
             fs.market_Study.TotalMarketing_Activity = 0;
@@ -252,7 +255,9 @@ namespace Feasablty_study.Infrastructure.Repository
             }
             fs.TotalOperatingExpenseseOneYear = fs.market_Study.TotalMarketing_Activity + fs.technical_Study.TotalOperatingExpensese;
             fs.WorkingCapital = fs.TotalOperatingExpenseseOneYear / fs.technical_Study.OperationalCycle;
-
+            fs.Zakat = fs.market_Study.TotalExpected_revenue * 0.025;
+            fs.NetProfit = fs.TotalOperatingExpenseseOneYear - fs.market_Study.TotalExpected_revenue-fs.Zakat;
+            fs.ProfitRate = (fs.NetProfit / fs.TotalOperatingExpenseseOneYear) * 100;
             await context1.Feasibility_studies.AddAsync(fs);
             context1.SaveChanges();
         }

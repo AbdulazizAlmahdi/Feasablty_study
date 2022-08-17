@@ -69,3 +69,13 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+body {
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: black;
+    border-width: medium;
+    padding-left:50px;
+    padding-right:50px;
+}

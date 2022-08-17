@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Rotativa.AspNetCore;
+using Rotativa.AspNetCore.Options;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,6 +30,7 @@ namespace Feasablty_study.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+        
 
         // GET: Feasibility_study
         public async Task<IActionResult> Index()
@@ -39,7 +42,8 @@ namespace Feasablty_study.Controllers
 
             }
             else
-            {
+            {     
+
                 var allfeasibilityStudy = await _feasibilityStudyRepo.GetAllAsync();
                 var allForUserfeasibilityStudy=allfeasibilityStudy.ToList().FindAll(i => i.UserId == _userManager.GetUserId(User));
                 return View(allForUserfeasibilityStudy) ;
@@ -66,8 +70,18 @@ namespace Feasablty_study.Controllers
                 c=>c.rentals,
                 c=>c.raw_Materials,
                 c=>c.public_Benefits
-                );     
-            return new ViewAsPdf("PrintAsPdf", feasibilitystudy);
+                );
+            return new ViewAsPdf("PrintAsPdf", feasibilitystudy)
+            {
+                PageOrientation = Orientation.Portrait,
+                MinimumFontSize = 30,
+                PageSize = Size.A4,
+                CustomSwitches =/* "--footer-center \" Created Date:" +
+                DateTime.Now.Date.ToString("dd/MM/yyy") +" Page:[page]/[toPage]\" " +
+                "--footer-line --footer-font-size \"12\" --footer-spacing 1 --footer-font -name \"Segoe UI\""
+             */
+               " --print-media-type --no-background --footer-line --header-line --page-offset 0 --footer-center [page] --footer-font-size 8 --footer-right \"page [page] from [topage]\"  "
+            };
         }
 
         // GET: Feasibility_study/Details/5
@@ -97,6 +111,7 @@ namespace Feasablty_study.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateFeasibilityStudyViewModel model)
         {
+            
             string UserId = _userManager.GetUserId(User);
             await _feasibilityStudyRepo.AddAsync(model,UserId);
             return View(model);
@@ -107,6 +122,7 @@ namespace Feasablty_study.Controllers
         // GET: Feasibility_study/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+           // String.Split()
             if (id == null)
             {
                 return NotFound();

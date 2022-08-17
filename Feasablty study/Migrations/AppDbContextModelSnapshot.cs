@@ -145,8 +145,14 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("NetProfit")
+                        .HasColumnType("float");
+
                     b.Property<string>("OwnerName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("ProfitRate")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("ProjectDate")
                         .HasColumnType("datetime2");
@@ -175,6 +181,9 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<double>("WorkingCapital")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Zakat")
                         .HasColumnType("float");
 
                     b.HasKey("Id");

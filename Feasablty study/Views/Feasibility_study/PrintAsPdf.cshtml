@@ -1,8 +1,10 @@
 ﻿@model Feasablty_study.Models.Feasibility_study
+@using System.Text;
+
 
 @{
     ViewData["Title"] = "PrintAsPdf";
-    Layout = null;
+  Layout = null;
 }
 
 <!DOCTYPE html>
@@ -10,8 +12,19 @@
 <html dir="rtl">
     <head>
         <style>
-            .nobr{display:inline-block}
-            h3{display:inline-block}
+      
+ .page {
+  width: 100%;
+  padding-top:50px;
+  page-break-after: always;
+  page-break-inside: avoid;
+}
+#pre{
+    width:100%;
+
+}
+
+td{color:black }
             
         </style>
          <link rel="icon" type="image/x-icon" href="~/img/favicon/favicon.ico" />
@@ -22,17 +35,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
 
-        <link rel="stylesheet" href="~/assets/vendor/fonts/boxicons.css" />
     <link rel="stylesheet" href="~/assets/vendor/fonts/fontawesome.css" />
-    <link rel="stylesheet" href="~/assets/vendor/fonts/flag-icons.css" />
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="~/assets/vendor/css/rtl/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="~/css/site.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="~/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="~/assets/css/demo.css" />
 
       <!-- Vendors CSS -->
   <link rel="stylesheet" href="~/assets/vendor/libs/leaflet/leaflet.css" />
@@ -45,7 +55,6 @@
   <link rel="stylesheet" href="~/assets/vendor/libs/flatpickr/flatpickr.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/typeahead-js/typeahead.css" />
-  <link rel="stylesheet" href="~/assets/vendor/libs/bs-stepper/bs-stepper.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/select2/select2.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
@@ -53,20 +62,10 @@
   <link rel="stylesheet" href="~/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css" />
   <!-- Form Validation -->
   <link rel="stylesheet" href="~/assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
-  <link rel="stylesheet" href="~/assets/vendor/css/pages/page-auth.css" />
 
-    <!-- Page CSS -->
 
-    
-    <!-- Helpers -->
-    <script src="~/assets/vendor/js/helpers.js"></script>
 
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-      <script src="~/assets/vendor/js/template-customizer.js"></script>
 
-      <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="~/assets/js/config.js"></script>
-    <script src="~/assets/js/MessageTable.js"></script>
     </head>
 
     <body>
@@ -76,11 +75,12 @@
                     <br/>
                 <hr/>               
                 </div>
+
                
-       
+       <div class="page">
                         
         <div style="text-align:center">
-            <img src="~/assets/img/favicon/F-S.jpg" width="350" height="350"/>
+            <img src="~/assets/img/favicon/F-S.jpg"/>
             <h1>نظام دراسة الجدوى  </h1>
             <h2>وثيقة طباعة دراسة</h2>
         </div>
@@ -88,30 +88,18 @@
         <br /> <br /> <br />
         <div style="direction:rtl; text-align:center">
             <div>
-                <h2 class="nobr"> اسم المشروع:</h2> <h3>&nbsp&nbsp @Html.DisplayFor(model => model.ProjectName)</h3>
+                 <h1 style="font-size:3rem">&nbsp&nbsp @Html.DisplayFor(model => model.ProjectName)</h1>
             </div>
-            <div>
-                <h2 class="nobr">الوصف:</h2> <h3>&nbsp&nbsp @Html.DisplayFor(model => model.Description)</h3>
             </div>
-            <div>
-                <h2 class="nobr">تاريخ التنفيذ:</h2> <h3>&nbsp&nbsp @Html.DisplayFor(model => model.ProjectDate)</h3>
-            </div>
-            <div>
-                <h2 class="nobr">الموقع:</h2> <h3>&nbsp&nbsp @Html.DisplayFor(model => model.ProjectLocation)</h3>
-            </div>
-            <div>
-                <h2 class="nobr">صاحب المشروع:</h2> <h3>&nbsp&nbsp @Html.DisplayFor(model => model.OwnerName)</h3>
-            </div>
+
+
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-                    <hr/>
+        <div class="page">
+            <img id="pre" src="~/assets/img/favicon/COVER.jpg"/>
+        </div>
+        <div class="page">
             <!-- مكان الجدول الاول في الدراسة -->
-            <h2> <strong> التراخيص اللازمة للمشروع </strong></h2>
+            <h2> <strong> المعلومات العامة للمشروع </strong></h2>
             <table class="table table-bordered" id="LicenseType">
                 <thead class="table-info">
               <tr>
@@ -196,14 +184,8 @@
               </tbody> 
             </table>
 
-
-                <br>
-                <hr> 
-        <br />    
-        <br>
-         <hr> 
-
-
+            </div>
+            <div class="page">
         <h1>الرؤية  للمشروع</h1>
         <p>@Html.DisplayFor(model=>Model.Preliminary_study.VisionOfTheProject)</p>  
         <hr> 
@@ -211,30 +193,58 @@
         <h1>رسالة المشروع</h1>
         <p>@Html.DisplayFor(model=>Model.Preliminary_study.MessageOfTheProject)</p>
 
-        <hr> 
         <br />
-        <h1>ااهداف المشروع</h1>
-        <p>@Html.DisplayFor(model=>Model.Preliminary_study.ProjectObjectives)</p>
+        @{
+            string[] ProjectObjectives = @Model.Preliminary_study.ProjectObjectives.Split("<br/>");
+            string[] CteristicsOfTheProjectArea = @Model.Preliminary_study.CteristicsOfTheProjectArea.Split("<br/>");
+            string[] FactorsRepresentedOnIncreasedDemand = @Model.Preliminary_study.FactorsRepresentedOnIncreasedDemand.Split("<br/>");
+            string[] FactorsRepresentedOnLowDemand = @Model.Preliminary_study.FactorsRepresentedOnLowDemand.Split("<br/>");
+            string[] AvailbleOpportunity = @Model.market_Study.AvailbleOpportunity.Split("<br/>");
+            string[] PointsOfEwakness = @Model.market_Study.PointsOfEwakness.Split("<br/>");
+            string[] StrengthPoints = @Model.market_Study.StrengthPoints.Split("<br/>");
+            string[] TargetMarket = @Model.market_Study.TargetMarket.Split("<br/>");
+            string[] Threats = @Model.market_Study.Threats.Split("<br/>");
 
-        <hr> 
-        <br />
-        <h1>خصائص المشروع</h1>
-        <p>@Html.DisplayFor(model=>Model.Preliminary_study.CteristicsOfTheProjectArea)</p>
+        }
+        <h1>اهداف المشروع</h1>
+        <ul>
+        @foreach(var item in ProjectObjectives)
+        {
+            <li>@item</li>
+        }
+        </ul> 
+                <h1>خصائص المشروع</h1>
+
+        <ul>
+        @foreach(var item in CteristicsOfTheProjectArea)
+        {
+            <li>@item</li>
+        }
+        </ul>
+
+               <h1>العوامل المؤثرة على زيادة الطلب  على خدمات او منتجات المشروع</h1>
 
         
-        <hr> 
+        <ul>
+        @foreach(var item in FactorsRepresentedOnIncreasedDemand)
+        {
+            <li>@item</li>
+        }
+        </ul>  
         <br />
-        <h1>العوامل المؤثرة على زيادة الطلب  على خدمات او منتجات المشروع</h1>
-        <p>@Html.DisplayFor(model=>Model.Preliminary_study.FactorsRepresentedOnIncreasedDemand)</p>
 
+                  <h1>العوامل المؤثرة على انخفاض الطلب  على خدمات او منتجات المشروع</h1>
 
         
-        <hr> 
-        <br />
-        <h1>العوامل المؤثرة على انخفاض الطلب  على خدمات او منتجات المشروع</h1>
-        <p>@Html.DisplayFor(model=>Model.Preliminary_study.FactorsRepresentedOnLowDemand)</p>
+        <ul>
+        @foreach(var item in FactorsRepresentedOnLowDemand)
+        {
+            <li>@item</li>
+        }
+        </ul>
 
-        <hr> 
+       
+
         <br />
         <h1>التراخيص</h1>  
         <table class="table table-bordered" id="LicenseType">
@@ -264,29 +274,21 @@
     }
     </tbody> 
   </table>
+  </div>
 
-  <hr />
-  <br />
-
+<div class="page">
   <h1>الاسواق المستهدفة</h1>
-  <p>@Html.DisplayFor(m=>m.market_Study.TargetMarket)</p>
 
-
-  <br />
-   <hr />
-  <br />
-
-  <h1>الاسواق المستهدفة</h1>
-  <p>@Html.DisplayFor(m=>m.market_Study.TargetMarket)</p>
-
+        
+        <ul>
+        @foreach(var item in TargetMarket)
+        {
+            <li>@item</li>
+        }
+        </ul>
 
   <br />
-  <hr> 
-  <br />
 
-
-  <hr> 
-  <br />
 
 
 
@@ -334,84 +336,56 @@
     </tbody> 
   </table>
 
-  <br />
-  <hr />
+ 
     <br />
-   <hr />
   <br />
 
   <h1>نقاط القوة للمشروع</h1>
-  <p>@Html.DisplayFor(m=>m.market_Study.StrengthPoints)</p>
+          
+        <ul>
+        @foreach(var item in StrengthPoints)
+        {
+            <li>@item</li>
+        }
+        </ul>
 
 
-  <br />
-  <hr> 
-  <br /> 
-  
-  <br />
-   <hr />
-  <br />
 
   <h1>نقاط الضعف للمشروع</h1>
-  <p>@Html.DisplayFor(m=>m.market_Study.PointsOfEwakness)</p>
+          
+        <ul>
+        @foreach(var item in PointsOfEwakness)
+        {
+            <li>@item</li>
+        }
+        </ul>
 
-
-  <br />
-  <hr> 
-  <br /> 
-  <br />
-   <hr />
+  
   <br />
 
   <h1>الفرص المتاحة للمشروع</h1>
-  <p>@Html.DisplayFor(m=>m.market_Study.AvailbleOpportunity)</p>
+          
+        <ul>
+        @foreach(var item in AvailbleOpportunity)
+        {
+            <li>@item</li>
+        }
+        </ul>
 
-
-  <br />
-  <hr> 
   <br /> 
   
-  <br />
-   <hr />
-  <br />
-
   <h1>التهديدات للمشروع</h1>
-  <p>@Html.DisplayFor(m=>m.market_Study.Threats)</p>
-
-
-  <br />
-  <hr> 
-  <br /> 
-  
-  
-  <br />
-   <hr />
-  <br />
+          
+        <ul>
+        @foreach(var item in Threats)
+        {
+            <li>@item</li>
+        }
+        </ul>
 
   <h1>الفجوة السوقية</h1>
   <p>@Html.DisplayFor(m=>m.market_Study.MarketGap)</p>
 
-  <br />
-  <hr> 
-  <br /> 
-  
-  <br />
-   <hr />
-  <br />
-
-  <h1>الفجوة السوقية</h1>
-  <p>@Html.DisplayFor(m=>m.market_Study.MarketGap)</p>
-
-  <br />
-  <hr> 
-  <br />
-
-
-
-  <br />
-
-
-  <hr> 
   <br />
 
 
@@ -471,13 +445,8 @@
   </table>
 
   <br />
-  <hr />
-
-  
-  <hr> 
-  <br />
-
-
+  </div>
+  <div class="page">
 
         <h1>الخطة التسويقية</h1> 
         <h3>وتصرف الخطة التسويقية كالتالي :</h3>
@@ -642,15 +611,11 @@
                 </tr>
               </thead>
   </table>
-
-  <br />
-  <hr />
-
-    <hr> 
-  <br />
-
   
-    <hr> 
+</div>
+
+
+<div class="page">
   <br />
 
           <h1>التجهيزات (الالات والمعدات والاثاث ووسائل النقل الخ</h1> 
@@ -704,16 +669,6 @@
   </table>
 
   <br />
-  <hr />
-
-    <hr> 
-  <br />
-
-
-
-  
-    <hr> 
-  <br />
 
           <h1>القوى العاملة اللازمة لتشغيل المشروع</h1> 
         <table class="table table-bordered">
@@ -764,17 +719,9 @@
                 </tr>
               </thead>
   </table>
+  </div>
 
-  <br />
-  <hr />
-
-    <hr> 
-  <br />
-
-
-  
-    <hr> 
-  <br />
+  <div class="page">
 
           <h1>الرسوم الحكومية والضرائب</h1> 
         <table class="table table-bordered">
@@ -871,15 +818,10 @@
               </thead>
   </table>
 
-  <br />
-  <hr />
+</div>
 
-    <hr> 
-  <br />  
 
-  
-    <hr> 
-  <br />
+<div class="page">
 
           <h1>المواد الخام</h1> 
         <table class="table table-bordered">
@@ -938,13 +880,10 @@
   <br />
   <hr />
 
-    <hr> 
-  <br />
-
+   
   <!-- الاهلاك السنوي-->
 
   
-    <hr> 
   <br />
 
           <h1>المنافع العامة</h1> 
@@ -990,8 +929,11 @@
               </thead>
   </table>
 
-  <br />
-  <hr />
+
+  </div>
+
+
+  <div class="page">
   <h1>المصروفات النقدية التشغيلية للسنة الاولى</h1>
   <br />
   <table class="table table-bordered">
@@ -1043,20 +985,19 @@
                   
               </tbody>
               </table>
-    @{
 
-    }
-              <br />
-              <hr />
+</div>
+
+
+<div class="page">
+
               <h4>الدورة التشغيلية للمشروع = @Model.technical_Study.OperationalCycle</h4>
-              <br />
-              <br />
-              <hr />
+                 <br />
+
 
               <h4>راس المال العامل =@Model.WorkingCapital</h4>
               <br />
-              <br />
-              <hr />
+
     @{
         double total = @Model.technical_Study.TotalMachinery_Equipment + @Model.technical_Study.TotalGovernment_fees + @Model.technical_Study.TotalEstablishment_expenses + @Model.WorkingCapital;
     }
@@ -1100,13 +1041,16 @@
 
 
 <br />
-<hr />
+
+</div>
     @{
 
         double totalAssetes = @Model.technical_Study.TotalMachinery_Equipment + @Model.technical_Study.TotalEstablishment_expenses + @Model.technical_Study.TotalGovernment_fees;
         double totalinver = totalAssetes + @Model.WorkingCapital;
     }
 
+
+<div class="page">
 <h1>تقدير التكلفة الاستثمارية</h1>
   <br />
   <table class="table table-bordered">
@@ -1157,55 +1101,120 @@
 
 
 <br />
+
+
+
+<br />
+  <hr />
+  <h1>تكاليف التشغيل السنوية</h1>
+  <br />
+  <table class="table table-bordered">
+                <thead class="table-info">
+             <tr>
+                 <th scope="col">المصروف(البند)</th> 
+                 <th scope="col">نوع التكليف</th> 
+						<th scope="col">التكلفة/السعر  </th>
+						
+					</tr>
+            </thead>
+              <tbody>
+                  <tr>
+                      <td>التسويق</td>
+                      <td>ثابت</td>
+                      <td>@Model.market_Study.TotalMarketing_Activity</td>
+                  </tr>   
+                  
+                  <tr>
+                      <td>الايجارات</td>
+                      <td>ثابتة</td>
+                      <td>@Model.technical_Study.TotalRentals</td>
+                  </tr>
+                  <tr>
+                      <td>الاجور</td>
+                      <td>ثابتة</td>
+                      <td>@Model.technical_Study.TotalManpower_workforce</td>
+                  </tr>
+                  <tr>
+                      <td>الرسوم الحكومية</td>
+                      <td>ثابتة</td>
+                      <td>@Model.technical_Study.TotalGovernment_fees</td>
+                  </tr>
+                  <tr>
+                      <td>المنافع العامة</td>
+                      <td>متغيرة</td>
+                      <td>@Model.technical_Study.TotalPublic_benefit</td>
+                  </tr>
+                  <tr>
+                      <td>المواد الخام</td>
+                      <td>متغيرة</td>
+                      <td>@Model.technical_Study.TotalRaw_materials</td>
+                  </tr>
+                  <tr>
+                      <td>الاهلاك السنوي</td>
+                      <td>ثابت</td>
+                      <td>@Model.technical_Study.AnnualDepreciation</td>
+                  </tr>
+                  <tr>
+                      <td>الصيانة</td>
+                      <td>ثابتة</td>
+                      <td>@Model.technical_Study.AnnualAaintenance</td>
+                  </tr>
+                  <tr>
+                      <td colspan=2 class="page-breaker">اجمالي نفقات التشغيل</td>
+                      <td>@Model.TotalOperatingExpenseseOneYear</td>
+                  </tr>
+                  
+              </tbody>
+              </table>
+</div>
+<div class="page">
+
+    @{
+        string[] Lables = { "ايرادات الخدمات", "مصروف التسويق", "المواد الخام", "الايجار", "المنافع", "الصيانة", "الرواتب", "الاهلاك", "الرسوم الحكومية", "مقدار الزكاة", "اجمالي المصروفات", "صافي الارباح","نسبة الارباح" };
+        
+}
+<br />
 <hr />
 
+  <h3 class="center">اعداد قائمة الدخل السنةالاولى من عمر المشروع</h3>
+  <br />
+  <table class="table table-bordered">
+                <thead class="table-info">
+             <tr>  
+                 <th scope="col">المصروف(البند)</th> 
+             @foreach(var item in Lables)
+            {
+              <th scope="col">@item</th> 
+            }
+			</tr>
+            </thead>
+              <tbody>
+            
+                <tr>
+                      <td>المبلغ</td>
+                      <td>@Model.market_Study.TotalExpected_revenue</td>
+                      <td>@Model.market_Study.TotalMarketing_Activity</td>
+                      <td>@Model.technical_Study.TotalRaw_materials</td>
+                      <td>@Model.technical_Study.TotalRentals</td>
+                      <td>@Model.technical_Study.TotalPublic_benefit</td>
+                      <td>@Model.technical_Study.AnnualAaintenance</td>
+                      <td>@Model.technical_Study.TotalManpower_workforce</td>
+                      <td>@Model.technical_Study.AnnualDepreciation</td>
+                      <td>@Model.technical_Study.TotalGovernment_fees</td>
+                      <td>@Model.Zakat</td>
+                      <td>@Model.TotalOperatingExpenseseOneYear</td>
+                      <td>@Model.NetProfit</td>
+                      <td>@Model.ProfitRate%</td>
+                  </tr>
+                 
+                  
+              </tbody>
+              </table>
 
-    
 
+</div>
 </body>
-<script src="~/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="~/assets/vendor/libs/popper/popper.js"></script>
-    <script src="~/assets/vendor/js/bootstrap.js"></script>
-    <script src="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="~/assets/vendor/libs/hammer/hammer.js"></script>
-    <script src="~/assets/vendor/libs/i18n/i18n.js"></script>
-    <script src="~/assets/vendor/libs/typeahead-js/typeahead.js"></script>
 
-    <script src="~/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-    <script src="~/assets/vendor/libs/datatables/jquery.dataTables.js"></script>
-    <script src="~/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-    <script src="~/assets/vendor/libs/datatables-responsive/datatables.responsive.js"></script>
-    <script src="~/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.js"></script>
-    <script src="~/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.js"></script>
-    <script src="~/assets/vendor/libs/datatables-buttons/datatables-buttons.js"></script>
-    <script src="~/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.js"></script>
-    <script src="~/assets/vendor/libs/jszip/jszip.js"></script>
-    <script src="~/assets/vendor/libs/pdfmake/pdfmake.js"></script>
-    <script src="~/assets/vendor/libs/datatables-buttons/buttons.html5.js"></script>
-    
-    <script src="~/assets/vendor/libs/datatables-buttons/buttons.print.js"></script>
-    <script src="~/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
-    <script src="~/assets/vendor/libs/leaflet/leaflet.js"></script>
-    <!-- Flat Picker -->
-    <script src="~/assets/vendor/libs/moment/moment.js"></script>
-    <script src="~/assets/vendor/libs/flatpickr/flatpickr.js"></script>
-    <!-- Row Group JS -->
-    <script src="~/assets/vendor/libs/datatables-rowgroup/datatables.rowgroup.js"></script>
-    <script src="~/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.js"></script>
-    <!-- Form Validation -->
-    <script src="~/assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
-
-     <!-- Main JS -->
-     <script src="~/assets/js/main.js"></script>
-
-     <!-- Page JS -->
-     <script src="~/assets/js/form-wizard-icons.js"></script>
-     <script src="~/assets/js/tables-datatables-basic.js"></script>
-     <script src="~/assets/js/form-wizard-validation.js"></script>
-     <script src="~/assets/js/maps-leaflet.js"></script>
     
     
     

@@ -4,65 +4,69 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1> تعديل البيانات</h1>
 
-<h4>Feasibility_study</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+
+<div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner py-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="user-avatar-section">
+                  <div class="d-flex flex-column align-items-center">
+                      <img class="img-fluid rounded my-4" src="../../assets/img/avatars/Edit.png" height="110" width="110" alt="User avatar">
+                         <div class="user-info text-center">
+                        <h4 class="border-bottom pb-2 mb-4">تعديل بيانات الدراسة</h4>
+                        </div>
+                       </div>
+                      </div>
+                      <hr/>
+    <div class="col-md">
+
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="ProjectName" class="control-label"></label>
+                <label asp-for="ProjectName" class="form-label"> اسم المشروع</label>
                 <input asp-for="ProjectName" class="form-control" />
                 <span asp-validation-for="ProjectName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+                <label asp-for="Description" class="form-label"> وصف المشروع</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProjectLocation" class="control-label"></label>
+                <label asp-for="ProjectLocation" class="form-label">موقع المشروع</label>
                 <input asp-for="ProjectLocation" class="form-control" />
                 <span asp-validation-for="ProjectLocation" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProjectType" class="control-label"></label>
+                <label asp-for="ProjectType" class="form-label">نوع المشروع</label>
                 <input asp-for="ProjectType" class="form-control" />
                 <span asp-validation-for="ProjectType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProjectLogo" class="control-label"></label>
-                <input asp-for="ProjectLogo" class="form-control" />
-                <span asp-validation-for="ProjectLogo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProjectDate" class="control-label"></label>
+                <label asp-for="ProjectDate" class="form-label">تاريخ بداية التنفيذ</label>
                 <input asp-for="ProjectDate" class="form-control" />
                 <span asp-validation-for="ProjectDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ContactNumber" class="control-label"></label>
-                <input asp-for="ContactNumber" class="form-control" />
+             <div class="form-group">
+               <label class="form-label" for="ContactNumber">رقم التواصل</label>
+                   <input asp-for="ContactNumber" class="form-control" />
                 <span asp-validation-for="ContactNumber" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-                <span asp-validation-for="UserId" class="text-danger"></span>
+            <hr/>
+                <div class="d-flex justify-content-center pt-3">
+                <input type="submit" value="تعديل البيانات" class="btn btn-warning d-grid w-50" />|
+                <a class="btn btn-label-success d-grid w-50" asp-action="Index">عودة للقائمة👈  </a>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+        </form>           
+        </div>
+         </div>
+          </div>
             </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+              </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

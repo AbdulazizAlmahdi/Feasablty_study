@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Feasablty_study.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220813222654_EDIT FOR FS2")]
-    partial class EDITFORFS2
+    [Migration("20220816152428_init1")]
+    partial class init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -147,6 +147,9 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("NetProfit")
+                        .HasColumnType("float");
+
                     b.Property<string>("OwnerName")
                         .HasColumnType("nvarchar(max)");
 
@@ -170,8 +173,17 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("ProjectType")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("TotalOperatingExpenseseOneYear")
+                        .HasColumnType("float");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("WorkingCapital")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Zakat")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -298,10 +310,7 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("AvailbleOpportunity")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CompetitiveAdavantages")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Logography")
+                    b.Property<string>("MarketGap")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PointsOfEwakness")
@@ -310,11 +319,20 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("ProjectLocationOnTheMap")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("StrengthPoints")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TargetMarket")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Threats")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WatermarkMarketd")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("TotalExpected_revenue")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalMarketing_Activity")
+                        .HasColumnType("real");
 
                     b.HasKey("FeasibilityStudyId");
 
@@ -356,6 +374,9 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FactorsRepresentedOnLowDemand")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MessageOfTheProject")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProjectObjectives")
@@ -518,6 +539,42 @@ namespace Feasablty_study.Migrations
                 {
                     b.Property<int>("FeasibilityStudyId")
                         .HasColumnType("int");
+
+                    b.Property<double>("AnnualAaintenance")
+                        .HasColumnType("float");
+
+                    b.Property<double>("AnnualDepreciation")
+                        .HasColumnType("float");
+
+                    b.Property<int>("OperationalCycle")
+                        .HasColumnType("int");
+
+                    b.Property<float>("TotalConstruction_and_buliding")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalEstablishment_expenses")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalGovernment_fees")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalMachinery_Equipment")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalManpower_workforce")
+                        .HasColumnType("real");
+
+                    b.Property<double>("TotalOperatingExpensese")
+                        .HasColumnType("float");
+
+                    b.Property<float>("TotalPublic_benefit")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalRaw_materials")
+                        .HasColumnType("real");
+
+                    b.Property<float>("TotalRentals")
+                        .HasColumnType("real");
 
                     b.HasKey("FeasibilityStudyId");
 

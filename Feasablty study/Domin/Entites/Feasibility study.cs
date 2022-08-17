@@ -24,12 +24,14 @@ namespace Feasablty_study.Models
         public string ContactNumber { get; set; }
         public double TotalOperatingExpenseseOneYear { get; set; }
         public double WorkingCapital { get; set; }
+        public double NetProfit { get; set; }
+        public double Zakat { get; set; }
+        public double ProfitRate { get; set; }
         public User user { get; set; }
         [ForeignKey("User")]
         public string UserId { get; set; }
         public Preliminary_study Preliminary_study { get; set; }
         public virtual ICollection<License> licenses { get; set; }
-
         public virtual Market_study market_Study { get; set; }
         public virtual ICollection<Competitors> competitors { get; set; }
         public virtual ICollection<Expected_revenue> expected_Revenues { get; set; }

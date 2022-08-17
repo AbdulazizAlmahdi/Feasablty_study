@@ -121,9 +121,9 @@ function Revenuerow() {
 
 
 	cell1.outerHTML = `<th> ${x-1}</th>`;
-	cell2.innerHTML = '<input type="text" name="expected_Revenues[ '+ (x - 2) +' ].ProductName" class="form-control" placeholder="اسم الصنف"/>  ';
-	cell3.innerHTML = ' <input type="number" name="expected_Revenues[' + (x - 2) +'].MonthlyQusntity" class="form-control" min="0"  placeholder="00" onkeyup="calculateTotalB()"/>';
-	cell4.innerHTML = ' <input  type="number" name=""expected_Revenues[' + (x - 2) +'].ProductPrice" class="form-control"  min="0"  placeholder="000" onkeyup="calculateTotalB()"/>';
+	cell2.innerHTML = '<input type="text" name="expected_Revenues['+(x - 2)+'].ProductName" class="form-control" placeholder="اسم الصنف"/>  ';
+	cell3.innerHTML = ' <input type="number" name="expected_Revenues['+(x - 2) +'].MonthlyQusntity" class="form-control" min="0"  placeholder="00" onkeyup="calculateTotalB()"/>';
+	cell4.innerHTML = ' <input  type="number" name="expected_Revenues[' + (x - 2) +'].ProductPrice" class="form-control"  min="0"  placeholder="000" onkeyup="calculateTotalB()"/>';
 	cell5.innerHTML = ' <input disabled type="number" name="totalMoth" class="form-control"    placeholder="0000" />';
 	cell6.innerHTML = ' <input disabled type="number" name="totalyear" class="form-control"    placeholder="0000000"/>';
 	cell7.innerHTML = '  <button type="button" class="btn btn-danger" class=btn btn-primary" id="add-row" onclick="deleteRow(\'' + id + '\')"> حذف</button> ';
@@ -653,3 +653,23 @@ function calculateTot() {
 	cell4.innerHTML = '<input disabled type="number" name="yearcost" class="form-control" placeholder="0000000"/>';
 	cell5.innerHTML = '  <button type="button" class="btn btn-danger" class=btn btn-primary" id="add-row" onclick="deleteRow(\'' + id + '\')"> حذف</button> ';
 }
+
+function OtherCheckBox(CheckBoxIdName, InputIdName) {
+	const otherCheckbox = document.querySelector(CheckBoxIdName);
+	const otherText = document.querySelector(InputIdName);
+	otherText.style.visibility = 'hidden';
+
+	otherCheckbox.addEventListener('change', () => {
+		if (otherCheckbox.checked) {
+			otherText.style.visibility = 'visible';
+			//otherText.value = '';
+		} else {
+			otherText.style.visibility = 'hidden';
+		}
+	});
+}
+
+
+
+
+

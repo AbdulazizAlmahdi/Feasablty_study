@@ -249,6 +249,7 @@
             asp-for="@Model.preliminary_Study.VisionOfTheProject"
             class="form-control bootstrap-maxlength-example"
             rows="3"
+             placeholder="ان تكون الجدوئ من الردود في بيع المنتجات الضخمه في منطقة صنعاء ..."
             maxlength="255"
             ></textarea>
             </div>
@@ -264,6 +265,7 @@
             asp-for="@Model.preliminary_Study.MessageOfTheProject"
             class="form-control bootstrap-maxlength-example"
             rows="3"
+            placeholder="تقديم الاغراض المختصه ذات الجودة العاليه والسعر المنافس للعملاء في منتطقة صنعاء وذلك بواسطة فريق عمل احترفي بجمع بين الخبره العلميه والمهنية ..."
             maxlength="255"
             ></textarea>
             </div>
@@ -300,10 +302,9 @@
             <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
             </div>
             <div class="form-check">
-            <input id="addClear"  asp-for="@Model.ProjectGoals[5]"  class="form-check-input" type="checkbox" value="اخرى" />
-            <label class="form-check-label" for="addClear"
-            >اخرى</label
-            >
+            <input id="OtherProjectGoals"  class="form-check-input" type="checkbox" value="other" />
+            <label class="form-check-label" for="addClear">اخرى</label>
+            <input type="text" id="OtherProjectGoalsValue" name="ProjectGoals[5]">
             </div>
 
             </div>
@@ -316,8 +317,8 @@
             <div class="row g-3">
             <div class="col-sm-6">
             <div class="form-check">
-            <input id="closeButton" asp-for="@Model.CteristicsOfTheProjectArea[0]" class="form-check-input" type="checkbox" value="توفير منتجات او خدمات بجوده عالية" />
-            <label class="form-check-label" for="closeButton">توفير منتجات او خدمات بجوده عالية</label>
+            <input id="closeButton" asp-for="@Model.CteristicsOfTheProjectArea[0]" class="form-check-input" type="checkbox" value="وجود احتياج وطلب علئ المنتج او الخدمه" />
+            <label class="form-check-label" for="closeButton">وجود احتياج وطلب علئ المنتج او الخدمه</label>
             </div>
             <div class="form-check">
             <input
@@ -325,27 +326,27 @@
             asp-for="@Model.CteristicsOfTheProjectArea[1]"
             class="form-check-input"
             type="checkbox"
-            value="توفير خدمات او منتجات بسعر مناسب"
+            value="عدم وجود منافس"
             />
-            <label class="form-check-label" for="addBehaviorOnToastClick">توفير خدمات او منتجات بسعر مناسب</label>
+            <label class="form-check-label" for="addBehaviorOnToastClick">عدم وجود منافس</label>
             </div>
             <div class="form-check">
-            <input id="debugInfo" asp-for="@Model.CteristicsOfTheProjectArea[2]" class="form-check-input" type="checkbox" value="دعم التوظيف والمساهمة في  الحد من البطالة" />
-            <label class="form-check-label" for="debugInfo">دعم التوظيف والمساهمة في  الحد من البطالة</label>
+            <input id="debugInfo" asp-for="@Model.CteristicsOfTheProjectArea[2]" class="form-check-input" type="checkbox" value="الخدمه/ المنتحات المقدمه من المنافسين ذات جودة منخفضة" />
+            <label class="form-check-label" for="debugInfo">الخدمه/ المنتحات المقدمه من المنافسين ذات جودة منخفضة</label>
             </div>
             <div class="form-check">
-            <input id="progressBar" asp-for="@Model.CteristicsOfTheProjectArea[3]" class="form-check-input" type="checkbox" value="توفير مصدر دخل لمؤسس المشروع" />
-            <label class="form-check-label" for="progressBar">توفير مصدر دخل لمؤسس المشروع</label>
+            <input id="progressBar" asp-for="@Model.CteristicsOfTheProjectArea[3]" class="form-check-input" type="checkbox" value="الخدمه/ المنتحات المقدمه من المنافسين ذات جودة مرتفع" />
+            <label class="form-check-label" for="progressBar">الخدمه/ المنتحات المقدمه من المنافسين ذات جودة مرتفع</label>
             </div>
             <div class="form-check">
-            <input id="preventDuplicates" asp-for="@Model.CteristicsOfTheProjectArea[4]" class="form-check-input" type="checkbox" value="دعم القطاع الخاص والاقتصاد الوطني" />
-            <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
+            <input id="preventDuplicates" asp-for="@Model.CteristicsOfTheProjectArea[4]" class="form-check-input" type="checkbox" value="زياده عدد السكان في منطقة المشروع" />
+            <label class="form-check-label" for="preventDuplicates">زياده عدد السكان في منطقة المشروع</label>
             </div>
             <div class="form-check">
-            <input id="addClear" asp-for="@Model.CteristicsOfTheProjectArea[5]" class="form-check-input" type="checkbox" value="اخرى" />
-            <label class="form-check-label" for="addClear"
-            >اخرى</label
-            >
+            <input id="OtherCteristicsOfTheProjectArea" class="form-check-input" type="checkbox" value="اخرى" />
+            <label class="form-check-label" for="addClear">اخرى</label>
+             <input  type="text" id="OtherCteristicsOfTheProjectAreaValue" name="CteristicsOfTheProjectArea[5]">
+
             </div>
 
             </div>
@@ -357,8 +358,8 @@
             <div class="row g-3">
             <div class="col-sm-6">
             <div class="form-check">
-            <input id="closeButton" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[0]" class="form-check-input" type="checkbox" value="توفير منتجات او خدمات بجوده عالية" />
-            <label class="form-check-label" for="closeButton">توفير منتجات او خدمات بجوده عالية</label>
+            <input id="closeButton" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[0]" class="form-check-input" type="checkbox" value="زيادة الطلب خلال الاجازة الصيفية" />
+            <label class="form-check-label" for="closeButton">زيادة الطلب خلال الاجازة الصيفية</label>
             </div>
             <div class="form-check">
             <input
@@ -366,29 +367,28 @@
             asp-for="@Model.FactorsRepresentedOnIncreasedDemand[1]" 
             class="form-check-input"
             type="checkbox"
-            value="توفير خدمات او منتجات بسعر مناسب"
+            value="يزداد الطلب خلال نهاية الاسبوع"
             />
             <label class="form-check-label" for="addBehaviorOnToastClick"
-            >توفير خدمات او منتجات بسعر مناسب</label
+            >يزداد الطلب خلال نهاية الاسبوع</label
             >
             </div>
             <div class="form-check">
-            <input id="debugInfo" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[2]"  class="form-check-input" type="checkbox" value="دعم التوظيف والمساهمة في  الحد من البطالة" />
-            <label class="form-check-label" for="debugInfo">دعم التوظيف والمساهمة في  الحد من البطالة</label>
+            <input id="debugInfo" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[2]"  class="form-check-input" type="checkbox" value="يزدز الطلب خلال ايام الدوام الرسمي" />
+            <label class="form-check-label" for="debugInfo">يزدز الطلب خلال ايام الدوام الرسمي</label>
             </div>
             <div class="form-check">
-            <input id="progressBar" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[3]"  class="form-check-input" type="checkbox" value="توفير مصدر دخل لمؤسس المشروع" />
-            <label class="form-check-label" for="progressBar">توفير مصدر دخل لمؤسس المشروع</label>
+            <input id="progressBar" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[3]"  class="form-check-input" type="checkbox" value="يزداد الطلب خلال فترة الصباح" />
+            <label class="form-check-label" for="progressBar">يزداد الطلب خلال فترة الصباح</label>
             </div>
             <div class="form-check">
-            <input id="preventDuplicates" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[4]"  class="form-check-input" type="checkbox" value="دعم القطاع الخاص والاقتصاد الوطني" />
-            <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
+            <input id="preventDuplicates" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[4]"  class="form-check-input" type="checkbox" value="يزداد الطلب خلال فتره المساء" />
+            <label class="form-check-label" for="preventDuplicates">يزداد الطلب خلال فتره المساء</label>
             </div>
             <div class="form-check">
-            <input id="addClear" asp-for="@Model.FactorsRepresentedOnIncreasedDemand[5]"  class="form-check-input" type="checkbox" value="اخرى" />
-            <label class="form-check-label" for="addClear"
-            >اخرى</label
-            >
+            <input id="OtherFactorsRepresentedOnIncreasedDemand"  class="form-check-input" type="checkbox" value="اخرى" />
+            <label class="form-check-label" for="addClear">اخرى</label>
+            <input  type="text" id="OtherFactorsRepresentedOnIncreasedDemandValue" name="FactorsRepresentedOnIncreasedDemand[5]">
             </div>
             </div>
             </div>
@@ -397,8 +397,8 @@
                <div class="row g-3">
                 <div class="col-sm-6">
                   <div class="form-check">
-                     <input id="closeButton" asp-for="@Model.FactorsRepresentedOnLowDemand[0]" class="form-check-input" type="checkbox" value="توفير منتجات او خدمات بجوده عالية" />
-                      <label class="form-check-label" for="closeButton">توفير منتجات او خدمات بجوده عالية</label>
+                     <input id="closeButton" asp-for="@Model.FactorsRepresentedOnLowDemand[0]" class="form-check-input" type="checkbox" value="ينخفض الطلب خلال الاجازة الصيفيه" />
+                      <label class="form-check-label" for="closeButton">ينخفض الطلب خلال الاجازة الصيفيه</label>
                  </div>
             <div class="form-check">
             <input
@@ -406,29 +406,29 @@
             asp-for="@Model.FactorsRepresentedOnLowDemand[1]"
             class="form-check-input"
             type="checkbox"
-            value="توفير خدمات او منتجات بسعر مناسب"
+            value="ينخفض الطلب خلال فترة المساء"
             />
             <label class="form-check-label" for="addBehaviorOnToastClick"
-            >توفير خدمات او منتجات بسعر مناسب</label
+            >ينخفض الطلب خلال فترة المساء</label
             >
             </div>
             <div class="form-check">
-            <input id="debugInfo" asp-for="@Model.FactorsRepresentedOnLowDemand[2]" class="form-check-input" type="checkbox" value="دعم التوظيف والمساهمة في  الحد من البطالة" />
-            <label class="form-check-label" for="debugInfo">دعم التوظيف والمساهمة في  الحد من البطالة</label>
+            <input id="debugInfo" asp-for="@Model.FactorsRepresentedOnLowDemand[2]" class="form-check-input" type="checkbox" value="ينخفض الطلب خلال نهاية الاسبوع" />
+            <label class="form-check-label" for="debugInfo">ينخفض الطلب خلال نهاية الاسبوع</label>
             </div>
             <div class="form-check">
-            <input id="progressBar" asp-for="@Model.FactorsRepresentedOnLowDemand[3]" class="form-check-input" type="checkbox" value="توفير مصدر دخل لمؤسس المشروع" />
-            <label class="form-check-label" for="progressBar">توفير مصدر دخل لمؤسس المشروع</label>
+            <input id="progressBar" asp-for="@Model.FactorsRepresentedOnLowDemand[3]" class="form-check-input" type="checkbox" value="ينخفض الطلب خلال ايام الدوام الرسمي" />
+            <label class="form-check-label" for="progressBar">ينخفض الطلب خلال ايام الدوام الرسمي</label>
             </div>
             <div class="form-check">
-            <input id="preventDuplicates" asp-for="@Model.FactorsRepresentedOnLowDemand[4]" class="form-check-input" type="checkbox" value="دعم القطاع الخاص والاقتصاد الوطني" />
-            <label class="form-check-label" for="preventDuplicates">دعم القطاع الخاص والاقتصاد الوطني</label>
+            <input id="preventDuplicates" asp-for="@Model.FactorsRepresentedOnLowDemand[4]" class="form-check-input" type="checkbox" value="ينخفض الطلب خلال فترة الصباح" />
+            <label class="form-check-label" for="preventDuplicates">ينخفض الطلب خلال فترة الصباح</label>
             </div>
             <div class="form-check">
-            <input id="addClear" asp-for="@Model.FactorsRepresentedOnLowDemand[5]" class="form-check-input" type="checkbox" value="اخرى" />
-            <label class="form-check-label" for="addClear"
-            >اخرى</label
-            >
+            <input id="OtherFactorsRepresentedOnLowDemand"  class="form-check-input" type="checkbox" value="اخرى" />
+            <label class="form-check-label" for="addClear">اخرى</label>
+             <input type="text" id="OtherFactorsRepresentedOnLowDemandValue" name="FactorsRepresentedOnLowDemand[5]">
+
             </div>
 
             </div>
@@ -508,12 +508,14 @@
                               <label class="form-check-label" for="progressBar">تصدير</label>
                             </div>
                             <div class="form-check">
-                              <input id="preventDuplicates" class="form-check-input" type="checkbox" value="حكومي">
+                              <input id="preventDuplicates" asp-for="@Model.TargetMarket[4]" class="form-check-input" type="checkbox" value="حكومي">
                               <label class="form-check-label" for="preventDuplicates">حكومي</label>
                             </div>
                             <div class="form-check">
-                              <input id="preventDuplicates" asp-for="@Model.TargetMarket[4]" class="form-check-input" type="checkbox" value="اخرى">
+                              <input id="OtherTargetMarket"  class="form-check-input" type="checkbox" value="اخرى">
                               <label class="form-check-label" for="preventDuplicates">اخرى</label>
+                               <input  type="text" id="OtherTargetMarketValue" name="TargetMarket[5]">
+
                             </div>  
                           </div>
                           <hr>
@@ -603,6 +605,12 @@
                       <input id="progressBar" asp-for="@Model.StrengthPoints[4]" class="form-check-input" type="checkbox" value="توفير راس المال ">
                       <label class="form-check-label" for="progressBar">توفير راس المال 	</label>
                     </div>
+                    <div class="form-check">
+                    <input id="OtherStrengthPoints"  class="form-check-input" type="checkbox" value="اخرى">
+                    <label class="form-check-label" for="debugInfo">اخرى</label>
+                     <input type="text" id="OtherStrengthPointsValue" name="StrengthPoints[5]">
+
+                    </div>
                         
                             
                           </div>
@@ -626,9 +634,11 @@
 									<input id="debugInfo"  asp-for="@Model.PointsOfEwakness[2]" class="form-check-input" type="checkbox" value="عدم وجود الخبرة">
 									<label class="form-check-label" for="debugInfo">عدم وجود الخبرة</label>
 									</div>
-                  <div class="form-check">
-                    <input id="debugInfo" asp-for="@Model.PointsOfEwakness[3]"  class="form-check-input" type="checkbox" value="اخرى">
+                     <div class="form-check">
+                    <input id="OtherPointsOfEwakness"  class="form-check-input" type="checkbox" value="اخرى">
                     <label class="form-check-label" for="debugInfo">اخرى</label>
+                     <input type="text" id="OtherPointsOfEwaknessValue" name="PointsOfEwakness[3]">
+
                     </div>
 								
 
@@ -684,12 +694,13 @@
 										دعم القطاع الخاص والاقتصاد الوطني
 								  </label>
 								  </div>
-								  <div class="list-group">
-                    <label class="list-style">
-                    <input asp-for="@Model.AvailbleOpportunity[8]" class="form-check-input me-1" type="checkbox" value="اخرى">
-                      اخرى
-                    </label>
-                    </div>
+                             <div class="form-check">
+                                                <input id="OtherAvailbleOpportunity"  class="form-check-input" type="checkbox" value="اخرى">
+                                                <label class="form-check-label" for="debugInfo">اخرى</label>
+                                                 <input type="text" id="OtherAvailbleOpportunityValue" name="AvailbleOpportunity[8]">
+
+                                 </div>
+
                           
 								
 
@@ -713,11 +724,12 @@
 									<input id="debugInfo"  asp-for="@Model.Threats[2]" class="form-check-input" type="checkbox" value="دخول المنافسين السوق">
 									<label class="form-check-label" for="debugInfo">دخول المنافسين السوق</label>
 									</div>
-									<div class="form-check">
-                    <input id="debugInfo"  asp-for="@Model.Threats[3]" class="form-check-input" type="checkbox" value="اخرى">
-                    <label class="form-check-label" for="debugInfo">اخرى  </label>
-                    </div>
+									 <div class="form-check">
+                    <input id="OtherThreats"  class="form-check-input" type="checkbox" value="اخرى">
+                    <label class="form-check-label" for="debugInfo">اخرى</label>
+                     <input type="text" id="OtherThreatsValue" name="Threats[3]">
 
+                    </div>
 								</div>
 							</div><br>
 							<hr>
@@ -1312,6 +1324,7 @@
             <div class="form-text">من خلال الدورة التشغيلة يتم ادخال عدد الشهور التي يحتاج المشروع لانتاج المنتجات و شراء المواد الخام  </div>
           </div>
     
+    
 
             <div class="d-flex col-12 justify-content-between">
               <button class="btn btn-primary btn-prev">
@@ -1437,25 +1450,18 @@
 
         });
     });
+    OtherCheckBox("#OtherProjectGoals", "#OtherProjectGoalsValue");
+OtherCheckBox("#OtherCteristicsOfTheProjectArea", "#OtherCteristicsOfTheProjectAreaValue");
+OtherCheckBox("#OtherFactorsRepresentedOnIncreasedDemand", "#OtherFactorsRepresentedOnIncreasedDemandValue");
+OtherCheckBox("#OtherFactorsRepresentedOnLowDemand", "#OtherFactorsRepresentedOnLowDemandValue");
+OtherCheckBox("#OtherTargetMarket", "#OtherTargetMarketValue");
+OtherCheckBox("#OtherStrengthPoints", "#OtherStrengthPointsValue");
+OtherCheckBox("#OtherPointsOfEwakness", "#OtherPointsOfEwaknessValue");
+OtherCheckBox("#OtherAvailbleOpportunity", "#OtherAvailbleOpportunityValue");
+OtherCheckBox("#OtherThreats", "#OtherThreatsValue");
+
 
   </script>
-  <script>
-      function initMap() {
-        var test= {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: test
-        });
-        var marker = new google.maps.Marker({
-          position: test,
-          map: map
-        });
-      }
-    </script>
-    <script async defer
-    src=
-"https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
 
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
