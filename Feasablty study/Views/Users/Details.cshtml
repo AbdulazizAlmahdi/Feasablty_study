@@ -56,9 +56,14 @@
                                 <span> ادمن</span>
                                 
                                 }
-                                else 
+                                else if(await UserManager.IsInRoleAsync(Model,"User"))
                                 {
                                       <span> مستخدم عادي</span>
+                                }
+
+                           else if(await UserManager.IsInRoleAsync(Model,"Employee"))
+                                {
+                                      <span> موظف ادراي</span>
                                 }
                            
                           </li>

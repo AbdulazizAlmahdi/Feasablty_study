@@ -1,13 +1,30 @@
 ﻿@using System.Linq;
+@using Feasablty_study.Infrastructure.Repository
 @using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
 @inject UserManager<User> UserManager; 
 @inject SignInManager<User> signInManager; 
 
 @{
-    var users = UserManager.Users;
-    ViewBag.UserCount =users.Count();
-    ViewBag.UserActiveCount =UserManager.Users.Where(a=>a.EmailConfirmed==true).Count();
-    ViewBag.UserdeactiveCount=UserManager.Users.Where(a=>a.EmailConfirmed==false).Count();
+
+    var currentuser = UserManager.Users.First(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
+    if (User.IsInRole("Admin"))
+    {
+        ViewBag.UserCount = UserManager.Users.Count();
+        ViewBag.UserActiveCount = UserManager.Users.Where(a => a.EmailConfirmed == true).Count();
+        ViewBag.UserdeactiveCount = UserManager.Users.Where(a => a.EmailConfirmed == false).Count();
+        ViewBag.FSCount = FeasibilityStudyRepo.count;
+    }
+    else 
+    {
+     ViewBag.UserCount =UserManager.Users.Where(u=>u.regionId == currentuser.regionId).Count()-1;
+    ViewBag.UserActiveCount =UserManager.Users.Where(a=>a.EmailConfirmed==true && a.regionId==currentuser.regionId).Count()-1;
+    ViewBag.UserdeactiveCount=UserManager.Users.Where(a=>a.EmailConfirmed==false && a.regionId==currentuser.regionId).Count()-1;
+    ViewBag.FSCount = FeasibilityStudyRepo.count;
+    }
+
+    
+
 
 }
 <div class="row g-4 mb-4">
@@ -18,7 +35,7 @@
                         <div class="content-left">
                           <span>الدراسات</span>
                           <div class="d-flex align-items-end mt-2">
-                            <h4 class="me-2 mb-0">21,459</h4>
+                            <h4 class="me-2 mb-0">@ViewBag.FSCount</h4>
                             <small class="text-success">(+29%)</small>
                           </div>
                           <small>عدد الدراسات</small>

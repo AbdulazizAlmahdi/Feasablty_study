@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Feasablty_study.Domin.Entites;
 
 namespace Feasablty_study.Infrastructure.Data
 {
@@ -26,9 +27,11 @@ namespace Feasablty_study.Infrastructure.Data
             .HasOne(a => a.technical_Study)
             .WithOne(a => a.feasibility_study)
             .HasForeignKey<Technical_Study>(c => c.FeasibilityStudyId);
+            
 
         }
         public DbSet<Support_Messages> SupportMessages { get; set; }
         public DbSet<Feasibility_study> Feasibility_studies { get; set; }
+        public DbSet<Regions> regions { get; set; }
     }
 }

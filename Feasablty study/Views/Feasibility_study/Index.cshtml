@@ -1,21 +1,22 @@
-﻿@model IEnumerable<Feasablty_study.Models.Feasibility_study>
+﻿
+@model IEnumerable<Feasablty_study.Models.Feasibility_study>
 
 @{
     ViewData["Title"] = " الدراسات";
 }
+                     <h1>عرض الدراسات</h1>
+                    <div class="card">
+                    <h4 class="card-header"> التقارير</h4>
+                    <div class="card-body">
+                  <div class="d-flex col-12 justify-content-between">
+                                <button style="float:left; border:1px solid green;" class="btn btn-success me-1" onclick="location.href='@Url.Action("Create", "Feasibility_study")'">اضــــافة دراسة جديدة +
+                                </button>
+                                 
+                              </div>
+                           <hr/>
 
-<h1>عرض الدراسات</h1>
-    
-<div class="card">
-
-  <div class="d-flex col-12 justify-content-between">
-                <button style="float:left; border:1px solid green;" class="btn btn-success me-1" onclick="location.href='@Url.Action("Create", "Feasibility_study")'">اضــــافة دراسة جديدة +
-                </button>
-              </div>
-               <hr/>
-
-                    <div class="table-responsive mb-3">
-                      <table id="dataTable" class="table datatable-invoice border-top">
+                        <div class="table-responsive text-nowrap">
+                      <table id="dataTable"  class="table table-bordered">
                         <thead>
                           <tr>
                             <th>عنوان المشروع</th>
@@ -45,19 +46,12 @@
             <td>@Html.DisplayFor(modelItem => item.ProjectDate)</td>        
             <td>@Html.DisplayFor(modelItem => item.ProjectLocation) </td>
             <td> @Html.DisplayFor(modelItem => item.OwnerName) </td>
-               <td style="">
-                <div class="d-inline-block">
-                    <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a  class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">عرض</a></li>
-                             <li> <a  class="dropdown-item text-danger delete-record" asp-action="Delete" asp-route-id="@item.Id">حذف</a></li>
-                            <li><a  class="dropdown-item" asp-action="PrintAsPdf" asp-route-id="@item.Id">طباعة</a></li>
-                            </ul>
-                            </div>
-                              <a  class="btn btn-sm btn-icon item-edit" asp-action="Edit" asp-route-id="@item.Id" ><i class="bx bxs-edit"></i></a>
-               </td>
+                     <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px;">عرض</i></a> |
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px">تعديل</i></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px">حذف</i></a>
+                <a asp-action="PrintAsPdf" asp-route-id="@item.Id" class="btn btn-primary" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px"> طباعة  </i></a>
+            </td>
             
             </tr>
                       }
@@ -67,6 +61,7 @@
 
    </table>
    </div>
+ </div>
  </div>
 
   <script>

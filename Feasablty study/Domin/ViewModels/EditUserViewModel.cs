@@ -20,6 +20,7 @@ namespace Feasablty_study.Domin.ViewModels
         public bool Status { get; set; }
         [Display(Name = "نوع المستخدم")]
         public int userRoles { get; set; }
+        public int RegionId { get; set; }
 
 
 

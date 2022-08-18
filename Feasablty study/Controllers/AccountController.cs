@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Feasablty_study.Infrastructure.Repository;
 
 namespace Feasablty_study.Controllers
 {
@@ -12,11 +14,15 @@ namespace Feasablty_study.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IRegionsRepo _regions;
+        private readonly IUserRepo _userRepo;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IRegionsRepo regions,IUserRepo userRepo)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _regions = regions;
+            _userRepo = userRepo;
 
         }
         [HttpGet]
@@ -70,8 +76,9 @@ namespace Feasablty_study.Controllers
         }
         [HttpGet]
 
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
+            ViewBag.Regions = new SelectList(await _regions.GetAllAsync(), "Id", "Name" );
             return View();
         }
 
@@ -96,6 +103,8 @@ namespace Feasablty_study.Controllers
                 Email = registerVM.Email,
                 UserName = registerVM.UserName,
                 PhoneNumber = registerVM.PhoneNumber,
+                regionId=registerVM.RegionId,
+                roleId=2,
                 EmailConfirmed = false,
                 Status = false,
 

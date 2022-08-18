@@ -5,6 +5,9 @@ using Feasablty_study.Infrastructure.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Feasablty_study.Domin.ViewModels;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Feasablty_study.Domin.Entites;
+using System.Security.Claims;
 
 namespace Feasablty_study.Controllers
 {
@@ -12,20 +15,30 @@ namespace Feasablty_study.Controllers
     public class UsersController : Controller
     {
         private readonly IUserRepo userRepo;
+        private readonly IRegionsRepo _regions;
 
 
-        public UsersController(IUserRepo userRepo)
+
+        public UsersController(IUserRepo userRepo, IRegionsRepo regions)
         {
             this.userRepo = userRepo;
-
+            this._regions = regions;
+            _regions = regions;
         }
 
 
         // GET: Users
         public async Task<IActionResult> Index()
         {
-           
-         return View(await userRepo.GetAllAsync());
+            var currentuser = await userRepo.GetByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var Users = await userRepo.GetAllAsync();
+            if(User.IsInRole(UserRoles.Employee))
+            {
+               Users= Users.Where(u => u.regionId == currentuser.regionId && u.roleId==2);
+                return View(Users);
+            }
+            else
+            return View(Users);
         }
 
         // GET: Users/Details/5
@@ -44,8 +57,9 @@ namespace Feasablty_study.Controllers
         }
 
         // GET: Users/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ViewBag.Regions = new SelectList(await _regions.GetAllAsync(), "Id", "Name");
             return View();
         }
 /*        [AcceptVerbs("Get","Post")]
@@ -64,8 +78,7 @@ namespace Feasablty_study.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateUserViewModel user)
         {
-            var users = await userRepo.GetAllAsync();
-            ViewBag.UserCount = users.Count();
+            
             if (ModelState.IsValid)
             {
                 if(userRepo.returntype == 1)
@@ -78,8 +91,15 @@ namespace Feasablty_study.Controllers
                     TempData["Error"]=userRepo.Error;
                     return View(user);
                 }
-                    
-                await userRepo.AddAsync(user);
+
+                if(User.IsInRole("Employee"))
+                {
+                  await userRepo.AddAsync(user,User.FindFirstValue(ClaimTypes.NameIdentifier));
+                }
+                else
+                {
+                  await userRepo.AddAsync(user);
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
@@ -88,9 +108,7 @@ namespace Feasablty_study.Controllers
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-
-            var users = await userRepo.GetAllAsync();
-            ViewBag.UserCount = users.Count();
+            ViewBag.Regions = new SelectList(await _regions.GetAllAsync(), "Id", "Name");
             var user = await userRepo.GetByIdAsync(id);
             
             if (user == null)
@@ -121,7 +139,14 @@ namespace Feasablty_study.Controllers
             {
                 try
                 {
-                    await userRepo.UpdateAsync(id,user);
+                    if (User.IsInRole("Admin"))
+                    {
+                        await userRepo.UpdateAsync(id, user);
+                    }
+                    else if(User.IsInRole("Employee"))
+                    {
+                        await userRepo.UpdateAsync(id, user, User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {

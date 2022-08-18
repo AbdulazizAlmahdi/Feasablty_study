@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Feasablty_study.Infrastructure.Repository
@@ -27,16 +28,69 @@ namespace Feasablty_study.Infrastructure.Repository
         }
 
 
-        public async Task AddAsync(CreateUserViewModel entity)
+        public async Task AddAsync(CreateUserViewModel entity,string CurrentUserLoginId)
         {
+            var currentuser = _userManager.Users.First(u => u.Id == CurrentUserLoginId);
+
             var newUser = new User()
-                {
-                    Email = entity.Email,
-                    PhoneNumber = entity.PhoneNumber,
-                    Status = entity.Status,
-                    UserName = entity.UserName,
-                    Name = entity.Name,
-                    EmailConfirmed = entity.Status,
+            {
+                Email = entity.Email,
+                PhoneNumber = entity.PhoneNumber,
+                Status = entity.Status,
+                UserName = entity.UserName,
+                Name = entity.Name,
+                regionId = currentuser.regionId,
+                EmailConfirmed = entity.Status,
+                roleId = 2,
+
+                };
+            
+            
+
+            var user = await _userManager.FindByEmailAsync(entity.Email);
+            if (user != null)
+            {
+                returntype = 1;
+                Error = "المستخدم موجود مسبقا بهذا الايميل";
+                return;
+            }
+
+            var newUserResponse = await _userManager.CreateAsync(newUser, entity.Password);
+
+            if (newUserResponse.Succeeded)
+            {
+
+                    await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+            
+                
+                await _userManager.AddPasswordAsync(newUser, entity.Password);
+
+
+
+            }
+            
+            else
+            {
+                returntype = 2;
+
+                Error = "كلمة السر يجب ان تكون ارقام و حروف و رموز";
+                return;
+            }
+
+
+        }public async Task AddAsync(CreateUserViewModel entity)
+        {
+
+            var newUser = new User()
+            {
+                Email = entity.Email,
+                PhoneNumber = entity.PhoneNumber,
+                Status = entity.Status,
+                UserName = entity.UserName,
+                Name = entity.Name,
+                regionId = entity.RegionId,
+                EmailConfirmed = entity.Status,
+                roleId = entity.userRoles,
 
                 };
             
@@ -63,14 +117,21 @@ namespace Feasablty_study.Infrastructure.Repository
                 {
                     await _userManager.AddToRoleAsync(newUser, UserRoles.User);
                 }
+                else if (entity.userRoles == 3)
+                {
+                    
+                    await _userManager.AddToRoleAsync(newUser, UserRoles.Employee);
+                }
                 await _userManager.AddPasswordAsync(newUser, entity.Password);
 
 
 
             }
+            
             else
             {
                 returntype = 2;
+
                 Error = "كلمة السر يجب ان تكون ارقام و حروف و رموز";
                 return;
             }
@@ -151,10 +212,12 @@ namespace Feasablty_study.Infrastructure.Repository
             {
                
                     updatedUser.UserName = entity.Name;
+                    updatedUser.regionId= entity.RegionId;
                     updatedUser.PhoneNumber = entity.PhoneNumber;
                     updatedUser.Status = entity.Status;
                     updatedUser.EmailConfirmed = entity.Status;
                     updatedUser.CreationDate = DateTime.Now;
+                    updatedUser.roleId = entity.userRoles;
                     await _userManager.UpdateAsync(updatedUser);
 
                     if (entity.userRoles == 1)
@@ -167,7 +230,35 @@ namespace Feasablty_study.Infrastructure.Repository
                         await _userManager.RemoveFromRolesAsync(updatedUser, roleId);
                         await _userManager.AddToRoleAsync(updatedUser, UserRoles.User);
                      }
+                    else if (entity.userRoles == 3)
+                {
+                    await _userManager.RemoveFromRolesAsync(updatedUser, roleId);
+                    await _userManager.AddToRoleAsync(updatedUser, UserRoles.Employee);
+                }
 
+                //Change password 
+                await _userManager.RemovePasswordAsync(updatedUser);
+                await _userManager.AddPasswordAsync(updatedUser,entity.Password);
+
+            }
+
+            await _context.SaveChangesAsync();
+        }
+        public async Task UpdateAsync(string id, EditUserViewModel entity, string CurrentUserLoginId)
+        {
+            var currentuser = _userManager.Users.First(u => u.Id == CurrentUserLoginId);
+            var updatedUser = await _userManager.FindByIdAsync(id);
+            var roleId = await _userManager.GetRolesAsync(updatedUser);
+            if (updatedUser == null)
+                return;
+            else
+            {
+               
+                    updatedUser.PhoneNumber = entity.PhoneNumber;
+                    updatedUser.Status = entity.Status;
+                    updatedUser.EmailConfirmed = entity.Status;
+                    updatedUser.CreationDate = DateTime.Now;
+                    await _userManager.UpdateAsync(updatedUser);               
                 //Change password 
                 await _userManager.RemovePasswordAsync(updatedUser);
                 await _userManager.AddPasswordAsync(updatedUser,entity.Password);

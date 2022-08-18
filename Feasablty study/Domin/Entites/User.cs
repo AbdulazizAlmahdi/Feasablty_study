@@ -1,4 +1,5 @@
-﻿using Feasablty_study.Domin.Interfaces;
+﻿using Feasablty_study.Domin.Entites;
+using Feasablty_study.Domin.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,6 +23,10 @@ namespace Feasablty_study.Models
         [DataType(DataType.Date)]
         [Display(Name = "CreationDate")]
         public DateTime CreationDate { get; set; } = DateTime.Now;
+        [ForeignKey("regions")]
+        public virtual int regionId { get; set; }
+        public virtual Regions region { get; set; }
+        public int roleId { get; set; }
         public virtual ICollection <Support_Messages> messages { get; set; }
         public virtual ICollection<Feasibility_study> Feasibility_Studies { get; set; }
 

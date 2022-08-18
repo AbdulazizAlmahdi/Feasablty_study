@@ -7,12 +7,10 @@
     ViewData["Title"] = "عرض المستخدمين";
 }
 
-              <partial name="../Shared//AdminLayout.cshtml" />
-
-
-
+ <partial name="../Shared//AdminLayout.cshtml" />
   <!--/ DataTable with Buttons -->
- <div class="card-body">
+    <div class="card">
+     <div class="card-body">
                <div class="d-flex col-12 justify-content-between">
                 <button style="float:left; border:1px solid green;" class="btn btn-success me-1" onclick="location.href='@Url.Action("Create", "Users")'">اضــــافة مستخدم جديد +
                 </button>
@@ -57,9 +55,13 @@
                             {
                                 <span class="badge bg-label-success">ادمن</span>
                             }
-                           else
+                           else if(await UserManager.IsInRoleAsync(item,"User"))
                             {
                                 <span class="badge bg-label-warning">مستخدم عادي</span>
+                            }
+                            else if(await UserManager.IsInRoleAsync(item,"Employee"))
+                            {
+                                <span class="badge bg-label-primary">موظف ادراي</span>
                             }
                             </td>
                               <td>
@@ -72,21 +74,21 @@
                                 <span class="badge bg-label-danger">متوقف</span>
                             }
                             </td>
-            <td style="">
-                <div class="d-inline-block">
-                    <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a  class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">عرض</a></li>
-                            <li>
-                                @if(item.Status)
+                            <td style="">
+                                <div class="d-inline-block">
+                                    <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a  class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">عرض</a></li>
+                                            <li>
+                                                @if(item.Status)
                                                 {
                                                      <a  class="dropdown-item" asp-action="disbleOrEnableUser" asp-route-id="@item.Id">توقيف</a>
                                                 }
                                                 else
                                                 {
-                                                    <a  class="dropdown-item" asp-action="disbleOrEnableUser" asp-route-id="@item.Id">تنشيط</a>
+                                                    <a  class="dropdown-item"  asp-action="disbleOrEnableUser" asp-route-id="@item.Id">تنشيط</a>
                                                 }
                                                 
 
@@ -94,7 +96,11 @@
                             
                             </li>
                             <li>
-                                <a  class="dropdown-item text-danger delete-record" asp-action="Delete" asp-route-id="@item.Id">حذف</a></li></ul></div>
+                                <a  class="dropdown-item text-danger delete-record" asp-action="Delete" asp-route-id="@item.Id">حذف</a></li>
+                                <li><a  class="dropdown-item text-success print-record" asp-action="PrintAsPdf" asp-route-id="@item.Id" > طباعة  </a></li>
+                            </ul>
+                            
+                            </div>
                                 <a  class="btn btn-sm btn-icon item-edit" asp-action="Edit" asp-route-id="@item.Id" ><i class="bx bxs-edit"></i></a>
                             </td>
             
@@ -105,8 +111,8 @@
                 </tbody>
             </table>
     </div>
-    
-</div>
+    </div>
+   </div>
 
  <script>
     $(document).ready(function () {

@@ -12,6 +12,7 @@ using Rotativa.AspNetCore.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Feasablty_study.Controllers
@@ -35,20 +36,34 @@ namespace Feasablty_study.Controllers
         // GET: Feasibility_study
         public async Task<IActionResult> Index()
         {
+            var currentuser =_userManager.Users.First(u=>u.Id==User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var allfeasibilityStudy = await _feasibilityStudyRepo.GetAllAsync(f=>f.user);
             if (User.IsInRole(UserRoles.Admin))
             {
-                var all_feasibilityStudy = await _feasibilityStudyRepo.GetAllAsync(s => s.Preliminary_study);
-                return View(all_feasibilityStudy.ToList());
+                return View(allfeasibilityStudy.ToList());
 
+            }
+            else if (User.IsInRole(UserRoles.Employee))
+            {
+
+                var allForEmployeefeasibilityStudy = allfeasibilityStudy.ToList().FindAll(i => i.user.regionId == currentuser.regionId);
+                return View(allForEmployeefeasibilityStudy);
+
+            }
+            else if (User.IsInRole(UserRoles.User))
+            {
+
+                var allForUserfeasibilityStudy = allfeasibilityStudy.ToList().FindAll(i => i.UserId == _userManager.GetUserId(User));
+                return View(allForUserfeasibilityStudy);
+
+            }
+            else if (User.IsInRole(UserRoles.Employee))
+            {
+                var allForUserfeasibilityStudy = allfeasibilityStudy.ToList().FindAll(i => i.user.regionId == currentuser.regionId);
+                return View(allForUserfeasibilityStudy);
             }
             else
-            {     
-
-                var allfeasibilityStudy = await _feasibilityStudyRepo.GetAllAsync();
-                var allForUserfeasibilityStudy=allfeasibilityStudy.ToList().FindAll(i => i.UserId == _userManager.GetUserId(User));
-                return View(allForUserfeasibilityStudy) ;
-
-            }
+                return View();
         }
         public async Task<IActionResult> PrintAsPdf(int id)
         {
@@ -76,15 +91,10 @@ namespace Feasablty_study.Controllers
                 PageOrientation = Orientation.Portrait,
                 MinimumFontSize = 30,
                 PageSize = Size.A4,
-                CustomSwitches =/* "--footer-center \" Created Date:" +
-                DateTime.Now.Date.ToString("dd/MM/yyy") +" Page:[page]/[toPage]\" " +
-                "--footer-line --footer-font-size \"12\" --footer-spacing 1 --footer-font -name \"Segoe UI\""
-             */
-               " --print-media-type --no-background --footer-line --header-line --page-offset 0 --footer-center [page] --footer-font-size 8 --footer-right \"page [page] from [topage]\"  "
+                CustomSwitches =" --print-media-type --no-background --footer-line --header-line --page-offset 0 --footer-center [page] --footer-font-size 8 --footer-right \"page [page] from [topage]\"  "
             };
         }
 
-        // GET: Feasibility_study/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -113,16 +123,15 @@ namespace Feasablty_study.Controllers
         {
             
             string UserId = _userManager.GetUserId(User);
+            
             await _feasibilityStudyRepo.AddAsync(model,UserId);
-            return View(model);
+            return RedirectToAction(nameof(Index));
 
-           // return View(feasibility_study);
         }
 
         // GET: Feasibility_study/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-           // String.Split()
             if (id == null)
             {
                 return NotFound();

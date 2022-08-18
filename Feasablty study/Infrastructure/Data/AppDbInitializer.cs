@@ -19,297 +19,125 @@ namespace Feasablty_study.Infrastructure.Data
 
                 context.Database.EnsureCreated();
 
-                //Cinema
-                if (!context.SupportMessages.Any())
-                {
-                    context.SupportMessages.AddRange(new List<Support_Messages>()
-                    {
-                        new Support_Messages()
-                        {
-                            Title = "Cinema 1",
-                            UserId = "c6c75e08-3701-4355-b8f3-8db5be5310dc",
-                            Content = "This is the description of the first cinema",
-                            Email ="almahdi@almahdi.com",
-                            //user =context.Users.Find()
-                        },
-                       new Support_Messages()
-                        {
-                            Title = "Cinema 1",
-                            UserId = "c6c75e08-3701-4355-b8f3-8db5be5310dc",
-                            Content = "This is the description of the first cinema",
-                            Email ="almahdi@almahdi.com",
-                            //user =context.Users.Find(2)
-                        },new Support_Messages()
-                        {
-                            Title = "التحويل الى بيانات",
-                            UserId = "c6c75e08-3701-4355-b8f3-8db5be5310dc",
-                            Content = "السلام عليكم هناك مشاكل في عرض البيانات",
-                            Email ="hassan@almahdi.com",
-                           // user =context.Users.Find(3)
-                        },
+              
+              //Regions
+                 if (!context.regions.Any())
+                 {
+                     context.regions.AddRange(new List<Regions>()
+                     {
+                         new Regions()
+                         {
+                            
+                             Name = " صنعاء",                      
 
-                    });
+                         },
+                          new Regions()
+                         {
+                             Name = " حجة",                      
+
+                         },
+                          new Regions()
+                         {
+                             Name = " مارب",                      
+
+                         },
+                          new Regions()
+                         {
+                             Name = " ذمار",                      
+
+                         },
+                          new Regions()
+                         {
+                             Name = " الجوف",                      
+
+                         },
+                          new Regions()
+                         {
+                             Name = " المحويت",                      
+
+                         },
+                               
+                         new Regions()
+                         {
+                             Name = " حضرموت",                      
+
+                         },
+                         new Regions()
+                         {
+                             Name = " تعز",                      
+
+                         },
+                         new Regions()
+                         {
+                             Name = " المهرة",                      
+
+                         },
+                         new Regions()
+                         {
+                             Name = " البيضاء",                      
+
+                         },
+                          new Regions()
+                         {
+                             Name = " الحديدة",                      
+
+                         },
+                          new Regions()
+                         {
+                             Name = " ابين",                      
+
+                         },
+                          new Regions()
+                         {
+                             Name = " اب",                      
+
+                         },
+                           new Regions()
+                         {
+                             Name = " امانة العاصمة",                      
+
+                         },
+                           new Regions()
+                         {
+                             Name = " ريمة",                      
+
+                         },
+                           new Regions()
+                         {
+                             Name = " صعدة",                      
+
+                         },
+                            new Regions()
+                         {
+                             Name = " الضالع",                      
+
+                         },
+                            new Regions()
+                         {
+                             Name = " لحج",                      
+
+                         },
+                            new Regions()
+                         {
+                             Name = " عدن",                      
+
+                         },
+                            new Regions()
+                         {
+                             Name = " شبوة",                      
+
+                         },
+                            new Regions()
+                         {
+                             Name = " عمران",                      
+
+                         },
+                         
+                     });
                     context.SaveChanges();
-                }
-               /* //Actors
-                if (!context.Actors.Any())
-                {
-                    context.Actors.AddRange(new List<Actor>()
-                    {
-                        new Actor()
-                        {
-                            FullName = "Actor 1",
-                            Bio = "This is the Bio of the first actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-1.jpeg"
-
-                        },
-                        new Actor()
-                        {
-                            FullName = "Actor 2",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-2.jpeg"
-                        },
-                        new Actor()
-                        {
-                            FullName = "Actor 3",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-3.jpeg"
-                        },
-                        new Actor()
-                        {
-                            FullName = "Actor 4",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-4.jpeg"
-                        },
-                        new Actor()
-                        {
-                            FullName = "Actor 5",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/actors/actor-5.jpeg"
-                        }
-                    });
-                    context.SaveChanges();
-                }
-                //Producers
-                if (!context.Producers.Any())
-                {
-                    context.Producers.AddRange(new List<Producer>()
-                    {
-                        new Producer()
-                        {
-                            FullName = "Producer 1",
-                            Bio = "This is the Bio of the first actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-1.jpeg"
-
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 2",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-2.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 3",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-3.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 4",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-4.jpeg"
-                        },
-                        new Producer()
-                        {
-                            FullName = "Producer 5",
-                            Bio = "This is the Bio of the second actor",
-                            ProfilePictureURL = "http://dotnethow.net/images/producers/producer-5.jpeg"
-                        }
-                    });
-                    context.SaveChanges();
-                }
-                //Movies
-                if (!context.Movies.Any())
-                {
-                    context.Movies.AddRange(new List<Movie>()
-                    {
-                        new Movie()
-                        {
-                            Name = "Life",
-                            Description = "This is the Life movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-3.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(10),
-                            CinemaId = 3,
-                            ProducerId = 3,
-                            MovieCategory = MovieCategory.Documentary
-                        },
-                        new Movie()
-                        {
-                            Name = "The Shawshank Redemption",
-                            Description = "This is the Shawshank Redemption description",
-                            Price = 29.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-1.jpeg",
-                            StartDate = DateTime.Now,
-                            EndDate = DateTime.Now.AddDays(3),
-                            CinemaId = 1,
-                            ProducerId = 1,
-                            MovieCategory = MovieCategory.Action
-                        },
-                        new Movie()
-                        {
-                            Name = "Ghost",
-                            Description = "This is the Ghost movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-4.jpeg",
-                            StartDate = DateTime.Now,
-                            EndDate = DateTime.Now.AddDays(7),
-                            CinemaId = 4,
-                            ProducerId = 4,
-                            MovieCategory = MovieCategory.Horror
-                        },
-                        new Movie()
-                        {
-                            Name = "Race",
-                            Description = "This is the Race movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-6.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(-5),
-                            CinemaId = 1,
-                            ProducerId = 2,
-                            MovieCategory = MovieCategory.Documentary
-                        },
-                        new Movie()
-                        {
-                            Name = "Scoob",
-                            Description = "This is the Scoob movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-7.jpeg",
-                            StartDate = DateTime.Now.AddDays(-10),
-                            EndDate = DateTime.Now.AddDays(-2),
-                            CinemaId = 1,
-                            ProducerId = 3,
-                            MovieCategory = MovieCategory.Cartoon
-                        },
-                        new Movie()
-                        {
-                            Name = "Cold Soles",
-                            Description = "This is the Cold Soles movie description",
-                            Price = 39.50,
-                            ImageURL = "http://dotnethow.net/images/movies/movie-8.jpeg",
-                            StartDate = DateTime.Now.AddDays(3),
-                            EndDate = DateTime.Now.AddDays(20),
-                            CinemaId = 1,
-                            ProducerId = 5,
-                            MovieCategory = MovieCategory.Drama
-                        }
-                    });
-                    context.SaveChanges();
-                }
-                //Actors & Movies
-                if (!context.Actors_Movies.Any())
-                {
-                    context.Actors_Movies.AddRange(new List<Actor_Movie>()
-                    {
-                        new Actor_Movie()
-                        {
-                            ActorId = 1,
-                            MovieId = 1
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 3,
-                            MovieId = 1
-                        },
-
-                         new Actor_Movie()
-                        {
-                            ActorId = 1,
-                            MovieId = 2
-                        },
-                         new Actor_Movie()
-                        {
-                            ActorId = 4,
-                            MovieId = 2
-                        },
-
-                        new Actor_Movie()
-                        {
-                            ActorId = 1,
-                            MovieId = 3
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 2,
-                            MovieId = 3
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 5,
-                            MovieId = 3
-                        },
-
-
-                        new Actor_Movie()
-                        {
-                            ActorId = 2,
-                            MovieId = 4
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 3,
-                            MovieId = 4
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 4,
-                            MovieId = 4
-                        },
-
-
-                        new Actor_Movie()
-                        {
-                            ActorId = 2,
-                            MovieId = 5
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 3,
-                            MovieId = 5
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 4,
-                            MovieId = 5
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 5,
-                            MovieId = 5
-                        },
-
-
-                        new Actor_Movie()
-                        {
-                            ActorId = 3,
-                            MovieId = 6
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 4,
-                            MovieId = 6
-                        },
-                        new Actor_Movie()
-                        {
-                            ActorId = 5,
-                            MovieId = 6
-                        },
-                    });*/
-                    context.SaveChanges();
-                //}
+                 }
+                 
+          
             }
 
         }
@@ -325,6 +153,8 @@ namespace Feasablty_study.Infrastructure.Data
                     await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
                 if (!await roleManager.RoleExistsAsync(UserRoles.User))
                     await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+                if (!await roleManager.RoleExistsAsync(UserRoles.Employee))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Employee));
 
                 //Users
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
@@ -341,6 +171,8 @@ namespace Feasablty_study.Infrastructure.Data
                         Email = adminUserEmail,
                         EmailConfirmed = true,
                         Status=true,
+                        regionId=1,
+                        roleId=1,
                         PhoneNumber = "773019241",
                         
                     };
@@ -361,6 +193,8 @@ namespace Feasablty_study.Infrastructure.Data
                         Email = appUserEmail,
                         EmailConfirmed = true,
                         Status = true,
+                        regionId = 1,
+                        roleId = 2,
                         PhoneNumber = "773019241",
                     };
                     await userManager.CreateAsync(newAppUser, "Coding@1234?");

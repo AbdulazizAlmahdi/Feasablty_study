@@ -21,11 +21,5 @@ namespace Feasablty_study.Models
         public User user { get; set; }
 
 
-
-
-
-
-
-
     }
 }

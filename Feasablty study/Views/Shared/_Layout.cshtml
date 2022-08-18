@@ -163,12 +163,12 @@ data-template="vertical-menu-template-no-customizer"
         <li class="menu-header small text-uppercase"></li>
 
             <!-- المستخدم -->
-             @if(User.IsInRole("Admin"))
+             @if(User.IsInRole("Admin") || User.IsInRole("Employee") )
                    {
                         <li class="menu-item">
                           <a asp-controller="Users"  asp-action="index" class="menu-link">
                           <i class="menu-icon tf-icons fas fa-users-cog"></i>
-                          <div data-i18n="إدراة المستخدمين">ادارة المستخدمين</div>
+                          <div>ادارة المستخدمين</div>
                         </a>
                       </li>
                    }
@@ -207,22 +207,21 @@ data-template="vertical-menu-template-no-customizer"
                <li class="menu-header small text-uppercase"><span class="menu-header-text"></span></li>
           <li class="menu-item open active">
        
- @if(User.IsInRole("Admin"))
+                 @if(User.IsInRole("Admin"))
                             {
-                            <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-support"></i>
-              
-              <div>  الدعم الفني و الرسائل</div>
-            </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a asp-controller="Support_messages" asp-action="Index" class="menu-link">
-                  <div>رسائل الدعم الفني</div>
-                </a>
-              </li>
-            </ul>
-              </li>
+                                <li class="menu-item">
+                                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                  <i class="menu-icon tf-icons bx bx-support"></i>
+                                  <div>  الدعم الفني و الرسائل</div>
+                                </a>
+                                <ul class="menu-sub">
+                                  <li class="menu-item">
+                                    <a asp-controller="Support_messages" asp-action="Index" class="menu-link">
+                                      <div>رسائل الدعم الفني</div>
+                                    </a>
+                                  </li>
+                                </ul>
+                               </li>
                             }
                             else
                             {
@@ -271,19 +270,13 @@ data-template="vertical-menu-template-no-customizer"
                   <!-- Language -->
                   <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                      <i class="flag-icon flag-icon-us flag-icon-squared fs-3 rounded-circle me-1"></i>
+                      <i class="flag-icon flag-icon-ye flag-icon-squared fs-3 rounded-circle me-1"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                       <li>
                         <a class="dropdown-item" href="javascript:void(0);" data-language="en">
                           <i class="flag-icon flag-icon-ye flag-icon-squared fs-4 rounded-circle me-1"></i>
                           <span class="align-middle">العربية</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="ar">
-                          <i class="flag-icon flag-icon-us flag-icon-squared fs-4 rounded-circle me-1"></i>
-                          <span class="align-middle">English</span>
                         </a>
                       </li>
                     </ul>

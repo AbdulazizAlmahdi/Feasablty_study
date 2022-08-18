@@ -17,15 +17,21 @@ namespace Feasablty_study.Infrastructure.Repository
             this.context1=context1;
           
         }
-      /* public async Task<IEnumerable<Feasibility_study>> GetAllAsync(string userId)
-        {
-            context1.Feasibility_studies.
+        /* public async Task<IEnumerable<Feasibility_study>> GetAllAsync(string userId)
+          {
+              context1.Feasibility_studies.
 
+          }
+         public async Task<IEnumerable<Feasibility_study>> GetAllAsync(params Expression<Func<Feasibility_study, object>>[] includeProperties, string userId)
+          {
+
+          }*/
+        public static int count { get; set; }
+        public  int Count ()
+        {
+          // this.count= context1.Feasibility_studies.Count();
+            return count;
         }
-       public async Task<IEnumerable<Feasibility_study>> GetAllAsync(params Expression<Func<Feasibility_study, object>>[] includeProperties, string userId)
-        {
-
-        }*/
 
         public async Task AddAsync(CreateFeasibilityStudyViewModel model,string UserId)
         {

@@ -31,6 +31,7 @@ namespace Feasablty_study
             services.AddScoped<IUserRepo, UserRepo>();
             services.AddScoped<ISupportMessageRepo, SupportMessageRepo>();
             services.AddScoped<IFeasibilityStudyRepo, FeasibilityStudyRepo>();
+            services.AddScoped<IRegionsRepo, RegionsRepo>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             
            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
@@ -86,8 +87,9 @@ namespace Feasablty_study
                     pattern: "{controller=Home}/{action=index}/{id?}");
                 endpoints.MapRazorPages();
             });
+            AppDbInitializer.Seed(app); 
             AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
-            AppDbInitializer.Seed(app);
+
             RotativaConfiguration.Setup("wwwroot");
 
         }

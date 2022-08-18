@@ -9,7 +9,7 @@ namespace Feasablty_study.Domin.ViewModels
        
         [Required(ErrorMessage = "ادخل الاسم ")]
         public string Name { get; set; }
-        [Required(ErrorMessage = "ادخل اسم المستخدم ")]
+        [Required(ErrorMessage = "ادخل اسم المستخدم "), RegularExpression(@"^(?=[a-zA-Z0-9._]{5,20}$)(?!.*[_.]{2})[^_.].*[^_.]$", ErrorMessage = " لا يجب ان تحتوي على مسافات و يجب ان يكون اكثر من 5 حروف")]
         public string UserName { get; set; }
         [Required(ErrorMessage = "ادخل رقم الهاتف"), MaxLength(9, ErrorMessage = "يجب ان لا يكون رقم الهاتف اكثر من تسعة ارقام "), MinLength(9, ErrorMessage = "يجب ان لا يكون رقم الهاتف اقل من تسعة ارقام")]
         public string PhoneNumber { get; set; }
@@ -26,6 +26,7 @@ namespace Feasablty_study.Domin.ViewModels
         public bool Status { get; set; }
         [Display(Name="نوع المستخدم")]
         public int userRoles { get; set; }
+        public int RegionId { get; set; }
 
 
 

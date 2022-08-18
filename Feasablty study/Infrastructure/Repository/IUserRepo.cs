@@ -20,8 +20,10 @@ namespace Feasablty_study.Infrastructure.Repository
         Task<IEnumerable<User>> GetAllAsync(params Expression<Func<User, object>>[] includeProperties);
         Task<User> GetByIdAsync(string id);
         Task<User> GetByIdAsync(string id, params Expression<Func<User, object>>[] includeProperties);
+        Task AddAsync(CreateUserViewModel entity, string CurrentUserLoginId);
         Task AddAsync(CreateUserViewModel entity);
         Task UpdateAsync(string id, EditUserViewModel entity);
+        Task UpdateAsync(string id, EditUserViewModel entity, string CurrentUserLoginId);
         Task DeleteAsync(string id);
         Task<User> EnableAndDisbleUser(string id);
 
