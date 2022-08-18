@@ -26,6 +26,7 @@
                         <th>اسم المستخدم</th>
                         <th>رقم الهاتف</th>
                         <th>تاريخ التسجيل</th>
+                        <th>المنطقة</th>
                         <th>نوع المستخدم</th>
                         <th>الحالة</th>
                         <th>الاجراءات </th>
@@ -49,7 +50,9 @@
             <td>@Html.DisplayFor(modelItem => item.Email)</td>       
             <td>@Html.DisplayFor(modelItem => item.UserName)</td>        
             <td>@Html.DisplayFor(modelItem => item.PhoneNumber) </td>
-            <td> @Html.DisplayFor(modelItem => item.CreationDate) </td>
+            <td> @Html.DisplayFor(modelItem => item.CreationDate) </td>  
+            <td>@Html.DisplayFor(modelItem => item.region.Name) </td>
+
                              <td>
                           @if(await UserManager.IsInRoleAsync(item,"Admin"))
                             {

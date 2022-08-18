@@ -74,8 +74,8 @@ namespace Feasablty_study.Controllers
             return View();
 
         }
-        [HttpGet]
 
+        [HttpGet]
         public async Task<IActionResult> Register()
         {
             ViewBag.Regions = new SelectList(await _regions.GetAllAsync(), "Id", "Name" );

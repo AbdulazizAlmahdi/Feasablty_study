@@ -12,7 +12,7 @@ namespace Feasablty_study.Infrastructure.Data
         {
 
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override async void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Feasibility_study>()
@@ -27,7 +27,9 @@ namespace Feasablty_study.Infrastructure.Data
             .HasOne(a => a.technical_Study)
             .WithOne(a => a.feasibility_study)
             .HasForeignKey<Technical_Study>(c => c.FeasibilityStudyId);
-            
+            modelBuilder.Entity<User>()
+                .HasMany<Support_Messages>(c => c.messages).WithOne(u => u.user).OnDelete(DeleteBehavior.Cascade);
+
 
         }
         public DbSet<Support_Messages> SupportMessages { get; set; }

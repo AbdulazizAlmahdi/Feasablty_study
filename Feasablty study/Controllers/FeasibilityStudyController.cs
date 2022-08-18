@@ -3,20 +3,20 @@ using Feasablty_study.Domin.ViewModels;
 using Feasablty_study.Infrastructure.Data;
 using Feasablty_study.Infrastructure.Repository;
 using Feasablty_study.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Rotativa.AspNetCore;
 using Rotativa.AspNetCore.Options;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Feasablty_study.Controllers
 {
+    [Authorize]
     public class Feasibility_studyController : Controller
     {
         private readonly AppDbContext _context;
@@ -200,6 +200,7 @@ namespace Feasablty_study.Controllers
 
             return View(feasibility_study);
         }
+
 
         // POST: Feasibility_study/Delete/5
         [HttpPost, ActionName("Delete")]

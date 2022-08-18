@@ -17,9 +17,9 @@
     }
     else 
     {
-     ViewBag.UserCount =UserManager.Users.Where(u=>u.regionId == currentuser.regionId).Count()-1;
-    ViewBag.UserActiveCount =UserManager.Users.Where(a=>a.EmailConfirmed==true && a.regionId==currentuser.regionId).Count()-1;
-    ViewBag.UserdeactiveCount=UserManager.Users.Where(a=>a.EmailConfirmed==false && a.regionId==currentuser.regionId).Count()-1;
+     ViewBag.UserCount =UserManager.Users.Where(u=>u.regionId == currentuser.regionId && u.roleId==2).Count();
+    ViewBag.UserActiveCount =UserManager.Users.Where(a=>a.EmailConfirmed==true && a.regionId==currentuser.regionId && a.roleId==2).Count();
+    ViewBag.UserdeactiveCount=UserManager.Users.Where(a=>a.EmailConfirmed==false && a.regionId==currentuser.regionId && a.roleId==2).Count();
     ViewBag.FSCount = FeasibilityStudyRepo.count;
     }
 

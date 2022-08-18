@@ -23,7 +23,7 @@ namespace Feasablty_study.Controllers
             _messageRepo = messageRepo;
 
         }
-
+        [Authorize(Roles ="Admin")]
         // GET: Support_Messages
         public async Task<IActionResult> Index()
         {
@@ -31,7 +31,7 @@ namespace Feasablty_study.Controllers
 
             return View(AllMessages.ToList());
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Support_Messages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -65,16 +65,12 @@ namespace Feasablty_study.Controllers
                 support_Messages.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 support_Messages.user = await _userManager.Users.FirstOrDefaultAsync(u=>u.Id==support_Messages.UserId);
                 await _messageRepo.AddAsync(support_Messages);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             return View(support_Messages);
         }
 
-
-
-
-
-
+        [Authorize(Roles = "Admin")]
         // GET: Support_Messages/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -92,17 +88,17 @@ namespace Feasablty_study.Controllers
 
             return View(support_Messages);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Support_Messages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
              await _messageRepo.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index","Home");
         }
 
-
+        [Authorize(Roles = "Admin")]
         private async Task<bool> Support_MessagesExists(int id)
         {
             return (await _messageRepo.GetByIdAsync(id)!=null);

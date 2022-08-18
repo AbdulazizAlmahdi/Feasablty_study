@@ -195,7 +195,6 @@ D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\Index.cshtml.g.cs
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Feasibility_study\PrintAsPdf.cshtml.g.cs
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\AdminHomeLayout.cshtml.g.cs
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\AdminLayout.cshtml.g.cs
 D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\vsproject\Feasablty study\Feasablty study\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs

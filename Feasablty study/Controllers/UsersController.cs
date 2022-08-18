@@ -11,14 +11,11 @@ using System.Security.Claims;
 
 namespace Feasablty_study.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,Employee")]
     public class UsersController : Controller
     {
         private readonly IUserRepo userRepo;
         private readonly IRegionsRepo _regions;
-
-
-
         public UsersController(IUserRepo userRepo, IRegionsRepo regions)
         {
             this.userRepo = userRepo;
@@ -28,10 +25,11 @@ namespace Feasablty_study.Controllers
 
 
         // GET: Users
+
         public async Task<IActionResult> Index()
         {
             var currentuser = await userRepo.GetByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var Users = await userRepo.GetAllAsync();
+            var Users = await userRepo.GetAllAsync(u=>u.region);
             if(User.IsInRole(UserRoles.Employee))
             {
                Users= Users.Where(u => u.regionId == currentuser.regionId && u.roleId==2);
@@ -44,10 +42,8 @@ namespace Feasablty_study.Controllers
         // GET: Users/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            var users = await userRepo.GetAllAsync();
-            ViewBag.UserCount = users.Count();
 
-            var user = await userRepo.GetByIdAsync((string)id);
+            var user = await userRepo.GetByIdAsync((string)id, u => u.region);
             if (user == null)
             {
                 return NotFound();
@@ -59,6 +55,7 @@ namespace Feasablty_study.Controllers
         // GET: Users/Create
         public async Task<IActionResult> Create()
         {
+
             ViewBag.Regions = new SelectList(await _regions.GetAllAsync(), "Id", "Name");
             return View();
         }
@@ -133,8 +130,7 @@ namespace Feasablty_study.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, EditUserViewModel user)
         {
-            var users = await userRepo.GetAllAsync();
-            ViewBag.UserCount = users.Count();
+
             if (ModelState.IsValid)
             {
                 try
@@ -167,14 +163,13 @@ namespace Feasablty_study.Controllers
         // GET: Users/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            var users = await userRepo.GetAllAsync();
-            ViewBag.UserCount = users.Count();
+           
             if (id == null)
             {
                 return NotFound();
             }
 
-            var user = await userRepo.GetByIdAsync((string)id);
+            var user = await userRepo.GetByIdAsync((string)id, u => u.region);
             if (user == null)
             {
                 return NotFound();
