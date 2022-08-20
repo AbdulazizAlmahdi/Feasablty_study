@@ -16,15 +16,13 @@ namespace Feasablty_study.Infrastructure.Repository
     public class UserRepo : IUserRepo
     {
         private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
         private readonly AppDbContext _context;
         public string Error { get; set; }
-        public int returntype { get; set; }
-        public UserRepo(AppDbContext context, UserManager<User> userManager, SignInManager<User> signInManager)
+        public int Returntype { get; set; }
+        public UserRepo(AppDbContext context, UserManager<User> userManager)
         {
             _context = context;
             _userManager = userManager;
-            _signInManager = signInManager;
         }
 
 
@@ -39,9 +37,9 @@ namespace Feasablty_study.Infrastructure.Repository
                 Status = entity.Status,
                 UserName = entity.UserName,
                 Name = entity.Name,
-                regionId = currentuser.regionId,
+                RegionId = currentuser.RegionId,
                 EmailConfirmed = entity.Status,
-                roleId = 2,
+                RoleId = 2,
 
                 };
             
@@ -50,7 +48,7 @@ namespace Feasablty_study.Infrastructure.Repository
             var user = await _userManager.FindByEmailAsync(entity.Email);
             if (user != null)
             {
-                returntype = 1;
+                Returntype = 1;
                 Error = "المستخدم موجود مسبقا بهذا الايميل";
                 return;
             }
@@ -71,7 +69,7 @@ namespace Feasablty_study.Infrastructure.Repository
             
             else
             {
-                returntype = 2;
+                Returntype = 2;
 
                 Error = "كلمة السر يجب ان تكون ارقام و حروف و رموز";
                 return;
@@ -88,9 +86,9 @@ namespace Feasablty_study.Infrastructure.Repository
                 Status = entity.Status,
                 UserName = entity.UserName,
                 Name = entity.Name,
-                regionId = entity.RegionId,
+                RegionId = entity.RegionId,
                 EmailConfirmed = entity.Status,
-                roleId = entity.userRoles,
+                RoleId = entity.UserRoles,
 
                 };
             
@@ -99,7 +97,7 @@ namespace Feasablty_study.Infrastructure.Repository
             var user = await _userManager.FindByEmailAsync(entity.Email);
             if (user != null)
             {
-                returntype = 1;
+                Returntype = 1;
                 Error = "المستخدم موجود مسبقا بهذا الايميل";
                 return;
             }
@@ -108,16 +106,16 @@ namespace Feasablty_study.Infrastructure.Repository
 
             if (newUserResponse.Succeeded)
             {
-                if (entity.userRoles == 1)
+                if (entity.UserRoles == 1)
                 {
                     await _userManager.AddToRoleAsync(newUser, UserRoles.Admin);
 
                 }
-                else if (entity.userRoles == 2)
+                else if (entity.UserRoles == 2)
                 {
                     await _userManager.AddToRoleAsync(newUser, UserRoles.User);
                 }
-                else if (entity.userRoles == 3)
+                else if (entity.UserRoles == 3)
                 {
                     
                     await _userManager.AddToRoleAsync(newUser, UserRoles.Employee);
@@ -130,7 +128,7 @@ namespace Feasablty_study.Infrastructure.Repository
             
             else
             {
-                returntype = 2;
+                Returntype = 2;
 
                 Error = "كلمة السر يجب ان تكون ارقام و حروف و رموز";
                 return;
@@ -212,25 +210,25 @@ namespace Feasablty_study.Infrastructure.Repository
             {
                
                     updatedUser.UserName = entity.Name;
-                    updatedUser.regionId= entity.RegionId;
+                    updatedUser.RegionId= entity.RegionId;
                     updatedUser.PhoneNumber = entity.PhoneNumber;
                     updatedUser.Status = entity.Status;
                     updatedUser.EmailConfirmed = entity.Status;
                     updatedUser.CreationDate = DateTime.Now;
-                    updatedUser.roleId = entity.userRoles;
+                    updatedUser.RoleId = entity.UserRoles;
                     await _userManager.UpdateAsync(updatedUser);
 
-                    if (entity.userRoles == 1)
+                    if (entity.UserRoles == 1)
                     {
                         await _userManager.RemoveFromRolesAsync(updatedUser, roleId);
                         await _userManager.AddToRoleAsync(updatedUser,UserRoles.Admin);
                     }
-                   else if(entity.userRoles == 2)
+                   else if(entity.UserRoles == 2)
                     {
                         await _userManager.RemoveFromRolesAsync(updatedUser, roleId);
                         await _userManager.AddToRoleAsync(updatedUser, UserRoles.User);
                      }
-                    else if (entity.userRoles == 3)
+                    else if (entity.UserRoles == 3)
                 {
                     await _userManager.RemoveFromRolesAsync(updatedUser, roleId);
                     await _userManager.AddToRoleAsync(updatedUser, UserRoles.Employee);

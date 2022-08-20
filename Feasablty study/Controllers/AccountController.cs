@@ -37,11 +37,11 @@ namespace Feasablty_study.Controllers
             TempData["Error"] = null;
             if (ModelState.IsValid)
             {
-                var UserName = loginVM.Email;
+                _ = loginVM.Email;
                 var user = await _userManager.FindByEmailAsync(loginVM.Email);
                 if (user != null)
                 {
-                    UserName = user.UserName;
+                    _ = user.UserName;
                     var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
                     if (passwordCheck)
                     {
@@ -88,6 +88,7 @@ namespace Feasablty_study.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel registerVM)
         {
+            ViewBag.Regions = new SelectList(await _regions.GetAllAsync(), "Id", "Name");
             if (!ModelState.IsValid) return View(registerVM);
 
             var user = await _userManager.FindByEmailAsync(registerVM.Email);
@@ -103,8 +104,8 @@ namespace Feasablty_study.Controllers
                 Email = registerVM.Email,
                 UserName = registerVM.UserName,
                 PhoneNumber = registerVM.PhoneNumber,
-                regionId=registerVM.RegionId,
-                roleId=2,
+                RegionId=registerVM.RegionId,
+                RoleId=2,
                 EmailConfirmed = false,
                 Status = false,
 

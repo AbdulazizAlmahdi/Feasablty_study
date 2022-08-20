@@ -3,15 +3,18 @@
 @{
     ViewData["Title"] = "انشاء دراسة جدوى جديدة";
 }
-
-
 <!-- Content wrapper -->
           <div class="content-wrapper">
+
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y">
+
   <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light"> ادخل بيانات المشروع </span> </h4>
+
 <!-- Default Icons Wizard -->
 <div class="col-12">
+                                        <div id="LoaderContiner"><div class="loader"></div></div>
+
   <div class="bs-stepper wizard-icons wizard-icons-example mt-2">
     <div class="bs-stepper-header">
       <div class="step" data-target="#account-details">
@@ -66,23 +69,11 @@
           <span class="bs-stepper-label">الدراسةالفنية</span>
         </button>
       </div>
-      <div class="line">
-        <i class="bx bx-chevron-right"></i>
-      </div>
-      <div class="step" data-target="#review-submit">
-        <button type="button" class="step-trigger">
-          <span class="bs-stepper-icon">
-            <svg viewBox="0 0 54 54">
-              <use xlink:href="/assets/svg/icons/form-wizard-submit.svg#wizardSubmit"></use>
-            </svg>
-          </span>
-          <span class="bs-stepper-label">مراجعة & حفظ</span>
-        </button>
-      </div>
+     
     </div>
     <div class="bs-stepper-content">
       <div class="container-xxl flex-grow-1 container-p-y">
-        <form method="post"  id="form-wizard-account" onSubmit="return false">          <!-- Account Details -->
+        <form method="post"  id="form-wizard-account" onSubmit="return false" enctype="multipart/form-data">          <!-- Account Details -->
           <div id="account-details" class="content">
             <div class="content-header mb-3">
               <h4 class="mb-0">- يرجى إدخال البيانات  ادناه :</h4>
@@ -94,7 +85,7 @@
                   <span id="basic-icon-default-company2" class="input-group-text"
                     ><i class="bx bx-buildings"></i
                   ></span>
-                  <input asp-for="@Model.feasibility_Study.ProjectName"
+                  <input asp-for="@Model.Feasibility_Study.ProjectName"
                     type="text"
                     id="basic-icon-default-company"
                     class="form-control"
@@ -111,7 +102,7 @@
                   <span id="basic-icon-default-fullname2" class="input-group-text"
                     ><i class="bx bx-user"></i
                   ></span>
-                  <input asp-for="@Model.feasibility_Study.ProjectLocation"
+                  <input asp-for="@Model.Feasibility_Study.ProjectLocation"
                     type="text"
                     class="form-control"
                     id="basic-icon-default-fullname"
@@ -128,7 +119,7 @@
                   <span id="basic-icon-default-fullname2" class="input-group-text"
                     ><i class="bx bx-user"></i
                   ></span>
-                  <input asp-for="@Model.feasibility_Study.OwnerName"
+                  <input asp-for="@Model.Feasibility_Study.OwnerName"
                     type="text"
                     class="form-control"
                     id="basic-icon-default-fullname"
@@ -145,7 +136,7 @@
                   <span id="basic-icon-default-phone2" class="input-group-text"
                     ><i class="bx bx-phone"></i
                   ></span>
-                  <input asp-for="@Model.feasibility_Study.ContactNumber"
+                  <input asp-for="@Model.Feasibility_Study.ContactNumber"
                     type="text"
                     id="basic-icon-default-phone"
                     class="form-control phone-mask"
@@ -160,7 +151,7 @@
             <label class="form-label" for="basic-icon-default-email">  البريد الالكتروني !</label>
             <div class="input-group input-group-merge">
               <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-              <input asp-for="@Model.feasibility_Study.ProjectEmail"
+              <input asp-for="@Model.Feasibility_Study.ProjectEmail"
                 type="text"
                 id="basic-icon-default-email"
                 class="form-control"
@@ -177,10 +168,9 @@
           <div class="col-sm-6">
             <label class="form-label" for="basic-icon-default-datatime">   التاريخ المقترح لبدايةالمشروع !</label>
             <div class="input-group input-group-merge">
-              <input asp-for="@Model.feasibility_Study.ProjectDate"
+              <input asp-for="@Model.Feasibility_Study.ProjectDate"
                 class="form-control"
                 type="datetime-local"
-                value="2022-01-18T12:00:00"
                 id="html5-datetime-local-input"
               />
             </div>
@@ -190,7 +180,7 @@
 
           <div class="col-sm-6">
             <label for="selectpickerDivider" class="form-label">صفة المشروع القانونية !</label>
-            <select id="selectpickerDivider" asp-for="@Model.feasibility_Study.ProjectType" class="selectpicker w-100" data-style="btn-default">
+            <select id="selectpickerDivider" asp-for="@Model.Feasibility_Study.ProjectType" class="selectpicker w-100" data-style="btn-default">
              
               <option>صفة المشروع القانونية</option>
               <option data-divider="true">صفة المشروع القانونية</option>
@@ -207,7 +197,7 @@
           <div class="mb-3">
             <label class="form-label" for="message">فكرة المشروع !</label>
             <textarea
-            asp-for="@Model.feasibility_Study.Description"
+            asp-for="@Model.Feasibility_Study.Description"
               class="form-control"
               id="message"
               rows="3"
@@ -218,7 +208,7 @@
 
           <div class="col-sm-6">
             <label for="formFile" class="form-label">شعار المشروع !</label>
-            <input  class="form-control" type="file" id="formFile" />
+            <input type="file" asp-for="@Model.Feasibility_Study.ProjectLogo" id="files" name="files[]" accept="image/*" class="custom-file-input">
           </div>
         <br>
          <hr>
@@ -246,7 +236,7 @@
             <label class="form-label" for="bootstrap-maxlength-example2">الرؤية هي !</label>
             <textarea
             id="bootstrap-maxlength-example2"
-            asp-for="@Model.preliminary_Study.VisionOfTheProject"
+            asp-for="@Model.Preliminary_Study.VisionOfTheProject"
             class="form-control bootstrap-maxlength-example"
             rows="3"
              placeholder="ان تكون الجدوئ من الردود في بيع المنتجات الضخمه في منطقة صنعاء ..."
@@ -262,7 +252,7 @@
             <label class="form-label" for="bootstrap-maxlength-example2">الرسالة هي !</label>
             <textarea
             id="bootstrap-maxlength-example2"
-            asp-for="@Model.preliminary_Study.MessageOfTheProject"
+            asp-for="@Model.Preliminary_Study.MessageOfTheProject"
             class="form-control bootstrap-maxlength-example"
             rows="3"
             placeholder="تقديم الاغراض المختصه ذات الجودة العاليه والسعر المنافس للعملاء في منتطقة صنعاء وذلك بواسطة فريق عمل احترفي بجمع بين الخبره العلميه والمهنية ..."
@@ -270,6 +260,7 @@
             ></textarea>
             </div>
             </div>
+
             <!-- /Bootstrap Maxlength2 -->
             <hr/>
             <h5>اهداف المشروع هي !</h5>
@@ -519,21 +510,9 @@
                             </div>  
                           </div>
                           <hr>
-                        </div><br><br>
-							<!-- بدايها الخريطة الخاصة بدراسة السوقيه---->
+                        </div><br>
 								
-                    <h5>خريطة الانشطة المنافسه حول المقترح  </h5>
                     
-                    <div class="card-body">
-                      <div class="col-12 mb-0 mb-3">
-                        <div class="alert alert-warning">
-                          <p class="mb-0">للحصول على نتائج اكثر دقة يرجى ادخال اسم الحي والمدينة في مقر المشروع في الخطوه رقم 1 </p>
-                        <div id="map"></div> 
-                      </div>
-                      </div>
-                    </div>
-                  <br><br> <hr/>
-				  <!-- نهاية الخريطة السوقيه---->
 				  
 				  <!-- بدايها جدولتحليل المنافسين-->
 				  
@@ -652,8 +631,9 @@
 						<h5>الفرص المتاحة للمشروع !</h5>
 							<div class="col-sm-6">
 									<div class="form-check">
-									<input id="closeButton" class="form-check-input" type="checkbox" value="توجد الحكومة لدعم المشاريع">
-									<label class="form-check-label"  asp-for="@Model.AvailbleOpportunity[0]" for="closeButton">توجد الحكومة لدعم المشاريع</label>
+                                     <label class="form-check-label"  for="closeButton"  >
+									<input id="closeButton" asp-for="@Model.AvailbleOpportunity[0]" class="form-check-input" type="checkbox" value="توجد الحكومة لدعم المشاريع">
+									توجد الحكومة لدعم المشاريع</label>
 									</div>
 									<div class="form-check">
 									<input id="addBehaviorOnToastClick" asp-for="@Model.AvailbleOpportunity[1]" class="form-check-input" type="checkbox" value="زياده الطلب المنتج المطلوب">
@@ -690,12 +670,12 @@
 								  </div>
 								  <div class="list-group">
 								  <label class="list-style">
-									<input asp-for="@Model.AvailbleOpportunity[7]" class="form-check-input me-1" type="checkbox" value="">
+									<input asp-for="@Model.AvailbleOpportunity[7]" class="form-check-input me-1" type="checkbox" value="دعم القطاع الخاص والاقتصاد الوطني">
 										دعم القطاع الخاص والاقتصاد الوطني
 								  </label>
 								  </div>
                              <div class="form-check">
-                                                <input id="OtherAvailbleOpportunity"  class="form-check-input" type="checkbox" value="اخرى">
+                                                <input id="OtherAvailbleOpportunity"  class="form-check-input" type="checkbox" >
                                                 <label class="form-check-label" for="debugInfo">اخرى</label>
                                                  <input type="text" id="OtherAvailbleOpportunityValue" name="AvailbleOpportunity[8]">
 
@@ -1312,17 +1292,29 @@
 </table>
 </div>
 <br><br>
-<div class="col-sm-6">
-            <label class="form-label" for="basic-icon-default-email"> الدورة التشسغيلية للمشروع</label>
-            <div class="input-group input-group-merge">
-              <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-              <input min=1 max=12 asp-for="@Model.Technical_Study.OperationalCycle"
-                type="number"
-                class="form-control"
-              />
-            </div>
-            <div class="form-text">من خلال الدورة التشغيلة يتم ادخال عدد الشهور التي يحتاج المشروع لانتاج المنتجات و شراء المواد الخام  </div>
+
+            <div class="col-sm-6">
+            <label for="selectpickerDivider" class="form-label">الدورة التشسغيلية للمشروع</label>
+            <select id="selectpickerDivider" asp-for="@Model.Technical_Study.OperationalCycle" class="selectpicker w-100" data-style="btn-default">
+             
+              <option>الدورة التشسغيلية للمشروع</option>
+              <option data-divider="true">صفة المشروع القانونية</option>
+              <option value=1>شهر</option>
+              <option value=2>شهران</option>
+              <option value=3>3 اشهر</option>
+              <option value=4>4 اشهر</option>
+              <option value=5>5 اشهر</option>
+              <option value=6>6 اشهر</option>
+              <option value=7>7 اشهر</option>
+              <option value=8>8 اشهر</option>
+              <option value=9>9 اشهر</option>
+              <option value=10>10 اشهر</option>
+              <option value=11>11 شهر</option>
+              <option value=12>12 شهر</option>
+
+            </select>
           </div>
+            <div class="form-text">من خلال الدورة التشغيلة يتم ادخال عدد الشهور التي يحتاج المشروع لانتاج المنتجات و شراء المواد الخام  </div>
     
     
 
@@ -1331,68 +1323,12 @@
                 <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
                 <span class="d-none d-sm-inline-block">السابق</span>
               </button>
-              <button class="btn btn-primary btn-next">
-                <span class="d-none d-sm-inline-block me-sm-1">التالي</span>
-                <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
-              </button>
+             <input type="submit" id="createButton" class="btn btn-success" value="حفظ الدراسة"/>
+
             </div>
 
 
           </div>
- <!--/ social-links-->
-
-      
-       
-
-        <!-- Review -->
-        <div id="review-submit" class="content">
-          <p class="fw-semibold mb-2">بيانا المشروع</p>
-          <ul class="list-unstyled">
-            <li>اسم المستخدم </li>
-            <li>رقم الهاتف   </li>
-            <li> اسم المشروع </li>
-            <li>بيانات اخرى</li>
-          </ul>
-          <hr />
-          <p class="fw-semibold mb-2"> الدراسة التمهيدية</p>
-          <ul class="list-unstyled">
-            <li>اهداف المشروع </li>
-            <li> تراخيص المشروع </li>
-            <li>بيانات اخرى</li>
-          </ul>
-          <hr />
-          <p class="fw-semibold mb-2">الدراسة التسويقة</p>
-          <ul class="list-unstyled">
-            <li>الاسواق المستهدفه</li>
-            <li>الخرائط</li>
-            <li>  نقاط القوة والضعف</li>
-            <li>بيانات اخرى</li>
-          </ul>
-          <hr />
-          <p class="fw-semibold mb-2"> الدراسة الفنية</p>
-          <ul class="list-unstyled">
-            <li>الالات والمعدات للمشروع</li>
-            <li>القوى العاملة للمشروعا</li>
-            <li>الرسوم الحكومية للمشروع</li>
-            <li>مصاريف التأسيس</li>
-            <li> بيانات اخرى</li>
-          </ul>
-          <hr>
-            <button class="btn btn-primary btn-prev">
-              <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-              
-              <span class="d-none d-sm-inline-block">السابق</span>
-            </button>
-            <div class="form-check mb-3 ">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                name="accountActivation"
-                id="accountActivation"
-              />
-
-            </div>
-            <input type="submit" id="createButton" class="btn btn-success" value="حفظ الدراسة"/>
             </form>
             
           </div>
@@ -1402,8 +1338,6 @@
       </div>
     </div>
   </div>
-<!-- /Default Icons Wizard -->
-<!-- /Default Icons Wizard -->
 
 
          
@@ -1427,7 +1361,7 @@
     <!-- / Layout wrapper -->
 
   <!-- Core JS -->
-
+          
 
 
 @section Scripts {
@@ -1442,8 +1376,13 @@
                 type: "POST", //HTTP POST Method
                 url: "Create", // Controller/View
                 data: inputData,
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    alert("ادخل بيانات الدراسه بشكل كامل");
+                },
                 success : function(response) {
-                    console.log(response)
+                     $("#LoaderContiner")
+                    if (response.result == 'Redirect')
+                     window.location = response.url;
                 }
             });
 

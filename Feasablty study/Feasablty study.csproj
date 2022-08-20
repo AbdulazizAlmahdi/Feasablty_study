@@ -862,7 +862,6 @@
     <None Include="wwwroot\assets\vendor\libs\formvalidation\dist\js\plugins\Wizard.min.js" />
     <None Include="wwwroot\assets\vendor\libs\fullcalendar\fullcalendar.js" />
     <None Include="wwwroot\assets\vendor\libs\hammer\hammer.js" />
-    <None Include="wwwroot\assets\vendor\libs\highlight\highlight.js" />
     <None Include="wwwroot\assets\vendor\libs\i18n\i18n.js" />
     <None Include="wwwroot\assets\vendor\libs\idletimer\idletimer.js" />
     <None Include="wwwroot\assets\vendor\libs\jquery-repeater\jquery-repeater.js" />
@@ -891,7 +890,6 @@
     <None Include="wwwroot\assets\vendor\libs\swiper\swiper.js" />
     <None Include="wwwroot\assets\vendor\libs\tagify\tagify.js" />
     <None Include="wwwroot\assets\vendor\libs\toastr\toastr.js" />
-    <None Include="wwwroot\assets\vendor\libs\typeahead-js\typeahead.js" />
     <None Include="wwwroot\Rotativa\wkhtmltopdf.exe" />
   </ItemGroup>
 
@@ -910,5 +908,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 </Project>

@@ -4,14 +4,16 @@ using Feasablty_study.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Feasablty_study.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220820201105_change type")]
+    partial class changetype
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,8 +43,8 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("AmounrAdded")
-                        .HasColumnType("float");
+                    b.Property<int>("AmounrAdded")
+                        .HasColumnType("int");
 
                     b.Property<string>("CompetitorsName")
                         .HasColumnType("nvarchar(max)");
@@ -76,14 +78,14 @@ namespace Feasablty_study.Migrations
                     b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
-                    b.Property<double>("PricePerMeter")
-                        .HasColumnType("float");
+                    b.Property<float>("PricePerMeter")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalArea")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalArea")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalPriceArea")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalPriceArea")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -102,8 +104,8 @@ namespace Feasablty_study.Migrations
                     b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
@@ -131,14 +133,14 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("ProductPrice")
-                        .HasColumnType("float");
+                    b.Property<float>("ProductPrice")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalMonthlyPrice")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalMonthlyPrice")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalYearlyPrice")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalYearlyPrice")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -221,8 +223,8 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -273,11 +275,11 @@ namespace Feasablty_study.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalPrice")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalPrice")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -299,17 +301,17 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("JobTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("MonthlySalary")
-                        .HasColumnType("float");
+                    b.Property<float>("MonthlySalary")
+                        .HasColumnType("real");
 
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<double>("TotalMonthlySalary")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalMonthlySalary")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalYearlySalary")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalYearlySalary")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -344,11 +346,11 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("Threats")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("TotalExpected_revenue")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalExpected_revenue")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalMarketing_Activity")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalMarketing_Activity")
+                        .HasColumnType("real");
 
                     b.HasKey("FeasibilityStudyId");
 
@@ -362,8 +364,8 @@ namespace Feasablty_study.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
+                    b.Property<float>("Amount")
+                        .HasColumnType("real");
 
                     b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
@@ -419,11 +421,11 @@ namespace Feasablty_study.Migrations
                     b.Property<int>("Feasibility_StudyId")
                         .HasColumnType("int");
 
-                    b.Property<double>("MonthlyCost")
-                        .HasColumnType("float");
+                    b.Property<float>("MonthlyCost")
+                        .HasColumnType("real");
 
-                    b.Property<double>("YearlyCost")
-                        .HasColumnType("float");
+                    b.Property<float>("YearlyCost")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -445,17 +447,17 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("Material")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("PriceOfUnity")
-                        .HasColumnType("float");
+                    b.Property<float>("PriceOfUnity")
+                        .HasColumnType("real");
 
                     b.Property<int>("QuantityRequiredMonthly")
                         .HasColumnType("int");
 
-                    b.Property<double>("TotalPriceQuantityMonthly")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalPriceQuantityMonthly")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalPriceQuantityYearly")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalPriceQuantityYearly")
+                        .HasColumnType("real");
 
                     b.Property<string>("Unit")
                         .HasColumnType("nvarchar(max)");
@@ -480,8 +482,8 @@ namespace Feasablty_study.Migrations
                     b.Property<string>("RentalType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("RentalYearly")
-                        .HasColumnType("float");
+                    b.Property<float>("RentalYearly")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -565,32 +567,32 @@ namespace Feasablty_study.Migrations
                     b.Property<int>("OperationalCycle")
                         .HasColumnType("int");
 
-                    b.Property<double>("TotalConstruction_and_buliding")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalConstruction_and_buliding")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalEstablishment_expenses")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalEstablishment_expenses")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalGovernment_fees")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalGovernment_fees")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalMachinery_Equipment")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalMachinery_Equipment")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalManpower_workforce")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalManpower_workforce")
+                        .HasColumnType("real");
 
                     b.Property<double>("TotalOperatingExpensese")
                         .HasColumnType("float");
 
-                    b.Property<double>("TotalPublic_benefit")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalPublic_benefit")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalRaw_materials")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalRaw_materials")
+                        .HasColumnType("real");
 
-                    b.Property<double>("TotalRentals")
-                        .HasColumnType("float");
+                    b.Property<float>("TotalRentals")
+                        .HasColumnType("real");
 
                     b.HasKey("FeasibilityStudyId");
 

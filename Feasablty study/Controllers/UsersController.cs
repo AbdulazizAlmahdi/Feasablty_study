@@ -29,10 +29,10 @@ namespace Feasablty_study.Controllers
         public async Task<IActionResult> Index()
         {
             var currentuser = await userRepo.GetByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var Users = await userRepo.GetAllAsync(u=>u.region);
+            var Users = await userRepo.GetAllAsync(u=>u.Region);
             if(User.IsInRole(UserRoles.Employee))
             {
-               Users= Users.Where(u => u.regionId == currentuser.regionId && u.roleId==2);
+               Users= Users.Where(u => u.RegionId == currentuser.RegionId && u.RoleId==2);
                 return View(Users);
             }
             else
@@ -43,7 +43,7 @@ namespace Feasablty_study.Controllers
         public async Task<IActionResult> Details(string id)
         {
 
-            var user = await userRepo.GetByIdAsync((string)id, u => u.region);
+            var user = await userRepo.GetByIdAsync((string)id, u => u.Region);
             if (user == null)
             {
                 return NotFound();
@@ -78,12 +78,12 @@ namespace Feasablty_study.Controllers
             
             if (ModelState.IsValid)
             {
-                if(userRepo.returntype == 1)
+                if(userRepo.Returntype == 1)
                 {
                     TempData["Error"] = userRepo.Error;
                     return View(user);
                 }
-                else if(userRepo.returntype == 2)
+                else if(userRepo.Returntype == 2)
                 {
                     TempData["Error"]=userRepo.Error;
                     return View(user);
@@ -169,7 +169,7 @@ namespace Feasablty_study.Controllers
                 return NotFound();
             }
 
-            var user = await userRepo.GetByIdAsync((string)id, u => u.region);
+            var user = await userRepo.GetByIdAsync((string)id, u => u.Region);
             if (user == null)
             {
                 return NotFound();
@@ -186,7 +186,7 @@ namespace Feasablty_study.Controllers
             await userRepo.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
-          public async Task<IActionResult> disbleOrEnableUser(string id)
+          public async Task<IActionResult> DisbleOrEnableUser(string id)
         {
             await userRepo.EnableAndDisbleUser(id);
             return RedirectToAction(nameof(Index));

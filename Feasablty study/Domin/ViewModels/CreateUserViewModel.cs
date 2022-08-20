@@ -25,7 +25,7 @@ namespace Feasablty_study.Domin.ViewModels
         [Display(Name ="حالة المستخدم (مفعل / معطل )")]
         public bool Status { get; set; }
         [Display(Name="نوع المستخدم")]
-        public int userRoles { get; set; }
+        public int UserRoles { get; set; }
         public int RegionId { get; set; }
 
 

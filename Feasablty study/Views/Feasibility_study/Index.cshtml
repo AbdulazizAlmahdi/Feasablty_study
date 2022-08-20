@@ -48,7 +48,6 @@
             <td> @Html.DisplayFor(modelItem => item.OwnerName) </td>
                      <td>
                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px;">عرض</i></a> |
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px">تعديل</i></a> |
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px">حذف</i></a>
                 <a asp-action="PrintAsPdf" asp-route-id="@item.Id" class="btn btn-primary" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px"> طباعة  </i></a>
             </td>

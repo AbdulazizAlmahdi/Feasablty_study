@@ -7,24 +7,24 @@ namespace Feasablty_study.Models
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
-        public float ProductPrice { get; set; }
+        public double ProductPrice { get; set; }
         public int MonthlyQusntity { get; set; }
-        public float TotalMonthlyPrice
+        public double TotalMonthlyPrice
         {
             get { return ProductPrice *MonthlyQusntity; }
            
             set
             {
-                value = ProductPrice * MonthlyQusntity;
+                _ = ProductPrice * MonthlyQusntity;
             }
         }   
-        public float TotalYearlyPrice
+        public double TotalYearlyPrice
         {
             get { return TotalMonthlyPrice*12; }
            
             set
             {
-                value = TotalMonthlyPrice * 12;
+                _ = TotalMonthlyPrice * 12;
             }
         }
         [ForeignKey("Feasibility_study")]

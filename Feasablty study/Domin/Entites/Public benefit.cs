@@ -9,12 +9,12 @@ namespace Feasablty_study.Models
         [Key]
         public int Id { get; set; }
         public string Benefit  { get; set; }
-        public float MonthlyCost { get; set; }
-        public float YearlyCost {
+        public double MonthlyCost { get; set; }
+        public double YearlyCost {
             get { return MonthlyCost*12; }
             set
             {
-                value = MonthlyCost * 12;
+                _ = MonthlyCost * 12;
             }
                 }
         [ForeignKey("Feasibility_study")]

@@ -5,6 +5,8 @@ using Feasablty_study.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using Feasablty_study.Services;
+using System.IO;
 
 namespace Feasablty_study.Infrastructure.Repository
 {
@@ -26,40 +28,45 @@ namespace Feasablty_study.Infrastructure.Repository
           {
 
           }*/
-        public static int count { get; set; }
-        public  int Count ()
+        public static int Count { get; set; }
+        public  int CountM ()
         {
           // this.count= context1.Feasibility_studies.Count();
-            return count;
+            return Count;
         }
 
         public async Task AddAsync(CreateFeasibilityStudyViewModel model,string UserId)
         {
-            Feasibility_study fs = new Feasibility_study()
+       
+            Feasibility_study fs = new()
             {
                 UserId = UserId,
-                ContactNumber = model.feasibility_Study.ContactNumber,
-                Description = model.feasibility_Study.Description,
-                ProjectDate = model.feasibility_Study.ProjectDate,
-                OwnerName = model.feasibility_Study.OwnerName,
-                ProjectLocation = model.feasibility_Study.ProjectLocation,
-                ProjectName = model.feasibility_Study.ProjectName,
-                ProjectType = model.feasibility_Study.ProjectType,
-                ProjectEmail=model.feasibility_Study.ProjectEmail,
+                ContactNumber = model.Feasibility_Study.ContactNumber,
+                Description = model.Feasibility_Study.Description,
+                ProjectDate = model.Feasibility_Study.ProjectDate,
+                OwnerName = model.Feasibility_Study.OwnerName,
+                ProjectLocation = model.Feasibility_Study.ProjectLocation,
+                ProjectName = model.Feasibility_Study.ProjectName,
+                ProjectType = model.Feasibility_Study.ProjectType,
+                ProjectEmail=model.Feasibility_Study.ProjectEmail,
+                ProjectLogo=model.Feasibility_Study.ProjectLogo,
             };
-            fs.Preliminary_study = new Preliminary_study();
-           // string[] CteristicsOfTheProjectArea = new string[];
-            //foreach
-            fs.Preliminary_study.CteristicsOfTheProjectArea = string.Join("<br/>", model.CteristicsOfTheProjectArea.Where(s=>s!="false"));
-            fs.Preliminary_study.FactorsRepresentedOnIncreasedDemand = string.Join("<br/>", model.FactorsRepresentedOnIncreasedDemand.Where(s => s != "false"));
-            fs.Preliminary_study.FactorsRepresentedOnLowDemand = string.Join("<br/>", model.FactorsRepresentedOnLowDemand.Where(s => s != "false"));
-            fs.Preliminary_study.ProjectObjectives = string.Join("<br/>", model.ProjectGoals.Where(s => s != "false"));
+            fs.Preliminary_study = new Preliminary_study
+            {
+                // string[] CteristicsOfTheProjectArea = new string[];
+                //foreach
+                CteristicsOfTheProjectArea = string.Join("<br/>", model.CteristicsOfTheProjectArea.Where(s => s != "false")),
+                FactorsRepresentedOnIncreasedDemand = string.Join("<br/>", model.FactorsRepresentedOnIncreasedDemand.Where(s => s != "false")),
+                FactorsRepresentedOnLowDemand = string.Join("<br/>", model.FactorsRepresentedOnLowDemand.Where(s => s != "false")),
+                ProjectObjectives = string.Join("<br/>", model.ProjectGoals.Where(s => s != "false")),
 
-            fs.Preliminary_study.VisionOfTheProject = model.preliminary_Study.VisionOfTheProject;
+                VisionOfTheProject = model.Preliminary_Study.VisionOfTheProject,
+                MessageOfTheProject = model.Preliminary_Study.MessageOfTheProject
+            };
 
-            fs.licenses = new List<License>();
+            fs.Licenses = new List<License>();
 
-            foreach (var item in model.licenses)
+            foreach (var item in model.Licenses)
             {
                 var It = new License()
                 {
@@ -67,20 +74,23 @@ namespace Feasablty_study.Infrastructure.Repository
                     Licenses = item.Licenses,
 
                 };
-                fs.licenses.Add(It);
+                fs.Licenses.Add(It);
             }
-            fs.market_Study = new Market_study();
-            fs.market_Study.AvailbleOpportunity = string.Join("<br/>", model.AvailbleOpportunity.Where(s => s != "false"));
-            fs.market_Study.StrengthPoints = string.Join("<br/>", model.StrengthPoints.Where(s => s != "false"));
-            fs.market_Study.TargetMarket = string.Join("<br/>", model.TargetMarket.Where(s => s != "false"));
-            fs.market_Study.PointsOfEwakness = string.Join("<br/>", model.PointsOfEwakness.Where(s => s != "false"));
-            //fs.market_Study.ProjectLocationOnTheMap = model.Market_Study.ProjectLocationOnTheMap;
-            fs.market_Study.Threats = string.Join("<br/>", model.Threats.Where(s => s != "false"));
-            fs.market_Study.MarketGap = model.Market_Study.MarketGap;
-            fs.market_Study.TotalExpected_revenue = 0;
-            fs.market_Study.TotalMarketing_Activity = 0;
+            fs.Market_Study = new Market_study()
+            {
+            AvailbleOpportunity = string.Join("<br/>", model.AvailbleOpportunity.Where(s => s != "false")),
+            StrengthPoints = string.Join("<br/>", model.StrengthPoints.Where(s => s != "false")),
+            TargetMarket = string.Join("<br/>", model.TargetMarket.Where(s => s != "false")),
+            PointsOfEwakness = string.Join("<br/>", model.PointsOfEwakness.Where(s => s != "false")),
+            //ProjectLocationOnTheMap = model.Market_Study.ProjectLocationOnTheMap,
+            Threats = string.Join("<br/>", model.Threats.Where(s => s != "false")),
+            MarketGap = model.Market_Study.MarketGap,
+            TotalExpected_revenue = 0,
+            TotalMarketing_Activity = 0,
+        };
+            
 
-            fs.competitors = new List<Competitors>();
+            fs.Competitors = new List<Competitors>();
             foreach (var item in model.Competitors)
             {
                 var It = new Competitors()
@@ -90,11 +100,11 @@ namespace Feasablty_study.Infrastructure.Repository
                     AmounrAdded = item.AmounrAdded,
                     Products = item.Products,
                 };
-                fs.competitors.Add(It);
+                fs.Competitors.Add(It);
             }
 
-            fs.expected_Revenues = new List<Expected_revenue>();
-            foreach (var item in model.expected_Revenues)
+            fs.Expected_Revenues = new List<Expected_revenue>();
+            foreach (var item in model.Expected_Revenues)
             {
                 var It = new Expected_revenue()
                 {
@@ -102,25 +112,25 @@ namespace Feasablty_study.Infrastructure.Repository
                     ProductPrice = item.ProductPrice,
                     MonthlyQusntity = item.MonthlyQusntity,
                 };
-                fs.expected_Revenues.Add(It);
-                fs.market_Study.TotalExpected_revenue += It.TotalYearlyPrice;
+                fs.Expected_Revenues.Add(It);
+                fs.Market_Study.TotalExpected_revenue += It.TotalYearlyPrice;
             }
 
-            fs.marketing_Activities = new List<Marketing_Activity>();
-            foreach (var item in model.marketing_Activities)
+            fs.Marketing_Activities = new List<Marketing_Activity>();
+            foreach (var item in model.Marketing_Activities)
             {
                 var It = new Marketing_Activity()
                 {
                     Name = item.Name,
                     Amount = item.Amount,
                 };
-                fs.marketing_Activities.Add(It);
-                fs.market_Study.TotalMarketing_Activity += It.Amount;
+                fs.Marketing_Activities.Add(It);
+                fs.Market_Study.TotalMarketing_Activity += It.Amount;
 
             }
 
-            fs.risks = new List<Risk>();
-            foreach (var item in model.risks)
+            fs.Risks = new List<Risk>();
+            foreach (var item in model.Risks)
             {
                 var It = new Risk()
                 {
@@ -131,22 +141,24 @@ namespace Feasablty_study.Infrastructure.Repository
 
 
                 };
-                fs.risks.Add(It);
+                fs.Risks.Add(It);
             }
 
-            fs.technical_Study = new Technical_Study();
-            fs.technical_Study.TotalMachinery_Equipment = 0;
-            fs.technical_Study.TotalManpower_workforce = 0;
-            fs.technical_Study.TotalPublic_benefit = 0;
-            fs.technical_Study.TotalConstruction_and_buliding = 0;
-            fs.technical_Study.TotalRaw_materials = 0;
-            fs.technical_Study.TotalGovernment_fees = 0;
-            fs.technical_Study.TotalRentals = 0;
-            fs.technical_Study.OperationalCycle = model.Technical_Study.OperationalCycle;
+            fs.Technical_Study = new Technical_Study
+            {
+                TotalMachinery_Equipment = 0,
+                TotalManpower_workforce = 0,
+                TotalPublic_benefit = 0,
+                TotalConstruction_and_buliding = 0,
+                TotalRaw_materials = 0,
+                TotalGovernment_fees = 0,
+                TotalRentals = 0,
+                OperationalCycle = model.Technical_Study.OperationalCycle
+            };
 
-            fs.machinery_Equipment = new List<Machinery_Equipment>();
+            fs.Machinery_Equipment = new List<Machinery_Equipment>();
 
-            foreach (var item in model.machinery_Equipment)
+            foreach (var item in model.Machinery_Equipment)
             {
                 var It = new Machinery_Equipment()
                 {
@@ -156,8 +168,8 @@ namespace Feasablty_study.Infrastructure.Repository
                     Price = item.Price,
 
                 };
-                fs.machinery_Equipment.Add(It);
-                fs.technical_Study.TotalMachinery_Equipment += It.TotalPrice;
+                fs.Machinery_Equipment.Add(It);
+                fs.Technical_Study.TotalMachinery_Equipment += It.TotalPrice;
             }
 
             fs.Manpower_Workforces = new List<Manpower_workforce>();
@@ -171,12 +183,12 @@ namespace Feasablty_study.Infrastructure.Repository
 
                 };
                 fs.Manpower_Workforces.Add(It);
-                fs.technical_Study.TotalManpower_workforce += It.TotalYearlySalary;
+                fs.Technical_Study.TotalManpower_workforce += It.TotalYearlySalary;
 
             }
 
-            fs.construction_And_Bulidings = new List<Construction_and_buliding>();
-            foreach (var item in model.construction_And_Bulidings)
+            fs.Construction_And_Bulidings = new List<Construction_and_buliding>();
+            foreach (var item in model.Construction_And_Bulidings)
             {
                 var It = new Construction_and_buliding()
                 {
@@ -186,12 +198,12 @@ namespace Feasablty_study.Infrastructure.Repository
 
 
                 };
-                fs.construction_And_Bulidings.Add(It);
-                fs.technical_Study.TotalConstruction_and_buliding += It.TotalPriceArea;
+                fs.Construction_And_Bulidings.Add(It);
+                fs.Technical_Study.TotalConstruction_and_buliding += It.TotalPriceArea;
             }
 
-            fs.rentals = new List<Rentals>();
-            foreach (var item in model.rentals)
+            fs.Rentals = new List<Rentals>();
+            foreach (var item in model.Rentals)
             {
                 var It = new Rentals()
                 {
@@ -200,8 +212,8 @@ namespace Feasablty_study.Infrastructure.Repository
 
 
                 };
-                fs.rentals.Add(It);
-                fs.technical_Study.TotalRentals = It.RentalYearly;
+                fs.Rentals.Add(It);
+                fs.Technical_Study.TotalRentals += It.RentalYearly;
             }
 
             fs.Government_Fees = new List<Government_fees>();
@@ -215,11 +227,11 @@ namespace Feasablty_study.Infrastructure.Repository
 
                 };
                 fs.Government_Fees.Add(It);
-                fs.technical_Study.TotalGovernment_fees += It.Price;
+                fs.Technical_Study.TotalGovernment_fees += It.Price;
             }
 
-            fs.establishment_Expenses = new List<Establishment_expenses>();
-            foreach (var item in model.establishment_Expenses)
+            fs.Establishment_Expenses = new List<Establishment_expenses>();
+            foreach (var item in model.Establishment_Expenses)
             {
                 var It = new Establishment_expenses()
                 {
@@ -227,12 +239,12 @@ namespace Feasablty_study.Infrastructure.Repository
                     Price = item.Price,
 
                 };
-                fs.establishment_Expenses.Add(It);
-                fs.technical_Study.TotalEstablishment_expenses += It.Price;
+                fs.Establishment_Expenses.Add(It);
+                fs.Technical_Study.TotalEstablishment_expenses += It.Price;
             }
 
-            fs.raw_Materials = new List<Raw_materials>();
-            foreach (var item in model.raw_Materials)
+            fs.Raw_Materials = new List<Raw_materials>();
+            foreach (var item in model.Raw_Materials)
             {
                 var It = new Raw_materials()
                 {
@@ -242,13 +254,13 @@ namespace Feasablty_study.Infrastructure.Repository
                     QuantityRequiredMonthly = item.QuantityRequiredMonthly,
 
                 };
-                fs.raw_Materials.Add(It);
-                fs.technical_Study.TotalRaw_materials += It.TotalPriceQuantityYearly;
+                fs.Raw_Materials.Add(It);
+                fs.Technical_Study.TotalRaw_materials += It.TotalPriceQuantityYearly;
             }
 
 
-            fs.public_Benefits = new List<Public_benefit>();
-            foreach (var item in model.public_Benefits)
+            fs.Public_Benefits = new List<Public_benefit>();
+            foreach (var item in model.Public_Benefits)
             {
                 var It = new Public_benefit()
                 {
@@ -256,14 +268,14 @@ namespace Feasablty_study.Infrastructure.Repository
                     MonthlyCost = item.MonthlyCost,
 
                 };
-                fs.public_Benefits.Add(It);
-                fs.technical_Study.TotalPublic_benefit += It.YearlyCost;
+                fs.Public_Benefits.Add(It);
+                fs.Technical_Study.TotalPublic_benefit += It.YearlyCost;
             }
-            fs.TotalOperatingExpenseseOneYear = fs.market_Study.TotalMarketing_Activity + fs.technical_Study.TotalOperatingExpensese;
-            fs.WorkingCapital = fs.TotalOperatingExpenseseOneYear / fs.technical_Study.OperationalCycle;
-            fs.Zakat = fs.market_Study.TotalExpected_revenue * 0.025;
-            fs.NetProfit = fs.TotalOperatingExpenseseOneYear - fs.market_Study.TotalExpected_revenue-fs.Zakat;
-            fs.ProfitRate = (fs.NetProfit / fs.TotalOperatingExpenseseOneYear) * 100;
+            fs.TotalOperatingExpenseseOneYear = fs.Market_Study.TotalMarketing_Activity + fs.Technical_Study.TotalOperatingExpensese;
+            fs.WorkingCapital = fs.TotalOperatingExpenseseOneYear / fs.Technical_Study.OperationalCycle;
+            fs.Zakat = fs.Market_Study.TotalExpected_revenue * 0.025;
+            fs.NetProfit = fs.Market_Study.TotalExpected_revenue-fs.TotalOperatingExpenseseOneYear-fs.Zakat;
+            fs.ProfitRate =(int) (fs.NetProfit / fs.TotalOperatingExpenseseOneYear) * 100;
             await context1.Feasibility_studies.AddAsync(fs);
             context1.SaveChanges();
         }

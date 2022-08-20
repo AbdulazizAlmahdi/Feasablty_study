@@ -14,7 +14,7 @@ namespace Feasablty_study.Infrastructure.Repository
     public interface IUserRepo 
     {
         public string Error { get; set; }
-        public int returntype { get; set; }
+        public int Returntype { get; set; }
         Task<User> GetByUserNameAsync(string UserName);
         Task<IEnumerable<User>> GetAllAsync();
         Task<IEnumerable<User>> GetAllAsync(params Expression<Func<User, object>>[] includeProperties);

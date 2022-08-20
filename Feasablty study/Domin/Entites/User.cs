@@ -24,10 +24,10 @@ namespace Feasablty_study.Models
         [Display(Name = "CreationDate")]
         public DateTime CreationDate { get; set; } = DateTime.Now;
         [ForeignKey("regions")]
-        public virtual int regionId { get; set; }
-        public virtual Regions region { get; set; }
-        public int roleId { get; set; }
-        public virtual ICollection <Support_Messages> messages { get; set; }
+        public virtual int RegionId { get; set; }
+        public virtual Regions Region { get; set; }
+        public int RoleId { get; set; }
+        public virtual ICollection <Support_Messages> Messages { get; set; }
         public virtual ICollection<Feasibility_study> Feasibility_Studies { get; set; }
 
 

@@ -13,7 +13,7 @@ namespace Feasablty_study.Domin.ViewModels
         [Required(ErrorMessage = "يرجى ادخال الايميل"), RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "صيغة الايميل غير صالحة")]
         [Display(Name = "الايميل")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "ادخل رقم الهاتف"), MaxLength(9, ErrorMessage = "يجب ان لا يكون رقم الهاتف اكثر من تسعة ارقام "), MinLength(9, ErrorMessage = "يجب ان لا يكون رقم الهاتف اقل من تسعة ارقام")]
+        [Required(ErrorMessage ="ادخل اسم المستخدم") ,RegularExpression(@"^(?=[a-zA-Z0-9._]{5,20}$)(?!.*[_.]{2})[^_.].*[^_.]$", ErrorMessage = " لا يجب ان تحتوي على مسافات و يجب ان يكون اكثر من 5 حروف")]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
         [DataType(DataType.Password)]

@@ -8,20 +8,20 @@ namespace Feasablty_study.Models
         public int Id { get; set; }
         public string Material { get; set; }
         public string Unit { get; set; }
-        public float PriceOfUnity { get; set; }
+        public double PriceOfUnity { get; set; }
         public int QuantityRequiredMonthly { get; set; }
-        public float TotalPriceQuantityMonthly {
+        public double TotalPriceQuantityMonthly {
             get {return PriceOfUnity *QuantityRequiredMonthly;}
             set
             {
-                value = QuantityRequiredMonthly * PriceOfUnity;
+                _ = QuantityRequiredMonthly * PriceOfUnity;
             }
         }     
-        public float TotalPriceQuantityYearly {
+        public double TotalPriceQuantityYearly {
             get { return TotalPriceQuantityMonthly * 12; }
             set
             {
-                value = TotalPriceQuantityMonthly*12;
+                _ = TotalPriceQuantityMonthly*12;
             }
         }
         [ForeignKey("Feasibility_study")]

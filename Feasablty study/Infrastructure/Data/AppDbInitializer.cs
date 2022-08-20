@@ -13,193 +13,187 @@ namespace Feasablty_study.Infrastructure.Data
     {
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
-            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            using var serviceScope = applicationBuilder.ApplicationServices.CreateScope();
+            var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
+
+            context.Database.EnsureCreated();
+
+
+            //Regions
+            if (!context.Regions.Any())
             {
-                var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
-
-                context.Database.EnsureCreated();
-
-              
-              //Regions
-                 if (!context.regions.Any())
-                 {
-                     context.regions.AddRange(new List<Regions>()
+                context.Regions.AddRange(new List<Regions>()
                      {
                          new Regions()
                          {
-                            
-                             Name = " صنعاء",                      
+
+                             Name = " صنعاء",
 
                          },
                           new Regions()
                          {
-                             Name = " حجة",                      
+                             Name = " حجة",
 
                          },
                           new Regions()
                          {
-                             Name = " مارب",                      
+                             Name = " مارب",
 
                          },
                           new Regions()
                          {
-                             Name = " ذمار",                      
+                             Name = " ذمار",
 
                          },
                           new Regions()
                          {
-                             Name = " الجوف",                      
+                             Name = " الجوف",
 
                          },
                           new Regions()
                          {
-                             Name = " المحويت",                      
+                             Name = " المحويت",
 
                          },
-                               
+
                          new Regions()
                          {
-                             Name = " حضرموت",                      
-
-                         },
-                         new Regions()
-                         {
-                             Name = " تعز",                      
+                             Name = " حضرموت",
 
                          },
                          new Regions()
                          {
-                             Name = " المهرة",                      
+                             Name = " تعز",
 
                          },
                          new Regions()
                          {
-                             Name = " البيضاء",                      
+                             Name = " المهرة",
+
+                         },
+                         new Regions()
+                         {
+                             Name = " البيضاء",
 
                          },
                           new Regions()
                          {
-                             Name = " الحديدة",                      
+                             Name = " الحديدة",
 
                          },
                           new Regions()
                          {
-                             Name = " ابين",                      
+                             Name = " ابين",
 
                          },
                           new Regions()
                          {
-                             Name = " اب",                      
+                             Name = " اب",
 
                          },
                            new Regions()
                          {
-                             Name = " امانة العاصمة",                      
+                             Name = " امانة العاصمة",
 
                          },
                            new Regions()
                          {
-                             Name = " ريمة",                      
+                             Name = " ريمة",
 
                          },
                            new Regions()
                          {
-                             Name = " صعدة",                      
+                             Name = " صعدة",
 
                          },
                             new Regions()
                          {
-                             Name = " الضالع",                      
+                             Name = " الضالع",
 
                          },
                             new Regions()
                          {
-                             Name = " لحج",                      
+                             Name = " لحج",
 
                          },
                             new Regions()
                          {
-                             Name = " عدن",                      
+                             Name = " عدن",
 
                          },
                             new Regions()
                          {
-                             Name = " شبوة",                      
+                             Name = " شبوة",
 
                          },
                             new Regions()
                          {
-                             Name = " عمران",                      
+                             Name = " عمران",
 
                          },
-                         
+
                      });
-                    context.SaveChanges();
-                 }
-                 
-          
+                context.SaveChanges();
             }
 
         }
         public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
         {
-            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            using var serviceScope = applicationBuilder.ApplicationServices.CreateScope();
+
+            //Roles
+            var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+            if (!await roleManager.RoleExistsAsync(UserRoles.User))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+            if (!await roleManager.RoleExistsAsync(UserRoles.Employee))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.Employee));
+
+            //Users
+            var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
+            string adminUserEmail = "admin@etickets.com";
+
+            var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
+            if (adminUser == null)
             {
-
-                //Roles
-                var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-                if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
-                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
-                if (!await roleManager.RoleExistsAsync(UserRoles.User))
-                    await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
-                if (!await roleManager.RoleExistsAsync(UserRoles.Employee))
-                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Employee));
-
-                //Users
-                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
-                string adminUserEmail = "admin@etickets.com";
-
-                var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
-                if (adminUser == null)
+                var newAdminUser = new User()
                 {
-                    var newAdminUser = new User()
-                    {
-                        Id= "c6c75e08-3701-4355-b8f3-8db5be5310dc",
-                        Name = "Admin User",
-                        UserName = "admin-user",
-                        Email = adminUserEmail,
-                        EmailConfirmed = true,
-                        Status=true,
-                        regionId=1,
-                        roleId=1,
-                        PhoneNumber = "773019241",
-                        
-                    };
-                    await userManager.CreateAsync(newAdminUser, "Coding@1234?");
-                    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
-                }
+                    Id = "c6c75e08-3701-4355-b8f3-8db5be5310dc",
+                    Name = "Admin User",
+                    UserName = "admin-user",
+                    Email = adminUserEmail,
+                    EmailConfirmed = true,
+                    Status = true,
+                    RegionId = 1,
+                    RoleId = 1,
+                    PhoneNumber = "773019241",
+
+                };
+                await userManager.CreateAsync(newAdminUser, "Coding@1234?");
+                await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+            }
 
 
-                string appUserEmail = "user@etickets.com";
+            string appUserEmail = "user@etickets.com";
 
-                var appUser = await userManager.FindByEmailAsync(appUserEmail);
-                if (appUser == null)
+            var appUser = await userManager.FindByEmailAsync(appUserEmail);
+            if (appUser == null)
+            {
+                var newAppUser = new User()
                 {
-                    var newAppUser = new User()
-                    {
-                        Name = "Application User",
-                        UserName = "app-user",
-                        Email = appUserEmail,
-                        EmailConfirmed = true,
-                        Status = true,
-                        regionId = 1,
-                        roleId = 2,
-                        PhoneNumber = "773019241",
-                    };
-                    await userManager.CreateAsync(newAppUser, "Coding@1234?");
-                    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
-                }
+                    Name = "Application User",
+                    UserName = "app-user",
+                    Email = appUserEmail,
+                    EmailConfirmed = true,
+                    Status = true,
+                    RegionId = 1,
+                    RoleId = 2,
+                    PhoneNumber = "773019241",
+                };
+                await userManager.CreateAsync(newAppUser, "Coding@1234?");
+                await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
             }
         }
 

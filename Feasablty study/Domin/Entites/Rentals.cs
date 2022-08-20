@@ -7,7 +7,7 @@ namespace Feasablty_study.Models
     {
         public int Id { get; set; } 
         public string RentalType { get; set; }
-        public float RentalYearly { get; set; }
+        public double RentalYearly { get; set; }
 
         [ForeignKey("Feasibility_study")]
         public virtual int Feasibility_StudyId { get; set; }

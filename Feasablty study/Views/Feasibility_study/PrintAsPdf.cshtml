@@ -17,24 +17,51 @@
   width: 100%;
   padding-top:50px;
   page-break-after: always;
-  page-break-inside: avoid;
+  page-break-inside:auto;
 }
-#pre{
+td{
+    color:black;
+    height:8px;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+
+#TotalExpected_revenue5Year{
+    font-size:1.5rem;
+}
+
+table{
+    width: 100%;
+}
+
+
+#preks{
     width:100%;
 
 }
 
-td{color:black }
+
             
+#pres{
+    width:100%;
+
+}
+#colos{
+    color:green;
+}
+#FS{
+    color:blue;
+}
+
         </style>
-         <link rel="icon" type="image/x-icon" href="~/img/favicon/favicon.ico" />
-    <script src="~/js/JQueryajax.js"></script> 
+        
   
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      href="~/css/site.css"
       rel="stylesheet"/>
 
     <link rel="stylesheet" href="~/assets/vendor/fonts/fontawesome.css" />
@@ -45,58 +72,40 @@ td{color:black }
     <link rel="stylesheet" href="~/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css" />
 
       <!-- Vendors CSS -->
-  <link rel="stylesheet" href="~/assets/vendor/libs/leaflet/leaflet.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-  <link rel="stylesheet" href="~/assets/vendor/libs/typeahead-js/typeahead.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/flatpickr/flatpickr.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-  <link rel="stylesheet" href="~/assets/vendor/libs/typeahead-js/typeahead.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/bootstrap-select/bootstrap-select.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/select2/select2.css" />
-  <link rel="stylesheet" href="~/assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
   <!-- Row Group CSS -->
   <link rel="stylesheet" href="~/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css" />
   <!-- Form Validation -->
-  <link rel="stylesheet" href="~/assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
 
-
-
+   
 
     </head>
 
     <body>
-        <div class="d-flex col-12 justify-content-between">
-                <h2 style="float:left;"> نظام دراسة الجدوى</h2>
-                <h2 style="float:right;"> نظام دراسة الجدوى</h2>
-                    <br/>
-                <hr/>               
-                </div>
-
-               
+                            
        <div class="page">
                         
         <div style="text-align:center">
-            <img src="~/assets/img/favicon/F-S.jpg"/>
-            <h1>نظام دراسة الجدوى  </h1>
-            <h2>وثيقة طباعة دراسة</h2>
+            <img  id="preks" src="~/assets/img/favicon/prepartory.jpg"/>
+            <h1 style="font-size:5rem; "> نظام دراسة الجدوى</h1>           
+            <h1>وثيقة طباعة دراسة</h1>
         </div>
         <hr/>
         <br /> <br /> <br />
         <div style="direction:rtl; text-align:center">
             <div>
-                 <h1 style="font-size:3rem">&nbsp&nbsp @Html.DisplayFor(model => model.ProjectName)</h1>
+                 <h1  id="colos" style="font-size:5rem; ">&nbsp&nbsp @Html.DisplayFor(model => model.ProjectName)</h1>
             </div>
             </div>
-
-
-        </div>
-        <div class="page">
-            <img id="pre" src="~/assets/img/favicon/COVER.jpg"/>
-        </div>
+        </div>      
         <div class="page">
             <!-- مكان الجدول الاول في الدراسة -->
             <h2> <strong> المعلومات العامة للمشروع </strong></h2>
@@ -143,7 +152,6 @@ td{color:black }
                     @Html.DisplayFor(model => model.OwnerName)
                 </td>
                 
-                </tr>        
                 <tr> 
                 <td>
                    رقم الهاتف:
@@ -183,14 +191,30 @@ td{color:black }
                 
               </tbody> 
             </table>
-
             </div>
-            <div class="page">
-        <h1>الرؤية  للمشروع</h1>
+
+               
+       <div class="page">                      
+        <div style="text-align:center">
+            <img  id="pres" src="~/assets/img/favicon/study.jpg" />
+                 <h1  style="font-size:6rem; "> نظام دراسة الجدوى</h1>
+            
+        </div>
+        <hr/>
+        <br /> <br /> <br />
+        <div style="direction:rtl; text-align:center">
+            <div>
+                 <h1  id="colos" style="font-size:5rem" >الدراسة التمهيدية</h1>
+            </div>
+            </div>
+        </div>  
+
+        <div class="page">
+        <h1>  رؤية المشروع هي :</h1>
         <p>@Html.DisplayFor(model=>Model.Preliminary_study.VisionOfTheProject)</p>  
         <hr> 
         <br />
-        <h1>رسالة المشروع</h1>
+        <h1>رسالة المشروع هي :</h1>
         <p>@Html.DisplayFor(model=>Model.Preliminary_study.MessageOfTheProject)</p>
 
         <br />
@@ -199,22 +223,24 @@ td{color:black }
             string[] CteristicsOfTheProjectArea = @Model.Preliminary_study.CteristicsOfTheProjectArea.Split("<br/>");
             string[] FactorsRepresentedOnIncreasedDemand = @Model.Preliminary_study.FactorsRepresentedOnIncreasedDemand.Split("<br/>");
             string[] FactorsRepresentedOnLowDemand = @Model.Preliminary_study.FactorsRepresentedOnLowDemand.Split("<br/>");
-            string[] AvailbleOpportunity = @Model.market_Study.AvailbleOpportunity.Split("<br/>");
-            string[] PointsOfEwakness = @Model.market_Study.PointsOfEwakness.Split("<br/>");
-            string[] StrengthPoints = @Model.market_Study.StrengthPoints.Split("<br/>");
-            string[] TargetMarket = @Model.market_Study.TargetMarket.Split("<br/>");
-            string[] Threats = @Model.market_Study.Threats.Split("<br/>");
+            string[] AvailbleOpportunity = @Model.Market_Study.AvailbleOpportunity.Split("<br/>");
+            string[] PointsOfEwakness = @Model.Market_Study.PointsOfEwakness.Split("<br/>");
+            string[] StrengthPoints = @Model.Market_Study.StrengthPoints.Split("<br/>");
+            string[] TargetMarket = @Model.Market_Study.TargetMarket.Split("<br/>");
+            string[] Threats = @Model.Market_Study.Threats.Split("<br/>");
 
         }
-        <h1>اهداف المشروع</h1>
+        <h1>اهداف المشروع هي :</h1>
         <ul>
         @foreach(var item in ProjectObjectives)
         {
             <li>@item</li>
         }
         </ul> 
-                <h1>خصائص المشروع</h1>
+        </div>
 
+          <div class="page">
+         <h1>خصائص المشروع هي :</h1>
         <ul>
         @foreach(var item in CteristicsOfTheProjectArea)
         {
@@ -222,7 +248,7 @@ td{color:black }
         }
         </ul>
 
-               <h1>العوامل المؤثرة على زيادة الطلب  على خدمات او منتجات المشروع</h1>
+               <h1>العوامل المؤثرة على زيادة الطلب  على خدمات / منتجات المشروع :</h1>
 
         
         <ul>
@@ -233,8 +259,7 @@ td{color:black }
         </ul>  
         <br />
 
-                  <h1>العوامل المؤثرة على انخفاض الطلب  على خدمات او منتجات المشروع</h1>
-
+ <h1>العوامل المؤثرة على انخفاض الطلب  على خدمات / منتجات المشروع :</h1>
         
         <ul>
         @foreach(var item in FactorsRepresentedOnLowDemand)
@@ -242,61 +267,62 @@ td{color:black }
             <li>@item</li>
         }
         </ul>
-
-       
-
         <br />
-        <h1>التراخيص</h1>  
+        <h1>التراخيص اللازمة للمشروع</h1>  
         <table class="table table-bordered" id="LicenseType">
                 <thead class="table-info">
               <tr>
                 <th scope="col"> نوع الترخيص</th> 
-                <th scope="col">جهة الترخيص </th>
+                <th scope="col"> الجهة المصدرة للترخيص </th>
               </tr>
             </thead>
               <tbody> 
-            @foreach(var item in Model.licenses)
+            @foreach(var item in Model.Licenses)
             {
 
                 <tr> 
                 <td>
-                @Html.DisplayFor(mod=>item.LicenseType)
+                @item.LicenseType
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.Licenses)
+                    @item.Licenses
                 </td>
                 
-                </tr> 
+                </tr>       
+                }
+                </tbody> 
+              </table>
+                </div>
 
-                
-              
+                 <div class="page">                      
+        <div style="text-align:center">
+            <img  id="pres" src="~/assets/img/favicon/study.jpg" />
+                 <h1  style="font-size:6rem; "> نظام دراسة الجدوى</h1>          
+                </div>
+                <hr/>
+                <br /> <br /> <br />
+                <div style="direction:rtl; text-align:center">
+                    <div>
+                        <h1  id="colos" style="font-size:5rem" >الدراسة التسويقية</h1>
+                    </div>
+                    </div>
+                   </div> 
 
-    }
-    </tbody> 
-  </table>
-  </div>
-
-<div class="page">
-  <h1>الاسواق المستهدفة</h1>
-
-        
-        <ul>
-        @foreach(var item in TargetMarket)
-        {
-            <li>@item</li>
-        }
-        </ul>
-
-  <br />
-
-
-
+                    <div class="page">
+                   <h1>الاسواق المستهدفة :</h1>     
+                <ul>
+                @foreach(var item in TargetMarket)
+                {
+                    <li>@item</li>
+                }
+                </ul>
+                <br />
 
         <h1>تحليل المنافسين</h1>  
         <table class="table table-bordered" id="LicenseType">
                 <thead class="table-info">
              <tr>
-						<th scope="col">التسلسل</th> 
+						<th scope="col">#</th> 
 						<th scope="col">اسم المنافس</th> 
 						<th scope="col">الخدمة او المنتج </th>
 						<th scope="col">سعر المنتج</th> 
@@ -307,7 +333,7 @@ td{color:black }
             @{
                 var i = 0;
             }
-            @foreach(var item in Model.competitors)
+            @foreach(var item in @Model.Competitors)
             {
                
                 <tr> 
@@ -315,31 +341,24 @@ td{color:black }
                      @(++i)
                    </td>
                 <td>
-                @Html.DisplayFor(mod=>item.CompetitorsName)
+                @item.CompetitorsName
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.Products)
+                    @item.Products
                 </td>  
                 <td>
-                    @Html.DisplayFor(mod=>item.CompetitorsPrice)
+                    @item.CompetitorsPrice
                 </td>    
                 <td>
-                    @Html.DisplayFor(mod=>item.AmounrAdded)
+                    @item.AmounrAdded
                 </td>
                 
                 </tr> 
 
-                
-              
-
-    }
-    </tbody> 
-  </table>
-
- 
-    <br />
-  <br />
-
+                    }
+                    </tbody> 
+                  </table>              
+             
   <h1>نقاط القوة للمشروع</h1>
           
         <ul>
@@ -349,8 +368,6 @@ td{color:black }
         }
         </ul>
 
-
-
   <h1>نقاط الضعف للمشروع</h1>
           
         <ul>
@@ -358,11 +375,10 @@ td{color:black }
         {
             <li>@item</li>
         }
-        </ul>
-
-  
-  <br />
-
+        </ul>  
+        <br />
+        </div>
+        <div class="page">
   <h1>الفرص المتاحة للمشروع</h1>
           
         <ul>
@@ -374,7 +390,7 @@ td{color:black }
 
   <br /> 
   
-  <h1>التهديدات للمشروع</h1>
+  <h1>التهديدات التي تواجه المشروع</h1>
           
         <ul>
         @foreach(var item in Threats)
@@ -383,18 +399,19 @@ td{color:black }
         }
         </ul>
 
-  <h1>الفجوة السوقية</h1>
-  <p>@Html.DisplayFor(m=>m.market_Study.MarketGap)</p>
+  <h1>الفجوة السوقية :</h1>
+  <p>@Html.DisplayFor(m=>m.Market_Study.MarketGap)</p>
 
   <br />
+ 
+           </div>
 
-
-
+        <div class="page">
         <h1>الايرادات المتوقعة</h1>  
         <table class="table table-bordered">
                 <thead class="table-info">
              <tr>
-						<th scope="col">التسلسل</th> 
+						<th scope="col">#</th> 
                 <th scope="col">الصنف </th> 
                 <th scope="col"> الكمية شهرياً </th>
                 <th scope="col">سعر الوحدة </th> 
@@ -406,7 +423,7 @@ td{color:black }
             @{
                 var ii = 0;
             }
-            @foreach(var item in Model.expected_Revenues)
+            @foreach(var item in @Model.Expected_Revenues)
             {
                
                 <tr> 
@@ -414,261 +431,293 @@ td{color:black }
                     @(++ii)
                    </td>
                 <td>
-                @Html.DisplayFor(mod=>item.ProductName)
+                @item.ProductName
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.MonthlyQusntity)
+                    @item.MonthlyQusntity
                 </td>  
                 <td>
-                    @Html.DisplayFor(mod=>item.ProductPrice)
+                    @item.ProductPrice
                 </td>    
                 <td>
-                    @Html.DisplayFor(mod=>item.TotalMonthlyPrice)
+                    @item.TotalMonthlyPrice
                 </td>      
                 <td>
-                    @Html.DisplayFor(mod=>item.TotalYearlyPrice)
+                    @item.TotalYearlyPrice
                 </td>
                 
                 </tr> 
 
-                
-              
-
-    }
-    </tbody> 
-    <thead class="table-info">
-                <tr>
-                  <th colspan=5 scope="col">الاجمــــــــــــــالي </th> 
-                  <th scope="col"> <input id="totalall" disabled type="number" name="totalall" class="form-control" value="@Model.market_Study.TotalExpected_revenue"/> </th>
-                </tr>
-              </thead>
-  </table>
-
-  <br />
-  </div>
-  <div class="page">
-
-        <h1>الخطة التسويقية</h1> 
-        <h3>وتصرف الخطة التسويقية كالتالي :</h3>
-        <table class="table table-bordered">
+                }
+                </tbody> 
                 <thead class="table-info">
-             <tr>
+                    <tr>
+                        <th colspan=4 scope="col">الاجمــــــــــــــالي </th> 
+                        <th colspan=2 scope="col"> @Model.Market_Study.TotalExpected_revenue</th>
+                    </tr>
+                    </thead>
+                  </table>
+                  <br />
+                  </div>
+
+                  <div class="page">
+                <h1>الخطة التسويقية</h1> 
+                <h1> يفضل احتساب 10-20% من الايرادات المتوقعة للتسويق خانة نسبة التسويق من إجمالي الايرادات (نتيجة الجدول اعلاه  )</h1> 
+                <h3>الاجمالي السنوي 15%=</h3>
+                <h3>وتصرف الخطة التسويقية كالتالي :</h3>
+                <table class="table table-bordered">
+                 <thead class="table-info">
+                   <tr>
                 <th scope="col">النشاط </th> 
                 <th scope="col"> المبلغ </th> 
 					</tr>
             </thead>
               <tbody> 
        
-            @foreach(var item in Model.marketing_Activities)
+            @foreach(var item in @Model.Marketing_Activities)
             {
                
                 <tr> 
             
                 <td>
-                @Html.DisplayFor(mod=>item.Name)
+                @item.Name
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.Amount)
+                    @item.Amount
                 </td>  
                 
                 </tr> 
+                }
+                </tbody> 
+                <thead class="table-info">
+                    <tr>
+                        <th scope="col">الاجمــــــــــــــالي</th> 
+                        <th scope="col"> 
+                       <input id="price"  type="number" name="totalmonthly" class="form-control" value="@Model.Market_Study.TotalMarketing_Activity" /> </th>             
+                    </tr>
+                    </thead>
+                    </table>
+                      <br />
+                      <hr />
+                        <hr> 
+                      <br /> 
+                      <p>مصاریف الخطة التسویقیة</p>
+                      <br/>
+                      <br/>
+                      <br/>
+                 </div>
 
-                
-              
-
-    }
-    </tbody> 
-    <thead class="table-info">
-                <tr>
-                  <th scope="col">الاجمــــــــــــــالي</th> 
-                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control" value="@Model.market_Study.TotalMarketing_Activity" /> </th> 
-               
-                </tr>
-              </thead>
-  </table>
-
-  <br />
-  <hr />
-
-    <hr> 
-  <br />
-
-
-
+                  <div class="page">
         <h1>ادارة المخاطر</h1> 
         <table class="table table-bordered">
                 <thead class="table-info">
              <tr>
                 <th scope="col">نوع المخاطر </th> 
-                <th scope="col"> شرح المخاطر </th> 
+                <th scope="col"> شرح المخاطر كتابياً </th> 
 					</tr>
             </thead>
               <tbody> 
        
-            @foreach(var item in Model.risks)
+            @foreach(var item in @Model.Risks)
             {
                
                 <tr> 
             
                 <td>
-                @Html.DisplayFor(mod=>item.TypeRisk)
+                @item.TypeRisk
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.DescriptionRisk)
+                    @item.DescriptionRisk
                 </td>  
                 
-                </tr> 
-
+                </tr>   
+                }
+                </tbody> 
+                </table>
+                <br />
                 
-              
-
-    }
-    </tbody> 
-
-  </table>
-
-  <br />
-  <hr />
-
-    <hr> 
-  <br />
-
-
-
                 <h1>اساليب الحد من المخاطر</h1> 
-        <table class="table table-bordered">
+           <table class="table table-bordered">
                 <thead class="table-info">
-             <tr>
-                <th scope="col">نوع المخاطر </th> 
-                <th scope="col"> شرح المخاطر </th> 
+               <tr>
+                <th scope="col">أسالوب الحد من المخاطر  </th> 
+                <th scope="col"> شرح الاسلوب كتابياً </th> 
 					</tr>
-            </thead>
+              </thead>
               <tbody> 
        
-            @foreach(var item in Model.risks)
+            @foreach(var item in @Model.Risks)
             {
                
                 <tr> 
             
                 <td>
-                @Html.DisplayFor(mod=>item.DangerReductionStyle)
+                @item.DangerReductionStyle
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.DescriptionDangerReduece)
+                    @item.DescriptionDangerReduece
                 </td>  
                 
                 </tr> 
+                }
+                </tbody> 
 
-                
-              
+              </table>
 
-    }
-    </tbody> 
+              <br />
+              <hr />
 
-  </table>
+                <hr> 
+              <br />
+              </div>
 
-  <br />
-  <hr />
+              <div class="page">                      
+        <div style="text-align:center">
+            <img  id="pres" src="~/assets/img/favicon/study.jpg" />
+                 <h1  style="font-size:6rem; "> نظام دراسة الجدوى</h1>
+            
+        </div>
+        <hr/>
+        <br /> <br /> <br />
+        <div style="direction:rtl; text-align:center">
+            <div>
+                 <h1  id="colos" style="font-size:5rem" >الدراسة الفنية</h1>
+                    </div>
+                   </div>
+                </div> 
 
-    <hr> 
-  <br />
-
-          <h1>الايجارات</h1> 
+               <div class="page">             
+          <h1>الانشاءات والمباني </h1> 
         <table class="table table-bordered">
                 <thead class="table-info">
-             <tr>
-                <th scope="col">الصنف </th> 
-						<th scope="col"> الايجار السنوي </th>
+             	<tr>
+						<th scope="col">نوع البناء</th> 
+						<th scope="col"> سعر المتر </th>
+						<th scope="col">المساحة الاجمالية </th> 
+						<th scope="col"> الاجمالي</th>
+                        
 					</tr>
             </thead>
               <tbody> 
        
-            @foreach(var item in Model.rentals)
+            @foreach(var item in @Model.Construction_And_Bulidings)
             {
                
                 <tr> 
             
                 <td>
-                @Html.DisplayFor(mod=>item.RentalType)
+              @item.BuildingType
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.RentalYearly)
+                    @item.PricePerMeter
+                </td> 
+                <td>
+                    @item.TotalArea
+                </td>    
+                <td>
+                    @item.TotalPriceArea
+                </td> 
+                    
+                </tr> 
+                }
+                </tbody> 
+                 <thead class="table-info">
+                        <tr>
+                          <th scope="col">إجمالي تكلفة الانشاءات والمباني </th>
+                          <th scope="col"> </th>
+                          <th scope="col"> </th> 
+                          <th scope="col"> <input id="Totalsa"  type="number" name="Totalsa" class="form-control" value="@Model.Technical_Study.TotalConstruction_and_buliding"  /></th>
+                        </tr>
+                      </thead>
+                          </table>
+
+                          <br />
+
+
+              <h1>الايجارات</h1> 
+            <table class="table table-bordered">
+                    <thead class="table-info">
+                 <tr>
+                    <th scope="col">الصنف </th> 
+						    <th scope="col"> الايجار السنوي </th>
+					    </tr>
+                </thead>
+                  <tbody> 
+       
+            @foreach(var item in @Model.Rentals)
+            {
+               
+                <tr> 
+            
+                <td>
+                @item.RentalType
+                </td> 
+                <td>
+                    @item.RentalYearly
                 </td> 
 
                 
-                </tr> 
-
-                
-              
-
-    }
-    </tbody> 
-    <thead class="table-info">
+                </tr>        
+            }
+            </tbody> 
+            <thead class="table-info">
                 <tr>
                   <th scope="col">الاجمــــــــــــــالي</th> 
-                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control" value="@Model.technical_Study.TotalRentals" /> </th> 
+                  <th scope="col"> <input id="price"  type="number" name="totalmonthly" class="form-control" value="@Model.Technical_Study.TotalRentals" /> </th> 
                
                 </tr>
               </thead>
-  </table>
-  
-</div>
+              </table>
+            </div>
 
 
-<div class="page">
-  <br />
-
-          <h1>التجهيزات (الالات والمعدات والاثاث ووسائل النقل الخ</h1> 
+        <div class="page">
+          <h1>   ( الالات والمعدات والاثاث ووسائل النقل الخ...)  </h1> 
         <table class="table table-bordered">
                 <thead class="table-info">
-             <tr>
-                <th scope="col">البنـــــــــد</th> 
+                    <tr>
+                       <th scope="col">البنـــــــــد</th> 
                         <th scope="col">اسم المورد</th> 
 						<th scope="col"> العــــــــــــدد </th>
 						<th scope="col"> السعــــــــــــــر</th> 
 						<th scope="col">الاجمالي الكلي</th> 
-					</tr>
-            </thead>
-              <tbody> 
+					    </tr>
+                       </thead>
+                        <tbody> 
        
-            @foreach(var item in Model.machinery_Equipment)
+            @foreach(var item in Model.Machinery_Equipment)
             {
                
                 <tr> 
             
                 <td>
-                @Html.DisplayFor(mod=>item.Name)
+                @item.Name
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.NameSupplier)
+                    @item.NameSupplier
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.Number)
+                    @item.Number
                 </td>    
                 <td>
-                    @Html.DisplayFor(mod=>item.Price)
+                    @item.Price
                 </td> 
                     <td>
-                    @Html.DisplayFor(mod=>item.TotalPrice)
+                    @item.TotalPrice
                 </td>
                 
                 </tr> 
-
-                
-              
-
-    }
-    </tbody> 
-    <thead class="table-info">
-                <tr>
-                  <th colspan=4 scope="col">الاجمــــــــــــــالي</th> 
-                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control" value="@Model.technical_Study.TotalMachinery_Equipment" /> </th> 
+                }
+                </tbody> 
+                <thead class="table-info">
+                    <tr>
+                        <th colspan=3 scope="col">الاجمــــــــــــــالي</th>
+                        <th colspan=2 scope="col">@Model.Technical_Study.TotalMachinery_Equipment </th> 
                
-                </tr>
-              </thead>
-  </table>
-
-  <br />
+                    </tr>
+                    </thead>
+              </table>
+              <br />
 
           <h1>القوى العاملة اللازمة لتشغيل المشروع</h1> 
         <table class="table table-bordered">
@@ -689,45 +738,40 @@ td{color:black }
                 <tr> 
             
                 <td>
-                @Html.DisplayFor(mod=>item.JobTitle)
+                @item.JobTitle
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.MonthlySalary)
+                    @item.MonthlySalary
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.Number)
+                    @item.Number
                 </td>    
                 <td>
-                    @Html.DisplayFor(mod=>item.TotalMonthlySalary)
+                    @item.TotalMonthlySalary
                 </td> 
                     <td>
-                    @Html.DisplayFor(mod=>item.TotalYearlySalary)
+                    @item.TotalYearlySalary
                 </td>
                 
                 </tr> 
-
-                
-              
-
-    }
-    </tbody> 
-    <thead class="table-info">
+            }
+            </tbody> 
+          <thead class="table-info">
                 <tr>
-                  <th colspan=4 scope="col">الاجمــــــــــــــالي</th> 
-                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control" value="@Model.technical_Study.TotalManpower_workforce"/> </th> 
+                  <th colspan=3 scope="col">الاجمــــــــــــــالي</th> 
+                  <th colspan=2 scope="col">@Model.Technical_Study.TotalManpower_workforce</th> 
                
                 </tr>
               </thead>
-  </table>
-  </div>
+          </table>
+          </div>
 
-  <div class="page">
-
+      <div class="page">
           <h1>الرسوم الحكومية والضرائب</h1> 
         <table class="table table-bordered">
                 <thead class="table-info">
              <tr>
-                <th scope="col">التسلسل</th> 
+                <th scope="col">#</th> 
 						<th scope="col">البند</th> 
 						<th scope="col">الرسوم السنوية </th>	
 					</tr>
@@ -742,40 +786,33 @@ td{color:black }
                 <tr> 
             <td>@(++iii)</td>
                 <td>
-                @Html.DisplayFor(mod=>item.Name)
+                @item.Name
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.Price)
+                    @item.Price
                 </td> 
                 
                 
-                </tr> 
+                </tr>      
 
-                
-              
-
-    }
-    </tbody> 
-    <thead class="table-info">
+                }
+                </tbody> 
+                <thead class="table-info">
                 <tr>
                   <th colspan=2 scope="col">الاجمــــــــــــــالي</th> 
-                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control" value="@Model.technical_Study.TotalGovernment_fees" /> </th> 
+                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control" value="@Model.Technical_Study.TotalGovernment_fees" /> </th> 
                
                 </tr>
               </thead>
-  </table>
+              </table>
+              <br />
+              <hr />
+              <br />
+                <hr> 
+              <br />
+              </div>
 
-  <br />
-  <hr />
-
-    <hr> 
-  <br />
-  
-
-  
-    <hr> 
-  <br />
-
+      <div class="page">
           <h1>مصاريف التأسيس</h1> 
         <table class="table table-bordered">
                 <thead class="table-info">
@@ -789,40 +826,31 @@ td{color:black }
             @{
                 var iiii = 0;
             }
-            @foreach(var item in Model.establishment_Expenses)
+            @foreach(var item in Model.Establishment_Expenses)
             {
                
                 <tr> 
             <td>@(++iiii)</td>
                 <td>
-                @Html.DisplayFor(mod=>item.Type)
+                @item.Type
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.Price)
+                    @item.Price
                 </td> 
                 
                 
                 </tr> 
-
-                
-              
-
-    }
-    </tbody> 
-    <thead class="table-info">
+            }
+            </tbody> 
+            <thead class="table-info">
                 <tr>
                   <th colspan=2 scope="col">الاجمــــــــــــــالي</th> 
-                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control" value="@Model.technical_Study.TotalEstablishment_expenses" /> </th> 
+                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control" value="@Model.Technical_Study.TotalEstablishment_expenses" /> </th> 
                
                 </tr>
               </thead>
-  </table>
-
-</div>
-
-
-<div class="page">
-
+              </table>
+           
           <h1>المواد الخام</h1> 
         <table class="table table-bordered">
                 <thead class="table-info">
@@ -837,54 +865,48 @@ td{color:black }
             </thead>
               <tbody> 
   
-            @foreach(var item in Model.raw_Materials)
+            @foreach(var item in Model.Raw_Materials)
             {
                
                 <tr> 
                 <td>
-                @Html.DisplayFor(mod=>item.Material)
+                @item.Material
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.Unit)
+                    @item.Unit
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.PriceOfUnity)
+                    @item.PriceOfUnity
                 </td>  
                 <td>
-                    @Html.DisplayFor(mod=>item.QuantityRequiredMonthly)
+                    @item.QuantityRequiredMonthly
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.TotalPriceQuantityMonthly)
+                    @item.TotalPriceQuantityMonthly
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.TotalPriceQuantityYearly)
+                    @item.TotalPriceQuantityYearly
                 </td> 
                 
                 
-                </tr> 
-
-                
-              
-
-    }
-    </tbody> 
-    <thead class="table-info">
+                </tr>    
+                }
+                </tbody> 
+                <thead class="table-info">
                 <tr>
-                  <th colspan=5 scope="col">الاجمــــــــــــــالي</th> 
-                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control" value="@Model.technical_Study.TotalRaw_materials" /> </th> 
+                  <th colspan=4 scope="col">الاجمــــــــــــــالي</th> 
+                  <th  colspan=2 scope="col">@Model.Technical_Study.TotalRaw_materials </th> 
                
                 </tr>
               </thead>
-  </table>
+              </table>
 
-  <br />
-  <hr />
+              <br />
+              <hr />
 
-   
+         </div>
+        <div class="page">
   <!-- الاهلاك السنوي-->
-
-  
-  <br />
 
           <h1>المنافع العامة</h1> 
         <table class="table table-bordered">
@@ -898,42 +920,35 @@ td{color:black }
             </thead>
               <tbody> 
   
-            @foreach(var item in Model.public_Benefits)
+            @foreach(var item in Model.Public_Benefits)
             {
                
                 <tr> 
                 <td>
-                @Html.DisplayFor(mod=>item.Benefit)
+                @item.Benefit
                 </td> 
                 <td>
-                    @Html.DisplayFor(mod=>item.MonthlyCost)
+                    @item.MonthlyCost
                 </td>  
                 <td>
-                    @Html.DisplayFor(mod=>item.YearlyCost)
+                    @item.YearlyCost
                 </td>  
                 
                 
                 </tr> 
+    
 
-                
-              
-
-    }
-    </tbody> 
-    <thead class="table-info">
-                <tr>
+            }
+            </tbody> 
+            <thead class="table-info">
+                        <tr>
                   <th colspan=2 scope="col">الاجمــــــــــــــالي</th> 
-                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control" value="@Model.technical_Study.TotalPublic_benefit" /> </th> 
+                  <th scope="col"> <input id="price" disabled type="number" name="totalmonthly" class="form-control" value="@Model.Technical_Study.TotalPublic_benefit" /> </th> 
                
                 </tr>
               </thead>
-  </table>
-
-
-  </div>
-
-
-  <div class="page">
+            </table>
+            
   <h1>المصروفات النقدية التشغيلية للسنة الاولى</h1>
   <br />
   <table class="table table-bordered">
@@ -947,36 +962,36 @@ td{color:black }
               <tbody>
                   <tr>
                       <td>التسويق</td>
-                      <td>@Model.market_Study.TotalMarketing_Activity</td>
+                      <td>@Model.Market_Study.TotalMarketing_Activity</td>
                   </tr>   
                   
                   <tr>
                       <td>الايجارات</td>
-                      <td>@Model.technical_Study.TotalRentals</td>
+                      <td>@Model.Technical_Study.TotalRentals</td>
                   </tr>
                   <tr>
                       <td>الاجور</td>
-                      <td>@Model.technical_Study.TotalManpower_workforce</td>
+                      <td>@Model.Technical_Study.TotalManpower_workforce</td>
                   </tr>
                   <tr>
                       <td>الرسوم الحكومية</td>
-                      <td>@Model.technical_Study.TotalGovernment_fees</td>
+                      <td>@Model.Technical_Study.TotalGovernment_fees</td>
                   </tr>
                   <tr>
                       <td>المنافع العامة</td>
-                      <td>@Model.technical_Study.TotalPublic_benefit</td>
+                      <td>@Model.Technical_Study.TotalPublic_benefit</td>
                   </tr>
                   <tr>
                       <td>المواد الخام</td>
-                      <td>@Model.technical_Study.TotalRaw_materials</td>
+                      <td>@Model.Technical_Study.TotalRaw_materials</td>
                   </tr>
                   <tr>
                       <td>الاهلاك السنوي</td>
-                      <td>@Model.technical_Study.AnnualDepreciation</td>
+                      <td>@Model.Technical_Study.AnnualDepreciation</td>
                   </tr>
                   <tr>
                       <td>الصيانة</td>
-                      <td>@Model.technical_Study.AnnualAaintenance</td>
+                      <td>@Model.Technical_Study.AnnualAaintenance</td>
                   </tr>
                   <tr>
                       <td>الاجمالي</td>
@@ -985,13 +1000,11 @@ td{color:black }
                   
               </tbody>
               </table>
+              </div>
 
-</div>
 
-
-<div class="page">
-
-              <h4>الدورة التشغيلية للمشروع = @Model.technical_Study.OperationalCycle</h4>
+            <div class="page">
+              <h4>الدورة التشغيلية للمشروع = @Model.Technical_Study.OperationalCycle</h4>
                  <br />
 
 
@@ -999,7 +1012,7 @@ td{color:black }
               <br />
 
     @{
-        double total = @Model.technical_Study.TotalMachinery_Equipment + @Model.technical_Study.TotalGovernment_fees + @Model.technical_Study.TotalEstablishment_expenses + @Model.WorkingCapital;
+        double total = @Model.Technical_Study.TotalMachinery_Equipment + @Model.Technical_Study.TotalGovernment_fees + @Model.Technical_Study.TotalEstablishment_expenses + @Model.WorkingCapital;
     }
 
               <h1>التكاليف الاستثمارية</h1>
@@ -1015,16 +1028,16 @@ td{color:black }
               <tbody>
                   <tr>
                       <td>راس المال الثابت</td>
-                      <td>@Model.technical_Study.TotalMachinery_Equipment</td>
+                      <td>@Model.Technical_Study.TotalMachinery_Equipment</td>
                   </tr>   
                   
                   <tr>
                       <td>الرسوم الحكومية</td>
-                      <td>@Model.technical_Study.TotalGovernment_fees</td>
+                      <td>@Model.Technical_Study.TotalGovernment_fees</td>
                   </tr>
                   <tr>
                       <td>مصاريف التاسيس</td>
-                      <td>@Model.technical_Study.TotalEstablishment_expenses</td>
+                      <td>@Model.Technical_Study.TotalEstablishment_expenses</td>
                   </tr>
                   <tr>
                       <td>راس المال العامل</td>
@@ -1033,27 +1046,38 @@ td{color:black }
                   <tr>
                       <td>راس المال المطلوب</td>
                       <td>@total</td>
-                  </tr>
-                 
-                  
+                  </tr>                                   
               </tbody>
               </table>
+                <br />
+                
+        @{
 
+            double totalAssetes = @Model.Technical_Study.TotalMachinery_Equipment +@Model.Technical_Study.TotalConstruction_and_buliding + @Model.Technical_Study.TotalEstablishment_expenses + @Model.Technical_Study.TotalGovernment_fees;
+            double totalinver = totalAssetes + @Model.WorkingCapital;
+            double totalBuildingAndMachinery = @Model.Technical_Study.TotalMachinery_Equipment + @Model.Technical_Study.TotalConstruction_and_buliding;
+            double TotalExpenses = @Model.TotalOperatingExpenseseOneYear + @Model.Zakat;
+        }
+                </div>
+                 <div class="page">                      
+        <div style="text-align:center">
+            <img  id="pres" src="~/assets/img/favicon/study.jpg" />
+                 <h1  style="font-size:6rem; "> نظام دراسة الجدوى</h1>
+            
+        </div>
+        <hr/>
+        <br /> <br /> <br />
+        <div style="direction:rtl; text-align:center">
+            <div>
+                 <h1  id="colos" style="font-size:5rem" >الدراسة المالية والاقتصادية</h1>
+                    </div>
+                   </div>
+                </div> 
 
-<br />
-
-</div>
-    @{
-
-        double totalAssetes = @Model.technical_Study.TotalMachinery_Equipment + @Model.technical_Study.TotalEstablishment_expenses + @Model.technical_Study.TotalGovernment_fees;
-        double totalinver = totalAssetes + @Model.WorkingCapital;
-    }
-
-
-<div class="page">
-<h1>تقدير التكلفة الاستثمارية</h1>
-  <br />
-  <table class="table table-bordered">
+            <div class="page">
+            <h1>تقدير التكلفة الاستثمارية</h1>
+              <br />
+              <table class="table table-bordered">
                 <thead class="table-info">
              <tr>
                  <th scope="col">التسلسل</th> 
@@ -1071,15 +1095,15 @@ td{color:black }
                   <tr>
 
                       <td>الانشاءات و الالات و المعدات</td>
-                      <td>@Model.technical_Study.TotalMachinery_Equipment</td>
+                      <td>@totalBuildingAndMachinery</td>
                   </tr><tr>
 
                       <td>الرسوم الحكومية</td>
-                      <td>@Model.technical_Study.TotalGovernment_fees</td>
+                      <td>@Model.Technical_Study.TotalGovernment_fees</td>
                   </tr>
                   <tr>
                       <td>مصاريف التاسيس</td>
-                      <td>@Model.technical_Study.TotalEstablishment_expenses</td>
+                      <td>@Model.Technical_Study.TotalEstablishment_expenses</td>
                   </tr>
                   <tr>
                       <td colspan=2>اجمالي الاصول الثابتة</td>
@@ -1091,73 +1115,66 @@ td{color:black }
                       <td>@Model.WorkingCapital</td>
                   </tr>
                   <tr>
-                      <td colspan=2>اجمالي التكاليف الاستثمارية (أ + ب)</td>
+                    <th scope="col"> </th>
+                      <td colspan=1>اجمالي التكاليف الاستثمارية (أ + ب)</td>
                       <td>@totalinver</td>
                   </tr>
-                 
-                  
               </tbody>
               </table>
-
-
-<br />
-
-
-
-<br />
-  <hr />
-  <h1>تكاليف التشغيل السنوية</h1>
-  <br />
-  <table class="table table-bordered">
-                <thead class="table-info">
+            <br />
+            <br />
+              <hr />
+          <h1>تكاليف التشغيل السنوية</h1>
+          <br />
+          <table class="table table-bordered">
+             <thead class="table-info">
              <tr>
-                 <th scope="col">المصروف(البند)</th> 
-                 <th scope="col">نوع التكليف</th> 
-						<th scope="col">التكلفة/السعر  </th>
-						
-					</tr>
+            <td scope="col">المصروف(البند)</td> 
+            <td scope="col">نوع التكليف</td> 
+		  <td scope="col">التكلفة/السعر  </td>			
+	    	</tr>
             </thead>
               <tbody>
-                  <tr>
-                      <td>التسويق</td>
-                      <td>ثابت</td>
-                      <td>@Model.market_Study.TotalMarketing_Activity</td>
-                  </tr>   
+                <tr>
+                    <td>التسويق</td>
+                    <td>ثابت</td>
+                    <td>@Model.Market_Study.TotalMarketing_Activity</td>
+                </tr>   
                   
                   <tr>
                       <td>الايجارات</td>
                       <td>ثابتة</td>
-                      <td>@Model.technical_Study.TotalRentals</td>
+                      <td>@Model.Technical_Study.TotalRentals</td>
                   </tr>
                   <tr>
                       <td>الاجور</td>
                       <td>ثابتة</td>
-                      <td>@Model.technical_Study.TotalManpower_workforce</td>
+                      <td>@Model.Technical_Study.TotalManpower_workforce</td>
                   </tr>
                   <tr>
                       <td>الرسوم الحكومية</td>
                       <td>ثابتة</td>
-                      <td>@Model.technical_Study.TotalGovernment_fees</td>
+                      <td>@Model.Technical_Study.TotalGovernment_fees</td>
                   </tr>
                   <tr>
                       <td>المنافع العامة</td>
                       <td>متغيرة</td>
-                      <td>@Model.technical_Study.TotalPublic_benefit</td>
+                      <td>@Model.Technical_Study.TotalPublic_benefit</td>
                   </tr>
                   <tr>
                       <td>المواد الخام</td>
                       <td>متغيرة</td>
-                      <td>@Model.technical_Study.TotalRaw_materials</td>
+                      <td>@Model.Technical_Study.TotalRaw_materials</td>
                   </tr>
                   <tr>
                       <td>الاهلاك السنوي</td>
                       <td>ثابت</td>
-                      <td>@Model.technical_Study.AnnualDepreciation</td>
+                      <td>@Model.Technical_Study.AnnualDepreciation</td>
                   </tr>
                   <tr>
                       <td>الصيانة</td>
                       <td>ثابتة</td>
-                      <td>@Model.technical_Study.AnnualAaintenance</td>
+                      <td>@Model.Technical_Study.AnnualAaintenance</td>
                   </tr>
                   <tr>
                       <td colspan=2 class="page-breaker">اجمالي نفقات التشغيل</td>
@@ -1166,57 +1183,339 @@ td{color:black }
                   
               </tbody>
               </table>
-</div>
-<div class="page">
+                </div>
 
-    @{
-        string[] Lables = { "ايرادات الخدمات", "مصروف التسويق", "المواد الخام", "الايجار", "المنافع", "الصيانة", "الرواتب", "الاهلاك", "الرسوم الحكومية", "مقدار الزكاة", "اجمالي المصروفات", "صافي الارباح","نسبة الارباح" };
-        
-}
-<br />
-<hr />
-
-  <h3 class="center">اعداد قائمة الدخل السنةالاولى من عمر المشروع</h3>
-  <br />
-  <table class="table table-bordered">
+                <div class="page">
+        <h2 style="text-align:center">اعداد قائمة الدخل للخمس السنوات الاولى من عمر المشروع</h2>
+         <br />
+          <table id="TotalExpected_revenue5Year" class="table table-bordered">
                 <thead class="table-info">
              <tr>  
-                 <th scope="col">المصروف(البند)</th> 
-             @foreach(var item in Lables)
-            {
-              <th scope="col">@item</th> 
-            }
-			</tr>
-            </thead>
-              <tbody>
-            
-                <tr>
-                      <td>المبلغ</td>
-                      <td>@Model.market_Study.TotalExpected_revenue</td>
-                      <td>@Model.market_Study.TotalMarketing_Activity</td>
-                      <td>@Model.technical_Study.TotalRaw_materials</td>
-                      <td>@Model.technical_Study.TotalRentals</td>
-                      <td>@Model.technical_Study.TotalPublic_benefit</td>
-                      <td>@Model.technical_Study.AnnualAaintenance</td>
-                      <td>@Model.technical_Study.TotalManpower_workforce</td>
-                      <td>@Model.technical_Study.AnnualDepreciation</td>
-                      <td>@Model.technical_Study.TotalGovernment_fees</td>
-                      <td>@Model.Zakat</td>
-                      <td>@Model.TotalOperatingExpenseseOneYear</td>
-                      <td>@Model.NetProfit</td>
-                      <td>@Model.ProfitRate%</td>
-                  </tr>
-                 
-                  
+                <th>المصروف(البند)</th>
+                 <th>1</th>
+                 <th>2</th>
+                 <th>3</th>
+                 <th>4</th>
+                 <th>5</th>
+             </tr>
+             </thead>
+            <tbody>
+             <tr> 
+               <td>ايرادات الخدمات</td>
+               <td>@Model.Market_Study.TotalExpected_revenue</td> 
+                    <td>@{
+                            int TotalExpected_revenue2 =(int) (@Model.Market_Study.TotalExpected_revenue + (@Model.Market_Study.TotalExpected_revenue * 0.2));
+                        }@TotalExpected_revenue2
+                        </td>
+                        
+                        <td>@{
+                            int TotalExpected_revenue3 =(int)(TotalExpected_revenue2 + (TotalExpected_revenue2 * 0.2));
+                        }
+                        @TotalExpected_revenue3
+                        
+                    </td>  
+                        <td>@{
+                            int TotalExpected_revenue4 =(int)(TotalExpected_revenue3 + (TotalExpected_revenue3 * 0.2));
+                        }
+                        @TotalExpected_revenue4
+                        
+                    </td> 
+                    <td>@{
+                            int TotalExpected_revenue5 =(int)(TotalExpected_revenue4 + (TotalExpected_revenue4 * 0.2));
+                        }
+                        @TotalExpected_revenue5
+                        
+                    </td> 
+                </tr>
+             
+             <tr> 
+               <td>مصروف التسويق</td>
+               <td>@Model.Market_Study.TotalMarketing_Activity</td> 
+               <td>
+                        @{
+                            int TotalMarketing_Activity2 =(int)( @Model.Market_Study.TotalMarketing_Activity + (@Model.Market_Study.TotalMarketing_Activity * 0.2));
+                        }
+                        @TotalMarketing_Activity2
+                </td> 
+                <td>
+                        @{
+                            int TotalMarketing_Activity3 = (int)(TotalMarketing_Activity2 + (TotalMarketing_Activity2 * 0.2));
+                        }
+                        @TotalMarketing_Activity3
+                </td> 
+                <td>
+                        @{
+                            int TotalMarketing_Activity4 =(int)( TotalMarketing_Activity3 + (TotalMarketing_Activity3 * 0.2));
+                        }
+                        @TotalMarketing_Activity4
+                </td>
+                <td>
+                        @{
+                            int TotalMarketing_Activity5 =(int) (TotalMarketing_Activity4 + (TotalMarketing_Activity4 * 0.2));
+                        }
+                        @TotalMarketing_Activity5
+                </td> 
+             </tr>
+
+             <tr> 
+               <td>المواد الخام</td>
+               <td>@Model.Technical_Study.TotalRaw_materials</td> 
+               <td>
+                        @{
+                            var TotalRaw_materials2 = @Model.Technical_Study.TotalRaw_materials +(@Model.Technical_Study.TotalRaw_materials * 0.2);
+                        }
+                        @TotalRaw_materials2
+                    </td>   
+                    <td>
+                        @{
+                            var TotalRaw_materials3 = TotalRaw_materials2 + (TotalRaw_materials2 * 0.2);
+                        }
+                        @TotalRaw_materials3
+                    </td>
+                    <td>
+                        @{
+                            var TotalRaw_materials4 = TotalRaw_materials3 + (TotalRaw_materials3 * 0.2);
+                        }
+                        @TotalRaw_materials4
+                    </td>  
+                    <td>
+                        @{
+                            var TotalRaw_materials5 = TotalRaw_materials4 + (TotalRaw_materials4 * 0.2);
+                        }
+                        @TotalRaw_materials5
+                    </td> 
+             </tr>
+             <tr> 
+               <td>الايجار</td>
+               <td>@Model.Technical_Study.TotalRentals</td> 
+               <td>@Model.Technical_Study.TotalRentals</td> 
+               <td>@Model.Technical_Study.TotalRentals</td> 
+               <td>@Model.Technical_Study.TotalRentals</td> 
+               <td>@Model.Technical_Study.TotalRentals</td> 
+             </tr>
+
+             <tr> 
+               <td>المنافع</td>
+               <td>@Model.Technical_Study.TotalPublic_benefit</td> 
+               <td>@Model.Technical_Study.TotalPublic_benefit</td> 
+               <td>@Model.Technical_Study.TotalPublic_benefit</td> 
+               <td>@Model.Technical_Study.TotalPublic_benefit</td> 
+               <td>@Model.Technical_Study.TotalPublic_benefit</td> 
+             </tr>
+           
+             <tr> 
+               <td>الصيانة</td>
+               <td>@Model.Technical_Study.AnnualAaintenance</td> 
+               <td>@Model.Technical_Study.AnnualAaintenance</td> 
+               <td>@Model.Technical_Study.AnnualAaintenance</td> 
+               <td>@Model.Technical_Study.AnnualAaintenance</td> 
+               <td>@Model.Technical_Study.AnnualAaintenance</td> 
+             </tr>     
+             <tr> 
+               <td>الرواتب</td>
+               <td>@Model.Technical_Study.TotalManpower_workforce</td> 
+               <td>@Model.Technical_Study.TotalManpower_workforce</td> 
+               <td>@Model.Technical_Study.TotalManpower_workforce</td> 
+               <td>@Model.Technical_Study.TotalManpower_workforce</td> 
+               <td>@Model.Technical_Study.TotalManpower_workforce</td> 
+             </tr>
+             <tr> 
+               <td>الاهلاك</td>
+               <td>@Model.Technical_Study.AnnualDepreciation</td> 
+               <td>@Model.Technical_Study.AnnualDepreciation</td> 
+               <td>@Model.Technical_Study.AnnualDepreciation</td> 
+               <td>@Model.Technical_Study.AnnualDepreciation</td> 
+               <td>@Model.Technical_Study.AnnualDepreciation</td> 
+             </tr>
+             <tr> 
+               <td>الرسوم الحكومية</td>
+               <td>@Model.Technical_Study.TotalGovernment_fees</td> 
+               <td>@Model.Technical_Study.TotalGovernment_fees</td> 
+               <td>@Model.Technical_Study.TotalGovernment_fees</td> 
+               <td>@Model.Technical_Study.TotalGovernment_fees</td> 
+               <td>@Model.Technical_Study.TotalGovernment_fees</td> 
+             </tr>  
+             <tr> 
+               <td>الزكاة</td>
+               <td>@Model.Zakat</td> 
+               <td>@Model.Zakat</td> 
+               <td>@Model.Zakat</td> 
+               <td>@Model.Zakat</td> 
+               <td>@Model.Zakat</td> 
+             </tr>
+             <tr> 
+               <td>اجمالي المصروفات</td>
+               <td>@TotalExpenses</td> 
+               <td>
+                        @{
+                            var TotalExpenses2 = @TotalExpenses +( @Model.Technical_Study.TotalRaw_materials * 0.2)+(@Model.Market_Study.TotalMarketing_Activity*0.2);
+                        }
+                   @TotalExpenses2
+                   </td>
+                   <td>
+                        @{
+                            var TotalExpenses3 = @TotalExpenses2 +( TotalRaw_materials2 * 0.2)+(TotalMarketing_Activity2*0.2);
+                        }
+                   @TotalExpenses3
+                   </td>        
+                   <td>
+                        @{
+                            var TotalExpenses4 = @TotalExpenses3 +( TotalRaw_materials3 * 0.2)+(TotalMarketing_Activity3*0.2);
+                        }
+                   @TotalExpenses4
+                   </td> 
+                   <td>
+                        @{
+                            var TotalExpenses5 = @TotalExpenses4 +( TotalRaw_materials4 * 0.2)+(TotalMarketing_Activity4*0.2);
+                        }
+                   @TotalExpenses5
+                   </td> 
+             </tr>  
+             <tr> 
+               <td>صافي الارباح</td>
+               <td>@Model.NetProfit</td> 
+               <td>
+                   @{
+                            int NetProfit2 =(int)(@TotalExpected_revenue2- @TotalExpenses2);
+                        }
+                   @NetProfit2</td> 
+                   <td>
+                   @{
+                            int NetProfit3=(int)(@TotalExpected_revenue3- @TotalExpenses3);
+                        }
+                   @NetProfit3</td> 
+             <td>
+                   @{
+                            int NetProfit4=(int)(@TotalExpected_revenue4- @TotalExpenses4);
+                        }
+                   @NetProfit4</td>
+                   <td>
+                   @{
+                            int NetProfit5=(int)(@TotalExpected_revenue5- @TotalExpenses5);
+                        }
+                   @NetProfit5</td> 
+             </tr>
+
+             <tr> 
+               <td>نسبة الارباح</td>
+               <td>@Model.ProfitRate%</td> 
+               <td>
+                        @{
+                            int ProfitRate2 =(int) ((NetProfit2 / TotalExpenses2) * 100);
+                        }
+                   %@ProfitRate2
+                   </td>  
+                   <td>
+                        @{
+                            int ProfitRate3 =(int) ((NetProfit3 / TotalExpenses3) * 100);
+                        }
+                   %@ProfitRate3
+                   </td> 
+                   <td>
+                        @{
+                            int ProfitRate4 =(int)( (NetProfit4 / TotalExpenses4) * 100);
+                        }
+                   %@ProfitRate4
+                   </td>
+                   <td>
+                        @{
+                            int ProfitRate5 =(int)( (NetProfit5 / TotalExpenses5) * 100);
+                        }
+                   %@ProfitRate5
+                   </td>  
+                
+             </tr>
+
               </tbody>
               </table>
+            </div>
+            <div class="page">
+                <h2>صافي عائد المشروع السنوي</h2>
+                <br />
 
 
-</div>
-</body>
+                <table id="TotalExpected_revenue5Year" class="table table-bordered">
+                <thead class="table-info">
+             <tr>  
+                <th>السنة </th>
+                 <th>صافي العائد</th>
+                 <th>نسبة الارباح</th>
+             </tr>
+             </thead>
+            <tbody>
+             <tr> 
+               <td>السنة الاولى</td>
+               <td>@Model.NetProfit</td>
+               <td>%@Model.ProfitRate</td>
+              </tr>
+              <tr> 
+               <td>السنة الثانية</td>
+               <td>@NetProfit2</td>
+               <td>%@ProfitRate2</td>
+              </tr> 
+              <tr> 
+               <td>السنة الثالثة</td>
+               <td>@NetProfit3</td>
+               <td>%@ProfitRate3</td>
+              </tr> 
+              <tr> 
+               <td>السنة الرابعة</td>
+               <td>@NetProfit4</td>
+               <td>%@ProfitRate4</td>
+              </tr> 
+              <tr> 
+               <td>السنة الخامسة</td>
+               <td>@NetProfit5</td>
+               <td>%@ProfitRate5</td>
+              </tr>
+              <tr> 
+               <td>الاجمالي</td>
+                    @{
+                        var totalNetProfit = (@Model.NetProfit + NetProfit2 + NetProfit3 + NetProfit4 + NetProfit5);
+                        var totalProfitRate = (@Model.ProfitRate + ProfitRate2 + ProfitRate3 + ProfitRate4 + ProfitRate5)/5;
+                    }
+               <td>@totalNetProfit</td>
+               <td>%@totalProfitRate</td>
+              </tr> 
+              <tr> 
+               <td>المتوسط</td>
+                    @{
+                        var AveragelNetProfit = totalNetProfit/5;
+                    }
+               <td>@AveragelNetProfit</td>
+               <td>%@totalProfitRate</td>
+              </tr>
+             </tbody>
+            </table>
+            </div>
+            <div class="page">
+            <br />
+            <h1>نسبة العائد على الاستثمار</h1>
+            <br />
+            <div style="width:100%;border:2px double #d3d3d3;border-radius:5px;text-align:center">
+            @{
+                int RateReturn =(int)((totalNetProfit / totalinver) * 100);
+            }
+            <h1>%@RateReturn</h1>
 
-    
-    
-    
-    
-</html>
+        </div>
+        <br />
+            <h1>متوسط صافي الارباح</h1>
+            <br />
+            <div style="width:100%;border:2px double #d3d3d3;border-radius:5px;text-align:center">
+            <br/>
+            <h1>@AveragelNetProfit</h1>
+
+        </div>   
+        <br />
+            <h1>متوسط نسبة الارباح للخمس السنوات</h1>
+            <br />
+            <div style="width:100%;border:2px double #d3d3d3;border-radius:5px;text-align:center">
+            <br/>
+            <h1>%@totalProfitRate</h1>
+
+        </div>
+
+            </div>
+            </body> 
+            </html>

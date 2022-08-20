@@ -10,10 +10,9 @@
 }
 
 <h1>انشاء مستخدم</h1>
-
 <hr/>
 <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner py-4">
+        <div class="authentication py-4">
           <div class="card">
             <div class="card-body">
 
@@ -67,9 +66,9 @@
             @if(User.IsInRole("Admin"))
             {
                              <div class="form-group form-password-toggle">  
-            <label asp-for="userRoles" class="control-label"></label>
-               <select asp-for="userRoles" class="form-control" asp-items="@(new SelectList(new List<SelectListItem>{new SelectListItem { Selected = true, Text = "ادمن", Value =1.ToString()},new SelectListItem { Selected = false, Text ="مستخدم عادي", Value = 2.ToString()},new SelectListItem { Selected = false, Text ="موظف اداري", Value = 3.ToString()}},"Value","Text",2))"> </select>
-               <span asp-validation-for="userRoles" class="text-danger"></span>
+            <label asp-for="UserRoles" class="control-label"></label>
+               <select asp-for="UserRoles" class="form-control" asp-items="@(new SelectList(new List<SelectListItem>{new SelectListItem { Selected = true, Text = "ادمن", Value =1.ToString()},new SelectListItem { Selected = false, Text ="مستخدم عادي", Value = 2.ToString()},new SelectListItem { Selected = false, Text ="موظف اداري", Value = 3.ToString()}},"Value","Text",2))"> </select>
+               <span asp-validation-for="UserRoles" class="text-danger"></span>
 
            
                 </div>
@@ -86,15 +85,15 @@
                 <input type="submit" value="انشاء مستخدم" class="btn btn-primary d-grid w-100" />
             </div>
         </form>
-        
+
     </div>
     </div>
     </div>
 </div>
 </div>
-
-
+    
 
 @section Scripts {
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

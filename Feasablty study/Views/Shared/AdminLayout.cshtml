@@ -13,14 +13,14 @@
         ViewBag.UserCount = UserManager.Users.Count();
         ViewBag.UserActiveCount = UserManager.Users.Where(a => a.EmailConfirmed == true).Count();
         ViewBag.UserdeactiveCount = UserManager.Users.Where(a => a.EmailConfirmed == false).Count();
-        ViewBag.FSCount = FeasibilityStudyRepo.count;
+        ViewBag.FSCount = FeasibilityStudyRepo.Count;
     }
     else 
     {
-     ViewBag.UserCount =UserManager.Users.Where(u=>u.regionId == currentuser.regionId && u.roleId==2).Count();
-    ViewBag.UserActiveCount =UserManager.Users.Where(a=>a.EmailConfirmed==true && a.regionId==currentuser.regionId && a.roleId==2).Count();
-    ViewBag.UserdeactiveCount=UserManager.Users.Where(a=>a.EmailConfirmed==false && a.regionId==currentuser.regionId && a.roleId==2).Count();
-    ViewBag.FSCount = FeasibilityStudyRepo.count;
+     ViewBag.UserCount =UserManager.Users.Where(u=>u.RegionId == currentuser.RegionId && u.RoleId==2).Count();
+    ViewBag.UserActiveCount =UserManager.Users.Where(a=>a.EmailConfirmed==true && a.RegionId==currentuser.RegionId && a.RoleId==2).Count();
+    ViewBag.UserdeactiveCount=UserManager.Users.Where(a=>a.EmailConfirmed==false && a.RegionId==currentuser.RegionId && a.RoleId==2).Count();
+    ViewBag.FSCount = FeasibilityStudyRepo.Count;
     }
 
     

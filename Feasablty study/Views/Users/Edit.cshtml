@@ -61,9 +61,9 @@
                         @if(User.IsInRole("Admin"))
             {
                              <div class="form-group form-password-toggle">  
-            <label asp-for="userRoles" class="control-label"></label>
-               <select asp-for="userRoles" class="form-control" asp-items="@(new SelectList(new List<SelectListItem>{new SelectListItem { Selected = true, Text = "ادمن", Value =1.ToString()},new SelectListItem { Selected = false, Text ="مستخدم عادي", Value = 2.ToString()},new SelectListItem { Selected = false, Text ="موظف اداري", Value = 3.ToString()}},"Value","Text",2))"> </select>
-               <span asp-validation-for="userRoles" class="text-danger"></span>
+            <label asp-for="UserRoles" class="control-label"></label>
+               <select asp-for="UserRoles" class="form-control" asp-items="@(new SelectList(new List<SelectListItem>{new SelectListItem { Selected = true, Text = "ادمن", Value =1.ToString()},new SelectListItem { Selected = false, Text ="مستخدم عادي", Value = 2.ToString()},new SelectListItem { Selected = false, Text ="موظف اداري", Value = 3.ToString()}},"Value","Text",2))"> </select>
+               <span asp-validation-for="UserRoles" class="text-danger"></span>
 
            
                 </div>

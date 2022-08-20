@@ -10,12 +10,12 @@ namespace Feasablty_study.Models
 
         public string BuildingType { get; set; }
 
-        public float PricePerMeter { get; set; }
+        public double PricePerMeter { get; set; }
 
-        public float TotalArea { get; set; }
-        public float TotalPriceArea {  
+        public double TotalArea { get; set; }
+        public double TotalPriceArea {  
             get { return PricePerMeter * TotalArea;}
-            set=>value= PricePerMeter * TotalArea;
+            set => _ = PricePerMeter * TotalArea;
                 
 
         }

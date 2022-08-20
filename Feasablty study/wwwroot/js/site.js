@@ -67,6 +67,7 @@ function calculateTotalB() {
 	var PriceQuality = 0;
 	var price, Quality;
 	var total = 0;
+	var totalYear = 0;
 	var TotalQuality = 0;
 	var TotalPrice = 0;
 	var totalBox5 = document.getElementById("totalmonthly");
@@ -91,8 +92,8 @@ function calculateTotalB() {
 		document.getElementById("price").value = TotalPrice;
 		total = total + Number(rows[i].getElementsByTagName("td")[3].getElementsByTagName("input")[0].value);
 		totalBox5.value = total;
-		total = total + Number(rows[i].getElementsByTagName("td")[4].getElementsByTagName("input")[0].value);
-		totalBox.value = total;
+		totalYear = totalYear + Number(rows[i].getElementsByTagName("td")[4].getElementsByTagName("input")[0].value);
+		totalBox.value = totalYear;
 	}
 
 }
@@ -282,6 +283,7 @@ function calculateTotala() {
 	var MonysNemployee = 0;
 	var nemployee, Monys;
 	var total = 0;
+	var totalYear = 0;
 	var TotalNemployee = 0;
 	var Totalmonys = 0;
 	var totalBox = document.getElementById("totalsyears");
@@ -306,8 +308,8 @@ function calculateTotala() {
 		document.getElementById("monys").value = Totalmonys;
 		total = total + Number(rows[i].getElementsByTagName("td")[3].getElementsByTagName("input")[0].value);
 		totalBox1.value = total;
-		total = total + Number(rows[i].getElementsByTagName("td")[4].getElementsByTagName("input")[0].value);
-		totalBox.value = total;
+		totalYear = totalYear + Number(rows[i].getElementsByTagName("td")[4].getElementsByTagName("input")[0].value);
+		totalBox.value = totalYear;
 	}
 
 }
@@ -433,7 +435,7 @@ function calculateTotall() {
 
 	var cell4 = row.insertCell(3);
 	cell1.outerHTML = `<th> ${y}</th>`;
-	cell2.innerHTML = '<input type="text" name=""rentals[' + (y - 2) +'].RentalType" class="form-control" placeholder=" الاصناف والمعدات"/> ';
+	cell2.innerHTML = '<input type="text" name="rentals[' + (y - 2) +'].RentalType" class="form-control" placeholder=" الاصناف والمعدات"/> ';
 	cell3.innerHTML = '<input type="number" name="rentals[' + (y - 2) +'].RentalYearly" class="form-control" placeholder="000" onkeyup="calculateTotall()"/> ';
 	cell4.innerHTML = '  <button type="button" class="btn btn-danger" class=btn btn-primary" id="add-row" onclick="deleteRow(\'' + id + '\')"> حذف</button> ';
 }
@@ -542,6 +544,7 @@ function calculateTota() {
 	var UintReqired = 0;
 	var Uint, Reqired;
 	var total = 0;
+	var totalYear = 0;
 	var Totalunit = 0;
 	var TotalReqired = 0;
 	var totalBox1 = document.getElementById("totalss");
@@ -566,8 +569,8 @@ function calculateTota() {
 		document.getElementById("qualitReqiredMonthly").value = TotalReqired;
 		total = total + Number(rows[i].getElementsByTagName("td")[4].getElementsByTagName("input")[0].value);
 		totalBox1.value = total;
-		total = total + Number(rows[i].getElementsByTagName("td")[5].getElementsByTagName("input")[0].value);
-		totalBox.value = total;
+		totalYear = totalYear + Number(rows[i].getElementsByTagName("td")[5].getElementsByTagName("input")[0].value);
+		totalBox.value = totalYear;
 	}
 
 }

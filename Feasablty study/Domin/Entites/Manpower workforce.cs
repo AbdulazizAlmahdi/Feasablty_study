@@ -8,19 +8,19 @@ namespace Feasablty_study.Models
         public int Id { get; set; } 
         public string JobTitle { get; set; }
         public int Number { get; set; }
-        public float MonthlySalary { get; set; }
-        public float TotalMonthlySalary { 
+        public double MonthlySalary { get; set; }
+        public double TotalMonthlySalary { 
             get { return MonthlySalary*Number; }
             set
             {
-                value = MonthlySalary * Number;
+                _ = MonthlySalary * Number;
             }
              }  
-        public float TotalYearlySalary { 
+        public double TotalYearlySalary { 
             get { return TotalMonthlySalary * 12; }
             set
             {
-                value=TotalMonthlySalary*12;
+                _ = TotalMonthlySalary*12;
             }
              }
         

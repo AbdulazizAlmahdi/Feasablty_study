@@ -11,7 +11,7 @@ namespace Feasablty_study.Models
         public string CompetitorsName { get; set; }
         public string Products { get; set; }
         public double CompetitorsPrice { get; set; }
-        public int AmounrAdded { get; set; }
+        public double AmounrAdded { get; set; }
         [ForeignKey("Feasibility_study")]
         public virtual int Feasibility_StudyId { get; set; }
         public virtual Feasibility_study Feasibility_Study { get; set; }

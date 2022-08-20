@@ -3,13 +3,16 @@ using Feasablty_study.Domin.ViewModels;
 using Feasablty_study.Infrastructure.Data;
 using Feasablty_study.Infrastructure.Repository;
 using Feasablty_study.Models;
+using Feasablty_study.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Rotativa.AspNetCore;
 using Rotativa.AspNetCore.Options;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -23,13 +26,16 @@ namespace Feasablty_study.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IFeasibilityStudyRepo _feasibilityStudyRepo;
+        private readonly IWebHostEnvironment _hosting;
 
-        public Feasibility_studyController(AppDbContext context,IFeasibilityStudyRepo feasibilityStudyRepo, UserManager<User> userManager, SignInManager<User> signInManager)
+
+        public Feasibility_studyController(AppDbContext context,IFeasibilityStudyRepo feasibilityStudyRepo, UserManager<User> userManager, SignInManager<User> signInManager, IWebHostEnvironment hosting)
         {
             _feasibilityStudyRepo = feasibilityStudyRepo;
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
+            _hosting = hosting;
         }
         
 
@@ -37,7 +43,7 @@ namespace Feasablty_study.Controllers
         public async Task<IActionResult> Index()
         {
             var currentuser =_userManager.Users.First(u=>u.Id==User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var allfeasibilityStudy = await _feasibilityStudyRepo.GetAllAsync(f=>f.user);
+            var allfeasibilityStudy = await _feasibilityStudyRepo.GetAllAsync(f=>f.User);
             if (User.IsInRole(UserRoles.Admin))
             {
                 return View(allfeasibilityStudy.ToList());
@@ -46,7 +52,7 @@ namespace Feasablty_study.Controllers
             else if (User.IsInRole(UserRoles.Employee))
             {
 
-                var allForEmployeefeasibilityStudy = allfeasibilityStudy.ToList().FindAll(i => i.user.regionId == currentuser.regionId);
+                var allForEmployeefeasibilityStudy = allfeasibilityStudy.ToList().FindAll(i => i.User.RegionId == currentuser.RegionId);
                 return View(allForEmployeefeasibilityStudy);
 
             }
@@ -59,7 +65,7 @@ namespace Feasablty_study.Controllers
             }
             else if (User.IsInRole(UserRoles.Employee))
             {
-                var allForUserfeasibilityStudy = allfeasibilityStudy.ToList().FindAll(i => i.user.regionId == currentuser.regionId);
+                var allForUserfeasibilityStudy = allfeasibilityStudy.ToList().FindAll(i => i.User.RegionId == currentuser.RegionId);
                 return View(allForUserfeasibilityStudy);
             }
             else
@@ -70,26 +76,26 @@ namespace Feasablty_study.Controllers
             var feasibilitystudy = await _feasibilityStudyRepo.GetByIdAsync(
                 id,
                 a => a.Preliminary_study,
-                b => b.licenses,
-                m => m.market_Study,
-                c => c.competitors,
-                c => c.expected_Revenues,
-                c => c.construction_And_Bulidings,
-                c => c.technical_Study,
-                c => c.marketing_Activities,
-                c => c.risks,
-                c=>c.establishment_Expenses,
+                b => b.Licenses,
+                m => m.Market_Study,
+                c => c.Competitors,
+                c => c.Expected_Revenues,
+                c => c.Construction_And_Bulidings,
+                c => c.Technical_Study,
+                c => c.Marketing_Activities,
+                c => c.Risks,
+                c=>c.Establishment_Expenses,
                 c=>c.Manpower_Workforces,
-                c=>c.machinery_Equipment,
+                c=>c.Machinery_Equipment,
                 c=>c.Government_Fees,
-                c=>c.rentals,
-                c=>c.raw_Materials,
-                c=>c.public_Benefits
+                c=>c.Rentals,
+                c=>c.Raw_Materials,
+                c=>c.Public_Benefits
                 );
             return new ViewAsPdf("PrintAsPdf", feasibilitystudy)
             {
                 PageOrientation = Orientation.Portrait,
-                MinimumFontSize = 30,
+                MinimumFontSize = 25,
                 PageSize = Size.A4,
                 CustomSwitches =" --print-media-type --no-background --footer-line --header-line --page-offset 0 --footer-center [page] --footer-font-size 8 --footer-right \"page [page] from [topage]\"  "
             };
@@ -102,7 +108,7 @@ namespace Feasablty_study.Controllers
                 return NotFound();
             }
 
-            var feasibility_study = await _feasibilityStudyRepo.GetByIdAsync((int)id,u=>u.user,p=>p.Preliminary_study,m=>m.market_Study,t=>t.technical_Study);
+            var feasibility_study = await _feasibilityStudyRepo.GetByIdAsync((int)id,u=>u.User,p=>p.Preliminary_study,m=>m.Market_Study,t=>t.Technical_Study);
                
             if (feasibility_study == null)
             {
@@ -120,66 +126,19 @@ namespace Feasablty_study.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateFeasibilityStudyViewModel model)
-        {
-            
+        {      
             string UserId = _userManager.GetUserId(User);
-            
+
+            /*if (Request.Form.Files.Count > 0)
+            {
+                var file = Request.Form.Files.FirstOrDefault();
+                string pathUpload = Path.Combine(_hosting.WebRootPath, "Images");
+                model.Feasibility_Study.ProjectLogo = UploadFileHelper.UploadFile(file, pathUpload, model.Feasibility_Study.ProjectLogo);
+            }
+            */
             await _feasibilityStudyRepo.AddAsync(model,UserId);
-            return RedirectToAction(nameof(Index));
+            return Json(new { result = "Redirect", url = Url.Action("Index", "Feasibility_study") });
 
-        }
-
-        // GET: Feasibility_study/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var feasibility_study = await _context.Feasibility_studies.FindAsync(id);
-            if (feasibility_study == null)
-            {
-                return NotFound();
-            }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", feasibility_study.UserId);
-            return View(feasibility_study);
-        }
-
-        // POST: Feasibility_study/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProjectName,Description,ProjectLocation,ProjectType,ProjectLogo,DateTime,ContactNumber,UserId")] Feasibility_study feasibility_study)
-        {
-            if (id != feasibility_study.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(feasibility_study);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!Feasibility_studyExists(feasibility_study.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", feasibility_study.UserId);
-            return View(feasibility_study);
         }
 
         // GET: Feasibility_study/Delete/5
@@ -191,7 +150,7 @@ namespace Feasablty_study.Controllers
             }
 
             var feasibility_study = await _context.Feasibility_studies
-                .Include(f => f.user)
+                .Include(f => f.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (feasibility_study == null)
             {

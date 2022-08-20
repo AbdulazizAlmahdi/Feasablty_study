@@ -11,14 +11,14 @@ namespace Feasablty_study.Models
         [ForeignKey("Feasibility_study")]
         [Key]
         public int FeasibilityStudyId { get; set; }
-        public float TotalMachinery_Equipment { get; set; }
-        public float TotalManpower_workforce { get; set; }
-        public float TotalConstruction_and_buliding { get; set; }
-        public float TotalRentals { get; set; }
-        public float TotalGovernment_fees { get; set; }
-        public float TotalEstablishment_expenses { get; set; }
-        public float TotalRaw_materials { get; set; }
-        public float TotalPublic_benefit { get; set; }
+        public double TotalMachinery_Equipment { get; set; }
+        public double TotalManpower_workforce { get; set; }
+        public double TotalConstruction_and_buliding { get; set; }
+        public double TotalRentals { get; set; }
+        public double TotalGovernment_fees { get; set; }
+        public double TotalEstablishment_expenses { get; set; }
+        public double TotalRaw_materials { get; set; }
+        public double TotalPublic_benefit { get; set; }
         public double AnnualDepreciation { 
             get
             { 
@@ -26,21 +26,9 @@ namespace Feasablty_study.Models
             }
             set
             {
-                value= (TotalMachinery_Equipment - (TotalMachinery_Equipment * 0.2)) * 0.05;
+                _ = (TotalMachinery_Equipment - (TotalMachinery_Equipment * 0.2)) * 0.05;
             }
-        }
-        public double TotalOperatingExpensese
-        { 
-            get
-            { 
-                return (TotalGovernment_fees+TotalManpower_workforce+TotalPublic_benefit+TotalRaw_materials+TotalRentals+AnnualDepreciation); 
-            }
-            set
-            {
-                value= (TotalGovernment_fees + TotalManpower_workforce + TotalPublic_benefit + TotalRaw_materials + TotalRentals + AnnualDepreciation);
-            }
-        }
-            
+        }  
         public double AnnualAaintenance
         { 
             get
@@ -49,12 +37,25 @@ namespace Feasablty_study.Models
             }
             set
             {
-                value= TotalMachinery_Equipment  * 0.05;
+                _ = TotalMachinery_Equipment  * 0.05;
             }
         }
+        public double TotalOperatingExpensese
+        { 
+            get
+            { 
+                return (TotalGovernment_fees+TotalManpower_workforce+TotalPublic_benefit+TotalRaw_materials+TotalRentals+AnnualDepreciation+ AnnualAaintenance); 
+            }
+            set
+            {
+                _ = (TotalGovernment_fees + TotalManpower_workforce + TotalPublic_benefit + TotalRaw_materials + TotalRentals + AnnualDepreciation+ AnnualAaintenance);
+            }
+        }
+            
+
         public int OperationalCycle { get; set; }
 
-        public virtual Feasibility_study feasibility_study { get; set; }
+        public virtual Feasibility_study Feasibility_study { get; set; }
         
 
 

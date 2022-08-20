@@ -27,7 +27,7 @@ namespace Feasablty_study.Controllers
         // GET: Support_Messages
         public async Task<IActionResult> Index()
         {
-            var AllMessages = await _messageRepo.GetAllAsync(s=>s.user);  //_messageRepo.GetAllAsync();
+            var AllMessages = await _messageRepo.GetAllAsync(s=>s.User);  //_messageRepo.GetAllAsync();
 
             return View(AllMessages.ToList());
         }
@@ -40,7 +40,7 @@ namespace Feasablty_study.Controllers
                 return NotFound();
             }
 
-            var support_Messages = await _messageRepo.GetByIdAsync((int)id,s=>s.user);
+            var support_Messages = await _messageRepo.GetByIdAsync((int)id,s=>s.User);
                 
             if (support_Messages == null)
             {
@@ -63,7 +63,7 @@ namespace Feasablty_study.Controllers
             if (ModelState.IsValid)
             {
                 support_Messages.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                support_Messages.user = await _userManager.Users.FirstOrDefaultAsync(u=>u.Id==support_Messages.UserId);
+                support_Messages.User = await _userManager.Users.FirstOrDefaultAsync(u=>u.Id==support_Messages.UserId);
                 await _messageRepo.AddAsync(support_Messages);
                 return RedirectToAction("Index", "Home");
             }
@@ -79,7 +79,7 @@ namespace Feasablty_study.Controllers
                 return NotFound();
             }
 
-            var support_Messages = await _messageRepo.GetByIdAsync((int)id, s => s.user);
+            var support_Messages = await _messageRepo.GetByIdAsync((int)id, s => s.User);
              
             if (support_Messages == null)
             {
@@ -98,10 +98,5 @@ namespace Feasablty_study.Controllers
             return RedirectToAction("Index","Home");
         }
 
-        [Authorize(Roles = "Admin")]
-        private async Task<bool> Support_MessagesExists(int id)
-        {
-            return (await _messageRepo.GetByIdAsync(id)!=null);
-        }
     }
 }

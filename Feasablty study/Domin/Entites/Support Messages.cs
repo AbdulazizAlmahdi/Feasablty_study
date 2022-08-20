@@ -18,7 +18,7 @@ namespace Feasablty_study.Models
         public string Email { get; set; }
         public DateTime Date { get; set; }= DateTime.Now;
         public string UserId { get; set; }
-        public User user { get; set; }
+        public User User { get; set; }
 
 
     }

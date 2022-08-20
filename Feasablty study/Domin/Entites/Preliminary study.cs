@@ -20,7 +20,7 @@ namespace Feasablty_study.Models
         public string FactorsRepresentedOnIncreasedDemand { get; set; }
 
         public string FactorsRepresentedOnLowDemand { get; set; }
-        public Feasibility_study feasibility_study { get; set; }
+        public Feasibility_study Feasibility_study { get; set; }
 
 
     }

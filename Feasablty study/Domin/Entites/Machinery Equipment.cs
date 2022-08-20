@@ -11,12 +11,12 @@ namespace Feasablty_study.Models
         public string NameSupplier { get; set; }
 
         public int Number { get; set; }
-        public float Price { get; set; }
-        public float TotalPrice {
+        public double Price { get; set; }
+        public double TotalPrice {
             get { return Price*Number; }
             set
             {
-                value = Number * Price;
+                _ = Number * Price;
             }
                 }
 

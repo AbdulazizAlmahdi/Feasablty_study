@@ -51,7 +51,7 @@
             <td>@Html.DisplayFor(modelItem => item.UserName)</td>        
             <td>@Html.DisplayFor(modelItem => item.PhoneNumber) </td>
             <td> @Html.DisplayFor(modelItem => item.CreationDate) </td>  
-            <td>@Html.DisplayFor(modelItem => item.region.Name) </td>
+            <td>@Html.DisplayFor(modelItem => item.Region.Name) </td>
 
                              <td>
                           @if(await UserManager.IsInRoleAsync(item,"Admin"))
