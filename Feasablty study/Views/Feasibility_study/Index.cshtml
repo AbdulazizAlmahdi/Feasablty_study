@@ -20,7 +20,7 @@
                         <thead>
                           <tr>
                             <th>عنوان المشروع</th>
-                            <th>وصف المشروع</th>
+                            <th>ايراد المشروع لاول سنة </th>
                             <th> تاريخ التنفيذ </th>
                             <th>  منطقة المشروع</th>
                             <th>  اسم صاحب المشروع</th>
@@ -42,7 +42,7 @@
                         {
                        <tr>
             <td>@Html.DisplayFor(modelItem => item.ProjectName)   </td>      
-            <td>@Html.DisplayFor(modelItem => item.Description)</td>       
+            <td>@Html.DisplayFor(modelItem => item.TotalOperatingExpenseseOneYear)</td>       
             <td>@Html.DisplayFor(modelItem => item.ProjectDate)</td>        
             <td>@Html.DisplayFor(modelItem => item.ProjectLocation) </td>
             <td> @Html.DisplayFor(modelItem => item.OwnerName) </td>

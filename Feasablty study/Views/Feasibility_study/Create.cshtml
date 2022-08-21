@@ -1380,7 +1380,7 @@
                     alert("ادخل بيانات الدراسه بشكل كامل");
                 },
                 success : function(response) {
-                     $("#LoaderContiner")
+                     $("#LoaderContiner").show();
                     if (response.result == 'Redirect')
                      window.location = response.url;
                 }

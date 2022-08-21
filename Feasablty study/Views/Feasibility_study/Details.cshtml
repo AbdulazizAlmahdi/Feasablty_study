@@ -17,7 +17,7 @@
                           <img class="img-fluid rounded my-4" src="../../assets/img/avatars/details.jpg" height="110" width="110" alt="User avatar">
                           <div class="user-info text-center">
                               <h4 class="border-bottom pb-2 mb-4">  عرض الدراسة</h4>
-                            <h5 class="mb-2">@Html.DisplayFor(model => model.User.Id)</h5>
+                            <h5 class="mb-2">@Html.DisplayFor(model => model.User.Name)</h5>
                           </div>
                         </div>
                       </div>
@@ -51,7 +51,6 @@
 
                        <hr/>
                 <div class="d-flex justify-content-center pt-3">
-                          <a class="btn btn-warning me-3" asp-action="Edit" asp-route-id="@Model.Id">تعديل</a>
                           <a class="btn btn-label-success suspend-user" asp-action="Index">عودة للقائمة </a>
                         </div>         
                   </div>

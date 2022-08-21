@@ -11,9 +11,9 @@ a.navbar-brand {
     z-index: 2000;
     background-color: #00000015;
     width: 75%;
-    height:90%;
-    visibility: hidden;
-    position:absolute;
+    height: 90%;
+    display: none;
+    position: absolute;
 }
 .loader {
     margin:30% 50% 0 0;
