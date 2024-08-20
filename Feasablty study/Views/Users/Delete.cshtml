@@ -1,67 +1,0 @@
-﻿@model Feasablty_study.Models.User
-
-@{
-    ViewData["Title"] = "Delete";
-}
-
- <h4>حذف حساب المستخدم</h4>
-    
-
-
-            <div class="row">
-             <div class="authentication-wrapper authentication-basic container-p-y">
-                  <!-- User Card -->
-               <div class="authentication-inner py-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="user-avatar-section">
-                        <div class="d-flex flex-column align-items-center">
-                          <img class="img-fluid rounded my-4" src="../../assets/img/avatars/adminuser.png" height="110" width="110" alt="User avatar">
-                          <div class="user-info text-center">
-                            <h5 class="mb-2">@Html.DisplayFor(model => model.Name)</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <h5 class="border-bottom pb-2 mb-4">التفاصيل</h5>
-                      <div class="info-container">
-                        <ul class="list-unstyled">
-                          <li class="mb-3">
-                            <span class="fw-bold me-2">اسم المستخدم:</span>
-                            <span>@Html.DisplayFor(model => model.UserName)</span>
-                          </li>
-                          <li class="mb-3">
-                            <span class="fw-bold me-2">الأيمل :</span>
-                            <span>@Html.DisplayFor(model => model.Email)</span>
-                          </li>
-                          <li class="mb-3">
-                            <span class="fw-bold me-2">الحالة:</span>
-                            <span class="badge bg-label-success">نشط</span>
-                          </li>
-                          <li class="mb-3">
-                            <span class="fw-bold me-2">الايميل:</span>
-                            <span>@Html.DisplayFor(model => model.Email)</span>
-                          </li>
-                          <li class="mb-3">
-                            <span class="fw-bold me-2">رقم الهاتف:</span>
-                            <span>@Html.DisplayFor(model => model.PhoneNumber)</span>
-                          </li>
-                          <li class="mb-3">
-                            <span class="fw-bold me-2">تاريخ الانشاء</span>
-                            <span>@Html.DisplayFor(model => model.CreationDate)</span>
-                          </li>
-                          
-                        </ul>
-                            <hr/>
-                    <form asp-action="Delete">
-                    <input type="hidden" asp-for="Id" />
-                        <input type="submit" value="حذف" class="btn btn-danger" /> 
-                        <a class="btn btn-label-success suspend-user" asp-action="Index">عودة للقائمة👈  </a>
-                    </form>         
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-             
-              

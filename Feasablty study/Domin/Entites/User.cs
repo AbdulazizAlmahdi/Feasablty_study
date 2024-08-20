@@ -12,6 +12,7 @@ namespace Feasablty_study.Models
 {
     public class User: IdentityUser
     {
+
         public User()
         {
             Feasibility_Studies = new HashSet<Feasibility_study>();

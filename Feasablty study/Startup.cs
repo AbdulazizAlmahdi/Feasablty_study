@@ -1,7 +1,6 @@
 using Feasablty_study.Infrastructure.Data;
 using Feasablty_study.Infrastructure.Repository;
 using Feasablty_study.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Rotativa.AspNetCore;
-using System;
 
 namespace Feasablty_study
 {

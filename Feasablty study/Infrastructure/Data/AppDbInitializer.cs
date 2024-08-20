@@ -2,6 +2,7 @@
 using Feasablty_study.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Feasablty_study.Infrastructure.Data
             var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
             context.Database.EnsureCreated();
+            context.Database.Migrate();
 
 
             //Regions
@@ -153,14 +155,14 @@ namespace Feasablty_study.Infrastructure.Data
 
             //Users
             var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
-            string adminUserEmail = "admin@etickets.com";
+            string adminUserEmail = "admin@FS.com";
 
             var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
             if (adminUser == null)
             {
                 var newAdminUser = new User()
                 {
-                    Id = "c6c75e08-3701-4355-b8f3-8db5be5310dc",
+                    Id = "c6c75e08-3701-4345-b8f3-8db5be5310dc",
                     Name = "Admin User",
                     UserName = "admin-user",
                     Email = adminUserEmail,
@@ -171,18 +173,19 @@ namespace Feasablty_study.Infrastructure.Data
                     PhoneNumber = "773019241",
 
                 };
-                await userManager.CreateAsync(newAdminUser, "Coding@1234?");
+                await userManager.CreateAsync(newAdminUser, "Admin123@");
                 await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
             }
 
 
-            string appUserEmail = "user@etickets.com";
+            string appUserEmail = "user@FS.com";
 
             var appUser = await userManager.FindByEmailAsync(appUserEmail);
             if (appUser == null)
             {
                 var newAppUser = new User()
                 {
+                    Id = "c6c75e18-3701-4345-b8f3-8db5be5310dc",
                     Name = "Application User",
                     UserName = "app-user",
                     Email = appUserEmail,
@@ -192,7 +195,7 @@ namespace Feasablty_study.Infrastructure.Data
                     RoleId = 2,
                     PhoneNumber = "773019241",
                 };
-                await userManager.CreateAsync(newAppUser, "Coding@1234?");
+                await userManager.CreateAsync(newAppUser, "User123@");
                 await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
             }
         }

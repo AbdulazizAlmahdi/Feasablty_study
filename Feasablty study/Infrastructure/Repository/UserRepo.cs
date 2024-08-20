@@ -76,7 +76,8 @@ namespace Feasablty_study.Infrastructure.Repository
             }
 
 
-        }public async Task AddAsync(CreateUserViewModel entity)
+        }
+        public async Task AddAsync(CreateUserViewModel entity)
         {
 
             var newUser = new User()
@@ -137,8 +138,10 @@ namespace Feasablty_study.Infrastructure.Repository
 
         }
 
-
-
+        internal static Task AddAsync(CreateUserViewModel model, object userId)
+        {
+            throw new NotImplementedException();
+        }
 
         public async Task DeleteAsync(string id)
         {

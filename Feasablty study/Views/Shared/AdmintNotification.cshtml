@@ -1,0 +1,168 @@
+﻿@using System.Linq;
+@using Feasablty_study.Infrastructure.Repository
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@inject UserManager<User> UserManager; 
+@inject SignInManager<User> signInManager;
+@model IEnumerable<Feasablty_study.Models.User>
+
+
+
+@{
+
+    var currentuser = UserManager.Users.First(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
+    if (User.IsInRole("Admin"))
+    {
+        ViewBag.UserdeactiveCount = UserManager.Users.Where(a => a.EmailConfirmed == false).Count();
+    }
+    else 
+    {
+        ViewBag.UserdeactiveCount=UserManager.Users.Where(a=>a.EmailConfirmed==false && a.RegionId==currentuser.RegionId && a.RoleId==2).Count();
+    }
+
+
+
+
+}
+ <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
+            <div class="container-fluid">
+              <div class="layout-menu-toggle navbar-nav d-xl-none align-items-xl-center me-3 me-xl-0">
+                <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                  <i class="bx bx-menu bx-sm"></i>
+                </a>
+              </div>
+
+              <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                <!--titel-->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item navbar-search-wrapper mb-0">
+
+                  <span class="span-1">@ViewData["Title"]</span>
+
+                </div>
+              </div>
+               <!--/titel-->
+             
+                <!-- Search -->
+              
+                <!-- /Search -->
+
+                <ul class="navbar-nav flex-row align-items-center ms-auto">
+                       <!-- Language -->
+                  <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
+                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                      <i class="flag-icon flag-icon-ye flag-icon-squared fs-3 rounded-circle me-1"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li>
+                        <a class="dropdown-item" href="javascript:void(0);" data-language="en">
+                          <i class="flag-icon flag-icon-ye flag-icon-squared fs-4 rounded-circle me-1"></i>
+                          <span class="align-middle">العربية</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <!--/ Language -->
+                 <!-- Style Switcher -->
+                 <li class="nav-item me-2 me-xl-0">
+                  <a class="nav-link style-switcher-toggle hide-arrow" href="javascript:void(0);">
+                    <i class="bx bx-sm"></i>
+                  </a>
+                </li>
+                <!--/ Style Switcher -->
+                <!-- Notification -->
+                      <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-2">     
+                <a class="nav-link dropdown-toggle hide-arrow"
+                href="javascript:void(0);"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+                aria-expanded="false">
+                    
+            <i class="bx bx-bell bx-sm"></i>
+            <span class="badge rounded-pill badge-notifications bg-danger">@ViewBag.UserdeactiveCount</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end py-0">
+            <li class="dropdown-menu-header border-bottom">
+                <div class="dropdown-header d-flex align-items-center py-3">
+                    <h5 class="text-body me-auto mb-0">الاشعارات</h5>
+                    <a
+                            href="javascript:void(0)"
+                            class="dropdown-notifications-all text-body"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="تأشير القرأه على الكل"
+                            ><i class="bx fs-4 bx-envelope-open"></i
+                          ></a>
+                </div>
+            </li>
+            <li class="dropdown-notifications-list scrollable-container">
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="avatar">
+                                    <span class="avatar-initial bg-label-success rounded-circle"
+                                    ><i class="bx bx-pie-chart-alt"></i
+                                  ></span>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">اسم المستخدم </h6>
+                                @if (Model.Count() ==0)
+                                {
+
+                                    <p> 
+                                        لا يوجد نتائج
+                                    </p>
+
+                                }
+                                else
+                                {
+
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.Status== false)
+                                        {
+                                            <p class="mb-0">@Html.DisplayFor(modelItem => item.Name)</p>
+                                            <small class="text-muted">@Html.DisplayFor(modelItem => item.CreationDate)</small>
+                                        }
+
+                                    }
+                                }
+                            </div>
+                            <div class="dropdown-notifications-actions flex-shrink-0">
+                                <a href="javascript:void(0)" class="dropdown-notifications-read"
+                                  ><span class="badge badge-dot"></span
+                                ></a>
+                                <a href="javascript:void(0)" class="dropdown-notifications-archive"
+                                  ><span class="bx bx-x"></span
+                                ></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown-menu-footer border-top">
+
+                <a class="dropdown-item d-flex justify-content-center p-3"  asp-controller="Support_Messages" asp-action="Index">
+                    عرض كل الر سائل
+                </a>
+            </li>
+        </ul>
+    </li>
+        <!-- /Notification -->
+        <!-- User -->
+        <partial name="_Identity.cshtml" />
+        <!--/ User -->
+    </ul>
+    </div>
+    </div>
+</nav>
+
+  
+
+
+
+
+

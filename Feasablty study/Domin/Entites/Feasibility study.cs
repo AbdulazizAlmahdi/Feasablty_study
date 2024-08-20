@@ -13,6 +13,8 @@ namespace Feasablty_study.Models
         public int Id { get; set; }
         [Required(ErrorMessage = "ادخل اسم المشروع "), MaxLength(150, ErrorMessage = "اسم المشروع طويل للغاية")]
         public string ProjectName { get; set; }
+        [MaxLength(200)]
+        [Required]
         public string Description { get; set; }
         public string ProjectLocation { get; set; }
         public string ProjectType { get; set; }

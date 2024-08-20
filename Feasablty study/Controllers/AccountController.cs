@@ -12,6 +12,8 @@ namespace Feasablty_study.Controllers
 {
     public class AccountController : Controller
     {
+       // enum userType { Admin = 1, Engineer = 2, Supervisor = 4, Farmer = 3 }
+
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IRegionsRepo _regions;

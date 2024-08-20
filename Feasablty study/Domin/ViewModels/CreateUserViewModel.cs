@@ -27,10 +27,9 @@ namespace Feasablty_study.Domin.ViewModels
         [Display(Name="نوع المستخدم")]
         public int UserRoles { get; set; }
         public int RegionId { get; set; }
-
-
-
-
-
+        public object RegisterViewModelId { get; internal set; }
+        public string RegisterViewId { get; internal set; }
+        public string CreateUserViewModelId { get; internal set; }
+        public string CreateUserId { get; internal set; }
     }
 }

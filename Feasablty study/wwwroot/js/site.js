@@ -51,8 +51,8 @@ function deleteRow(id) {
 
 	var cell4 = row.insertCell(3);
 	cell1.outerHTML = `<th> ${y}</th>`;
-	cell2.innerHTML = ' <input type="text" name="licenses[' + (y - 1) + '].LicenseType" class="form-control" />';
-	cell3.innerHTML = ' <input type="text" name="licenses[' + (y - 1) + '].Licenses" class="form-control" />';
+	cell2.innerHTML = ' <input type="text" name="licenses[' + (y - 1) + '].LicenseType" class="form-control" placeholder="ادخل نوع الترخيص  " />';
+	cell3.innerHTML = ' <input type="text" name="licenses[' + (y - 1) + '].Licenses" class="form-control" placeholder="جهة الترخيص " />';
 	cell4.innerHTML = '  <input type="button" class="btn btn-block btn-default" id="add-row" onclick="deleteRow(\'' + id + '\')"  ><i class="bx bx-trash me-1"></i> </input> ';
 }
 

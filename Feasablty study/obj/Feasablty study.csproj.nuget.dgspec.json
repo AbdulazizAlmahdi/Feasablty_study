@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\vsproject\\Feasablty study\\Feasablty study\\Feasablty study.csproj": {}
+    "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\النظام1\\Feasablty study\\Feasablty study\\Feasablty study.csproj": {}
   },
   "projects": {
-    "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\vsproject\\Feasablty study\\Feasablty study\\Feasablty study.csproj": {
+    "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\النظام1\\Feasablty study\\Feasablty study\\Feasablty study.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\vsproject\\Feasablty study\\Feasablty study\\Feasablty study.csproj",
+        "projectUniqueName": "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\النظام1\\Feasablty study\\Feasablty study\\Feasablty study.csproj",
         "projectName": "Feasablty study",
-        "projectPath": "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\vsproject\\Feasablty study\\Feasablty study\\Feasablty study.csproj",
+        "projectPath": "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\النظام1\\Feasablty study\\Feasablty study\\Feasablty study.csproj",
         "packagesPath": "C:\\Users\\almahdi\\.nuget\\packages\\",
-        "outputPath": "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\vsproject\\Feasablty study\\Feasablty study\\obj\\",
+        "outputPath": "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\النظام1\\Feasablty study\\Feasablty study\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -79,6 +85,10 @@
             "Rotativa.AspNetCore": {
               "target": "Package",
               "version": "[1.2.0, )"
+            },
+            "SweetAlert.Bootstrap": {
+              "target": "Package",
+              "version": "[1.0.1, )"
             }
           },
           "imports": [
@@ -87,7 +97,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -99,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

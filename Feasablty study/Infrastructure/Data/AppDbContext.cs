@@ -29,6 +29,8 @@ namespace Feasablty_study.Infrastructure.Data
             .HasForeignKey<Technical_Study>(c => c.FeasibilityStudyId);
             modelBuilder.Entity<User>()
                 .HasMany<Support_Messages>(c => c.Messages).WithOne(u => u.User).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<User>()
+               .HasMany<Feasibility_study>(c => c.Feasibility_Studies).WithOne(u => u.User).OnDelete(DeleteBehavior.Cascade);
 
 
         }

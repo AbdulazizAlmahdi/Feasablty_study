@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Feasablty study")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d368389abb094d00dc01302dc1a5ad96ee19c5c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Feasablty study")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Feasablty study")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -11,7 +11,9 @@
 let config = {
   colors: {
     primary: '#5a8dee',
-    secondary: '#69809a',
+        secondary: '#69809a',
+
+
     success: '#39da8a',
     info: '#00cfdd',
     warning: '#fdac41',

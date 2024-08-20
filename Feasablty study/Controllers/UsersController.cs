@@ -16,11 +16,14 @@ namespace Feasablty_study.Controllers
     {
         private readonly IUserRepo userRepo;
         private readonly IRegionsRepo _regions;
+
+        public string UserId { get; private set; }
+
         public UsersController(IUserRepo userRepo, IRegionsRepo regions)
         {
             this.userRepo = userRepo;
             this._regions = regions;
-            _regions = regions;
+           
         }
 
 
@@ -28,15 +31,19 @@ namespace Feasablty_study.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var viewModel = new ViewModelAllOpreation();
+             ViewBag.Regions = new SelectList(await _regions.GetAllAsync(), "Id", "Name");
             var currentuser = await userRepo.GetByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var Users = await userRepo.GetAllAsync(u=>u.Region);
-            if(User.IsInRole(UserRoles.Employee))
+            viewModel.Users = Users;
+            if (User.IsInRole(UserRoles.Employee))
             {
                Users= Users.Where(u => u.RegionId == currentuser.RegionId && u.RoleId==2);
-                return View(Users);
+                viewModel.Users = Users;
+                return View(viewModel);
             }
             else
-            return View(Users);
+            return View(viewModel);
         }
 
         // GET: Users/Details/5
@@ -51,23 +58,14 @@ namespace Feasablty_study.Controllers
 
             return View(user);
         }
-
         // GET: Users/Create
         public async Task<IActionResult> Create()
         {
-
             ViewBag.Regions = new SelectList(await _regions.GetAllAsync(), "Id", "Name");
             return View();
         }
-/*        [AcceptVerbs("Get","Post")]
-        public  bool IsUserNameExist(string userName)
-        {
-            var User=userRepo.GetByUserNameAsync(userName);
-            if (User == null)
-                return  false;
-            return true;
-        }*/
-
+        
+       
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -75,31 +73,32 @@ namespace Feasablty_study.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateUserViewModel user)
         {
-            
+            ViewBag.Regions = new SelectList(await _regions.GetAllAsync(), "Id", "Name");
+
             if (ModelState.IsValid)
             {
-                if(userRepo.Returntype == 1)
+                if (userRepo.Returntype == 1)
                 {
                     TempData["Error"] = userRepo.Error;
                     return View(user);
                 }
-                else if(userRepo.Returntype == 2)
+                else if (userRepo.Returntype == 2)
                 {
                     TempData["Error"]=userRepo.Error;
                     return View(user);
                 }
 
-                if(User.IsInRole("Employee"))
+                if (User.IsInRole("Employee"))
                 {
-                  await userRepo.AddAsync(user,User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    await userRepo.AddAsync(user, User.FindFirstValue(ClaimTypes.NameIdentifier));
                 }
                 else
                 {
-                  await userRepo.AddAsync(user);
+                    await userRepo.AddAsync(user);
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return Json(new { result = "Redirect", url = Url.Action("Index", "Users") });
         }
 
         // GET: Users/Edit/5
@@ -161,35 +160,19 @@ namespace Feasablty_study.Controllers
         }
 
         // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-           
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var user = await userRepo.GetByIdAsync((string)id, u => u.Region);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return View(user);
-        }
+       
 
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             await userRepo.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
           public async Task<IActionResult> DisbleOrEnableUser(string id)
         {
             await userRepo.EnableAndDisbleUser(id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
 
 
         }

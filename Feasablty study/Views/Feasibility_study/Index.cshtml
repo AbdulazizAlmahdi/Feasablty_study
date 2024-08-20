@@ -4,19 +4,20 @@
 @{
     ViewData["Title"] = " الدراسات";
 }
+
                      <h1>عرض الدراسات</h1>
                     <div class="card">
                     <h4 class="card-header"> التقارير</h4>
                     <div class="card-body">
                   <div class="d-flex col-12 justify-content-between">
-                                <button style="float:left; border:1px solid green;" class="btn btn-success me-1" onclick="location.href='@Url.Action("Create", "Feasibility_study")'">اضــــافة دراسة جديدة +
-                                </button>
+                    <button style="float:left; border:1px solid green;" class="btn btn-success me-1"  onclick="location.href='@Url.Action("Create", "Feasibility_study")'"> <i class="fa fa-plus"></i>   
+                    </button>
                                  
-                              </div>
-                           <hr/>
-
-                        <div class="table-responsive text-nowrap">
-                      <table id="dataTable"  class="table table-bordered">
+                    </div>
+                    <hr/>
+                      <div class="table-responsive text-nowrap">
+                <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+            <table id="dataTable" class="table table-hover">
                         <thead>
                           <tr>
                             <th>عنوان المشروع</th>
@@ -31,8 +32,8 @@
                     @if (Model.Count() == 0)
                     {
                         <tr>
-                            <td colspan="3" style="color:red">
-                                لا يوجد نتائج
+                            <td class="user-info text-center" colspan="3" style="color:red">
+                                عذراً لا يوجد دراسات بعد
                             </td>
                         </tr>
                     }
@@ -40,35 +41,88 @@
                     {
                         @foreach (var item in Model)
                         {
+                       var TargetId="modalN"+@item.Id;
+
                        <tr>
-            <td>@Html.DisplayFor(modelItem => item.ProjectName)   </td>      
-            <td>@Html.DisplayFor(modelItem => item.TotalOperatingExpenseseOneYear)</td>       
-            <td>@Html.DisplayFor(modelItem => item.ProjectDate)</td>        
-            <td>@Html.DisplayFor(modelItem => item.ProjectLocation) </td>
-            <td> @Html.DisplayFor(modelItem => item.OwnerName) </td>
-                     <td>
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px;">عرض</i></a> |
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px">حذف</i></a>
-                <a asp-action="PrintAsPdf" asp-route-id="@item.Id" class="btn btn-primary" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px"> طباعة  </i></a>
-            </td>
+            <td data-title="عنوان المشروع:">@Html.DisplayFor(modelItem => item.ProjectName)   </td>      
+            <td data-title="ايراد المشروع لاول سنة:">@Html.DisplayFor(modelItem => item.TotalOperatingExpenseseOneYear)</td>       
+            <td data-title="تاريخ التنفيذ:">@Html.DisplayFor(modelItem => item.ProjectDate)</td>        
+            <td data-title="منطقة المشروع:">@Html.DisplayFor(modelItem => item.ProjectLocation) </td>
+            <td data-title="اسم صاحب المشروع:"> @Html.DisplayFor(modelItem => item.OwnerName) </td>
+                     <td data-title="الاجراءات :">
+                                <form 
+                                 id="@item.Id"
+                                 asp-action="Delete"
+                                method="post"
+                                asp-route-id="@item.Id">
+                                <i class="btn btn-danger bx bx-trash me-1"  onclick="return functionConfirm(@item.Id)"> </i>  
+                              </form>
+               
+                      <a asp-action="PrintAsPdf" asp-route-id="@item.Id" class="btn btn-primary" style="padding: 0px; margin: 0px 2px 0px 2px"><i class="material-icons" style="padding: 4px"> طباعة  </i></a>
             
-            </tr>
+                    </td>
+            
+                    </tr>
+
                       }
                     }
 
-    </tbody>
+               </tbody>
 
    </table>
    </div>
  </div>
  </div>
+ @section Scripts{
+   
+   
+    <script>
+        function functionConfirm(Id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
 
-  <script>
+        swalWithBootstrapButtons.fire({
+            title: 'هل انت متأكد من الحذف ؟',
+            text: "سيتم حذف الدراسة بشكل نهائي  !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'نعم  !',
+            cancelButtonText: 'الغاء ',
+            reverseButtons: true,
+            timer: 100000
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $("#"+Id+"").submit();
+                swalWithBootstrapButtons.fire({
+                    title: 'تم الحذف !',
+                    text :'تمت عملية الحذف بنجاح .',
+                    icon: 'success',
+                    timer:'2000000'
+                    }
+                )
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                console.log()
+                swalWithBootstrapButtons.fire(
+                    ' تم إلغاء الحذف',
+                    '',
+                    'error'
+                )
+            }
+        })
+    }
     $(document).ready(function () {
         $('#dataTable').DataTable({
+            responsive: true,
             "language": {
                 "lengthMenu": " عرض _MENU_ سجلات  ",
-
                 "info": "عرض صفحة _PAGE_ من _PAGES_",
                 "infoEmpty": "  لاتوجد بيانات مطابقة للبحث",
                 "infoFiltered": "(الصافي من  _MAX_ اجمالي الصفوف)",
@@ -80,3 +134,4 @@
     });
 
 </script>
+}

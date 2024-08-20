@@ -95,7 +95,7 @@ namespace Feasablty_study.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
              await _messageRepo.DeleteAsync(id);
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index");
         }
 
     }

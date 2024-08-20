@@ -1,15 +1,18 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Feasablty_study.Domin.ViewModels
 @inject UserManager<User> UserManager; 
 @inject SignInManager<User> signInManager; 
-@model IEnumerable<Feasablty_study.Models.User>
+@model Feasablty_study.Domin.ViewModels.ViewModelAllOpreation;
 
 @{
     ViewData["Title"] = "عرض المستخدمين";
+    
 }
 
- <partial name="../Shared//AdminLayout.cshtml" />
+
   <!--/ DataTable with Buttons -->
-    <div class="card">
+    
+                   <div class="card">
      <div class="card-body">
                <div class="d-flex col-12 justify-content-between">
                 <button style="float:left; border:1px solid green;" class="btn btn-success me-1" onclick="location.href='@Url.Action("Create", "Users")'">اضــــافة مستخدم جديد +
@@ -17,9 +20,9 @@
               </div>
                <hr/>
         <div class="table-responsive text-nowrap">
-                <meta name="viewport" content="width=device-width" />
-            <table id="dataTable"  class="table table-bordered">
-                      <thead>
+                <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+            <table id="dataTable" class="table table-bordered table table-bordered">
+                      <thead >
                       <tr>
                         <th>الاسم </th>
                         <th>البريد الالكتروني</th>
@@ -33,80 +36,216 @@
                       </tr>
                     </thead> 
                 <tbody>
-                    @if (Model.Count() == 0)
+                    @if (Model.Users.Count() == 0)
                     {
                         <tr>
                             <td colspan="3" style="color:red">
-                                لا يوجد نتائج
+                                عذراً لا يوجد مستخدمين بعد 😊  
                             </td>
                         </tr>
                     }
                     else
                     {
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Users)
                         {
+                             var TargetId="modalN"+@item.Id;
                        <tr>
-            <td>@Html.DisplayFor(modelItem => item.Name)   </td>      
-            <td>@Html.DisplayFor(modelItem => item.Email)</td>       
-            <td>@Html.DisplayFor(modelItem => item.UserName)</td>        
-            <td>@Html.DisplayFor(modelItem => item.PhoneNumber) </td>
-            <td> @Html.DisplayFor(modelItem => item.CreationDate) </td>  
-            <td>@Html.DisplayFor(modelItem => item.Region.Name) </td>
+            <td data-title="الاسم">@Html.DisplayFor(modelItem => item.Name)   </td>      
+            <td data-title="البريد الالكتروني">@Html.DisplayFor(modelItem => item.Email)</td>       
+            <td data-title="اسم المستخدم">@Html.DisplayFor(modelItem => item.UserName)</td>        
+            <td data-title="رقم الهاتف">@Html.DisplayFor(modelItem => item.PhoneNumber) </td>
+            <td data-title="تاريخ التسجيل"> @Html.DisplayFor(modelItem => item.CreationDate) </td>  
+            <td data-title="المنطقة">@Html.DisplayFor(modelItem => item.Region.Name) </td>
 
-                             <td>
-                          @if(await UserManager.IsInRoleAsync(item,"Admin"))
+                <td data-title="نوع المستخدم">
+            @if(await UserManager.IsInRoleAsync(item,"Admin"))
+            {
+                <span class="badge bg-label-success">ادمن</span>
+            }
+            else if(await UserManager.IsInRoleAsync(item,"User"))
+            {
+                <span class="badge bg-label-warning">مستخدم عادي</span>
+            }
+            else if(await UserManager.IsInRoleAsync(item,"Employee"))
+            {
+                <span class="badge bg-label-primary">موظف ادراي</span>
+            }
+            </td>
+                <td data-title="الحالة">
+            @if(item.Status)
+            {
+                <span class="badge bg-label-success">نشط</span>
+            }
+            else
+            {
+                <span class="badge bg-label-danger">متوقف</span>
+            }
+            </td>
+        <td  data-title="الاجراءت">
+            <div class="d-inline-block">
+                <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a  class="dropdown-item"
+                             data-bs-toggle="modal"
+                             data-bs-target="#@TargetId" >
+                            <i class="bx bx-info-circle me-1"></i>عرض</a>
+                        </li>
+                        <li>
+                            @if(item.Status)
                             {
-                                <span class="badge bg-label-success">ادمن</span>
+                                  <form  
+                                id="Disable_@item.Id"
+                                class="dropdown-item text-danger"
+                                method="post"
+                                type="submit"
+                                asp-action="disbleOrEnableUser"
+                                asp-route-id="@item.Id" 
+                                onclick="return DisableConfirm('@item.Id')">
+                                 <i  class="bx bx-info-circle me-1"></i>توقيف</form>
                             }
-                           else if(await UserManager.IsInRoleAsync(item,"User"))
+                            else
                             {
-                                <span class="badge bg-label-warning">مستخدم عادي</span>
+                                  <form  
+                                id="Disable_@item.Id"
+                                class="dropdown-item text-danger"
+                                method="post"
+                                type="submit"
+                                asp-action="disbleOrEnableUser"
+                                asp-route-id="@item.Id" 
+                                onclick="return DisableConfirm('@item.Id')">
+                                <i class="bx bx-info-circle me-1"></i>تنشيط</form>
                             }
-                            else if(await UserManager.IsInRoleAsync(item,"Employee"))
-                            {
-                                <span class="badge bg-label-primary">موظف ادراي</span>
-                            }
-                            </td>
-                              <td>
-                          @if(item.Status)
-                            {
-                                <span class="badge bg-label-success">نشط</span>
-                            }
-                           else
-                            {
-                                <span class="badge bg-label-danger">متوقف</span>
-                            }
-                            </td>
-                            <td style="">
-                                <div class="d-inline-block">
-                                    <button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a  class="dropdown-item" asp-action="Details" asp-route-id="@item.Id">عرض</a></li>
-                                            <li>
-                                                @if(item.Status)
-                                                {
-                                                     <a  class="dropdown-item" asp-action="disbleOrEnableUser" asp-route-id="@item.Id">توقيف</a>
-                                                }
-                                                else
-                                                {
-                                                    <a  class="dropdown-item"  asp-action="disbleOrEnableUser" asp-route-id="@item.Id">تنشيط</a>
-                                                }
-                                                
-
-                                
-                            
+                                                                            
                             </li>
                             <li>
-                                <a  class="dropdown-item text-danger delete-record" asp-action="Delete" asp-route-id="@item.Id">حذف</a></li>
-                            </ul>
+                            <form  
+                                id="@item.Id"
+                                class="dropdown-item text-danger delete-record"
+                                method="post"
+                                type="submit"
+                                asp-action="Delete"
+                                asp-route-id="@item.Id" 
+                                onclick="return functionConfirm('@item.Id')">
+                                <i class="bx bx-trash me-1"></i> حذف</form>
+                                </li>
+                           </ul>
                             
                             </div>
-                                <a  class="btn btn-sm btn-icon item-edit" asp-action="Edit" asp-route-id="@item.Id" ><i class="bx bxs-edit"></i></a>
+                                <a  class="btn btn-sm btn-icon item-edit"
+                                asp-action="Edit" 
+                                asp-route-id="@item.Id" >
+                                <i class="bx bxs-edit"></i>
+                            </a>
                             </td>
             
                         </tr>
+                         <div class="modal fade" id=@TargetId tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="modalScrollableTitle">عرض التفاصيل للمستخدم</h4>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <div class="modal-body">
+             
+            <div class="row">
+                  <!-- User Card -->
+               <div class="py-4">
+                      <div class="user-avatar-section">
+                        <div class="d-flex flex-column align-items-center">
+                          <img class="img-fluid rounded my-4" src="../../assets/img/avatars/adminuser.png" height="110" width="110" alt="User avatar">
+                          <div class="user-info text-center">
+                            <h5 class="mb-2">@Html.DisplayFor(model => item.Name)</h5>
+                          </div>
+                        </div>
+                      </div>
+                      <h5 class="border-bottom pb-2 mb-4">التفاصيل</h5>
+                      <div class="info-container">
+                        <ul class="list-unstyled">
+                          <li class="mb-3">
+                            <span class="fw-bold me-2">اسم المستخدم:</span>
+                            <span>@Html.DisplayFor(model => item.UserName)</span>
+                          </li>
+                          <li class="mb-3">
+                            <span class="fw-bold me-2">الأيمل :</span>
+                            <span>@Html.DisplayFor(model => item.Email)</span>
+                          </li>
+                          <li class="mb-3">
+                            <span class="fw-bold me-2">الحالة:</span>
+                            <span class="badge bg-label-success">نشط</span>
+                          </li>
+                          <li class="mb-3">
+                            <span class="fw-bold me-2">الايميل:</span>
+                            <span>@Html.DisplayFor(model => item.Email)</span>
+                          </li>
+                          <li class="mb-3">
+                            <span class="fw-bold me-2">رقم الهاتف:</span>
+                            <span>@Html.DisplayFor(model => item.PhoneNumber)</span>
+                          </li>
+                          <li class="mb-3">
+                            <span class="fw-bold me-2">تاريخ الانشاء</span>
+                            <span>@Html.DisplayFor(Model => item.CreationDate)</span>
+                            
+                          </li> 
+                          <li class="mb-3">
+                            <span class="fw-bold me-2">المنطقة</span>
+                            <span>@Html.DisplayFor(model => item.Region.Name)</span>                            
+                          </li>
+                            <li class="mb-3">
+                            <span class="fw-bold me-2">نوع المستخدم:</span>
+                            
+                            @if(await UserManager.IsInRoleAsync(item,"Admin"))
+                            {
+                                <span> ادمن</span>
+                                
+                                }
+                                else if(await UserManager.IsInRoleAsync(item,"User"))
+                                {
+                                      <span> مستخدم عادي</span>
+                                }
+
+                           else if(await UserManager.IsInRoleAsync(item,"Employee"))
+                                {
+                                      <span> موظف ادراي</span>
+                                }
+                           
+                          </li>
+                        </ul>
+
+                       <hr/>
+                       <br>
+
+
+                     
+                 </div>
+                   </div>
+                    </div>
+                  </div>
+                              
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                                إلغاء
+                              </button>
+                           @*   <form 
+                              id="@item.Id"
+                                 asp-action="Delete"
+                                method="post"
+                                asp-route-id="@item.Id">
+                                <button class="btn btn-warning me-3" asp-action="Edit" asp-route-id="@item.Id">تعديل</button>
+                              </form>*@
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                         }
                     }
 
@@ -115,10 +254,97 @@
     </div>
     </div>
    </div>
+   @section Scripts{
+    
+    <script>
+        function functionConfirm(Id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
 
+        swalWithBootstrapButtons.fire({
+            title: 'هل انت متأكد من الحذف ؟',
+            text: "سيتم حذف المستخدم بشكل نهائي  !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'نعم  !',
+            cancelButtonText: 'الغاء ',
+            reverseButtons: true,
+            timer: 100000
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $("#"+Id+"").submit();
+                swalWithBootstrapButtons.fire({
+                    title: 'تم الحذف !',
+                    text :'تمت عملية الحذف بنجاح .',
+                    icon: 'success',
+                    timer:'2000000'
+                    }
+                )
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                console.log()
+                swalWithBootstrapButtons.fire(
+                    ' تم إلغاء الحذف',
+                    '',
+                    'error'
+                )
+            }
+        })
+    }
+
+    function DisableConfirm(Id) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+        swalWithBootstrapButtons.fire({
+            title: 'هل انت متأكد من الغاء / تنشيط المستخدم ؟',
+            text: " الغاء تنشيط المستخدم يمنعه من الوصول الى الحساب  !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'نعم  !',
+            cancelButtonText: 'الغاء ',
+            reverseButtons: true,
+            timer: 100000
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $("#Disable_"+Id+"").submit();
+                swalWithBootstrapButtons.fire({
+                    title: 'تم  !',
+                    text :'تمت العملية بنجاح .',
+                    icon: 'success',
+                    timer:'2000000'
+                    }
+                )
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                console.log()
+                swalWithBootstrapButtons.fire(
+                    ' تم الإلغاء ',
+                    '',
+                    'error'
+                )
+            }
+        })
+    }
+    </script>
  <script>
     $(document).ready(function () {
         $('#dataTable').DataTable({
+            responsive: true,
             "language": {
                 "lengthMenu": " عرض _MENU_ سجلات  ",
 
@@ -126,6 +352,7 @@
                 "infoEmpty": "  لاتوجد بيانات مطابقة للبحث",
                 "infoFiltered": "(الصافي من  _MAX_ اجمالي الصفوف)",
                 "search": "بحث"
+
             }
 
 
@@ -133,5 +360,84 @@
     });
 
 </script>
+
+
+
+
+ <script>
+     'use strict';
+(function () {
+    const createButton = document.querySelector('#createButton');
+    // Alert With Functional Confirm Cancel Button
+  if (createButton) {
+    createButton.onclick = function () {
+         var inputData = $('#addNewUserForm').serializeArray();  
+        
+      Swal.fire({
+        title: 'هل انت متأكد من حفظ الدراسة؟',
+        text: "لن تتمكن من العوده الى الدراسة !",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'نعم, حفظ !',
+        CancelButtonText: 'إلغاء',
+        customClass: {
+          confirmButton: 'btn btn-primary me-3',
+          cancelButton: 'btn btn-label-secondary'
+        },
+        buttonsStyling: false
+      }).then(function (result) {
+        if (result.value) {
+                $.ajax(
+            {
+               //HTTP POST Method
+                url: "Create", // Controller/View
+                data: inputData,
+                 success : function(response) {
+                      Swal.fire({
+            icon: 'success',
+            title: 'تم الحفظ بنجاح !',
+            text: 'تم الحفظ في  تقارير الدراسات.   ',
+            customClass: {
+              confirmButton: 'btn btn-success'
+                  }
+                 });
+                    if (response.result == 'Redirect')
+                     window.location = response.url;
+                },
+                error:function(){
+                   Swal.fire({
+        title: 'خطأ!',
+        text: ' يرجى ادخال بيانات الدراسه بشكل كامل!',
+        icon: 'error',
+        customClass: {
+          confirmButton: 'btn btn-primary'
+        },
+        buttonsStyling: false
+      });
+                    // Error Alert
+  
+                },
+            });
+            
+         
+        }
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire({
+            title: 'الغاء الحفظ',
+            text: 'لا زالت الدراسة قيد التعديل :)',
+            icon: 'error',
+            customClass: {
+              confirmButton: 'btn btn-success'
+            }
+          });
+        }
+      });
+    };
+  }
+})();
+  </script>
+
+
+}
 
     

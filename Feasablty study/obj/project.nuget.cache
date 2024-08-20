@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "CGg8bISmeBivv8EwrCiqePQpLda68nsysET7bSBPaKY+sFGycjhA/TRH7NxIpMMSDu1jbPtJhWpUsWejuOBslQ==",
+  "dgSpecHash": "2gp6Nuj/xV+TBS77MGn8VpL436V92Nai4gzFVtHfFCmyTBydoWGQW97phQiHCWpNk2wkdKj0dZI6OovIbMkx7g==",
   "success": true,
-  "projectFilePath": "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\vsproject\\Feasablty study\\Feasablty study\\Feasablty study.csproj",
+  "projectFilePath": "D:\\كلية الحاسوب\\مستوى رابع\\مشروع التخرج\\النظام1\\Feasablty study\\Feasablty study\\Feasablty study.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\almahdi\\.nuget\\packages\\bootstrap\\3.0.1\\bootstrap.3.0.1.nupkg.sha512",
     "C:\\Users\\almahdi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\almahdi\\.nuget\\packages\\jquery\\1.9.0\\jquery.1.9.0.nupkg.sha512",
     "C:\\Users\\almahdi\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.0.1\\microsoft.aspnetcore.antiforgery.2.0.1.nupkg.sha512",
     "C:\\Users\\almahdi\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.0.1\\microsoft.aspnetcore.authentication.abstractions.2.0.1.nupkg.sha512",
     "C:\\Users\\almahdi\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.0.1\\microsoft.aspnetcore.authentication.core.2.0.1.nupkg.sha512",
@@ -126,6 +128,7 @@
     "C:\\Users\\almahdi\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\almahdi\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\almahdi\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\almahdi\\.nuget\\packages\\sweetalert.bootstrap\\1.0.1\\sweetalert.bootstrap.1.0.1.nupkg.sha512",
     "C:\\Users\\almahdi\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\almahdi\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
     "C:\\Users\\almahdi\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
@@ -216,7 +219,8 @@
     "C:\\Users\\almahdi\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\almahdi\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\almahdi\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\almahdi\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\almahdi\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\almahdi\\.nuget\\packages\\twitter.bootstrap\\3.0.1.1\\twitter.bootstrap.3.0.1.1.nupkg.sha512"
   ],
   "logs": []
 }

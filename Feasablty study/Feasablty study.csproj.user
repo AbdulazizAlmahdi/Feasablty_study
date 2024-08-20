@@ -16,7 +16,8 @@
     <_SelectedScaffolderID>MvcLayoutScaffolder</_SelectedScaffolderID>
     <_SelectedScaffolderCategoryPath>root/Layouts</_SelectedScaffolderCategoryPath>
     <WebStackScaffolding_EnablerDialogWidth>650</WebStackScaffolding_EnablerDialogWidth>
-    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
+    <ActiveDebugProfile>Feasablty_study</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>D:\كلية الحاسوب\مستوى رابع\مشروع التخرج\النظام1\Feasablty study\Feasablty study\Properties\PublishProfiles\IISProfile.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

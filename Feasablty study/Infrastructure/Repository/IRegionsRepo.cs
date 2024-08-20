@@ -8,13 +8,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Feasablty_study.Infrastructure.Repository
 {
     public interface IRegionsRepo : IBaseRepository<Regions>
     {
-        
+        IEnumerable<object> Users { get; }
 
+        Task FindAsync(string id);
+        Task SaveChangesAsync();
+        string GetUserId(ClaimsPrincipal user);
     }
 }

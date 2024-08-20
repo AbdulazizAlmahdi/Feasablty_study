@@ -2,18 +2,19 @@
 
 @{
     ViewData["Title"] = "انشاء دراسة جدوى جديدة";
+     
 }
 <!-- Content wrapper -->
           <div class="content-wrapper">
 
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y">
-
+               
   <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light"> ادخل بيانات المشروع </span> </h4>
 
 <!-- Default Icons Wizard -->
 <div class="col-12">
-                                        <div id="LoaderContiner"><div class="loader"></div></div>
+    <div id="LoaderContiner"><div class="loader"></div></div>
 
   <div class="bs-stepper wizard-icons wizard-icons-example mt-2">
     <div class="bs-stepper-header">
@@ -73,7 +74,7 @@
     </div>
     <div class="bs-stepper-content">
       <div class="container-xxl flex-grow-1 container-p-y">
-        <form method="post"  id="form-wizard-account" onSubmit="return false" enctype="multipart/form-data">          <!-- Account Details -->
+        <form method="post"  id="form-wizard-account"  onSubmit="return false" enctype="multipart/form-data">          <!-- Account Details -->
           <div id="account-details" class="content">
             <div class="content-header mb-3">
               <h4 class="mb-0">- يرجى إدخال البيانات  ادناه :</h4>
@@ -140,8 +141,8 @@
                     type="text"
                     id="basic-icon-default-phone"
                     class="form-control phone-mask"
-                    placeholder="774141612 967+"
-                    aria-label="774141612 967+"
+                    placeholder="774141412 967+"
+                    aria-label="774141412 967+"
                     aria-describedby="basic-icon-default-phone2"
                   />
                 </div>
@@ -206,10 +207,7 @@
             ></textarea>
           </div>
 
-          <div class="col-sm-6">
-            <label for="formFile" class="form-label">شعار المشروع !</label>
-            <input type="file" asp-for="@Model.Feasibility_Study.ProjectLogo" id="files" name="files[]" accept="image/*" class="custom-file-input">
-          </div>
+         
         <br>
          <hr>
               <div class="d-flex col-12 justify-content-between">
@@ -301,7 +299,7 @@
             </div>
             </div>
 
-
+            <!-- خصائص المشروع-->
             <br>
             <h5>خصائص المشروع هي  !</h5>
 
@@ -425,11 +423,12 @@
             </div>
             </div>
             <hr/>
-            <!-- مكان الجدول الاول في الدراسة -->
+            <!-- مكان  التراخيص الجدول الاول في الدراسة -->
             <h4> <strong> التراخيص اللازمة للمشروع ❗</strong></h4>
-            <table class="table table-bordered" id="LicenseType">
-                <thead class="table-info">
-              <tr>
+              <div class="table-responsive text-nowrap" id="no-more-tables">
+            <table class="table table-bordered" id="LicenseType" >
+                <thead bgcolor="gry">
+              <tr >
                 <th scope="col">#</th> 
                 <th scope="col"> نوع الترخيص</th> 
                 <th scope="col">الجهه المصدرة للترخيص </th>
@@ -438,21 +437,22 @@
             </thead>
               <tbody> 
                 <tr> 
-                <th scope="row">1</th> 
-                <td class="col-sm-4"> 
+                <td scope="row">1</td> 
+                <td data-title=" نوع الترخيص:"> 
                   <input type="text" name="licenses[0].LicenseType" class="form-control" placeholder="ادخل نوع الترخيص"/> 
-                </td> 
-                <td> 
+                </td >  
+                <td data-title="الجهه المصدرة للترخيص"> 
                   <input type="text" name="licenses[0].Licenses" class="form-control" placeholder="ادخل جهة الترخيص"/>
                 </td> 
-                <td>
+                <td data-title="  حذف">
                 <input type="button" class="btn btn-block btn-default" id="add-row" onclick="deleteRow(\''+id+'\')" ><i class="bx bx-trash me-1"></i> 
                 </td>
                 
                 </tr> 
               </tbody> 
             </table>
-                <td>
+            </div>
+                <td> 
                   <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="addlicense()" value="إضافة " /> 
                 </td>
                 <br>
@@ -511,15 +511,13 @@
                           </div>
                           <hr>
                         </div><br>
-								
-                    
-				  
+				
 				  <!-- بدايها جدولتحليل المنافسين-->
 				  
-          <h4>  جدول تحليل المنافسين ❗ </h4>
-          <div class="table-responsive text-nowrap">
+                  <h4>  جدول تحليل المنافسين ❗ </h4>
+                  <div class="table-responsive text-nowrap" id="no-more-tables">
 						 <table class="table table-bordered" id="childTable">
-						<thead class="table-info">
+						<thead class="black white-text">
 					<tr>
 						<th scope="col">#</th> 
 						<th scope="col">اسم المنافس</th> 
@@ -528,74 +526,72 @@
 						<th scope="col">القيمة المضافة</th> 
 						<th scope="col"> إضافة  </th>
 					</tr>
-				</thead>
-            <tbody> 
+			      	</thead>
+                      <tbody> 
 						<tr> 
 						<th scope="row">1</th> 
-						<td class="col-sm-3"> 
+						<td data-title=" تسلسل:" class="col-sm-3"> 
 							<input type="text" name="Competitors[0].CompetitorsName" class="form-control" placeholder="اسم المنافس"/> 
 						</td> 
-						<td class="col-sm-3"> 
+						<td   class="col-sm-3"> 
 							<input type="text" name="Competitors[0].Products" class="form-control" placeholder="الخدمة والمنتج"/>
 						</td> 
-						<td class="col-sm-3"> 
-              <input type="number" name="Competitors[0].CompetitorsPrice" class="form-control"  min="0" max="1000" placeholder="#10288#"/>
+						<td  class="col-sm-3"> 
+                        <input type="number" name="Competitors[0].CompetitorsPrice" class="form-control"  min="0" max="1000" placeholder="#10288#"/>
 						</td>
 						<td class="col-sm-3"> 
-              <input type="number" name="Competitors[0].AmounrAdded" class="form-control"  min="0" max="1000" placeholder="#10288#"/>
+                        <input type="number" name="Competitors[0].AmounrAdded" class="form-control"  min="0" max="1000" placeholder="#10288#"/>
 						</td> 
-						<td>
+						<td >
 							<input type="button" class="btn btn-success" id="addrow"  onclick="childTable()" value="إضافة"  /> 
 						</td> 
 						
 						</tr> 
-          </tbody> 
-          <thead class="table-info">
-            <tr>
-              <th scope="col"></th> 
-              <th scope="col"> </th> 
-              <th scope="col"> </th>
-              <th scope="col"> </th> 
-              <th scope="col"> </th> 
-              <th scope="col">   </th>
-            </tr>
-          </thead>
-        </table>
-        </div>
-
-							<hr class="container-m-nx my-5" />
-							<div class="row g-3">
-             <h5>نقط القوة للمشروع !</h5>
-							<div class="row g-3">
-							<div class="col-sm-6" style="display:contents">
-								<div class="form-check">
-									  <input id="closeButton" asp-for="@Model.StrengthPoints[0]" class="form-check-input" type="checkbox" value="العلاقات العامة">
-									  <label class="form-check-label" for="closeButton "  >  العلاقات العامة </label>
-								</div>
-								<div class="form-check">
-									  <input id="addBehaviorOnToastClick" asp-for="@Model.StrengthPoints[1]" class="form-check-input" type="checkbox" value="وجود عملاء سابقين">
-									  <label class="form-check-label" for="addBehaviorOnToastClick">وجود عملاء سابقين</label>
-								</div>
-                 <div class="form-check">
-                 <input id="debugInfo" asp-for="@Model.StrengthPoints[2]" class="form-check-input" type="checkbox" value="لخبرة في المشروع">
-                <label class="form-check-label" for="debugInfo">الخبرة في المشروع</label>
-                 </div>
-                  <div class="form-check">
-                      <input id="progressBar" asp-for="@Model.StrengthPoints[4]" class="form-check-input" type="checkbox" value="توفير راس المال ">
-                      <label class="form-check-label" for="progressBar">توفير راس المال 	</label>
+                      </tbody> 
+                      <thead class="black white-text">
+                        <tr>
+                          <th scope="col"></th> 
+                          <th scope="col"> </th> 
+                          <th scope="col"> </th>
+                          <th scope="col"> </th> 
+                          <th scope="col"> </th> 
+                          <th scope="col">   </th>
+                        </tr>
+                      </thead>
+                    </table>
                     </div>
-                    <div class="form-check">
-                    <input id="OtherStrengthPoints"  class="form-check-input" type="checkbox" value="اخرى">
-                    <label class="form-check-label" for="debugInfo">اخرى</label>
-                     <input type="text" id="OtherStrengthPointsValue" name="StrengthPoints[5]">
 
-                    </div>
-                        
-                            
-                          </div>
-                        </div>	
-						</div>
-                            <br><br>
+						<hr class="container-m-nx my-5" />
+						<div class="row g-3">
+                    <h5>نقط القوة للمشروع !</h5>
+						<div class="row g-3">
+						<div class="col-sm-6" style="display:contents">
+							<div class="form-check">
+									<input id="closeButton" asp-for="@Model.StrengthPoints[0]" class="form-check-input" type="checkbox" value="العلاقات العامة">
+									<label class="form-check-label" for="closeButton "  >  العلاقات العامة </label>
+							</div>
+							<div class="form-check">
+									<input id="addBehaviorOnToastClick" asp-for="@Model.StrengthPoints[1]" class="form-check-input" type="checkbox" value="وجود عملاء سابقين">
+									<label class="form-check-label" for="addBehaviorOnToastClick">وجود عملاء سابقين</label>
+							</div>
+                                 <div class="form-check">
+                                 <input id="debugInfo" asp-for="@Model.StrengthPoints[2]" class="form-check-input" type="checkbox" value="لخبرة في المشروع">
+                                <label class="form-check-label" for="debugInfo">الخبرة في المشروع</label>
+                                 </div>
+                                  <div class="form-check">
+                                      <input id="progressBar" asp-for="@Model.StrengthPoints[4]" class="form-check-input" type="checkbox" value="توفير راس المال ">
+                                      <label class="form-check-label" for="progressBar">توفير راس المال 	</label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input id="OtherStrengthPoints"  class="form-check-input" type="checkbox" value="اخرى">
+                                    <label class="form-check-label" for="debugInfo">اخرى</label>
+                                     <input type="text" id="OtherStrengthPointsValue" name="StrengthPoints[5]">
+
+                                    </div>
+                                  </div>
+                                </div>	
+						        </div>
+                                    <br><br>
 							
 							
 							<div class="row g-3">
@@ -675,18 +671,13 @@
 								  </label>
 								  </div>
                              <div class="form-check">
-                                                <input id="OtherAvailbleOpportunity"  class="form-check-input" type="checkbox" >
-                                                <label class="form-check-label" for="debugInfo">اخرى</label>
-                                                 <input type="text" id="OtherAvailbleOpportunityValue" name="AvailbleOpportunity[8]">
-
+                            <input id="OtherAvailbleOpportunity"  class="form-check-input" type="checkbox" >
+                            <label class="form-check-label" for="debugInfo">اخرى</label>
+                                <input type="text" id="OtherAvailbleOpportunityValue" name="AvailbleOpportunity[8]">
                                  </div>
-
-                          
-								
-
 							</div>
-						</div>
-											<br><br>		
+						   </div>
+						<br><br>		
 							<!-- نهاية الفرص المتاحة-->
 							
 							<div class="row g-3">
@@ -705,31 +696,31 @@
 									<label class="form-check-label" for="debugInfo">دخول المنافسين السوق</label>
 									</div>
 									 <div class="form-check">
-                    <input id="OtherThreats"  class="form-check-input" type="checkbox" value="اخرى">
-                    <label class="form-check-label" for="debugInfo">اخرى</label>
-                     <input type="text" id="OtherThreatsValue" name="Threats[3]">
+                                <input id="OtherThreats"  class="form-check-input" type="checkbox" value="اخرى">
+                                <label class="form-check-label" for="debugInfo">اخرى</label>
+                                 <input type="text" id="OtherThreatsValue" name="Threats[3]">
 
-                    </div>
+                                </div>
 								</div>
 							</div><br>
 							<hr>
-					<div class="mb-3">
-                        <label for="defaultInput" class="form-label">الفجوة السوقيه--</label>
-                        <input id="defaultInput" asp-for="@Model.Market_Study.MarketGap" class="form-control" type="text" placeholder="بها انواع الخدمات او المنتج الذي يطلبة العملا ولم يوفره المنافسين او تم توفيرة ولكن ليس بشكل المطلوب">
-                    </div>
+					        <div class="mb-3">
+                                <label for="defaultInput" class="form-label">الفجوة السوقيه--</label>
+                                <input id="defaultInput" asp-for="@Model.Market_Study.MarketGap" class="form-control" type="text" placeholder="بها انواع الخدمات او المنتج الذي يطلبة العملا ولم يوفره المنافسين او تم توفيرة ولكن ليس بشكل المطلوب">
+                            </div>
 							<hr class="container-m-nx my-5" />				
 							<!-- جدول الايرادات المتوقعة-->
 							
               <h4>  الايرادات المتوقعة❗ </h4>
-              <div class="table-responsive text-nowrap">
+              <div class="table-responsive text-nowrap" id="no-more-tables">
               <table class="table table-bordered" id="Revenuerow">
-                <div class="col-12 mb-0 mb-3">
+                <div class="col-12 mb-0 mb-3" >
                   <div class="alert alert-warning">
                     <h5 class="alert-heading mb-1">وحدة _ القياس:(عدد - وزن)</h5>
                     <p class="mb-0">العملة :(الريال اليمني - الدولار الامريكي - الر يال السعودي)</p>
                   </div>
                 </div>
-                <thead class="table-info">
+                <thead class="black white-text">
               <tr>
                 <th scope="col">#</th> 
                 <th scope="col">الصنف </th> 
@@ -743,28 +734,28 @@
               <tbody> 
                 <tr> 
                 <th scope="row">1</th> 
-                <td class="col-sm-2"> 
+                <td data-title="ادخل اسم الصنف"> 
                   <input type="text" name="expected_Revenues[0].ProductName" class="form-control" placeholder="اسم الصنف"/> 
                 </td> 
-                <td class="col-sm-2"> 
+                <td data-title="الكمية شهرياً"> 
                   <input id="quality" type="number" name="expected_Revenues[0].MonthlyQusntity" onkeydown="return validateDigitsOnly(event)" class="form-control"    placeholder="00" onkeyup="calculateTotalB()"/>
                 </td> 
-                <td class="col-sm-2"> 
+                <td data-title="سعر الوحدة"> 
                   <input ID="priceUnit" type="number" name="expected_Revenues[0].ProductPrice" onkeydown="return validateDigitsOnly(event)" class="form-control" placeholder="000" onkeyup="calculateTotalB()"/>
                 </td>
-                <td class="col-sm-2"> 
+                <td data-titel="إجمالي شهري"> 
                   <input disabled type="number" name="totalMoth" class="form-control"   placeholder="0000000"/>
                 </td> 
-                <td class="col-sm-4"> 
+                <td data-titel="إجمالي سنوي"> 
                   <input disabled type="number" name="totalyear" class="form-control" placeholder="0000000"/>
                 </td> 
-                <td class="col-sm-1">
+                <td data-titel="الاجراءات" >
                   <input  type="button" class="btn rounded-pill btn-success" id="add-row" onclick="Revenuerow()" value="إضافة" /> 
                 </td> 
                 
                 </tr> 
               </tbody> 
-              <thead class="table-info">
+              <thead class="black white-text">
                 <tr>
                   <th scope="col"></th> 
                   <th scope="col">الاجمــــــــــــــالي </th> 
@@ -782,10 +773,11 @@
                 <br>
 							<!-- بدايها جدول تحليل المنافسين-->
               
-				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light"> الخطة التسويقية ! </span></h4>
-          <div class="table-responsive text-nowrap">
-          <table class="table table-bordered" id="ch">
-						<thead class="table-info">
+			  <h4 class="breadcrumb-wrapper py-3 mb-4">
+                  <span class="text-muted fw-light"> الخطة التسويقية ! </span></h4>
+                      <div class="table-responsive text-nowrap" id="no-more-tables" >
+                      <table class="table table-bordered" id="ch">
+					 <thead class="black white-text">
 					<tr>
 						<th scope="col">#</th> 
 						<th scope="col">النشـــــــــــــــاط</th> 
@@ -807,32 +799,30 @@
               <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="ch()" value="إضافة" /> 
             </td> 
 						
-						</tr> 
+			</tr> 
           </tbody> 
-          <thead class="table-info">
+          <thead class="black white-text">
             <tr>
               <th scope="col"></th> 
               <th scope="col">الاجمــــــــــــــــــــــالي</th> 
               <th scope="col"> <input id="Activ" disabled type="number" name="price" class="form-control"/></th>
               <th scope="col"> </th> 
-              
-            </tr>
-          </thead>
-        </table>
-        </div>
-						<br>
-						<br>							
-					    
-                  <hr>
+                    </tr>
+                  </thead>
+                </table>
+                </div>
+				<br>
+				<br>							
+                 <hr>
 					
 						<!-- نهاية الجدول-->
 						
 						 <!--بدايها جدول ادرة المخاطر-->
 				  
              <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light"> إدارة المخاطر !</span></h4>
-             <div class="table-responsive text-nowrap">
+             <div class="table-responsive text-nowrap"  id="no-more-tables">
              <table class="table table-bordered" id="riskmanage">
-               <thead class="table-info">
+               <thead class="black white-text">
              <tr>
                <th scope="col">#</th> 
                <th scope="col">نوع المخاطر	</th> 
@@ -864,7 +854,7 @@
                
                </tr> 
              </tbody> 
-             <thead class="table-info">
+             <thead class="black white-text">
                <tr>
                  <th scope="col"></th> 
                  <th scope="col"></th> 
@@ -872,14 +862,13 @@
                  <th scope="col"></th> 
                  <th scope="col"></th>
                  <th scope="col"> </th> 
-                 
-               </tr>
-             </thead>
-           </table>
-           </div>
-                          <br><br>
+                       </tr>
+                     </thead>
+                   </table>
+                   </div>
+                     <br><br>
                 <!--نهايه جدول اساليب الحد من المخاطر-->
-                </div> 
+                     </div> 
 						  <!-- end الدراسة السوقيه-->
                         <hr>
                             <div class="d-flex col-12 justify-content-between">
@@ -898,9 +887,9 @@
 
 		  <!-- بدايها جدول الالات والمعدات والاثاث -->
 				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light"> التجهيزات (الالات والمعدات والاثاث ووسائل النقل الخ... !)   </span></h4>
-          <div class="table-responsive text-nowrap">
+          <div class="table-responsive text-nowrap"  id="no-more-tables">
           <table class="table table-bordered" id="Furniture">
-						<thead class="table-info">
+						<thead class="black white-text">
 					<tr>
 						<th scope="col">#</th> 
                         <th scope="col">البنـــــــــــــــــــــد</th> 
@@ -908,7 +897,7 @@
 						<th scope="col"> العــــــــــــدد </th>
 						<th scope="col"> السعــــــــــــــر</th> 
 						<th scope="col">الاجمالي الكلي</th> 
-						<th scope="col">الاجراءات </th>
+					 	<th scope="col">الاجراءات </th>
 					</tr>
 				</thead>
 					<tbody> 
@@ -916,8 +905,8 @@
 						<th scope="row">1</th> 
 						<td class="col-sm-4"> 
 							<input type="text" name="machinery_Equipment[0].Name" class="form-control" placeholder=" البنـــــــد"/> 
-            </td> 
-            <td class="col-sm-2"> 
+                        </td> 
+                        <td class="col-sm-2"> 
 							<input type="text" name="machinery_Equipment[0].NameSupplier" class="form-control" placeholder="اسم المورد"/> 
 						</td> 
 						<td class="col-sm-2"> 
@@ -936,7 +925,7 @@
 						
 						</tr> 
           </tbody> 
-          <thead class="table-info">
+          <thead class="black white-text">
             <tr>
               <th scope="col" > </th> 
               <th scope="col" colspan="2" class="text-center"> الاجمــــــــــــــالي</th>
@@ -955,9 +944,9 @@
 						<!-- بدايها جدول القوة العامة للمشروع						-->
 				  
 				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">   القوى العاملة اللازمة لتشغيل المشروع</span></h4>
-          <div class="table-responsive text-nowrap">
+          <div class="table-responsive text-nowrap"  id="no-more-tables">
           <table class="table table-bordered" id="staffs">
-						<thead class="table-info">
+						<thead class="black white-text">
 					<tr>
 						<th scope="col">#</th> 
 						<th scope="col">المسمى الوظيفي</th> 
@@ -981,30 +970,30 @@
 							<input type="number" name="Manpower_Workforces[0].Number" class="form-control" placeholder="0" onkeyup="calculateTotala()"/> 
 						</td> 
 						<td class="col-sm-2"> 
-							<input disabled type="number" name="totalMony"  class="form-control" placeholder="0000000"/> 
-            </td> 
-            <td class="col-sm-2"> 
-							<input  disabled type="number" name="totalsyears" class="form-control" placeholder="0000000000"/> 
+						<input disabled type="number" name="totalMony"  class="form-control" placeholder="0000000"/> 
+                        </td> 
+                        <td class="col-sm-2"> 
+						<input  disabled type="number" name="totalsyears" class="form-control" placeholder="0000000000"/> 
 						</td>
-            <td class="col-sm-1"> 
-              <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="staffs()" value="إضافة" /> 
+                      <td class="col-sm-1"> 
+                         <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="staffs()" value="إضافة" /> 
 						</td> 
 						
 						</tr> 
-          </tbody> 
-          <thead class="table-info">
-            <tr>
-              <th scope="col"></th> 
-              <th scope="col">الاجمــــــــــــــالي </th> 
-              <th scope="col"> <input id="monys" disabled type="number" name="monys" class="form-control"/></th>
-              <th scope="col"> <input id="Nemployee" disabled type="number" name="Nemployee" class="form-control"/></th>
-              <th scope="col"> <input id="totalMony" disabled type="number" name="totalMony" class="form-control"/></th>
-              <th scope="col"> <input id="totalsyears" disabled type="number" name="totalsyears" class="form-control"/></th>
-              <th scope="col">   </th>						
-            </tr>
-          </thead>
-        </table>
-        </div>
+                      </tbody> 
+                      <thead class="black white-text">
+                        <tr>
+                          <th scope="col"></th> 
+                          <th scope="col">الاجمــــــــــــــالي </th> 
+                          <th scope="col"> <input id="monys" disabled type="number" name="monys" class="form-control"/></th>
+                          <th scope="col"> <input id="Nemployee" disabled type="number" name="Nemployee" class="form-control"/></th>
+                          <th scope="col"> <input id="totalMony" disabled type="number" name="totalMony" class="form-control"/></th>
+                          <th scope="col"> <input id="totalsyears" disabled type="number" name="totalsyears" class="form-control"/></th>
+                          <th scope="col">   </th>						
+                        </tr>
+                      </thead>
+                    </table>
+                    </div>
 						
 						<!-- نهاية الجدول القوة العامة -->
 						
@@ -1013,9 +1002,9 @@
 						<!-- بدايها الانشات والباني-->
 				  
 				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">الانشات والمباني </span></h4>
-          <div class="table-responsive text-nowrap">  
-          <table class="table table-bordered" id="Buildings">
-						<thead class="table-info">
+                      <div class="table-responsive text-nowrap"  id="no-more-tables">  
+                      <table class="table table-bordered" id="Buildings">
+						<thead class="black white-text">
 					<tr>
 						<th scope="col">#</th> 
 						<th scope="col">نوع البناء</th> 
@@ -1040,36 +1029,34 @@
 						<td class="col-sm-2"> 
 							<input disabled type="number" name="Totalsa" class="form-control" placeholder="000"/>
 						</td> 
-            <td class="col-sm-1">
-              <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="Buildings()" value="إضافة" /> 
-            </td> 	 
+                        <td class="col-sm-1">
+                          <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="Buildings()" value="إضافة" /> 
+                        </td> 	 
 						
 						</tr> 
-          </tbody> 
-          <thead class="table-info">
-            <tr>
-              <th scope="col"></th> 
-              <th scope="col">إجمالي تكلفة الانشاءات والمباني </th> 
-              <th scope="col"> </th>
-              <th scope="col"> </th> 
-              <th scope="col"> <input id="Totalsa" disabled type="number" name="Totalsa" class="form-control"/></th>
-              <th scope="col"> </th>
-            </tr>
-          </thead>
-        </table>
-        </div>
-				<br><br>
+                      </tbody> 
+                      <thead class="black white-text">
+                        <tr>
+                          <th scope="col"></th> 
+                          <th scope="col">إجمالي تكلفة الانشاءات والمباني </th> 
+                          <th scope="col"> </th>
+                          <th scope="col"> </th> 
+                          <th scope="col"> <input id="Totalsa" disabled type="number" name="Totalsa" class="form-control"/></th>
+                          <th scope="col"> </th>
+                        </tr>
+                      </thead>
+                    </table>
+                    </div>
+				    <br><br>
 						
 						<!-- نهاية الجدول الانشات والمباني-->
-						
-						
 						
 						<!--بدايها جدول  الايجارات -->
 				  
 				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">الايجارات ! </span></h4>
-          <div class="table-responsive text-nowrap">
-          <table class="table table-bordered" id="rentals">
-						<thead class="table-info">
+                  <div class="table-responsive text-nowrap"  id="no-more-tables">
+                  <table class="table table-bordered" id="rentals">
+						<thead class="black white-text">
 					<tr>
 						<th scope="col">#</th> 
 						<th scope="col">الصنف</th> 
@@ -1087,30 +1074,31 @@
 						<td class="col-sm-3"> 
 							<input type="number" name="rentals[0].RentalYearly" class="form-control" placeholder="000"  onkeyup="calculateTotall()"/>
 						</td> 
-            <td class="col-sm-1">
-              <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="rentals()" value="إضافة" /> 
-            </td>
+                            <td class="col-sm-1">
+                              <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="rentals()" value="إضافة" /> 
+                            </td>
 						
-						</tr> 
-          </tbody>
-          <thead class="table-info">
-            <tr>
-              <th scope="col"></th> 
-              <th scope="col">الاجمالي السنوي للإيجارات</th> 
-              <th scope="col"> <input id="rentAnnually" disabled type="number" name="rentAnnually" class="form-control"/></th>
-              <th scope="col"> </th> 
+						      </tr> 
+                          </tbody>
+                          <thead class="black white-text">
+                            <tr>
+                              <th scope="col"></th> 
+                              <th scope="col">الاجمالي السنوي للإيجارات</th> 
+                              <th scope="col"> <input id="rentAnnually" disabled type="number" name="rentAnnually" class="form-control"/></th>
+                              <th scope="col"> </th> 
               
-            </tr>
-          </thead> 
-        </table>
-        </div>
+                            </tr>
+                          </thead> 
+                        </table>
+                        </div>
 						<br><br>
 							<!--[جدول الرسوم الحكومية]   -->
 				  
-				  <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">الرسوم الحكومية والضرائب ! </span></h4>
-          <div class="table-responsive text-nowrap">
-          <table class="table table-bordered" id="Taxes">
-						<thead class="table-info">
+				  <h4 class="breadcrumb-wrapper py-3 mb-4">
+                      <span class="text-muted fw-light">الرسوم الحكومية والضرائب ! </span></h4>
+                      <div class="table-responsive text-nowrap"  id="no-more-tables">
+                      <table class="table table-bordered" id="Taxes">
+						<thead class="black white-text">
 					<tr>
 						<th scope="col">#</th> 
 						<th scope="col">البند</th> 
@@ -1128,30 +1116,30 @@
 						<td class="col-sm-3"> 
 							<input type="number" name="Government_Fees[0].Price" class="form-control" placeholder="0000" onkeyup="calculateTotalX();"/>
 						</td> 
-            <td class="col-sm-1">
-              <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="Taxes()" value="إضافة" /> 
-            </td> 
+                        <td class="col-sm-1">
+                          <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="Taxes()" value="إضافة" /> 
+                        </td> 
 						
 						</tr> 
-          </tbody> 
-          <thead class="table-info">
-            <tr>
-              <th scope="col"></th> 
-              <th scope="col">الاجمــــــــــــــــــــــالي</th> 
-              <th scope="col"> <input id="AnnualFee" disabled type="number" name="AnnualFee" class="form-control"/></th>
-              <th scope="col"> </th> 
+                          </tbody> 
+                          <thead class="black white-text">
+                            <tr>
+                              <th scope="col"></th> 
+                              <th scope="col">الاجمــــــــــــــــــــــالي</th> 
+                              <th scope="col"> <input id="AnnualFee" disabled type="number" name="AnnualFee" class="form-control"/></th>
+                              <th scope="col"> </th> 
               
-            </tr>
-          </thead>
-        </table>
-        </div>
+                            </tr>
+                          </thead>
+                        </table>
+                        </div>
 						<br><br>
 							<!--بدايها جدول  مصاريف التاسيس -->
 				  
               <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">مصاريف التأسيس ! </span></h4>
-              <div class="table-responsive text-nowrap">
+              <div class="table-responsive text-nowrap"  id="no-more-tables">
               <table class="table table-bordered" id="TTT">
-                <thead class="table-info">
+                <thead class="black white-text">
               <tr>
                 <th scope="col">#</th> 
                 <th scope="col">البند</th> 
@@ -1175,26 +1163,25 @@
                 
                 </tr> 
               </tbody> 
-              <thead class="table-info">
+              <thead class="black white-text">
                 <tr>
                   <th scope="col"></th> 
                   <th scope="col">الاجمــــــــــــــــــــــالي</th> 
                   <th scope="col"> <input id="AnnualFeeE" disabled type="number" name="AnnualFeeE" class="form-control"/></th>
                   <th scope="col"> </th> 
-                  
                 </tr>
               </thead>
             </table>
             </div>
-						<br>
-						<br>							
+			<br>
+			<br>							
 						
 					<!--  جدول المواد الخام						-->
 				  
           <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">   المواد الخام !</span></h4>
-          <div class="table-responsive text-nowrap">  
+          <div class="table-responsive text-nowrap"  id="no-more-tables">  
           <table class="table table-bordered" id="Materials">
-						<thead class="table-info">
+						<thead class="black white-text">
 					<tr>
 						<th scope="col">#</th> 
             <th scope="col">نوع المـــــادة</th> 
@@ -1233,7 +1220,7 @@
 						
 						</tr> 
           </tbody> 
-          <thead class="table-info">
+          <thead class="black white-text">
             <tr>
               <th scope="col"></th> 
               <th scope="col" colspan="2" class="text-center"> الاجمــــــــــــــالي</th>
@@ -1247,51 +1234,51 @@
         </table> 
         </div>
 						<!-- نهاية الجدول القوة العامة -->
-						<br>
-						<br>
-     <!--جدول المنافع العامه-->
-     <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">المنافع العامة  </span></h4>
-     <div class="table-responsive text-nowrap">
-     <table class="table table-bordered" id="benefits">
-    <thead class="table-info">
-  <tr>
-    <th scope="col">#</th> 
-    <th scope="col"> البند</th> 
-    <th scope="col">  التكلفة الشهرية </th>
-    <th scope="col"> التكلفة السنوية </th> 
-    <th scope="col">  الاجراءات</th>
-  </tr>
-</thead>
-  <tbody> 
-    <tr> 
-    <th scope="row">1</th> 
-    <td class="col-sm-4"> 
-      <input type="text" name="public_Benefits[0].Benefit" class="form-control" placeholder="المنفعة    "/> 
-    </td> 
-    <td class="col-sm-2"> 
-      <input type="number" name="public_Benefits[0].MonthlyCost" class="form-control" placeholder="00000" onkeyup="calculateTot()"/>
-    </td> 
-    <td > 
-      <input disabled type="number" name="yearcost" class="form-control" placeholder="0000000"/>
-    </td> 
-    <td class="col-sm-1">
-      <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="benefits()" value="إضافة" /> 
-    </td> 	 
+						            <br>
+						            <br>
+                 <!--جدول المنافع العامه-->
+                 <h4 class="breadcrumb-wrapper py-3 mb-4"><span class="text-muted fw-light">المنافع العامة  </span></h4>
+                 <div class="table-responsive text-nowrap"  id="no-more-tables">
+                 <table class="table table-bordered" id="benefits">
+                <thead class="black white-text">
+              <tr>
+                <th scope="col">#</th> 
+                <th scope="col"> البند</th> 
+                <th scope="col">  التكلفة الشهرية </th>
+                <th scope="col"> التكلفة السنوية </th> 
+                <th scope="col">  الاجراءات</th>
+              </tr>
+            </thead>
+              <tbody> 
+                <tr> 
+                <th scope="row">1</th> 
+                <td class="col-sm-4"> 
+                  <input type="text" name="public_Benefits[0].Benefit" class="form-control" placeholder="المنفعة    "/> 
+                </td> 
+                <td class="col-sm-2"> 
+                  <input type="number" name="public_Benefits[0].MonthlyCost" class="form-control" placeholder="00000" onkeyup="calculateTot()"/>
+                </td> 
+                <td > 
+                  <input disabled type="number" name="yearcost" class="form-control" placeholder="0000000"/>
+                </td> 
+                <td class="col-sm-1">
+                  <input type="button" class="btn rounded-pill btn-success" id="add-row" onclick="benefits()" value="إضافة" /> 
+                </td> 	 
     
-    </tr> 
-  </tbody> 
-  <thead class="table-info">
-    <tr>
-      <th scope="col"></th> 
-      <th scope="col">   الاجمــــــــــــــالي</th> 
-      <th scope="col"> <input id="Monthlycost" disabled type="number" name="yearcost" class="form-control"/></th>
-      <th scope="col"> <input id="yearcost" disabled type="number" name="yearcost" class="form-control"/></th>
-      <th scope="col"> </th> 
-    </tr>
-  </thead>
-</table>
-</div>
-<br><br>
+                </tr> 
+              </tbody> 
+              <thead class="black white-text">
+                <tr>
+                  <th scope="col"></th> 
+                  <th scope="col">   الاجمــــــــــــــالي</th> 
+                  <th scope="col"> <input id="Monthlycost" disabled type="number" name="yearcost" class="form-control"/></th>
+                  <th scope="col"> <input id="yearcost" disabled type="number" name="yearcost" class="form-control"/></th>
+                  <th scope="col"> </th> 
+                </tr>
+              </thead>
+            </table>
+            </div>
+            <br><br>
 
             <div class="col-sm-6">
             <label for="selectpickerDivider" class="form-label">الدورة التشسغيلية للمشروع</label>
@@ -1315,7 +1302,8 @@
             </select>
           </div>
             <div class="form-text">من خلال الدورة التشغيلة يتم ادخال عدد الشهور التي يحتاج المشروع لانتاج المنتجات و شراء المواد الخام  </div>
-    
+     <br />
+  <hr />
     
 
             <div class="d-flex col-12 justify-content-between">
@@ -1338,10 +1326,7 @@
       </div>
     </div>
   </div>
-
-
-         
-
+ 
  <!-- / Content -->
 
             
@@ -1363,7 +1348,7 @@
   <!-- Core JS -->
           
 
-
+@*
 @section Scripts {
     <script>
 
@@ -1388,6 +1373,87 @@
 
         });
     });
+
+
+  </script>
+
+}*@
+
+
+
+@section Scripts {
+    <script>
+'use strict';
+(function () {
+    const createButton = document.querySelector('#createButton');
+    // Alert With Functional Confirm Cancel Button
+  if (createButton) {
+    createButton.onclick = function () {
+         var inputData = $('form').serializeArray();  
+        
+      Swal.fire({
+        title: 'هل انت متأكد من حفظ الدراسة؟',
+        text: "لن تتمكن من العوده الى الدراسة !",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'نعم, حفظ !',
+        CancelButtonText: 'إلغاء',
+        customClass: {
+          confirmButton: 'btn btn-primary me-3',
+          cancelButton: 'btn btn-label-secondary'
+        },
+        buttonsStyling: false
+      }).then(function (result) {
+        if (result.value) {
+                $.ajax(
+            {
+                type: "POST", //HTTP POST Method
+                url: "Create", // Controller/View
+                data: inputData,
+                 success : function(response) {
+                      Swal.fire({
+            icon: 'success',
+            title: 'تم الحفظ بنجاح !',
+            text: 'تم الحفظ في  تقارير الدراسات.   ',
+            customClass: {
+              confirmButton: 'btn btn-success'
+                  }
+                 });
+                    if (response.result == 'Redirect')
+                     window.location = response.url;
+                },
+                error:function(){
+                   Swal.fire({
+        title: 'خطأ!',
+        text: ' يرجى ادخال بيانات الدراسه بشكل كامل!',
+        icon: 'error',
+        customClass: {
+          confirmButton: 'btn btn-primary'
+        },
+        buttonsStyling: false
+      });
+                    // Error Alert
+  
+                },
+            });
+            
+         
+        }
+        else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire({
+            title: 'الغاء الحفظ',
+            text: 'لا زالت الدراسة قيد التعديل :)',
+            icon: 'error',
+            customClass: {
+              confirmButton: 'btn btn-success'
+            }
+          });
+        }
+      });
+    };
+  }
+})();
+
     OtherCheckBox("#OtherProjectGoals", "#OtherProjectGoalsValue");
 OtherCheckBox("#OtherCteristicsOfTheProjectArea", "#OtherCteristicsOfTheProjectAreaValue");
 OtherCheckBox("#OtherFactorsRepresentedOnIncreasedDemand", "#OtherFactorsRepresentedOnIncreasedDemandValue");
@@ -1398,8 +1464,7 @@ OtherCheckBox("#OtherPointsOfEwakness", "#OtherPointsOfEwaknessValue");
 OtherCheckBox("#OtherAvailbleOpportunity", "#OtherAvailbleOpportunityValue");
 OtherCheckBox("#OtherThreats", "#OtherThreatsValue");
 
-
-  </script>
-
+</script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 }

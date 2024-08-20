@@ -47,10 +47,7 @@ data-template="vertical-menu-template-no-customizer"
   <link rel="stylesheet" href="~/assets/vendor/libs/leaflet/leaflet.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/typeahead-js/typeahead.css" />
-  <link rel="stylesheet" href="~/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
-  <link rel="stylesheet" href="~/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
-  <link rel="stylesheet" href="~/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
-  <link rel="stylesheet" href="~/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+  <link rel="stylesheet" href="~/assets/vendor/libs/-buttons-bs5/buttons.bootstrap5.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/flatpickr/flatpickr.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/typeahead-js/typeahead.css" />
@@ -59,13 +56,16 @@ data-template="vertical-menu-template-no-customizer"
   <link rel="stylesheet" href="~/assets/vendor/libs/select2/select2.css" />
   <link rel="stylesheet" href="~/assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
   <!-- Row Group CSS -->
-  <link rel="stylesheet" href="~/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css" />
-  <!-- Form Validation -->
+   <!-- Form Validation -->
   <link rel="stylesheet" href="~/assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
   <link rel="stylesheet" href="~/assets/vendor/css/pages/page-auth.css" />
 
-    <!-- Page CSS -->
+  <link rel="stylesheet" href="~/assets/vendor/libs/sweetalert2/sweetalert2.css" />
+     
 
+    <!-- Page CSS -->
+     <script src="~/assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
+                <script src="~/assets/js/extended-ui-sweetalert2.js"></script>
     
     <!-- Helpers -->
     <script src="~/assets/vendor/js/helpers.js"></script>
@@ -207,7 +207,7 @@ data-template="vertical-menu-template-no-customizer"
                <li class="menu-header small text-uppercase"><span class="menu-header-text">متفرقعات</span></li>
           <li class="menu-item open active">
        
- @if(User.IsInRole("Admin"))
+                      @if(User.IsInRole("Admin"))
                             {
                             <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -223,19 +223,16 @@ data-template="vertical-menu-template-no-customizer"
               </li>
             </ul>
               </li>
-                            }
-                            else
-                            {
-                                <li class="menu-item">
-                                    <a asp-controller="Support_Messages" asp-action="Create" class="menu-link">
-                                      <i class="menu-icon tf-icons bx bx-support"></i>
-                                     <div>ارسال رسالة الى الدعم الفني</div>
-                                  </a>
-                                </li>
-                            }
-         
-          
-          
+                }
+                else
+                {
+                    <li class="menu-item">
+                        <a asp-controller="Support_Messages" asp-action="Create" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-support"></i>
+                            <div>ارسال رسالة الى الدعم الفني</div>
+                        </a>
+                    </li>
+                }
                 </ul>
         
         </aside>
@@ -268,6 +265,7 @@ data-template="vertical-menu-template-no-customizer"
                 <!-- /Search -->
 
                 <ul class="navbar-nav flex-row align-items-center ms-auto">
+                  
                   <!-- Language -->
                   <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -289,6 +287,9 @@ data-template="vertical-menu-template-no-customizer"
                     </ul>
                   </li>
                   <!--/ Language -->
+                  
+
+
 
                  <!-- Style Switcher -->
                  <li class="nav-item me-2 me-xl-0">
@@ -297,8 +298,9 @@ data-template="vertical-menu-template-no-customizer"
                   </a>
                 </li>
                 <!--/ Style Switcher -->
-
-
+                <!-- Notification -->
+                
+                 <!-- /Notification -->
                   <!-- User -->
                     <partial name="_Identity.cshtml" />
                   <!--/ User -->

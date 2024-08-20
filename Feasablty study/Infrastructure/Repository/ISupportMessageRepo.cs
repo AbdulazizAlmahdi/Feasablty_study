@@ -10,6 +10,5 @@ namespace Feasablty_study.Infrastructure.Repository
 {
     public interface ISupportMessageRepo : IBaseRepository<Support_Messages>
     {
-        
     }
 }

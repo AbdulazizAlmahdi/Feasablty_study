@@ -42,6 +42,7 @@ namespace Feasablty_study.Controllers
         // GET: Feasibility_study
         public async Task<IActionResult> Index()
         {
+            
             var currentuser =_userManager.Users.First(u=>u.Id==User.FindFirstValue(ClaimTypes.NameIdentifier));
             var allfeasibilityStudy = await _feasibilityStudyRepo.GetAllAsync(f=>f.User);
             if (User.IsInRole(UserRoles.Admin))
@@ -129,13 +130,6 @@ namespace Feasablty_study.Controllers
         {      
             string UserId = _userManager.GetUserId(User);
 
-            /*if (Request.Form.Files.Count > 0)
-            {
-                var file = Request.Form.Files.FirstOrDefault();
-                string pathUpload = Path.Combine(_hosting.WebRootPath, "Images");
-                model.Feasibility_Study.ProjectLogo = UploadFileHelper.UploadFile(file, pathUpload, model.Feasibility_Study.ProjectLogo);
-            }
-            */
             await _feasibilityStudyRepo.AddAsync(model,UserId);
             return Json(new { result = "Redirect", url = Url.Action("Index", "Feasibility_study") });
 

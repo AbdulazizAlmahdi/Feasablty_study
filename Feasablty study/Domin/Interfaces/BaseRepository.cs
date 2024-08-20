@@ -63,5 +63,10 @@ namespace Feasablty_study.Domin.Interfaces
             await _context.Set<T>().AddRangeAsync(entities);
             return entities;
         }
+
+        public Task<IEnumerable<T>> GetAllAsync(object id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

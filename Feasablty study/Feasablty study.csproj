@@ -22,27 +22,13 @@
 
   <ItemGroup>
     <None Include="Views\Feasibility_study\Create.cshtml" />
-    <None Include="Views\Feasibility_study\Delete.cshtml" />
-    <None Include="Views\Feasibility_study\Details.cshtml" />
-    <None Include="Views\Feasibility_study\Edit.cshtml" />
     <None Include="Views\Feasibility_study\Index.cshtml" />
     <None Include="Views\Support_Messages\Create.cshtml" />
-    <None Include="Views\Support_Messages\Delete.cshtml" />
-    <None Include="Views\Support_Messages\Details.cshtml" />
     <None Include="Views\Support_Messages\Index.cshtml" />
     <None Include="wwwroot\assets\bootstrap\js\bootstrap.min.js" />
-    <None Include="wwwroot\assets\fonts\fa-brands-400.svg" />
-    <None Include="wwwroot\assets\fonts\fa-brands-400.woff2" />
-    <None Include="wwwroot\assets\fonts\fa-regular-400.svg" />
-    <None Include="wwwroot\assets\fonts\fa-regular-400.woff2" />
-    <None Include="wwwroot\assets\fonts\fa-solid-900.svg" />
-    <None Include="wwwroot\assets\fonts\fa-solid-900.woff2" />
-    <None Include="wwwroot\assets\fonts\fontawesome-webfont.svg" />
-    <None Include="wwwroot\assets\fonts\fontawesome-webfont.woff2" />
-    <None Include="wwwroot\assets\fonts\ionicons.svg" />
-    <None Include="wwwroot\assets\fonts\MaterialIcons-Regular.svg" />
-    <None Include="wwwroot\assets\fonts\MaterialIcons-Regular.woff2" />
-    <None Include="wwwroot\assets\fonts\typicons.svg" />
+    <None Include="wwwroot\assets\fonts\SLXVc1nY6HkvangtZmpcWmhzfH5lWWgcQyyS4J0.woff2" />
+    <None Include="wwwroot\assets\fonts\SLXVc1nY6HkvangtZmpcWmhzfH5lWWgcRiyS.woff2" />
+    <None Include="wwwroot\assets\fonts\SLXVc1nY6HkvangtZmpcWmhzfH5lWWgcSCyS4J0.woff2" />
     <None Include="wwwroot\assets\img\avatars\فرص.webp" />
     <None Include="wwwroot\assets\img\icons\unicons\Software engineer-rafiki.svg" />
     <None Include="wwwroot\assets\img\illustrations\alhrafi.svg" />
@@ -908,9 +894,13 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0" />
+    <PackageReference Include="SweetAlert.Bootstrap" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Images\" />
+    <Content Update="Views\Shared\AdmintNotification.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 </Project>

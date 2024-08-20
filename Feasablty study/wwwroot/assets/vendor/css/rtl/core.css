@@ -2284,6 +2284,7 @@ progress {
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0;
+ 
 }
 .form-control-plaintext.form-control-sm, .form-control-plaintext.form-control-lg {
   padding-right: 0;
